@@ -1,0 +1,120 @@
+/*-------------------------------------------------------*/
+/* Table of Content
+
+1. General
+2. Typography
+3. Icon Fonts
+4. Grid
+5. Navigation
+6. Footer
+7. Components
+8. Pages
+9. Helper Classes
+
+/*-------------------------------------------------------*/
+
+
+/*-------------------------------------------------------*/
+/* Bootstrap Grid
+/*-------------------------------------------------------*/
+@import "_bootstrap.scss";
+
+
+/*-------------------------------------------------------*/
+/* General
+/*-------------------------------------------------------*/
+
+html {
+  font-size: 100%;
+}
+
+.clearfix {
+  *zoom: 1;
+
+  &:before, &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #212121;
+}
+
+::-webkit-selection {
+  color: #fff;
+  background-color: #212121;
+}
+
+::selection {
+  color: #fff;
+  background-color: #212121;
+}
+
+:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $body-font;
+  @include fontSize( 22px );
+  line-height: 1.5;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  background: #fff;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: $text-color;  
+}
+
+img {
+  border: none;
+  height: auto;
+  max-width: 100%;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-color;
+  @include transition (color .1s ease-in-out);
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $heading-color;
+  }
+}
+
+p {
+  margin: 0 0 2rem;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}
+
+hr {
+  margin: 0;
+  border-color: $border-color;
+}
+
+address {
+  font-style: normal;
+  margin-bottom: 0;
+}

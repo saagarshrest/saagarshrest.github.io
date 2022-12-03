@@ -1,0 +1,42 @@
+/*-------------------------------------------------------*/
+/* Page 404
+/*-------------------------------------------------------*/
+.page-404-section {
+	padding-bottom: 120px;
+	
+	@include bp-lg-up {
+		padding-bottom: 200px;
+	}
+}
+
+.page-404 {
+	&__number {
+		-webkit-text-fill-color: transparent;
+		-webkit-background-clip: text;
+		@include background-img-cover;
+		color: #d3b5ed;
+		font-family: $heading-font;
+		font-weight: 700;
+		line-height: 1;
+		@include fontSize( 120px );
+
+		@include bp-lg-up {
+			@include fontSize( 300px );
+		}
+	}
+
+	&__title {
+		margin-top: 32px;
+		margin-bottom: 28px;		
+		@include fontSize( 36px );
+
+		@include bp-lg-up {
+			@include fontSize( 44px );
+		}
+	}
+
+	&__text {
+		margin-bottom: 48px;
+	}
+}
+

@@ -1,0 +1,78 @@
+/*-------------------------------------------------------*/
+/* Preloader
+/*-------------------------------------------------------*/
+.loader-mask {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  height: 100vh;
+  background-color: #000000; 
+  z-index:99999;
+}
+
+.loader {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0;  
+  
+  &-logo {
+    margin-bottom: 12px;
+  }
+}
+
+.loader-bar {
+  border-radius: 5px;
+  height: 3px;
+  background-color: rgba( #fff, .3 );
+
+  span {
+    content: '';
+    display: block;
+    border-radius: 5px;
+    height: 3px;
+    width: 0;
+    background-color: #fff;
+    transition: all 1.2s cubic-bezier(.25,.74,.22,.99);
+  }
+}
+
+@keyframes spin {
+  0% { 
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+@-webkit-keyframes spin {
+  0% { 
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+@keyframes spin-reverse {
+  0% { 
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(-360deg));
+  }
+}
+
+@-webkit-keyframes spin-reverse {
+  0% { 
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(-360deg));
+  }
+}

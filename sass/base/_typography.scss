@@ -1,0 +1,117 @@
+/*-------------------------------------------------------*/
+/* Typography
+/*-------------------------------------------------------*/
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $heading-font;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: $heading-color;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.375rem; }
+h6 { font-size: 1.25rem; }
+
+@include bp-lg-down {
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 1.625rem; }
+}
+
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  color: $heading-color;
+  font-size: 85%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@include bp-xl-down { .text-lg-center {text-align: center}; }
+@include bp-lg-down { .text-md-center {text-align: center}; }
+@include bp-md-down { .text-sm-center {text-align: center}; }
+@include bp-sm-down { .text-xs-center {text-align: center}; }
+
+@include bp-xl-down { .text-lg-left {text-align: left}; }
+@include bp-lg-down { .text-md-left {text-align: left}; }
+@include bp-md-down { .text-sm-left {text-align: left}; }
+@include bp-sm-down { .text-xs-left {text-align: left}; }
+
+@include bp-xl-down { .text-lg-right {text-align: right}; }
+@include bp-lg-down { .text-md-right {text-align: right}; }
+@include bp-md-down { .text-sm-right {text-align: right}; }
+@include bp-sm-down { .text-xs-right {text-align: right}; }
+
+
+.title-row {
+  margin-bottom: 72px;
+  position: relative;
+
+  @include bp-lg-down {
+    margin-bottom: 48px;
+  }
+
+  &--boxed {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.section-title {
+  margin-bottom: 34px;
+}
+
+.highlight {
+  color: $primary-color;
+}
+
+.text-large {
+  @include fontSize( 32px );
+  line-height: 1.4;
+
+  @include bp-lg-up {
+    @include fontSize( 40px );
+  }
+}
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.666666;
+}
+
+figcaption {
+  font-size: 0.9375rem;
+  font-style: italic;
+  margin-top: 16px;
+  color: $meta-color;
+  text-align: center;
+}

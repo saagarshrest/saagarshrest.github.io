@@ -1,0 +1,74 @@
+/*-------------------------------------------------------*/
+/* Testimonials
+/*-------------------------------------------------------*/
+.testimonial {  
+  position: relative;
+
+  &__body {
+    margin-bottom: 40px;
+
+    &::before {
+      content: '“';
+      font-family: $heading-font;
+      font-weight: 700;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -32px;
+      line-height: 1.1;
+      @include fontSize( 44px );
+
+      @include bp-lg-down {
+        position: relative;
+        left: 0;
+      }
+    }
+  }
+
+  &__text {
+    @include fontSize( 30px );
+    font-family: $heading-font;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__author {
+    line-height: 1.3;
+  }
+
+  &__img-holder {
+    margin: 0;
+  }
+
+  &__img {
+    position: relative;
+    overflow: hidden;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    margin-right: 24px;
+
+    @include bp-lg-up {
+      width: 92px;
+      height: 92px;
+    }
+  }
+
+  &__name {
+    @include fontSize( 18px );
+    font-family: $heading-font;
+    font-weight: 700;
+    display: block;
+  }
+
+  &__company {
+    @include fontSize( 18px );
+    color: $meta-color;
+  }   
+}

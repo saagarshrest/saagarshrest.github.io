@@ -1,0 +1,231 @@
+/*-------------------------------------------------------*/
+/* Helper classes
+/*-------------------------------------------------------*/
+.clear { clear: both; }
+.oh { overflow: hidden; }
+.ov { overflow: visible; }
+.relative { position: relative; }
+.mobile section { background-attachment: scroll !important; }
+.bg-dark { background-color: $bg-dark; }
+.bg-black { background-color: #000; }
+.bg-light { background-color: $bg-light; }
+.bg-white { background-color: #fff; }
+.bg-color { background-color: $secondary-color-dark; }
+.block { display: block; }
+.left { float: left; }
+.right { float: right; }
+.valign { position: absolute; top: 50%; @include transform (translateY(-50%)); }
+.img-full-width { width: 100%; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.02em; }
+.last { margin-bottom: 0 !important; }
+
+
+
+/* Hovers
+-------------------------------------------------------*/
+.hover-shrink {
+
+  &--shrink {
+    overflow: hidden;
+  }
+
+  &--shrink,
+  &--zoom {
+    @include transition( all .2s ease-in-out );
+  }
+
+  &:hover {
+    .hover-shrink--shrink {
+      @include transform( scale( .95 ) );
+    }
+
+    .hover-shrink--zoom  {
+      @include transform( scale( 1.2 ) );
+    }     
+  }
+   
+}
+
+.hover-down {
+  @include transition($all);
+  top: 0;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0px 5px 10px rgba(64, 90, 128, 0.05);
+    top: 2px;
+  }  
+}
+
+.hover-line {
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    background-color: $primary-color;
+    @include transition($all);
+  }
+
+  &:hover {
+    &:after {
+      width: 0;
+    }
+  }
+}
+
+
+/* Title link / Underline
+-------------------------------------------------------*/
+.title-link {
+  font-family: $heading-font;
+  color: $heading-color;
+  font-weight: 700;
+  @include fontSize(18px);
+}
+
+.underline {
+  background-image: linear-gradient(to right, $heading-color 0%, $heading-color 100%);
+  background-size: 100% 2px;
+  background-position: 0px 95%;
+  background-repeat: no-repeat;
+  transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  padding: 0.5% 0px;
+}
+
+.title-underline {
+  a {
+    background-image: linear-gradient(to right, $heading-color 0%, $heading-color 100%);
+    background-size: 0px 2px;
+    background-position: 0px 95%;
+    background-repeat: no-repeat;
+    transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+    padding: 0.5% 0px;
+  }
+
+  &:hover a {
+    background-size: 100% 2px;
+  }
+}
+
+
+
+/* Gradients / Overlays
+-------------------------------------------------------*/
+.bg-gradient-bottom:before {
+  content: "";
+  z-index: 1;
+  top: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+  transition: background-color 0.40s cubic-bezier(.25,.74,.22,.99);
+  @include linear-gradient-from-bottom( rgba( $bg-dark, .38 ), transparent );
+}
+
+.bg-overlay {
+  position: relative;
+
+  &:before {
+    content: "";
+    top: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.40s cubic-bezier(.25,.74,.22,.99);
+    background-color: rgba($bg-dark, 0.81);
+  }
+
+  &--color::before {
+    background-color: rgba($secondary-color-dark, 0.77);
+  }
+
+
+}
+
+
+/* Section Dividers
+-------------------------------------------------------*/
+.top-divider {
+  border-top: 1px solid $border-color;
+}
+
+.bottom-divider {
+  border-bottom: 1px solid $border-color;
+}
+
+
+/* Animations
+-------------------------------------------------------*/
+.animate {
+  position: relative;
+  overflow: hidden;
+
+  &-container {
+    transform: translateY(101%);
+    transition: all 1s cubic-bezier(.25,.74,.22,.99);
+    transition-delay: .5s;
+    will-change: transform;
+  }
+
+  &--animated {
+    .animate-container {
+      transform: translateY(0);
+    }
+  }
+}
+
+
+
+/* Alignment
+-------------------------------------------------------*/
+.alignleft,
+.alignright {
+	max-width: 100% !important;
+	float: none;
+}
+
+@include bp-sm-up {
+	.alignleft {
+    float: left;
+    margin: .5em 2em 2em 0;
+	}
+
+	.alignright {
+    float: right;
+    margin: .5em 0 2em 2em;
+	}
+
+	.alignleft,
+	.alignright {
+    max-width: 40% !important;
+    
+    @include bp-sm-down {
+      margin-left: 0;
+      margin-right: 0;
+      float: none;
+    }
+	}
+}
+
+.alignnone {
+  margin: .5em 2em;
+}
+
+.aligncenter {
+  display: block;
+  margin: .5em auto;
+}
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

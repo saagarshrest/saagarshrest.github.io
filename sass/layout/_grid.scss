@@ -1,0 +1,112 @@
+/*-------------------------------------------------------*/
+/* Grid
+/*-------------------------------------------------------*/
+.main-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.content-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  background-color: #fff;
+  padding: 88px 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  @include bp-lg-down {
+    padding: 60px 0;
+  }
+}
+
+
+.section-large-padding {
+  padding: 80px 0;
+
+  @include bp-lg-up {
+    padding: 140px 0;
+  }
+}
+
+.container,
+.container-fluid,
+.container-semi-fluid {
+  @include bp-lg-down {
+    padding: 0 30px;
+  }
+}
+
+.container-semi-fluid {
+  padding: 0 50px;
+}
+
+.main-container {
+  margin: auto;
+}
+
+@media (min-width: 1800px) {
+  .container {
+    max-width: 1680px;
+  }
+}
+
+
+/* Columns Gutters
+-------------------------------------------------------*/
+.row-10 {
+  margin: 0 -5px;
+}
+
+.row-10 > [class*="col-"] {
+  padding: 0 5px;
+}
+
+.row-14 {
+  margin: 0 -7px;
+}
+
+.row-14 > [class*="col-"] {
+  padding: 0 7px;
+}
+
+.row-50 {
+  margin: 0 -25px;
+}
+
+.row-50 > [class*="col-"] {
+  padding: 0 25px;
+}
+
+
+/* Flexbox
+-------------------------------------------------------*/
+.flex-parent {
+  @include display-flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.flex-child {
+  @include flex (1 0 0);
+}
+
+
+/* Flexbox Align
+-------------------------------------------------------*/
+.justify-content-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.align-items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}

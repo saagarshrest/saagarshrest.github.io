@@ -1,0 +1,22 @@
+/*-------------------------------------------------------*/
+/* Social Icons
+/*-------------------------------------------------------*/
+.social {
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom: 6px;
+  @include fontSize(17px);
+  color: #999999;
+  @include transition( all .1s ease-in-out );
+
+  &:hover,
+  &:focus {
+    color: $heading-color;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

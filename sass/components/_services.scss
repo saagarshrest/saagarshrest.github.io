@@ -1,0 +1,101 @@
+/*-------------------------------------------------------*/
+/* Service Boxes
+/*-------------------------------------------------------*/
+.services {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.services-list {
+  list-style: none;
+  position: relative;
+  width: 100%;
+
+  @include bp-lg-up {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 40px;
+  }
+
+  @include bp-lg-down {
+    margin-bottom: 56px;
+  }
+
+	&__item {
+    position: relative;
+    font-family: $heading-font;
+    font-weight: 700;
+    color: $text-color-light;
+    cursor: pointer;
+    letter-spacing: -0.05em;
+    @include transition($all);
+    @include fontSize(34px);
+
+    @include bp-lg-up {
+      @include fontSize(56px);
+    }
+    
+    &:hover,
+    &--is-active {
+      color: $heading-color;
+
+      span::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      display: block;
+      bottom: 10px;
+      height: 16px;
+      width: 0;
+      background-color: $primary-color;
+      transition: all .4s cubic-bezier(.25,.74,.22,.99);
+
+      @include bp-lg-up {
+        bottom: 20px;
+      }
+    }
+  }
+
+}
+
+.services-content {
+  list-style: none;
+  position: relative;
+  width: 100%;
+
+  @include bp-lg-up {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  &__item {
+    @include fontSize(28px);
+    margin-bottom: 48px;
+    line-height: 1.3;
+    color: $text-color-light;
+    @include transition($all);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include bp-lg-up {
+      @include fontSize(40px);
+    }
+
+    &--is-active {
+      color: $heading-color;
+    }
+  }
+
+}

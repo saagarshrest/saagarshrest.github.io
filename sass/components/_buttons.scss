@@ -1,0 +1,61 @@
+/*-------------------------------------------------------*/
+/* Buttons
+/*-------------------------------------------------------*/
+.btn {
+  font-weight: 700;
+  font-family: $heading-font;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  @include transition($all);
+  @include fontSize( 18px );
+  color: #fff;
+  background-color: $bg-dark;
+  backface-visibility: hidden;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: #fff;
+    background-color: $secondary-color-dark;
+    box-shadow: 0 12px 20px rgba($secondary-color-dark, .25);
+    border-color: transparent;
+  }
+
+  &:focus {
+    outline: none;
+    color: #fff;
+  }
+
+  &--lg {
+    padding: 29px 64px;
+  }
+
+  &--md {
+    @include fontSize( 18px );
+    padding: 24px 48px;
+  }
+
+  &--color {
+    background-color: $secondary-color-dark;
+  }
+
+  &--wide {
+    width: 100%;
+  }
+}
+
+.rounded,
+.rounded:before {
+  border-radius: 70px;
+}

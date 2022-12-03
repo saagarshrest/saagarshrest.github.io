@@ -1,0 +1,33 @@
+/*-------------------------------------------------------*/
+/* Clients
+/*-------------------------------------------------------*/
+.client-logo {
+  border-bottom: 1px solid $border-color;  
+	text-align: center;
+	
+	@include bp-sm-up {
+		border-right: 1px solid $border-color;
+	}
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.clients-second-row {
+
+	@include bp-sm-up {
+		.client-logo {
+			border-bottom: none;
+		}
+	}
+
+	@include bp-sm-down {
+		.client-logo:last-child {
+			border-bottom: none;
+		}
+	}
+	
+}
+
+

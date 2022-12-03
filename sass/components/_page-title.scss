@@ -1,0 +1,32 @@
+/*-------------------------------------------------------*/
+/* Page Title
+/*-------------------------------------------------------*/
+.page-title {
+  position: relative;
+  padding: 120px 0;
+
+  @include bp-md-down {
+    padding: 60px 0;
+  }
+
+  &__holder {
+    max-width: 860px;
+  }
+
+  &__title {
+    @include fontSize( 32px );
+    line-height: 1.3;
+    margin-bottom: 28px;
+
+    @include bp-lg-up {
+      @include fontSize( 56px );
+    }
+  }
+
+  &__subtitle {
+    @include fontSize( 24px );
+    line-height: 1.4;
+  }
+
+  
+}

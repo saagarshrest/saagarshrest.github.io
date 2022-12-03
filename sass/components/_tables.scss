@@ -1,0 +1,53 @@
+/*-------------------------------------------------------*/
+/* Tables
+/*-------------------------------------------------------*/
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+table th {
+  font-weight: normal;  
+}
+
+table caption {
+  margin-bottom: 10px;
+}
+
+table>thead>tr>th,
+table>tbody>tr>th,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>tbody>tr>td,
+table>tfoot>tr>td {
+  border: 1px solid $border-color;
+  padding: 10px;
+  letter-spacing: -0.05em;
+}
+
+table>thead>tr>th {
+  border-bottom: none;
+}
+
+table thead tr th {
+  font-size: 12px;
+  color: $heading-color;
+  font-family: $heading-font;
+  text-transform: uppercase;
+  font-weight: bold;  
+}
+
+.wp-block-table {
+  overflow-x: auto;
+}
+
+.wp-block-table.is-style-stripes td {
+  border-color: transparent;
+}
+
+.wp-block-table.is-style-stripes tr:nth-child(odd) {
+  background-color: $bg-light;
+}

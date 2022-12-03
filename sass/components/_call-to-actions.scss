@@ -1,0 +1,19 @@
+/*-------------------------------------------------------*/
+/* Call To Action
+/*-------------------------------------------------------*/
+.call-to-action {  
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  &__title {
+    @include fontSize( 32px );
+    line-height: 1.2;
+    margin-bottom: 56px;
+
+    @include bp-lg-up {
+      @include fontSize( 40px );
+    }
+  }
+}

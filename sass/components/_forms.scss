@@ -1,0 +1,171 @@
+/*-------------------------------------------------------*/
+/* Form Elements
+/*-------------------------------------------------------*/
+input,
+select,
+textarea {
+  height: 56px;
+  border-radius: 0;
+  border: 1px solid #afafaf;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0 12px;
+  @include fontSize( 18px );
+  @include transition(border-color .3s ease-in-out, background-color .3s ease-in-out)
+}
+
+textarea {
+  height: auto;
+  display: block;
+  padding: 8px 16px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: $secondary-color-dark;
+  background-color: #fff;
+  outline: none;
+  box-shadow: none;
+}
+
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  padding: 24px 48px;
+
+  &:focus {
+    background-color: $secondary-color-dark;
+  }
+}
+
+
+/* Change Color of Placeholders */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $text-color;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: $text-color;
+  opacity: 1;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: $text-color;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $text-color;
+}
+
+label {
+  color: $heading-color;
+  font-family: $heading-font;
+  font-size: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.form-group {
+  position: relative;
+}
+
+
+/* Checkboxes & Radio Buttons
+-------------------------------------------------------*/
+input[type="checkbox"],
+input[type="radio"] {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 0;
+  border: 1px solid darken( $border-color, 10% );
+  background-color: #fff;
+
+  &:hover {
+    border-color: darken( $border-color, 20% );
+    background-color: #fff;
+  }
+}
+
+
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  cursor: pointer;
+  margin-bottom: 0;
+  position: relative;
+  line-height: 22px;
+}
+
+
+input[type="radio"] {
+  border-radius: 50%;
+
+  &:checked:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: relative;
+    top: -2px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: $heading-color;
+  }
+}
+
+.radio,
+.checkbox {
+  list-style: none;
+}
+
+.consent-checkbox {
+  margin-top: 18px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  display: flex;
+
+  &__label {
+    line-height: 20px;
+    font-size: 1rem;
+    color: $text-color;
+    font-family: $body-font;
+  }
+
+  input[type=checkbox] {
+    float: left;
+  }
+}
+
+
+/* GDPR Checkbox
+-------------------------------------------------------*/
+.gdpr-checkbox {
+  margin-bottom: 24px;
+
+  &__label {
+    @include display-flex;
+    color: $text-color;
+    font-family: $body-font;
+    line-height: 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 0;
+  }
+}

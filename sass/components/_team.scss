@@ -1,0 +1,33 @@
+/*-------------------------------------------------------*/
+/* Team
+/*-------------------------------------------------------*/
+.team {
+  margin-bottom: 68px;
+
+  &-subtitle {
+    max-width: 960px;
+    margin-bottom: 96px;
+    @include fontSize( 24px );
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__name {
+    @include fontSize( 30px );
+    margin-top: 56px;
+
+    @include bp-lg-up {
+      @include fontSize( 38px );
+    }
+  }
+
+  &__email {
+    @include fontSize( 24px );
+
+    @include bp-lg-up {
+      @include fontSize( 30px );
+    }
+  }
+}

@@ -1,0 +1,101 @@
+/*-------------------------------------------------------*/
+/* Widgets
+/*-------------------------------------------------------*/
+.widget {
+  margin-bottom: 48px;
+
+  li {
+    list-style: none;
+  }
+
+  &-title {
+    margin-bottom: 24px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
+/* Widget CTA
+-------------------------------------------------------*/
+.widget-cta {
+  &__title,
+  &__link {
+    @include fontSize(34px);
+    
+    @include bp-lg-up {
+      @include fontSize(52px);
+    }
+  }
+
+  &__title {
+    color: #ffffff;
+
+    a {
+      display: block;
+    }
+  }
+
+  &__link {
+    color: $secondary-color;
+  }
+}
+
+
+/* Widget About Us
+-------------------------------------------------------*/
+.widget-about-us {
+  @include fontSize(20px);
+
+  &__address {
+    margin-bottom: 28px;
+  }
+
+  &__address,
+  &__email,
+  &__phone {
+    font-family: $heading-font;
+    font-weight: 700;
+  }
+
+  &__email,
+  &__phone {
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  &__address {
+    color: #fff;
+  }
+}
+
+
+/* Widget Nav Menu
+-------------------------------------------------------*/
+.widget-nav-menu {
+  li a {
+    font-family: $heading-font;
+    font-weight: 700;
+    @include fontSize(20px);
+  }
+}
+
+
+/* Widget Tags / Entry Tags
+-------------------------------------------------------*/
+.entry__tags a {
+  line-height: 1;
+  margin: 0 14px 14px 0;
+  font-size: 0.75rem !important;
+  font-weight: 700;
+  color: $heading-color;
+  font-family: $heading-font;
+  float: left;
+  border-bottom: 1px solid $text-color-light;
+  @include transition( all 0.1s ease-in-out );
+
+
+  &:hover,
+  &:focus {
+    color: $secondary-color-dark;
+  }
+}

@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'dorya';
+  src:
+    url('../fonts/dorya.ttf?6lrnp2') format('truetype'),
+    url('../fonts/dorya.woff?6lrnp2') format('woff'),
+    url('../fonts/dorya.svg?6lrnp2#dorya') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="dorya-icon-"], [class*=" dorya-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dorya' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dorya-icon-deviantart:before {
+  content: "\e902";
+}
+.dorya-icon-slack:before {
+  content: "\e903";
+}
+.dorya-icon-telegram:before {
+  content: "\e904";
+}
+.dorya-icon-instagram:before {
+  content: "\e905";
+}
+.dorya-icon-dribbble:before {
+  content: "\e906";
+}
+.dorya-icon-linkedin:before {
+  content: "\e907";
+}
+.dorya-icon-pinterest:before {
+  content: "\e908";
+}
+.dorya-icon-twitter:before {
+  content: "\e909";
+}
+.dorya-icon-vimeo:before {
+  content: "\e90a";
+}
+.dorya-icon-youtube:before {
+  content: "\e90b";
+}
+.dorya-icon-github:before {
+  content: "\e90c";
+}
+.dorya-icon-facebook:before {
+  content: "\e90d";
+}
+.dorya-icon-bitbucket:before {
+  content: "\e90e";
+}
+.dorya-icon-behance:before {
+  content: "\e90f";
+}
+.dorya-icon-chevron-down:before {
+  content: "\e910";
+}
+.dorya-icon-chevron-left:before {
+  content: "\e911";
+}
+.dorya-icon-chevron-right:before {
+  content: "\e912";
+}
+.dorya-icon-chevron-up:before {
+  content: "\e913";
+}
+.dorya-icon-arrow-diagonal-up:before {
+  content: "\e914";
+}
+.dorya-icon-arrow-left:before {
+  content: "\e900";
+}
+.dorya-icon-arrow-right:before {
+  content: "\e901";
+}

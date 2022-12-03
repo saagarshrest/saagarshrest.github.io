@@ -1,0 +1,39 @@
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+$grid-gutter-width: 20px;
+
+$container-max-widths: (
+  // sm: 540px,
+  // md: 720px,
+  lg: 940px,
+  xl: 1320px
+) !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1025px,
+  xl: 1440px
+);
+
+@import "./node_modules/bootstrap/scss/functions";
+
+
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/reboot";
+@import "./node_modules/bootstrap/scss/grid";
+@import "./node_modules/bootstrap/scss/transitions";
+@import "./node_modules/bootstrap/scss/close";
+@import "./node_modules/bootstrap/scss/modal";
+
+
+@import "./node_modules/bootstrap/scss/utilities/display";
+@import "./node_modules/bootstrap/scss/utilities/embed";
+@import "./node_modules/bootstrap/scss/utilities/screenreaders";

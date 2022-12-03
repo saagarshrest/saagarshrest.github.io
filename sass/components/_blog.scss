@@ -1,0 +1,155 @@
+/*-------------------------------------------------------*/
+/* Blog
+/*-------------------------------------------------------*/
+.entry {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 48px;
+
+  &__header {
+    margin-bottom: 36px;
+  }
+  
+  &__img {
+    width: 100%;
+
+    &-url {
+      display: block;
+    }
+  }
+
+  &__url {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__info-holder {
+    position: absolute;
+    bottom: 0;
+    padding: 40px;
+    z-index: 1;
+    pointer-events: none;
+
+    .entry__title {
+      color: #fff;
+      font-size: 1.5rem;
+    }
+
+    .entry__meta-date {
+      color: #fff;
+    }
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__excerpt {
+    margin-top: 20px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+
+/*-------------------------------------------------------*/
+/* Meta
+/*-------------------------------------------------------*/
+.entry__meta {
+  display: flex;
+
+  &-item {
+    display: inline-block;
+    font-size: 1rem;
+    color: $meta-color;
+    margin-right: 12px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    color: $heading-color;
+
+    &:hover,
+    &:focus {
+      color: $secondary-color-dark;
+    }
+  }
+}
+
+// Meta Author
+.entry__meta-author {
+
+  &-link {
+    color: $meta-color;
+    display: flex;
+    align-items: center;
+    font-family: $heading-font;
+    font-weight: 700;
+  }
+
+  &-img {
+    margin-right: 22px;
+  }
+
+  &-name {
+    color: $heading-color;
+    @include fontSize( 18px );
+    display: block;
+  }
+
+  &-position {
+    @include fontSize( 14px );
+  }
+}
+
+
+/*-------------------------------------------------------*/
+/* Blog Slider
+/*-------------------------------------------------------*/
+.section-from-blog {
+  padding-bottom: 120px;
+  padding-top: 120px;
+  
+  @include bp-lg-up {
+    padding-bottom: 200px;
+    padding-top: 170px;
+  }
+}
+
+.blog-slider {
+  .slick-prev {
+    left: 40px;
+  }
+
+  .slick-next {
+    right: 40px;
+  }
+
+  .entry,
+  .entry__img-holder {
+    margin-bottom: 0;
+  }
+
+  .entry__img {
+    height: 480px;
+    object-fit: cover;
+
+    @include bp-lg-up {
+      height: 696px;
+    }
+  }
+}
