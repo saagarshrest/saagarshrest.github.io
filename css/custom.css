@@ -28,6 +28,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
+    margin-bottom: 200px;
 }
 
 .logos img {
@@ -40,6 +41,7 @@ body {
     transform: scale(1.1);
 }
 
+<<<<<<< Updated upstream
 /* Responsive Design */
 /* @media (max-width: 768px) {
     .logos img {
@@ -52,3 +54,6 @@ body {
         max-width: 90px;
     }
 } */
+=======
+
+>>>>>>> Stashed changes
