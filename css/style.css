@@ -3063,6 +3063,68 @@ table thead tr th {
 		.blog-slider .entry__img {
 			height: 696px; } }
 
+
+
+			/* Partnerlogo Slider
+/*-------------------------------------------------------*/
+.section-from-Partnerlogo {
+    height: 100px; /* Fixed height for the entire section */
+    overflow: hidden; /* Ensures content doesn't overflow */
+    padding-top: 20px; /* Adjusts spacing at the top */
+    padding-bottom: 20px; /* Adjusts spacing at the bottom */
+    background-color: #f9f9f9; /* Optional background for contrast */
+}
+
+.Partnerlogo-slider {
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Spacing between items */
+    align-items: center; /* Center content vertically */
+    gap: 20px; /* Space between logos */
+    height: 100px; /* Ensures logos fit the section's height */
+}
+
+.Partnerlogo-slider .entry__img-holder {
+    display: flex; /* Ensures proper alignment */
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Matches the section's height */
+}
+
+.Partnerlogo-slider .entry__img {
+    max-height: 100px; /* Prevents logos from exceeding the section height */
+    width: auto; /* Keeps aspect ratio intact */
+    object-fit: contain; /* Ensures logos fit neatly without distortion */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.Partnerlogo-slider .entry__img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    .section-from-Partnerlogo {
+        height: auto; /* Allows flexibility on smaller screens */
+    }
+
+    .Partnerlogo-slider {
+        flex-wrap: wrap; /* Wraps logos into rows on smaller screens */
+        justify-content: center; /* Centers logos */
+        gap: 15px; /* Adjusts spacing */
+    }
+
+    .Partnerlogo-slider .entry__img {
+        max-height: 80px; /* Adjusts logo size for smaller screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .Partnerlogo-slider .entry__img {
+        max-height: 60px; /* Further adjust for very small screens */
+    }
+}
+
+
 /*-------------------------------------------------------*/
 /* Projects
 /*-------------------------------------------------------*/
@@ -4862,3 +4924,7 @@ a img.aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto; }
+
+
+
+
