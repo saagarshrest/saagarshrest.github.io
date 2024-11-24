@@ -19,7 +19,8 @@ body {
 .partners-section h2 {
     font-size: 24px;
     margin-bottom: 50px;
-    font-weight: 600; /* Bold for Montserrat */
+    font-weight: 600;
+    /* Bold for Montserrat */
 }
 
 .logos {
@@ -40,7 +41,7 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .logos img {
         max-width: 80px;
     }
@@ -48,4 +49,6 @@ body {
 
 @media (max-width: 480px) {
     .logos img {
-        max-width
+        max-width: 90px;
+    }
+} */
