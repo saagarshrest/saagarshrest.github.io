@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saagar - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+            padding-top: 72px;
+            padding-bottom: 60px;
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+        }
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0%;
+            right: 0%;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 90;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .email-button {
+            transition: all 0.3s ease;
+        }
+        .email-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+        }
+        .nav-scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav px- py-4 md:px-12 lg:px-24" id="mainNav">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-2xl font-bold text-gray-900">
+                saagar
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Designs</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Lottie</a>
+                <a href="/Article.html" class="text-gray-700 hover:text-gray-900 font-medium">Articles</a>
+                <a href="/Casestudy.html" class="text-gray-700 hover:text-gray-900 font-medium">Case Study</a>
+                <a href="/Contact.html" class="text-orange-500 hover:text-orange-600 font-bold">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2">
+                <div class="w-6 h-6 flex flex-col justify-center items-center">
+                    <span class="block w-5 h-0.5 bg-gray-800 mb-1 transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-gray-800 mb-1 transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-gray-800 transition-all duration-300"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sticky Bottom Email Bar -->
+    <div class="sticky-bottom-bar flex justify-center items-center py-3" id="emailBar">
+        <div class="flex items-center">
+            <div class="bg-orange-100 p-2 rounded-full mr-3">
+                <i class="fas fa-envelope text-orange-500"></i>
+            </div>
+            <a href="mailto:saagarshrest@gmail.com" class="text-gray-900 font-medium hover:text-orange-500 transition-colors">
+                saagarshrest@gmail.com
+            </a>
+            <button class="email-button ml-6 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                <i class="fas fa-paper-plane mr-2"></i> Contact Me
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden opacity-0 invisible transition-all duration-300"></div>
+    
+    <!-- Mobile Menu Slider -->
+    <div id="mobile-menu-slider" class="fixed top-0 right-0 h-full w-80 max-w-xs bg-white z-50 md:hidden transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+        <div class="p-6">
+            <!-- Close Button -->
+            <div class="flex justify-end mb-8">
+                <button id="close-mobile-menu" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="space-y-6">
+                <a href="#" class="block text-xl font-medium text-gray-800 hover:text-gray-600 py-3 border-b border-gray-100 transition-colors">Home</a>
+                <a href="#" class="block text-xl font-medium text-gray-800 hover:text-gray-600 py-3 border-b border-gray-100 transition-colors">Designs</a>
+                <a href="#" class="block text-xl font-medium text-gray-800 hover:text-gray-600 py-3 border-b border-gray-100 transition-colors">Lottie</a>
+                <a href="#" class="block text-xl font-medium text-gray-800 hover:text-gray-600 py-3 border-b border-gray-100 transition-colors">Articles</a>
+                <a href="#" class="block text-xl font-medium text-orange-500 hover:text-orange-600 py-3 border-b border-gray-100 transition-colors">Case Study</a>
+                <a href="#" class="block text-xl font-medium text-gray-800 hover:text-gray-600 py-3 border-b border-gray-100 transition-colors">Contact</a>
+            </nav>
+            
+            <!-- Social Links in Mobile Menu -->
+            <div class="mt-12">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Follow Me</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                        <i class="fab fa-dribbble text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                        <i class="fab fa-behance text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Main Content -->
+  <main class="px-6 py-16 md:px-12 lg:px-24">
+    <div class="max-w-6xl mx-auto">
+      <!-- Hero Section -->
+      <section class="mb-40">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+        >
+          Let's create something<br />
+          awesome together
+        </h1>
+        <p class="text-lg text-gray-600 max-w-lg">
+          Thanks for stopping by! If you'd like to reach out, please send me an
+          email below. I'll typically respond in 1-2 business days.
+        </p>
+      </section>
+
+      <!-- Contact Info Section -->
+<section class="grid md:grid-cols-2 gap-12 mb-20">
+  <div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">New Projects</h2>
+    <div class="space-y-2">
+      <p class="text-orange-700">
+        <a href="mailto:saagarshrest@gmail.com" class="text-orange-700 font-bold hover:text-gray-900 transition-colors duration-200">
+          saagarshrest@gmail.com
+        </a>
+      </p>
+      <p class="text-gray-700">
+        <a href="tel:+9779860332656" class="text-orange-700 font-bold hover:text-gray-900 transition-colors duration-200">
+          +977-9860332656
+        </a>
+      </p>
+    </div>
+  </div>
+  <div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Address</h2>
+    <div class="space-y-2">
+      <p class="text-gray-700">Kathmandu, Nepal</p>
+    </div>
+  </div>
+</section>
+
+
+
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white px-6 py-16 md:px-12 lg:px-24 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 1200 800">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)"/>
+            </svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- CTA Section -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    Got a Project?
+                </h2>
+                <p class="text-2xl md:text-3xl lg:text-4xl font-bold text-yellow-400">
+                    Let's Get to Work
+                </p>
+            </div>
+
+            <!-- Footer Content -->
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Kathmandu, Nepal</h3>
+                    <br>
+                    <div class="space-y-2">
+                        <a href="mailto:saagarshrest@gmail.com" class="text-white font-regular hover:text-orange-700 transition-colors duration-200">
+          saagarshrest@gmail.com
+        </a><br><br>
+                        <a href="tel:+9779860332656" class="text-white font-regular hover:text-orange-700 transition-colors duration-200">
+          +977-9860332656
+        </a>
+                    </div>
+                </div>
+
+                <!-- Social Links Column 1 -->
+                <div>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-dribbble mr-3"></i>
+                            Dribbble
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-behance mr-3"></i>
+                            Behance
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-medium mr-3"></i>
+                            Medium
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-figma mr-3"></i>
+                            Figma
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Social Links Column 2 -->
+                <div>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin mr-3"></i>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram mr-3"></i>
+                            Instagram
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-youtube mr-3"></i>
+                            Youtube
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-twitter mr-3"></i>
+                            Twitter
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow Me Section -->
+            <div class="mt-16 pt-8 border-t border-gray-700">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <h3 class="text-xl font-bold mb-4 md:mb-0">Follow Me</h3>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuSlider = document.getElementById('mobile-menu-slider');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const menuLines = mobileMenuBtn.querySelectorAll('span');
+        const mainNav = document.getElementById('mainNav');
+        
+        let isMenuOpen = false;
+        
+        // Function to open mobile menu
+        function openMobileMenu() {
+            isMenuOpen = true;
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Show overlay and slider
+            mobileMenuOverlay.classList.remove('opacity-0', 'invisible');
+            mobileMenuOverlay.classList.add('opacity-100', 'visible');
+            
+            mobileMenuSlider.classList.remove('translate-x-full');
+            mobileMenuSlider.classList.add('translate-x-0');
+            
+            // Animate hamburger to X
+            menuLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            menuLines[1].style.opacity = '0';
+            menuLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        }
+        
+        // Function to close mobile menu
+        function closeMobileMenuFunc() {
+            isMenuOpen = false;
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Hide overlay and slider
+            mobileMenuOverlay.classList.remove('opacity-100', 'visible');
+            mobileMenuOverlay.classList.add('opacity-0', 'invisible');
+            
+            mobileMenuSlider.classList.remove('translate-x-0');
+            mobileMenuSlider.classList.add('translate-x-full');
+            
+            // Animate X back to hamburger
+            menuLines[0].style.transform = 'rotate(0) translate(0, 0)';
+            menuLines[1].style.opacity = '1';
+            menuLines[2].style.transform = 'rotate(0) translate(0, 0)';
+        }
+        
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', () => {
+            if (isMenuOpen) {
+                closeMobileMenuFunc();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        // Close menu when clicking close button
+        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        
+        // Close menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
+        
+        // Close menu when clicking on navigation links
+        const mobileNavLinks = mobileMenuSlider.querySelectorAll('nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenuFunc);
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMobileMenuFunc();
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && isMenuOpen) {
+                closeMobileMenuFunc();
+            }
+        });
+        
+        // Add shadow to nav on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 10) {
+                mainNav.classList.add('nav-scrolled');
+            } else {
+                mainNav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
