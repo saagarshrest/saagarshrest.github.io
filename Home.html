@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm px-6 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/Home.html" class="block">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-sm">UX</span>
+        </div>
+        <span class="font-bold text-xl text-gray-900">Saagar</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex space-x-8">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
+      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
+      <a href="/Casestudy.html" class="text-gray-700 hover:text-primary">Case Study</a>
+      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Photos</a>
+      <a href="/Contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    </div>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+        <a href="mailto:saagarshrest@gmail.com">
+            <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-accent transition-colors">
+            Let's Work Together
+            </button>
+        </a>
+        </div>
+
+
+    <!-- Mobile Hamburger Button -->
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu"
+  class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
+    <!-- Mobile Logo -->
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+        <span class="text-primary font-bold text-sm">UX</span>
+      </div>
+      <span class="font-bold text-xl text-white">Saagar</span>
+    </div>
+
+    <!-- Close Button -->
+    <button id="close-mobile-menu" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Centered Menu Content -->
+  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
+    <a href="https://dribbble.com/saagarshrest" class="hover:underline hover:text-white/90">Designs</a>
+    <a href="/Article.html" class="hover:underline hover:text-white/90">Articles</a>
+    <a href="/Casestudy.html" class="font-bold hover:underline hover:text-white/90">Case Study</a>
+    <a href="/Contact.html" class="hover:underline hover:text-white/90">Contact</a>
+
+    <!-- Social Icons -->
+    <div class="flex space-x-4 pt-6">
+      <a href="https://instagram.com" target="_blank" class="hover:text-white/80">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="hover:text-white/80">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-50 px-6 py-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                        Crafting User Experiences That Drive Results.
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        I transform complex problems into intuitive digital experiences, helping businesses achieve their goals through user-centered design solutions.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer"
+                        class="bg-primary text-white px-8 py-4 rounded-full font-semibold border-2 border-gray-200 hover:bg-green-500 transition-colors flex items-center justify-center">
+                        <span class="mr-2">💬</span> Whatsapp me
+                    </a>
+                    </div>
+                    <div class="flex items-center space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-gray-900">80+</div>
+                            <div class="text-sm text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-gray-900">100%</div>
+                            <div class="text-sm text-gray-600">Client Satisfaction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-gray-900">10+</div>
+                            <div class="text-sm text-gray-600">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+  <img src="/hero.png" alt="Dashboard Preview" class="rounded-3xl shadow-2xl w-full object-cover" />
+  
+  <!-- <div class="absolute top-4 right-4 bg-white p-4 rounded-xl shadow-lg">
+    <div class="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-xl"></div>
+    <div class="mt-2 text-xs text-center text-gray-600">QR Code<br>Portfolio</div>
+  </div> -->
+</div>
+
+            </div>
+        </div>
+    </section>
+
+   <!-- Client Logos Section -->
+<section class="bg-primary py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-white mb-6">Trusted by Leading Companies</h2>
+      <p class="text-gray-400">I've had the privilege to work with amazing clients</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+      <!-- Example Logo Block -->
+      <div class="flex items-center justify-center">
+        <img
+          src="https://shorturl.at/nb3mh" alt="Adleverage" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert"/>
+      </div>
+
+      <!-- Repeat for others -->
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/igJYN" alt="Crowdbotics" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/V9mt2" alt="PracticalAction" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/MRs3h" alt="Datacube" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/p20Pj" alt="Call Jacob" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://tinyurl.com/3w6h99c4" alt="Healent" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://braindigit.com/MediaThumb/medium/Media/Companies%20Logos/artboard_18@4x.png" alt="Braindigit" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.neemaacademy.com/media/home/neemaacademy-logo.png" alt="Neemaacademy" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://localroofs.com/wp-content/uploads/logo-localroofs-do-things-right-outlined.svg" alt="Local Roofs" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.jewelerstouch.com/cdn/shop/files/jt_logo_240x.png?v=1680800441" alt="jewelerstouch" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://kliemannbros.com/wp-content/uploads/Kliemann-Logo-Serving-Puget-Sound-rgb-fullcolor@4x-768x223.png" alt="Kliemann" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/comfort bros.png" alt="comfortbros" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.nuvehome.com/wp-content/uploads/2023/05/Container-46.png" alt="Nuve" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/trio.png" alt="trio" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://cdn.prod.website-files.com/62eb4217467fa543d7f2ba2b/62f1fb8937f05da2d202199c_Logo.svg" alt="Signetic" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/button.png" alt="See All" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- About Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">ABOUT MY PROCESS</span>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                        Strategic UX Design Solutions.
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        I believe great design starts with understanding users and business goals. My approach combines research, strategy, and creative problem-solving to deliver impactful digital experiences.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-orange-50 p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mb-4">
+                                <span class="text-white text-xl">🎯</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">User Research</h3>
+                            <p class="text-sm text-gray-600">Deep dive into user behavior and needs to inform design decisions</p>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                                <span class="text-white text-xl">⚡</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Rapid Prototyping</h3>
+                            <p class="text-sm text-gray-600">Quickly test and iterate on design concepts with interactive prototypes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-gray-900 rounded-3xl p-8 text-white">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-lg font-semibold">UX Design Process</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    <span>Research & Discovery</span>
+                                </div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                    <span>Ideation & Wireframing</span>
+                                </div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                    <span>Prototyping & Testing</span>
+                                </div>
+                            </div>
+                            <div class="bg-primary rounded-lg p-4 font-semibold">
+                                ✨ Final Design & Handoff
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-white py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">MY SERVICES</span>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="bg-gray-900 rounded-3xl p-6">
+                        <div class="bg-white rounded-2xl p-6 mb-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="font-semibold">Mobile App Design</span>
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="h-3 bg-gray-200 rounded"></div>
+                                <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+                                <div class="h-3 bg-primary rounded w-1/2"></div>
+                            </div>
+                            <div class="mt-6 bg-primary text-white rounded-xl p-3 text-center text-sm font-semibold">
+                                Design Progress: 85%
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-white bg-opacity-10 rounded-lg h-12"></div>
+                            <div class="bg-white bg-opacity-20 rounded-lg h-12"></div>
+                            <div class="bg-primary rounded-lg h-12"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                        Transform Your Vision Into Exceptional Digital Experiences.
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        From mobile apps to web platforms, I create user-centered designs that drive engagement and achieve business objectives through strategic UX solutions.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-amber-50 p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-4">
+                                <span class="text-white text-xl">⏱️</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">UX Audit & Strategy</h3>
+                            <p class="text-sm text-gray-600">Analyze and optimize existing products to maximize user engagement and conversion rates</p>
+                        </div>
+                        <div class="bg-red-50 p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4">
+                                <span class="text-white text-xl">📋</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Design Systems</h3>
+                            <p class="text-sm text-gray-600">Build scalable design systems that ensure consistency across all touchpoints</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+<section class="py-20 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mt-6 mb-4">
+                UX Design Case Studies & Insights
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Real-world examples of impactful UX design decisions—from research to execution—that solved business problems and enhanced user experiences.
+            </p>
+        </div>
+        
+        <!-- Case Study Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="/Casedetail.html" class="block"> 
+            <article class="bg-white h-[450px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Modern office space" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="bg-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Healthcare App</span>
+                    <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                        Designing a Patient Portal That Increased Engagement by 45%
+                    </h2>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        Learn how user interviews and iterative prototyping helped revamp a hospital’s patient portal, leading to higher appointment bookings and better medication adherence.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">SS</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-900">Saagar</span>
+                                <div class="text-xs text-gray-500">Jan 28, 2025</div>
+                            </div>
+                        </div>
+                        <button class="text-primary hover:text-blue-600 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </article>
+            </a>
+
+            <!-- Case Study 2 -->
+            <a href="/Casedetail.html" class="block">
+            <article class="bg-white h-[450px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Woman working on laptop" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="bg-orange-100 text-orange-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">E-Commerce UX</span>
+                    <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                        Redesigning Checkout for a 30% Higher Conversion Rate
+                    </h2>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        A detailed breakdown of how simplifying the checkout flow for an online fashion retailer reduced friction, boosted trust signals, and increased mobile conversions by 30%.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">SS</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-900">Saagar</span>
+                                <div class="text-xs text-gray-500">Feb 12, 2025</div>
+                            </div>
+                        </div>
+                        <button class="text-primary hover:text-blue-600 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </a>
+        </div>
+        <!-- See All Button -->
+        <div class="w-full mt-10 flex justify-center">
+        <a href="/CaseStudy.html" 
+            class="bg-primary text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-accent transition duration-300 text-center">
+            See All
+        </a>
+        </div>
+    </div>
+</section>
+
+   <!-- Articles Section -->
+    <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">LATEST INSIGHTS</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-6 mb-4">
+                    UX Design Articles & Insights
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Exploring the latest trends, techniques, and insights in user experience design to help you create better digital products.
+                </p>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Article 1 -->
+                <a href="/Articles/Designing for Accessibility.html" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*m0tvr0zn5fgtaIBP" 
+                             alt="Accessibility in design" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-orange-100 text-orange-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Accessibility</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Designing for Accessibility: Why Inclusive Design Matters
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            For UI/UX designers, accessibility is an increasingly crucial factor. Designers used to put a lot of effort into making user interfaces that were both aesthetically pleasing and simple to use.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Mar 26, 2023</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="/Articles/Why Artificial Intelligence needs Good User Experience.html" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*pIHabtrCMhlyWcmYRZeYwg.png" 
+                             alt="Artificial Intelligence" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">User Experience</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Why Artificial Intelligence needs Good User Experience?
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            Artificial intelligence (AI) systems, like any other technology, are designed to be used by people. As such, it is important that these systems have a good user experience (UX) in order to be effective and easy to use.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Dec 8, 2022</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+
+                <!-- Article 3 -->
+                <a href="/Articles/Data-Driven vs. Intuition-Driven.html" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*Csqjn0OiLj-2_AZh" 
+                             alt="Woman working on laptop" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-green-100 text-green-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Decision-Making</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            In today’s data-driven world, decision-making processes have evolved to incorporate data analysis and visualization through the use of data dashboards.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Aug 7, 2023</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+
+                <!-- Article 4 -->
+                <a href="/Articles/Designing for Emotion.html" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://images.unsplash.com/photo-1605909247405-077c153bc75b?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Woman working on laptop" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-orange-100 text-orange-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Emotional Design</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Designing for Emotion: The Role of Emotional Design in User Experience
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            Emotional design, the practice of intentionally designing interfaces that elicit emotional responses from users, is becoming an increasingly important aspect of UX design. In this article ....
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Mar 26, 2023</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+
+                <!-- Article 5 -->
+                <a href="https://medium.com/design-bootcamp/why-artificial-intelligence-needs-good-user-experience-44b4b6572fa8" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*pIHabtrCMhlyWcmYRZeYwg.png" 
+                             alt="Woman working on laptop" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">User Experience</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Why Artificial Intelligence needs Good User Experience?
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            Artificial intelligence (AI) systems, like any other technology, are designed to be used by people. As such, it is important that these systems have a good user experience (UX) in order to be effective and easy to use.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Mar 26, 2023</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+
+                <!-- Article 6 -->
+                <a href="https://medium.com/design-bootcamp/data-driven-vs-intuition-driven-decision-making-assessing-the-value-of-data-dashboards-8980f4f604b5" class="block">
+                <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*Csqjn0OiLj-2_AZh" 
+                             alt="Woman working on laptop" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="bg-green-100 text-green-600 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Decision-Making</span>
+                        <h2 class="text-xl font-bold text-gray-900 mt-4 mb-3 leading-tight hover:text-primary transition-colors cursor-pointer">
+                            Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards
+                        </h2>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                            In today’s data-driven world, decision-making processes have evolved to incorporate data analysis and visualization through the use of data dashboards.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-xs">SS</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-900">Saagar</span>
+                                    <div class="text-xs text-gray-500">Mar 26, 2023</div>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-blue-600 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                </a>
+                
+            </div>
+            <!-- See All Button -->
+        <div class="w-full mt-10 flex justify-center">
+        <a href="/Article.html" 
+            class="bg-primary text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-accent transition duration-300 text-center">
+            See All
+        </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+                <!-- Testimonials Section 
+            <div class="text-center mb-16">
+                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">TESTIMONIALS</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-6 mb-4">
+                    What Clients Say About Working With Me.
+                </h2>
+            </div>
+            -->
+            <div class="grid md:grid-cols-1 gap-8">
+            <div class="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
+                <div class="relative z-10">
+                <div class="text-2xl font-bold mb-4">Ready to Transform Your Product?</div>
+                <p class="text-gray-300 mb-6">Let's discuss how we can create exceptional user experiences together.</p>
+                <a href="mailto:saagarshrest@gmail.com"
+                    class="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-accent transition-colors inline-block">
+                    Start Your Project →
+                </a>
+                </div>
+                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full"></div>
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-accent opacity-30 rounded-full"></div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section
+    <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">TESTIMONIALS</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-6 mb-4">
+                    What Clients Say About Working With Me.
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">SC</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The UX redesign increased our conversion rate by 40%. The attention to detail and user research was exceptional."</p>
+                    <div class="border-t pt-4">
+                        <div class="font-bold text-gray-900">Sarah Chen</div>
+                        <div class="text-sm text-gray-500">Product Manager</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">MJ</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Working with this designer transformed our mobile app. User engagement doubled within the first month of launch."</p>
+                    <div class="border-t pt-4">
+                        <div class="font-bold text-gray-900">Mike Johnson</div>
+                        <div class="text-sm text-gray-500">Startup Founder</div>
+                    </div>
+                </div>
+                <div class="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="text-2xl font-bold mb-4">Ready to Transform Your Product?</div>
+                        <p class="text-gray-300 mb-6">Let's discuss how we can create exceptional user experiences together.</p>
+                        <button class="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors">
+                            Start Your Project →
+                        </button>
+                    </div>
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full"></div>
+                    <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-accent opacity-30 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+<!-- Footer -->
+<footer class="bg-primary text-white py-16 px-6 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-primary font-bold text-sm">UX</span>
+                    </div>
+                    <span class="font-bold text-xl">Saagar</span>
+                </div>
+                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
+                
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Freebies</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
+                <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
+
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Contact</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
+                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
+                    <div>Kathmandu, Nepal</div>
+                    <div>Available for freelance</div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Follow</h3>
+                <div class="space-y-2 text-gray-400">
+                <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
+                <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
+                <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
+                <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
+            </div>
+
+            </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
+
+
+<!-- Javascript -->
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('mobile-menu-button');
+    const closeBtn = document.getElementById('close-mobile-menu');
+
+    openBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+    });
+</script>
