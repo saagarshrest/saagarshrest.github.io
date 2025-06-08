@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UX Designer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D0D0D',
+            secondary: '#1E40AF',
+            accent: '#F59E0B',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+  <!-- Navigation -->
+<nav class="bg-white shadow-sm px-6 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/Index.html" class="block">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-sm">UX</span>
+        </div>
+        <span class="font-bold text-xl text-gray-900">Saagar</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex space-x-8">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
+      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
+      <a href="/Casestudy.html" class="text-gray-700 hover:text-primary">Case Study</a>
+      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Photos</a>
+      <a href="/Logos.html" class="font-bold underline hover:text-primary">Clients</a>
+      <a href="/Contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:block">
+    <a href="mailto:saagarshrest@gmail.com">
+        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+        Let's Work Together
+        </button>
+    </a>
+    </div>
+
+
+    <!-- Mobile Hamburger Button -->
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu"
+  class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
+    <!-- Mobile Logo -->
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+        <span class="text-primary font-bold text-sm">UX</span>
+      </div>
+      <span class="font-bold text-xl text-white">Saagar</span>
+    </div>
+
+    <!-- Close Button -->
+    <button id="close-mobile-menu" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Centered Menu Content -->
+  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
+    <a href="https://dribbble.com/saagarshrest" class="hover:underline hover:text-white/90">Designs</a>
+    <a href="/Article.html" class="hover:underline hover:text-white/90">Articles</a>
+    <a href="/Casestudy.html" class="font-bold text-accent hover:underline hover:text-white/90">Case Study</a>
+    <a href="/Contact.html" class="hover:underline hover:text-white/90">Contact</a>
+
+    <!-- Social Icons -->
+    <div class="flex space-x-4 pt-6">
+      <a href="https://instagram.com" target="_blank" class="hover:text-white/80">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="hover:text-white/80">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Client Logos Section -->
+<section class="bg-primary py-16 min-h-[calc(78vh-120px)] flex items-center">
+  <div class="max-w-7xl mx-auto px-6 w-full">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-white mb-6">Trusted by Leading Companies</h2>
+      <p class="text-gray-400">I've had the privilege to work with amazing clients and companies.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+      <!-- Logo Blocks -->
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/nb3mh" alt="Adleverage" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/igJYN" alt="Crowdbotics" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/V9mt2" alt="PracticalAction" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/MRs3h" alt="Datacube" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://shorturl.at/p20Pj" alt="Call Jacob" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/healeant.png" alt="Healent" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://braindigit.com/MediaThumb/medium/Media/Companies%20Logos/artboard_18@4x.png" alt="Braindigit" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.neemaacademy.com/media/home/neemaacademy-logo.png" alt="Neemaacademy" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://localroofs.com/wp-content/uploads/logo-localroofs-do-things-right-outlined.svg" alt="Local Roofs" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.jewelerstouch.com/cdn/shop/files/jt_logo_240x.png?v=1680800441" alt="Jeweler's Touch" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://kliemannbros.com/wp-content/uploads/Kliemann-Logo-Serving-Puget-Sound-rgb-fullcolor@4x-768x223.png" alt="Kliemann" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/comfort bros.png" alt="Comfort Bros" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.nuvehome.com/wp-content/uploads/2023/05/Container-46.png" alt="Nuve" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/trio.png" alt="Trio" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://cdn.prod.website-files.com/62eb4217467fa543d7f2ba2b/62f1fb8937f05da2d202199c_Logo.svg" alt="Signetic" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/AirPros_v2-1.png" alt="Airpros" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+
+      <!-- Logo Blocks Starting 3rd row-->
+      <div class="flex items-center justify-center">
+        <img src="https://infinitydigitalagency.com.np/wp-content/themes/ida-theme-ide/assets/Logos/ida-logo.svg" alt="IDA" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://bottle.com.np/logo.svg" alt="Bottle" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.futurestore.ai/logo.png" alt="Futurestore" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://leanq.digital/logo.svg" alt="Leanq" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://hanhdbrown.com/wp-content/uploads/2024/08/website-logo.png" alt="Hanhdbrown" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.calveyheatingandair.com/wp-content/uploads/2025/01/sharp-calvey-logo-white-283px.png-3.png" alt="Calvey" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://cmheating.com/wp-content/uploads/2023/03/cm-logo.png.webp" alt="CM Heating" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/cropped-hvac-company-Sunrise-FL-1.webp.png" alt="Jackrabbit" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/cozyhomes.png" alt="cozyhomes" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/AirPros_v2-1.png" alt="Airpros" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://kliemannbros.com/wp-content/uploads/Kliemann-Logo-Serving-Puget-Sound-rgb-fullcolor@4x-768x223.png" alt="Kliemann" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/comfort bros.png" alt="Comfort Bros" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.nuvehome.com/wp-content/uploads/2023/05/Container-46.png" alt="Nuve" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="/images/trio.png" alt="Trio" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://cdn.prod.website-files.com/62eb4217467fa543d7f2ba2b/62f1fb8937f05da2d202199c_Logo.svg" alt="Signetic" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+      <div class="flex items-center justify-center">
+        <img src="https://www.lftechnology.com/images/lf-logo.svg" alt="See All" class="h-12 w-auto max-w-[120px] object-contain filter brightness-0 invert" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Banner Section -->
+    <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-1 gap-8">
+            <div class="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
+                <div class="relative z-10">
+                <div class="text-2xl font-bold mb-4">Ready to Transform Your Product?</div>
+                <p class="text-gray-300 mb-6">Let's discuss how we can create exceptional user experiences together.</p>
+                <a href="mailto:saagarshrest@gmail.com"
+                    class="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-accent transition-colors inline-block">
+                    Start Your Project →
+                </a>
+                </div>
+                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full"></div>
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-accent opacity-30 rounded-full"></div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+ <!-- Footer -->
+<footer class="bg-primary text-white py-16 px-6 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <a href="/Index.html" class="block">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-primary font-bold text-sm">UX</span>
+                        </div>
+                        <span class="font-bold text-xl text-white">Saagar</span>
+                    </div>
+                    </a>
+                </div>
+                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
+                
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Freebies</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
+                <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
+
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Contact</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
+                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
+                    <div>Kathmandu, Nepal</div>
+                    <div>Available for freelance</div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Follow</h3>
+                <div class="space-y-2 text-gray-400">
+                <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
+                <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
+                <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
+                <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
+            </div>
+
+            </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+        </div>
+    </div>
+</footer>
+
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-menu-button");
+    const closeBtn = document.getElementById("close-mobile-menu");
+
+    openBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+    });
+  </script>
+</body>
+</html>
