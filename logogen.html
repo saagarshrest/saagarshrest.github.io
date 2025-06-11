@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SVG Icon Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-white to-gray-100 min-h-screen flex flex-col items-center p-6">
+  <h1 class="text-4xl font-bold mb-6 text-gray-800">🎨 SVG Icon Library</h1>
+
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6 mb-8">
+    <div class="flex flex-col md:flex-row items-center gap-4 mb-4">
+      <input id="search" list="suggestions" placeholder="Search icons..." 
+             class="flex-1 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-400 outline-none">
+      <datalist id="suggestions"></datalist>
+
+      <div class="flex items-center gap-2">
+        <label class="text-sm text-gray-600">Color:</label>
+        <input id="colorPicker" type="color" value="#000000" class="w-10 h-10 rounded-md border cursor-pointer">
+      </div>
+
+      <div class="flex items-center gap-2">
+        <label class="text-sm text-gray-600">Variant:</label>
+        <select id="variantToggle" class="px-3 py-2 rounded-md border border-gray-300">
+          <option value="">All</option>
+          <option value="outline">Outline</option>
+          <option value="fill">Fill</option>
+        </select>
+      </div>
+
+      <button id="searchBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md shadow hover:bg-blue-700">
+        🔍 Search
+      </button>
+    </div>
+  </div>
+
+  <div id="iconGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full max-w-6xl"></div>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const colorPicker = document.getElementById('colorPicker');
+    const iconGrid = document.getElementById('iconGrid');
+    const variantToggle = document.getElementById('variantToggle');
+    const searchBtn = document.getElementById('searchBtn');
+    const suggestions = document.getElementById('suggestions');
+
+    let currentColor = colorPicker.value;
+    let lastIcons = [];
+
+    const fallbackIcons = [
+      'mdi:home', 'mdi:account', 'mdi:email', 'mdi:camera-outline',
+      'mdi:star-outline', 'mdi:bell-outline', 'mdi:heart-outline', 'mdi:cart-outline',
+      'mdi:cloud-download-outline', 'mdi:calendar-check-outline'
+    ];
+
+    async function fetchIcons(query = '') {
+      const response = await fetch(`https://api.iconify.design/search?query=${encodeURIComponent(query)}&limit=48`);
+      const data = await response.json();
+      return data.icons || [];
+    }
+
+    async function fetchSuggestions(query) {
+      const response = await fetch(`https://api.iconify.design/keywords?query=${encodeURIComponent(query)}`);
+      const data = await response.json();
+      suggestions.innerHTML = '';
+      if (data.suggestions) {
+        data.suggestions.forEach(keyword => {
+          const option = document.createElement('option');
+          option.value = keyword;
+          suggestions.appendChild(option);
+        });
+      }
+    }
+
+    function filterVariant(icons) {
+      const variant = variantToggle.value;
+      if (!variant) return icons;
+      return icons.filter(name => {
+        if (variant === 'outline') return name.includes('outline');
+        if (variant === 'fill') return !name.includes('outline');
+        return true;
+      });
+    }
+
+    async function renderIcons(icons) {
+      iconGrid.innerHTML = '';
+      if (!icons.length) {
+        iconGrid.innerHTML = '<p class="text-center text-gray-500 col-span-full">No icons found.</p>';
+        return;
+      }
+      lastIcons = icons;
+      icons.forEach(name => {
+        const svgUrl = `https://api.iconify.design/${name}.svg?color=${currentColor.replace('#', '')}`;
+        const card = document.createElement('div');
+        card.className = 'bg-white p-4 rounded-lg shadow flex flex-col items-center';
+
+        card.innerHTML = `
+          <img src="${svgUrl}" alt="${name}" class="w-10 h-10 mb-2"/>
+          <p class="text-xs text-gray-500 truncate w-full text-center">${name}</p>
+          <div class="flex gap-2 mt-2">
+            <button class="text-blue-600 hover:text-blue-800" title="Download">
+              ⬇️
+            </button>
+            <button class="text-green-600 hover:text-green-800" title="Copy SVG">
+              📋
+            </button>
+          </div>
+        `;
+
+        const [downloadBtn, copyBtn] = card.querySelectorAll('button');
+
+        downloadBtn.onclick = () => downloadSVG(name, svgUrl);
+        copyBtn.onclick = () => copySVG(name, svgUrl);
+
+        iconGrid.appendChild(card);
+      });
+    }
+
+    async function downloadSVG(name, url) {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${name}.svg`;
+      link.click();
+    }
+
+    async function copySVG(name, url) {
+      const res = await fetch(url);
+      const svgText = await res.text();
+      await navigator.clipboard.writeText(svgText);
+      alert(`Copied SVG for ${name}`);
+    }
+
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value.length >= 2) {
+        fetchSuggestions(searchInput.value);
+      }
+    });
+
+    searchBtn.addEventListener('click', async () => {
+      const query = searchInput.value.trim();
+      const icons = filterVariant(await fetchIcons(query || 'home'));
+      renderIcons(icons);
+    });
+
+    colorPicker.addEventListener('input', () => {
+      currentColor = colorPicker.value;
+      renderIcons(lastIcons);
+    });
+
+    variantToggle.addEventListener('change', () => {
+      searchBtn.click();
+    });
+
+    // Initial load with fallback icons
+    renderIcons(fallbackIcons);
+  </script>
+</body>
+</html>
