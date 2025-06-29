@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lottie Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center px-4 py-8">
+
+  <h1 class="text-3xl font-bold mb-6">🎨 Lottie Editor with Smart Color Palette</h1>
+
+  <!-- Controls -->
+  <div class="flex flex-wrap gap-4 mb-6 items-end">
+    <div>
+      <label class="block text-sm mb-1">🔳 Background</label>
+      <input type="color" id="bg-color" value="#1f2937" class="rounded border p-1">
+    </div>
+
+    <button id="play-pause" class="bg-blue-600 px-4 py-2 rounded text-white font-semibold hover:bg-blue-700 transition">
+      ⏸️ Pause
+    </button>
+
+    <button id="download-json" class="bg-green-600 px-4 py-2 rounded text-white font-semibold hover:bg-green-700 transition">
+      💾 Download JSON
+    </button>
+  </div>
+
+  <!-- Color Palette -->
+  <div id="color-palette" class="mb-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-4xl">
+    <!-- Dynamically inserted color pickers -->
+  </div>
+
+  <!-- Drop Zone -->
+  <div id="drop-zone" class="w-full max-w-2xl h-60 border-4 border-dashed border-gray-500 rounded-lg flex flex-col items-center justify-center mb-4 cursor-pointer hover:border-white transition">
+    <p class="text-lg text-gray-400">📂 Drag & Drop a Lottie JSON file here</p>
+    <p class="text-sm text-gray-500">or click to upload</p>
+    <input type="file" id="file-input" accept=".json" class="hidden" />
+  </div>
+
+  <!-- Animation Preview -->
+  <div id="preview" class="w-full max-w-2xl h-96 bg-gray-800 rounded-lg shadow-inner flex items-center justify-center transition-all duration-300">
+    <p class="text-gray-500">Your animation will appear here</p>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const preview = document.getElementById('preview');
+    const bgColorInput = document.getElementById('bg-color');
+    const playPauseBtn = document.getElementById('play-pause');
+    const downloadBtn = document.getElementById('download-json');
+    const colorPalette = document.getElementById('color-palette');
+
+    let lottieInstance = null;
+    let isPlaying = true;
+    let currentAnimationData = null;
+    let colorMap = new Map(); // hex -> [ref1, ref2, ...]
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('border-white');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('border-white');
+    });
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('border-white');
+      handleFile(e.dataTransfer.files[0]);
+    });
+
+    fileInput.addEventListener('change', e => {
+      handleFile(e.target.files[0]);
+    });
+
+    playPauseBtn.addEventListener('click', () => {
+      if (!lottieInstance) return;
+      if (isPlaying) {
+        lottieInstance.pause();
+        playPauseBtn.innerText = '▶️ Play';
+      } else {
+        lottieInstance.play();
+        playPauseBtn.innerText = '⏸️ Pause';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    bgColorInput.addEventListener('input', e => {
+      preview.style.backgroundColor = e.target.value;
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (!currentAnimationData) return;
+      const dataStr = JSON.stringify(currentAnimationData, null, 2);
+      const blob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "edited_lottie.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    function handleFile(file) {
+      if (!file || !file.name.endsWith('.json')) {
+        alert('Please upload a valid .json file');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        try {
+          const originalData = JSON.parse(event.target.result);
+          currentAnimationData = JSON.parse(JSON.stringify(originalData)); // Deep copy
+          detectAndMapColors(currentAnimationData);
+          renderColorPalette();
+          reloadLottie(currentAnimationData);
+        } catch (error) {
+          alert('Invalid JSON file');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function reloadLottie(data) {
+      if (lottieInstance) lottieInstance.destroy();
+      preview.innerHTML = '';
+      lottieInstance = lottie.loadAnimation({
+        container: preview,
+        renderer: 'svg',
+        loop: true,
+        autoplay: isPlaying,
+        animationData: data
+      });
+    }
+
+    function detectAndMapColors(data) {
+      colorMap.clear();
+      const walk = obj => {
+        if (Array.isArray(obj)) {
+          obj.forEach(walk);
+        } else if (obj && typeof obj === 'object') {
+          if (obj.ty === 'fl' && obj.c && Array.isArray(obj.c.k)) {
+            const hex = rgbArrayToHex(obj.c.k);
+            if (!colorMap.has(hex)) colorMap.set(hex, []);
+            colorMap.get(hex).push(obj.c.k);
+          }
+          for (const key in obj) {
+            walk(obj[key]);
+          }
+        }
+      };
+      walk(data);
+    }
+
+    function renderColorPalette() {
+      colorPalette.innerHTML = '';
+      colorMap.forEach((refs, hex) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'flex flex-col items-center';
+
+        const input = document.createElement('input');
+        input.type = 'color';
+        input.value = hex;
+        input.className = 'w-12 h-12 rounded-full border cursor-pointer';
+
+        input.addEventListener('input', e => {
+          const newHex = e.target.value;
+          const rgb = hexToRgbArray(newHex);
+          refs.forEach(ref => {
+            ref[0] = rgb[0];
+            ref[1] = rgb[1];
+            ref[2] = rgb[2];
+          });
+          reloadLottie(currentAnimationData);
+        });
+
+        wrapper.appendChild(input);
+        colorPalette.appendChild(wrapper);
+      });
+    }
+
+    function rgbArrayToHex(rgb) {
+      return '#' + rgb.map(v => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
+    }
+
+    function hexToRgbArray(hex) {
+      const bigint = parseInt(hex.slice(1), 16);
+      return [
+        ((bigint >> 16) & 255) / 255,
+        ((bigint >> 8) & 255) / 255,
+        (bigint & 255) / 255
+      ];
+    }
+  </script>
+</body>
+</html>
