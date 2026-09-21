@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Portfolio - UX Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .masonry {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .masonry { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .masonry { column-count: 3; }
+        }
+        @media (min-width: 1280px) {
+            .masonry { column-count: 4; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .photo-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-card:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm px-6 py-4 sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="/index.html" class="block">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-sm">UX</span>
+        </div>
+        <span class="font-bold text-xl text-gray-900">Saagar</span>
+      </div>
+    </a>
+
+    <div class="hidden md:flex space-x-8">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
+      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
+      <a href="/Casestudy.html" class="text-gray-700 hover:text-primary">Case Study</a>
+      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="font-bold underline">Photos</a>
+      <a href="/Logos.html" class="text-gray-700 hover:text-primary">Clients</a>
+      <a href="/Palettegen.html" class="text-gray-700 hover:text-primary">Tools</a>
+      <a href="/contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    </div>
+
+    <div class="hidden md:block">
+      <a href="mailto:saagarshrest@gmail.com">
+        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+          Let's Work Together
+        </button>
+      </a>
+    </div>
+
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+        <span class="text-primary font-bold text-sm">UX</span>
+      </div>
+      <span class="font-bold text-xl text-white">Saagar</span>
+    </div>
+    <button id="close-mobile-menu" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
+    <a href="https://dribbble.com/saagarshrest" class="hover:underline">Designs</a>
+    <a href="/Article.html" class="hover:underline">Articles</a>
+    <a href="/Casestudy.html" class="hover:underline">Case Study</a>
+    <a href="https://unsplash.com/@saagarshrest" target="_blank" class="font-bold text-accent hover:underline">Photos</a>
+    <a href="/Logos.html" class="hover:underline">Clients</a>
+    <a href="/Palettegen.html" class="hover:underline">Tools</a>
+    <a href="/contact.html" class="hover:underline">Contact</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main>
+  <!-- Header Section -->
+  <section class="py-16 px-6 bg-gradient-to-br from-primary to-gray-800 text-white">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-5xl font-bold mb-4">Photo Portfolio</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+        Capturing moments, stories, and perspectives through the lens. Explore my collection of photography work.
+      </p>
+      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" 
+         class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+        View on Unsplash
+      </a>
+    </div>
+  </section>
+
+  <!-- Photo Grid Section -->
+  <section class="py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-gray-800 transition-colors" data-filter="all">All</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="nature">Nature</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="architecture">Architecture</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="portrait">Portrait</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="street">Street</button>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="masonry" id="photo-grid">
+        <!-- Photo items will be dynamically generated -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <a href="/index.html" class="block">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                <span class="text-primary font-bold text-sm">UX</span>
+                            </div>
+                            <span class="font-bold text-xl text-white">Saagar</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Freebies</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
+                    <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Contact</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
+                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
+                    <div>Kathmandu, Nepal</div>
+                    <div>Available for freelance</div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Follow</h3>
+                <div class="space-y-2 text-gray-400">
+                    <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
+                    <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
+                    <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
+                    <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+  // Sample photo data - Replace with your actual images
+  const photos = [
+    { id: 1, category: 'nature', title: 'Mountain Vista', aspect: 'tall', color: '#4A5568' },
+    { id: 2, category: 'architecture', title: 'Modern Building', aspect: 'square', color: '#2D3748' },
+    { id: 3, category: 'portrait', title: 'Portrait Study', aspect: 'tall', color: '#1A202C' },
+    { id: 4, category: 'street', title: 'City Life', aspect: 'wide', color: '#718096' },
+    { id: 5, category: 'nature', title: 'Forest Path', aspect: 'tall', color: '#2F855A' },
+    { id: 6, category: 'architecture', title: 'Glass Facade', aspect: 'square', color: '#3182CE' },
+    { id: 7, category: 'nature', title: 'Ocean Waves', aspect: 'wide', color: '#2C5282' },
+    { id: 8, category: 'street', title: 'Urban Scenes', aspect: 'tall', color: '#4A5568' },
+    { id: 9, category: 'portrait', title: 'Creative Portrait', aspect: 'square', color: '#744210' },
+    { id: 10, category: 'architecture', title: 'Historic Building', aspect: 'tall', color: '#5A67D8' },
+    { id: 11, category: 'nature', title: 'Sunset Sky', aspect: 'wide', color: '#DD6B20' },
+    { id: 12, category: 'street', title: 'Night City', aspect: 'square', color: '#1A202C' },
+    { id: 13, category: 'nature', title: 'Wildflowers', aspect: 'tall', color: '#38A169' },
+    { id: 14, category: 'portrait', title: 'Black & White', aspect: 'tall', color: '#2D3748' },
+    { id: 15, category: 'architecture', title: 'Minimalist Design', aspect: 'square', color: '#EDF2F7' },
+    { id: 16, category: 'street', title: 'Street Art', aspect: 'wide', color: '#E53E3E' },
+  ];
+
+  const photoGrid = document.getElementById('photo-grid');
+  let currentFilter = 'all';
+
+  function getHeight(aspect) {
+    const heights = { tall: 400, square: 300, wide: 250 };
+    return heights[aspect] || 300;
+  }
+
+  function renderPhotos(filter = 'all') {
+    const filteredPhotos = filter === 'all' ? photos : photos.filter(p => p.category === filter);
+    
+    photoGrid.innerHTML = filteredPhotos.map(photo => `
+      <div class="masonry-item photo-card bg-white rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="${photo.category}">
+        <div class="relative group">
+          <div class="w-full" style="height: ${getHeight(photo.aspect)}px; background: linear-gradient(135deg, ${photo.color} 0%, ${photo.color}dd 100%);">
+            <div class="flex items-center justify-center h-full text-white/20 text-6xl font-bold">
+              ${photo.id}
+            </div>
+          </div>
+          <div class="overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+            <div class="text-center text-white p-4">
+              <h3 class="font-bold text-xl mb-2">${photo.title}</h3>
+              <p class="text-sm text-gray-300 capitalize">${photo.category}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Filter functionality
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active', 'bg-primary', 'text-white');
+        b.classList.add('bg-white', 'text-gray-700');
+      });
+      
+      e.target.classList.add('active', 'bg-primary', 'text-white');
+      e.target.classList.remove('bg-white', 'text-gray-700');
+      
+      const filter = e.target.dataset.filter;
+      renderPhotos(filter);
+    });
+  });
+
+  // Mobile menu
+  const mobileMenu = document.getElementById("mobile-menu");
+  const openBtn = document.getElementById("mobile-menu-button");
+  const closeBtn = document.getElementById("close-mobile-menu");
+
+  openBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("translate-x-full");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("translate-x-full");
+  });
+
+  // Initial render
+  renderPhotos();
+</script>
+</body>
+</html>
