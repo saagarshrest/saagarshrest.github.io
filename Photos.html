@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Portfolio - UX Designer</title>
+    <title>Photography | Saagar</title>
+    <meta name="description" content="A collection of photography by Saagar: moments, stories and perspectives through the lens.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,275 +19,217 @@
             }
         }
     </script>
-    <style>
-        .masonry {
-            column-count: 1;
-            column-gap: 1rem;
-        }
-        @media (min-width: 640px) {
-            .masonry { column-count: 2; }
-        }
-        @media (min-width: 1024px) {
-            .masonry { column-count: 3; }
-        }
-        @media (min-width: 1280px) {
-            .masonry { column-count: 4; }
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-        }
-        .photo-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .photo-card:hover .overlay {
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/photos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
 <!-- Navigation -->
-<nav class="bg-white shadow-sm px-6 py-4 sticky top-0 z-40">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <a href="/index.html" class="block">
-      <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-sm">UX</span>
-        </div>
-        <span class="font-bold text-xl text-gray-900">Saagar</span>
-      </div>
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
     </a>
 
-    <div class="hidden md:flex space-x-8">
-      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
-      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
-      <a href="/Casestudy.html" class="text-gray-700 hover:text-primary">Case Study</a>
-      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="font-bold underline">Photos</a>
-      <a href="/Logos.html" class="text-gray-700 hover:text-primary">Clients</a>
-      <a href="/Palettegen.html" class="text-gray-700 hover:text-primary">Tools</a>
-      <a href="/contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html" aria-current="page">Photos</a>
     </div>
 
-    <div class="hidden md:block">
-      <a href="mailto:saagarshrest@gmail.com">
-        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-          Let's Work Together
-        </button>
-      </a>
-    </div>
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
 
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
-  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
-    <div class="flex items-center space-x-2">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <span class="text-primary font-bold text-sm">UX</span>
-      </div>
-      <span class="font-bold text-xl text-white">Saagar</span>
-    </div>
-    <button id="close-mobile-menu" class="text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
-  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
-    <a href="https://dribbble.com/saagarshrest" class="hover:underline">Designs</a>
-    <a href="/Article.html" class="hover:underline">Articles</a>
-    <a href="/Casestudy.html" class="hover:underline">Case Study</a>
-    <a href="https://unsplash.com/@saagarshrest" target="_blank" class="font-bold text-accent hover:underline">Photos</a>
-    <a href="/Logos.html" class="hover:underline">Clients</a>
-    <a href="/Palettegen.html" class="hover:underline">Tools</a>
-    <a href="/contact.html" class="hover:underline">Contact</a>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html" aria-current="page">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
   </div>
 </div>
 
 <!-- Main Content -->
 <main>
-  <!-- Header Section -->
-  <section class="py-16 px-6 bg-gradient-to-br from-primary to-gray-800 text-white">
-    <div class="max-w-7xl mx-auto text-center">
-      <h1 class="text-5xl font-bold mb-4">Photo Portfolio</h1>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-        Capturing moments, stories, and perspectives through the lens. Explore my collection of photography work.
-      </p>
-      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" 
-         class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-        View on Unsplash
-      </a>
-    </div>
-  </section>
-
-  <!-- Photo Grid Section -->
-  <section class="py-12 px-6">
-    <div class="max-w-7xl mx-auto">
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap justify-center gap-3 mb-8">
-        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-gray-800 transition-colors" data-filter="all">All</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="nature">Nature</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="architecture">Architecture</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="portrait">Portrait</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 hover:bg-primary hover:text-white transition-colors" data-filter="street">Street</button>
-      </div>
-
-      <!-- Masonry Grid -->
-      <div class="masonry" id="photo-grid">
-        <!-- Photo items will be dynamically generated -->
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Footer -->
-<footer class="bg-primary text-white py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <a href="/index.html" class="block">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                                <span class="text-primary font-bold text-sm">UX</span>
-                            </div>
-                            <span class="font-bold text-xl text-white">Saagar</span>
-                        </div>
-                    </a>
+    <!-- Intro -->
+    <section class="sx sx-light ph-hero" data-label="Photography">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-8 items-end">
+                <div class="lg:col-span-7">
+                    <div class="sx-label" style="margin-bottom:1.8rem">Photography · Nepal · 164 photos</div>
+                    <h1 class="sx-title" style="font-size:clamp(3rem,6.6vw,6rem)">Photo <em>portfolio.</em></h1>
                 </div>
-                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Freebies</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
-                    <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
+                <div class="lg:col-span-5">
+                    <p class="sx-lead ph-lead">Capturing moments, stories, and perspectives through the lens. Explore my collection of photography work.</p>
                 </div>
             </div>
-            <div>
-                <h3 class="font-bold mb-4">Contact</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
-                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
-                    <div>Kathmandu, Nepal</div>
-                    <div>Available for freelance</div>
-                </div>
+                        <div class="ph-buy ph-buy--top">
+                <p><b>Want to buy a picture?</b> Get in touch at <a href="mailto:saagarshrest@gmail.com?subject=Photo%20purchase%20enquiry" class="ph-inline">saagarshrest@gmail.com</a> or on <a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ph-inline">WhatsApp</a>.</p>
             </div>
-            <div>
-                <h3 class="font-bold mb-4">Follow</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
-                    <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
-                    <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
-                    <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
+        </div>
+        <div class="ph-marq" id="ph-marq" aria-label="Preview of photos, select one to open it"></div>
+        <p class="ph-scroll"><span>Scroll for the full gallery</span> <i aria-hidden="true">↓</i></p>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="sx sx-cream px-6 py-12 md:py-14" data-label="Gallery">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+                <h2 class="sx-title" style="font-size:clamp(2rem,3.6vw,3.2rem)">The <em>latest.</em></h2>
+                <p class="sx-label">Select a photo to expand</p>
+            </div>
+            <div class="ph-grid" id="photo-grid" aria-label="Photo gallery">
+                <noscript><p>Photos load from Unsplash and need JavaScript. <a href="https://unsplash.com/@saagarshrest">View them on Unsplash</a>.</p></noscript>
+            </div>
+            <div class="ph-more">
+                <p class="sx-label" id="ph-count">Showing 40 of 164 photos</p>
+                <button type="button" id="ph-more" class="sx-seeall" style="background:none;border-width:0 0 1px;cursor:pointer;font:inherit;font-weight:500">Show 40 more photos <span>↓</span></button>
+                <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="sx-seeall">View profile on Unsplash <span>↗</span></a>
+            </div>
+            <div class="ph-buy" style="margin-top:1.6rem">
+                <p><b>Want to buy a picture?</b> Get in touch and tell me which photo you like.</p>
+                <div class="ph-buy__act">
+                    <a href="mailto:saagarshrest@gmail.com?subject=Photo%20purchase%20enquiry" class="hero-btn">Get in touch <span class="hero-btn-arrow">↗</span></a>
+                    <a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="sx-seeall">WhatsApp <span>↗</span></a>
                 </div>
             </div>
         </div>
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
         </div>
     </div>
 </footer>
 
 <script>
-  // Sample photo data - Replace with your actual images
-  const photos = [
-    { id: 1, category: 'nature', title: 'Mountain Vista', aspect: 'tall', color: '#4A5568' },
-    { id: 2, category: 'architecture', title: 'Modern Building', aspect: 'square', color: '#2D3748' },
-    { id: 3, category: 'portrait', title: 'Portrait Study', aspect: 'tall', color: '#1A202C' },
-    { id: 4, category: 'street', title: 'City Life', aspect: 'wide', color: '#718096' },
-    { id: 5, category: 'nature', title: 'Forest Path', aspect: 'tall', color: '#2F855A' },
-    { id: 6, category: 'architecture', title: 'Glass Facade', aspect: 'square', color: '#3182CE' },
-    { id: 7, category: 'nature', title: 'Ocean Waves', aspect: 'wide', color: '#2C5282' },
-    { id: 8, category: 'street', title: 'Urban Scenes', aspect: 'tall', color: '#4A5568' },
-    { id: 9, category: 'portrait', title: 'Creative Portrait', aspect: 'square', color: '#744210' },
-    { id: 10, category: 'architecture', title: 'Historic Building', aspect: 'tall', color: '#5A67D8' },
-    { id: 11, category: 'nature', title: 'Sunset Sky', aspect: 'wide', color: '#DD6B20' },
-    { id: 12, category: 'street', title: 'Night City', aspect: 'square', color: '#1A202C' },
-    { id: 13, category: 'nature', title: 'Wildflowers', aspect: 'tall', color: '#38A169' },
-    { id: 14, category: 'portrait', title: 'Black & White', aspect: 'tall', color: '#2D3748' },
-    { id: 15, category: 'architecture', title: 'Minimalist Design', aspect: 'square', color: '#EDF2F7' },
-    { id: 16, category: 'street', title: 'Street Art', aspect: 'wide', color: '#E53E3E' },
-  ];
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('mobile-menu-button');
+    const closeBtn = document.getElementById('close-mobile-menu');
 
-  const photoGrid = document.getElementById('photo-grid');
-  let currentFilter = 'all';
-
-  function getHeight(aspect) {
-    const heights = { tall: 400, square: 300, wide: 250 };
-    return heights[aspect] || 300;
-  }
-
-  function renderPhotos(filter = 'all') {
-    const filteredPhotos = filter === 'all' ? photos : photos.filter(p => p.category === filter);
-    
-    photoGrid.innerHTML = filteredPhotos.map(photo => `
-      <div class="masonry-item photo-card bg-white rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="${photo.category}">
-        <div class="relative group">
-          <div class="w-full" style="height: ${getHeight(photo.aspect)}px; background: linear-gradient(135deg, ${photo.color} 0%, ${photo.color}dd 100%);">
-            <div class="flex items-center justify-center h-full text-white/20 text-6xl font-bold">
-              ${photo.id}
-            </div>
-          </div>
-          <div class="overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-            <div class="text-center text-white p-4">
-              <h3 class="font-bold text-xl mb-2">${photo.title}</h3>
-              <p class="text-sm text-gray-300 capitalize">${photo.category}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Filter functionality
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('active', 'bg-primary', 'text-white');
-        b.classList.add('bg-white', 'text-gray-700');
-      });
-      
-      e.target.classList.add('active', 'bg-primary', 'text-white');
-      e.target.classList.remove('bg-white', 'text-gray-700');
-      
-      const filter = e.target.dataset.filter;
-      renderPhotos(filter);
+    openBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
     });
-  });
 
-  // Mobile menu
-  const mobileMenu = document.getElementById("mobile-menu");
-  const openBtn = document.getElementById("mobile-menu-button");
-  const closeBtn = document.getElementById("close-mobile-menu");
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+    });
 
-  openBtn.addEventListener("click", () => {
-    mobileMenu.classList.remove("translate-x-full");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    mobileMenu.classList.add("translate-x-full");
-  });
-
-  // Initial render
-  renderPhotos();
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
 </script>
+<script src="/js/photos.js"></script>
+<script src="/js/pager.js"></script>
 </body>
 </html>

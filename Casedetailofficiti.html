@@ -13,7 +13,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX Designer Portfolio</title>
+    <title>Officiti Case Study: Redefining Flexible Workspaces | Saagar</title>
+    <meta name="description" content="An analytical UX/UI case study of Officiti, a B2B workspace-sharing app: research, user flow, wireframes, UI design, design system and a self-audit.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,542 +32,592 @@
 
             <!-- Buy me a coffee -->
 
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#26B0A1" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="bg-white min-h-screen flex flex-col">
 <!-- Navigation -->
-<nav class="bg-white shadow-sm px-6 py-4">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/index.html" class="block">
-      <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-sm">UX</span>
-        </div>
-        <span class="font-bold text-xl text-gray-900">Saagar</span>
-      </div>
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
     </a>
 
-    <!-- Desktop Nav Links -->
-    <div class="hidden md:flex space-x-8">
-      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
-      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
-      <a href="/Casestudy.html" class="font-bold underline hover:text-primary">Case Study</a>
-      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Photos</a>
-      <a href="/Logos.html" class="text-gray-700 hover:text-primary">Clients</a>
-      <a href="/Palettegen.html" class="text-gray-700 hover:text-primary">Tools</a>
-      <a href="/contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html">Photos</a>
     </div>
 
-    <!-- Desktop CTA -->
-    <div class="hidden md:block">
-    <a href="mailto:saagarshrest@gmail.com">
-        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-        Let's Work Together
-        </button>
-    </a>
-    </div>
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
 
-
-    <!-- Mobile Hamburger Button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
   </div>
 </nav>
 
 <!-- Mobile Navigation Menu -->
-<div id="mobile-menu"
-  class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
-  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
-    <!-- Mobile Logo -->
-    <div class="flex items-center space-x-2">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <span class="text-primary font-bold text-sm">UX</span>
-      </div>
-      <span class="font-bold text-xl text-white">Saagar</span>
-    </div>
-
-    <!-- Close Button -->
-    <button id="close-mobile-menu" class="text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18L18 6M6 6l12 12" />
-      </svg>
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
-
-  <!-- Centered Menu Content -->
-  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
-    <a href="https://dribbble.com/saagarshrest" class="hover:underline hover:text-white/90">Designs</a>
-    <a href="/Article.html" class="hover:underline hover:text-white/90">Articles</a>
-    <a href="/Casestudy.html" class="font-bold text-accent hover:underline hover:text-white/90">Case Study</a>
-    <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-white/90">Photos</a>
-    <a href="/Logos.html" class="hover:underline hover:text-white/90">Clients</a>
-    <a href="/Palettegen.html" class="hover:underline hover:text-white/90">Tools</a>
-    <a href="/contact.html" class="hover:underline hover:text-white/90">Contact</a>
-
-    <!-- Social Icons -->
-    <div class="flex space-x-4 pt-6">
-      <a href="https://instagram.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
-        </svg>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
       </a>
-      <a href="https://twitter.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" />
-        </svg>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
       </a>
     </div>
   </div>
 </div>
 
-<!-- Main Content -->
-<main class="flex-1">
-    <!-- Case Study Section -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="max-w-4xl mx-auto">
-      <!-- Header -->
-      <div class="mb-16">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-4xl">📘</span>
-          <h1 class="text-4xl font-bold text-gray-900 leading-tight">
-            Officiti: Redefining Flexible Workspaces
-          </h1>
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · UX/UI · B2B workspace platform</div>
+            <h1 class="cs-hero-title">Officiti: redefining <em>flexible workspaces.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">A B2B platform that lets companies rent out unused desks, workstations and units to freelancers and small teams. This case study covers the research, the product decisions, the wireframes and UI, and the design system behind it. It also includes an honest audit of what I would improve next.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>Officiti platform</dd></div>
+                <div><dt>Role</dt><dd>Solo UX/UI designer</dd></div>
+                <div><dt>Platform</dt><dd>Android, iOS, web</dd></div>
+                <div><dt>Duration</dt><dd>8 weeks</dd></div>
+                <div><dt>Scope</dt><dd>25+ screens, user flow, design system</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#problem">Problem</a><a href="#research">Research</a><a href="#define">Define</a><a href="#ideate">Ideate</a><a href="#wireframes">Wireframes</a><a href="#ui">UI design</a><a href="#system">Design system</a><a href="#audit">Audit</a><a href="#results">Results</a>
+            </nav>
+            <div class="cs-hero-img" style="margin-top:3rem"><img src="/images/officiti/hero.jpg" alt="Officiti logo beside an illustration of a freelancer working at a desk on a video call" width="2000" height="1118"></div>
         </div>
-        <p class="text-gray-600 text-[22px] italic mb-8">
-          UX/UI Case Study - A B2B platform optimizing underutilized office spaces for flexible work
-        </p>
-        
-        <!-- Project Details -->
-        <div class="grid md:grid-cols-4 gap-6 bg-white p-6 rounded-lg shadow-sm">
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Product</h3>
-            <p class="text-gray-600">Officiti Platform</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Role</h3>
-            <p class="text-gray-600">Solo UX/UI Designer</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Platform</h3>
-            <p class="text-gray-600">Android, iOS</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Duration</h3>
-            <p class="text-gray-600">8 Weeks</p>
-          </div>
-        </div>
-      </div>
+    </section>
 
-      <!-- Hero Section with MP4 Background -->
-      <div class="relative w-full h-96 rounded-lg shadow-lg mb-16 overflow-hidden">
-        <!-- Video Background -->
-        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-          <source src="/images/Officiti.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-
-      <!-- Content -->
-      <div class="space-y-12 text-[22px] leading-relaxed text-gray-700">
-        
-        <!-- Overview -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🧠</span> Overview
-          </h2>
-          <p>
-            <strong>Officiti</strong> is a B2B concept platform designed to optimize underutilized office spaces by allowing companies to <strong>rent out redundant desks, workstations, or entire units</strong> to smaller businesses and freelancers seeking flexible workspaces.
-          </p>
-          <p class="mt-4">
-            It bridges the gap between <strong>space availability</strong> and the <strong>rising demand for flexible, accessible working environments</strong>, especially in urban centers where commercial rents are high and quality co-working spaces are limited.
-          </p>
-        </div>
-
-        <!-- Problem Space -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>❓</span> Problem Statement
-          </h2>
-          <p class="mb-4">With rising urban commercial rents and a growing gig/freelancer economy, many individuals and startups struggle to find affordable, accessible, and quiet workspaces. Meanwhile, larger companies often have unused desks and zones in their offices post-COVID hybrid culture.</p>
-          <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-lg">
-            <div class="grid md:grid-cols-2 gap-4 text-lg">
-              <div class="space-y-2">
-                <p>• Difficulty in controlling and tracking <strong>workspace availability</strong></p>
-                <p>• No centralized system to manage <strong>shared office bookings</strong></p>
-                <p>• Poor communication between <strong>tenants, teammates, and space providers</strong></p>
-              </div>
-              <div class="space-y-2">
-                <p>• High cost and low availability of quality <strong>co-working spaces</strong> in prime locations</p>
-                <p>• Lack of visibility into <strong>real-time availability</strong></p>
-                <p>• No platform to <strong>compare different spaces</strong> at once</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Solution -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>✅</span> Solution
-          </h2>
-          <p class="mb-6">
-            The <strong>Officiti app</strong> serves as a <strong>centralized platform</strong> that improves utilization rates, enhances networking, and makes office space more accessible.
-          </p>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
-              <h3 class="text-xl font-semibold text-blue-900 mb-4">For Space Owners</h3>
-              <div class="space-y-2 text-lg">
-                <p>• List available units or desks</p>
-                <p>• Manage bookings and availability</p>
-                <p>• Communicate with renters</p>
-                <p>• Track utilization rates</p>
-              </div>
-            </div>
-            <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
-              <h3 class="text-xl font-semibold text-green-900 mb-4">For Professionals</h3>
-              <div class="space-y-2 text-lg">
-                <p>• Browse and book workspace needs</p>
-                <p>• Connect with teammates</p>
-                <p>• In-app communication</p>
-                <p>• Flexible booking options</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Target Users -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🎯</span> Target Users
-          </h2>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
-              <h3 class="text-xl font-semibold text-purple-900 mb-3">Mayank - Freelancer</h3>
-              <p class="text-purple-700 mb-4 text-lg">UX Consultant, Kathmandu</p>
-              <div class="space-y-2 text-lg">
-                <p><strong>Goals:</strong> Find peaceful, affordable workspace for calls and deep work</p>
-                <p><strong>Needs:</strong> Book spots instantly without phone calls or paperwork</p>
-                <p><strong>Frustrations:</strong> Lack of visibility, high rent, no comparison platform</p>
-              </div>
-            </div>
-            <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
-              <h3 class="text-xl font-semibold text-orange-900 mb-3">Companies & Teams</h3>
-              <p class="text-orange-700 mb-4 text-lg">Space providers & renters</p>
-              <div class="space-y-2 text-lg">
-                <p><strong>Space Owners:</strong> Companies with extra office space</p>
-                <p><strong>Renters:</strong> Remote professionals, small startup teams</p>
-                <p><strong>Managers:</strong> HR and office managers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Design Process -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🔍</span> Design Process
-          </h2>
-          <p class="mb-6">
-            Following the <strong>Design Thinking</strong> framework with 5 key phases:
-          </p>
-          <div class="grid md:grid-cols-5 gap-4">
-            <div class="bg-gradient-to-b from-blue-500 to-blue-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">1</div>
-              <h4 class="font-semibold mb-2">Discover</h4>
-              <p class="text-sm">Interviews with freelancers, startups, and office managers</p>
-            </div>
-            <div class="bg-gradient-to-b from-green-500 to-green-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">2</div>
-              <h4 class="font-semibold mb-2">Define</h4>
-              <p class="text-sm">Core pain points: affordability, noise, discoverability</p>
-            </div>
-            <div class="bg-gradient-to-b from-yellow-500 to-yellow-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">3</div>
-              <h4 class="font-semibold mb-2">Ideate</h4>
-              <p class="text-sm">Multiple flows for booking, availability tracking, workspace sharing</p>
-            </div>
-            <div class="bg-gradient-to-b from-purple-500 to-purple-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">4</div>
-              <h4 class="font-semibold mb-2">Design</h4>
-              <p class="text-sm">High-fidelity prototypes with modern, minimal UI patterns</p>
-            </div>
-            <div class="bg-gradient-to-b from-red-500 to-red-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">5</div>
-              <h4 class="font-semibold mb-2">Test</h4>
-              <p class="text-sm">Usability testing with 5 target users</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Key Features -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>📱</span> Key Features Designed
-          </h2>
-          <div class="space-y-8">
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">Workspace Discovery</h3>
-              <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <p class="mb-3">Filter workspaces by location, type (desk/unit), price, and amenities</p>
-                <p>Real-time availability view with instant booking options</p>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">Team Integration</h3>
-              <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
-                <p class="mb-3">Connect and book with teammates, manage schedules collaboratively</p>
-                <p>In-app chat directly with space providers or internal team</p>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">Booking Management</h3>
-              <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-400">
-                <p class="mb-3">View past reservations, set up recurring bookings</p>
-                <p>Receive notifications and reminders for upcoming bookings</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Accessibility & Technical Design -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🔐</span> Accessibility & Technical Design
-          </h2>
-          <div class="bg-gray-100 p-6 rounded-lg">
-            <div class="grid md:grid-cols-2 gap-6 text-lg">
-              <div class="space-y-2">
-                <p>• <strong>WCAG 2.1 AA</strong> color contrast and typography</p>
-                <p>• Mobile-first layouts with accessibility principles</p>
-              </div>
-              <div class="space-y-2">
-                <p>• Fully responsive and scalable design system</p>
-                <p>• Clear iconography and actionable UI copy</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Impact & Outcome -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>📈</span> Impact & Outcome
-          </h2>
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6">
-              <h3 class="text-xl font-semibold">Projected Results (Based on User Testing)</h3>
-            </div>
-            <div class="p-6">
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
-                    <span class="font-semibold">Booking effort</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">↓ 60%</div>
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                    <span class="font-semibold">Space utilization for companies</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">↑ 40%</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center p-4 bg-yellow-50 rounded-lg">
-                    <span class="font-semibold">Workspace search time</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">↓ 50%</div>
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
-                    <span class="font-semibold">User experience</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">Significantly improved</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- User Feedback -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>💬</span> User Testing Feedback
-          </h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
-              <div class="flex items-start gap-3 mb-4">
-                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">D</div>
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
                 <div>
-                  <h4 class="font-semibold text-gray-900">Remote Developer</h4>
-                  <p class="text-gray-600 text-sm">Kathmandu</p>
+                    <div class="cs-label">01 · The problem</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Empty desks on one side, <em>nowhere to work on the other.</em></h2>
                 </div>
-              </div>
-              <blockquote class="text-lg italic text-gray-700">
-                "I used to spend hours scrolling Facebook groups or asking friends for space recommendations. This feels like Airbnb for workspaces."
-              </blockquote>
-            </div>
-            <div class="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
-              <div class="flex items-start gap-3 mb-4">
-                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
                 <div>
-                  <h4 class="font-semibold text-gray-900">Startup Founder</h4>
-                  <p class="text-gray-600 text-sm">Small Team Lead</p>
+                    <p class="cs-p">Commercial rents in cities keep rising, and the gig and freelancer economy keeps growing. Many individuals and startups cannot find an affordable, accessible and quiet place to work. Meanwhile, larger companies sit on unused desks and zones after the shift to hybrid work.</p>
+                    <p class="cs-p">Officiti bridges that gap. It lets companies that own or manage an office share or rent redundant workstations and self-contained units to smaller companies looking for flexible workspace, and it gives those tenants one place to book, connect and get help.</p>
                 </div>
-              </div>
-              <blockquote class="text-lg italic text-gray-700">
-                "I can finally sync bookings with my small team. We now meet once a week without the chaos."
-              </blockquote>
             </div>
-          </div>
-        </div>
 
-        <!-- Future Enhancements -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🚀</span> Future Enhancements
-          </h2>
-          
-          <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg">
-            <h3 class="text-2xl font-semibold mb-4 flex items-center gap-3">
-              <span>🔮</span> Next Steps
-            </h3>
-            <div class="grid md:grid-cols-2 gap-6 text-lg">
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span>•</span>
-                  <span><strong>Payment Gateway Integration:</strong> Enable in-app secure payments and invoices</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span>•</span>
-                  <span><strong>Smart Matching:</strong> Recommend spaces based on work style and preferences</span>
-                </div>
-              </div>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span>•</span>
-                  <span><strong>Rating System:</strong> Build trust through reviews and verified experiences</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span>•</span>
-                  <span><strong>Admin Dashboard:</strong> For space owners to manage bookings and feedback</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🧾</span> Final Thoughts
-          </h2>
-          <p class="mb-6">
-            Officiti reimagines the relationship between workspaces and their users. By empowering businesses to rent excess capacity and enabling freelancers to work without compromises, it contributes to a <strong>more efficient, sustainable, and human-centered work culture</strong>.
-          </p>
-          
-          <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg">
-            <p class="text-lg font-medium">
-              This platform demonstrates how thoughtful UX design can solve real-world problems while creating value for both space providers and workspace seekers in today's evolving work landscape.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-</main>
-
-<!-- Banner Section -->
-    <section class="bg-gray-50 py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-1 gap-8">
-            <div class="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
-                <div class="relative z-10">
-                <div class="text-2xl font-bold mb-4">Ready to Transform Your Product?</div>
-                <p class="text-gray-300 mb-6">Let's discuss how we can create exceptional user experiences together.</p>
-                <a href="mailto:saagarshrest@gmail.com"
-                    class="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-green-500 transition-colors inline-block">
-                    Start Your Project →
-                </a>
-                </div>
-                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full"></div>
-                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-accent opacity-30 rounded-full"></div>
-            </div>
+            <h3 class="cs-h3" style="margin-top:4rem">Six pain points, grouped into four themes</h3>
+            <div class="cs-list" style="margin-top:1.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Visibility</h3><p>Hard to control and track workspace availability, and no real-time view of what is free.</p><small><b>Design response.</b> A dashboard with today's meetings, a calendar, and clear booking status.</small></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Booking friction</h3><p>No centralized system for shared office bookings. Most co-working spaces have no website or other online way to reserve a space.</p><small><b>Design response.</b> In-app booking for rooms and desks with date, time and attendees in one flow.</small></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>Communication</h3><p>Poor communication between tenants, teammates and space providers when something needs fixing or approving.</p><small><b>Design response.</b> Support tickets, notifications and a visitor approval flow.</small></div></div>
+                <div class="cs-row"><span class="sx-num">04</span><div><h3>Cost and choice</h3><p>High cost and low availability of quality spaces in prime locations, and no way to compare spaces side by side.</p><small><b>Design response.</b> Flexible booking so people pay for the time they need, and a package view showing what they have left.</small></div></div>
             </div>
         </div>
     </section>
 
- <!-- Footer -->
-<footer class="bg-primary text-white py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <a href="/index.html" class="block">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-primary font-bold text-sm">UX</span>
-                        </div>
-                        <span class="font-bold text-xl text-white">Saagar</span>
+    <!-- ============ RESEARCH ============ -->
+    <section id="research" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Discover</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I asked, <em>and what it meant.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.4rem">
+                <div>
+                    <h3 class="cs-h3">Method</h3>
+                    <p class="cs-p" style="margin-top:.8rem">Client interviews, user research and a competitor review, covering freelancers, startups and office managers. The findings are qualitative and directional. They shaped decisions rather than proving statistics.</p>
+                    <h3 class="cs-h3" style="margin-top:2.2rem">Interview questions</h3>
+                    <ol class="cs-list" style="margin-top:1rem;counter-reset:q">
+                        <li class="cs-row"><span class="sx-num">1</span><p style="margin:0;color:#0A0A0A">Where do you find professionals or freelancers?</p></li>
+                        <li class="cs-row"><span class="sx-num">2</span><p style="margin:0;color:#0A0A0A">Do users use this platform to access their workspace?</p></li>
+                        <li class="cs-row"><span class="sx-num">3</span><p style="margin:0;color:#0A0A0A">Will people have access to the same place for the time they will be present?</p></li>
+                        <li class="cs-row"><span class="sx-num">4</span><p style="margin:0;color:#0A0A0A">Will it be overcrowded or noisy?</p></li>
+                        <li class="cs-row"><span class="sx-num">5</span><p style="margin:0;color:#0A0A0A">Did working together create networking opportunities?</p></li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Findings turned into design implications</h3>
+                    <div class="cs-tbl-wrap" style="margin-top:1rem">
+                        <table class="cs-tbl">
+                            <thead><tr><th>What I found</th><th>What it means for the product</th></tr></thead>
+                            <tbody>
+                                <tr><td>Finding a co-working space is hard. Most have no website or online booking.</td><td>Booking must happen in the app, with availability visible up front.</td></tr>
+                                <tr><td>Renting in prime locations is expensive, so small teams and individuals want accessible space.</td><td>Flexible, short bookings and a clear view of remaining package days.</td></tr>
+                                <tr><td>People worry about crowding and noise.</td><td>Offer meeting rooms for small and large groups, and show who is attending.</td></tr>
+                                <tr><td>People need to know the same place is theirs for the time booked.</td><td>Clear booking confirmations, a calendar and reminders.</td></tr>
+                                <tr><td>Networking is a real benefit of shared space.</td><td>Connect with teammates and other professionals in the same workplace.</td></tr>
+                                <tr><td>Shared offices need secure, tracked access.</td><td>Visitor invitations and QR-based entry with a record.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                    </a>
                 </div>
-                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
-                
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Freebies</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
-                <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
-
-                </div>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Contact</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
-                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
-                    <div>Kathmandu, Nepal</div>
-                    <div>Available for freelance</div>
-                </div>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Follow</h3>
-                <div class="space-y-2 text-gray-400">
-                <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
-                <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
-                <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
-                <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
-            </div>
-
             </div>
         </div>
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+    </section>
+
+    <!-- ============ DEFINE ============ -->
+    <section id="define" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">03 · Define</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">One person to design for, <em>four questions to answer.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div class="cs-persona">
+                    <div class="cs-label">Primary persona · Kathmandu, Nepal</div>
+                    <h3 style="margin-top:.6rem">Mayank Mishra</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">A freelancer who works remotely and needs a place to work peacefully. Working from home is tough because he lives with his family and the space is noisy. He has to attend client calls, so he needs a place without disturbances.</p>
+                    <div class="cs-two">
+                        <div><h4>Goals</h4><ul><li>Find a peaceful place to sit, work and attend client calls without disturbance.</li><li>An affordable place that matches his budget.</li></ul></div>
+                        <div><h4>Frustrations</h4><ul><li>Not finding a good working space in prime locations.</li><li>Expensive rent.</li></ul></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Who the product is for</h3>
+                    <div class="cs-list" style="margin-top:1rem">
+                        <div class="cs-row"><span class="sx-num">U</span><div><h3>User</h3><p>Working professionals who cannot afford a dedicated space, and freelancers.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">P</span><div><h3>Platform</h3><p>Android, iOS and web, sharing one design system.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">T</span><div><h3>Task</h3><p>Connect with teammates in one's office and with other professionals in the same workplace.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">B</span><div><h3>Business roles</h3><p>Space owners with extra capacity, renters such as remote professionals and small teams, and managers such as HR and office managers.</p></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-note" style="margin-top:2.6rem"><b>Problem statement.</b> Freelancers and small teams need a quiet, affordable place to work, but they cannot see what is available or book it without friction, while office owners cannot track or share what they have.</div>
+            <h3 class="cs-h3" style="margin-top:3rem">How might we…</h3>
+            <div class="cs-list" style="margin-top:1rem">
+                <div class="cs-row"><span class="sx-num">01</span><p style="margin:0;color:#0A0A0A;font-weight:500">show availability clearly so nobody travels to a space that is full?</p></div>
+                <div class="cs-row"><span class="sx-num">02</span><p style="margin:0;color:#0A0A0A;font-weight:500">make booking a room a matter of seconds instead of phone calls and paperwork?</p></div>
+                <div class="cs-row"><span class="sx-num">03</span><p style="margin:0;color:#0A0A0A;font-weight:500">let hosts control access and track visitors without manual effort?</p></div>
+                <div class="cs-row"><span class="sx-num">04</span><p style="margin:0;color:#0A0A0A;font-weight:500">give members a fast way to get help when something in the space breaks?</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ IDEATE ============ -->
+    <section id="ideate" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Ideate</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">From ideas to a <em>focused first release.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div>
+                    <h3 class="cs-h3">Solutions that came out of the interviews</h3>
+                    <div class="cs-list" style="margin-top:1rem">
+                        <div class="cs-row"><span class="sx-num">01</span><p style="margin:0">An app that provides the required information and easy ways to book the space.</p></div>
+                        <div class="cs-row"><span class="sx-num">02</span><p style="margin:0">Availability of meeting rooms for small as well as large numbers of people.</p></div>
+                        <div class="cs-row"><span class="sx-num">03</span><p style="margin:0">An app that keeps track of data and has secure access to personal space.</p></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Prioritizing what to build first</h3>
+                    <div class="cs-quad" style="margin-top:1rem">
+                        <div class="hot"><h4>Must have</h4><ul><li>Onboarding, sign-up, sign-in</li><li>Dashboard with today's meetings</li><li>Book a meeting room</li><li>Support tickets</li><li>QR access and visitors</li></ul></div>
+                        <div><h4>Should have</h4><ul><li>Notifications</li><li>Past meetings</li><li>Wi-Fi access details</li><li>Search and add attendees</li></ul></div>
+                        <div><h4>Could have</h4><ul><li>Recurring bookings</li><li>In-app chat</li><li>Workspace filters</li></ul></div>
+                        <div><h4>Later</h4><ul><li>Payment gateway</li><li>Smart matching</li><li>Ratings</li><li>Owner admin dashboard</li></ul></div>
+                    </div>
+                </div>
+            </div>
+
+            <figure class="cs-fig">
+                <div class="cs-stage flow"><img src="/images/officiti/userflow.jpg" alt="Officiti user flow from onboarding and login to the dashboard, calendar, scan, support and more, including tickets, Wi-Fi access, booking, report and logout" loading="lazy" width="1600" height="1792"></div>
+                <figcaption><b>User flow</b><span>From onboarding and login, the dashboard branches into four destinations: Calendar, Scan, Support and More. Four choices stay within Hick's Law, and Scan is always one tap away. The deepest path is tickets: Dashboard, More, My Tickets, Pending or Closed, Ticket detail, Cancel, Share. That is six steps and the first thing I would shorten in the next version.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ WIREFRAMES ============ -->
+    <section id="wireframes" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">05 · Design · Wireframes</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Structure first, <em>in grayscale.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Low-fidelity wireframes settled hierarchy, navigation and content before any color or style. Working in grayscale forced every screen to communicate through layout and text alone.</p>
+
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/wf-onboarding.png" alt="Three onboarding wireframes: Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="860"></div>
+                <figcaption><b>Onboarding in three steps</b><span>Each screen carries one idea (book meetings, access the system, manage the team) with a single Next button and progress dots. Value is explained in seconds, and the flow can be skipped.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/wf-auth.png" alt="Create account and Login wireframes with email and password fields" loading="lazy" width="1000" height="900"></div>
+                <figcaption><b>Account creation and sign-in</b><span>Only email and password are asked for, with social sign-up as a shortcut. Fewer fields at the start means less drop-off at the door.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/officiti/wf-home.png" alt="Dashboard wireframe with ticket stats, today's meetings, attendee search and past meetings" loading="lazy" width="1500" height="890"></div>
+                <figcaption><b>Dashboard, search and meetings</b><span>The home screen answers "what is happening today?" first: a status summary (tickets solved, Wi-Fi connected, past meetings, notifications), then today's meetings. A centered scan button sits in the thumb zone of the tab bar.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/officiti/wf-tickets.png" alt="Notification list, notification dialog and My Tickets wireframes" loading="lazy" width="1500" height="860"></div>
+                <figcaption><b>Notifications and tickets</b><span>Notifications open in a dialog, and My Tickets separates Pending from Closed with a segmented control. A dated tile on the left makes each ticket easy to scan.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/officiti/wf-visitor.png" alt="Ticket details, Add Visitor form and Visitors Details wireframes" loading="lazy" width="1500" height="860"></div>
+                <figcaption><b>Visitors and details</b><span>Add Visitor is a single, top-to-bottom form with labels above each field. The details screen ends with clear Cancel and Share actions.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/officiti/wf-meeting.png" alt="Visitor invitation, Create a Meeting form and date picker wireframes" loading="lazy" width="1500" height="900"></div>
+                <figcaption><b>Booking a meeting</b><span>Title, room, description, dates, time and attendees live on one screen, with an inline calendar for dates. It works, but it is long. This is the screen I later split into three steps in the design system.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/officiti/wf-support.png" alt="Technical Support, My Tickets and Open a Ticket wireframes" loading="lazy" width="1500" height="860"></div>
+                <figcaption><b>Support</b><span>Technical Support shows the member's package and remaining days, with shortcuts for Wi-Fi access, booking, tickets and reporting a problem. Opening a ticket asks for type, category, a message and an optional file.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ UI ============ -->
+    <section id="ui" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">06 · Design · UI</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Adding color, <em>carefully.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">The high-fidelity design applies the brand palette and Roboto to the approved wireframes. Illustration makes onboarding friendly, while color is used with meaning: green for resolved, red for problems, blue for actions and amber for pending.</p>
+
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-onboarding.png" alt="Onboarding screens with illustrations for Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="880"></div>
+                <figcaption><b>Onboarding</b><span>Friendly illustrations and an amber progress indicator introduce the three core benefits. The last screen switches the button from Next to Skip, so the goal is always clear.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-auth-home.png" alt="Login, Create account and Dashboard screens in the Officiti brand colors" loading="lazy" width="1500" height="880"></div>
+                <figcaption><b>Sign-in and dashboard</b><span>Bold shapes give the entry screens a confident identity, while the dashboard stays calm and functional. Stats sit in a compact grid above today's meetings, and the scan button anchors the tab bar.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-meeting.png" alt="Empty meetings state, Create a Meeting form and Add Visitor form" loading="lazy" width="1500" height="880"></div>
+                <figcaption><b>Meetings and visitors</b><span>The empty state explains "No Meetings Today" with an illustration and a green add button. Forms use labels above fields, filled-gray inputs and a day selector for choosing meeting dates.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-details.png" alt="Ticket detail screens with green resolved, blue and red not resolved header tiles" loading="lazy" width="1500" height="880"></div>
+                <figcaption><b>Ticket details and status color</b><span>A colored date header tells the ticket's state at a glance: green for resolved and red for not resolved. Color helps scanning, but in the audit below I show why it should never carry meaning alone.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-tickets.png" alt="My Tickets in Pending and Closed tabs and a visitor invitation card with a QR code" loading="lazy" width="1500" height="890"></div>
+                <figcaption><b>My tickets and invitations</b><span>Pending and Closed tabs use a dark segmented control, and each ticket keeps its dated tile. The visitor invitation packages name, host, time and a QR code into one shareable card.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-visitor.png" alt="Visitors Details, ticket approve and reject screen, and Notifications list" loading="lazy" width="1500" height="880"></div>
+                <figcaption><b>Approvals and notifications</b><span>Hosts can Approve or Reject with a review note, and share or cancel a visitor's details. Notifications are listed with a colored edge to hint at their type.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/officiti/ui-qr.png" alt="QR scanner screen and a notification dialog" loading="lazy" width="1000" height="900"></div>
+                <figcaption><b>Scanning and notifications</b><span>The scanner screen has one instruction, "Place your mobile screen near QR Scanner", and nothing else to distract. The notification dialog shows a booking confirmation over a dimmed screen.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM ============ -->
+    <section id="system" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">07 · Design system</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">One system for <em>every screen.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">To keep 25+ screens consistent across Android, iOS and web, I documented a full design system: tokens, components, patterns and accessibility rules. It starts from the original style guide, then fixes what testing against WCAG showed.</p>
+                    <div style="margin-top:2rem"><a href="/DesignSystem.html" class="cs-btn">Explore the design system <span>↗</span></a></div>
+                </div>
+                <div>
+                    <div class="cs-label">Brand palette from the original style guide</div>
+                    <div class="cs-swatches">
+                        <div class="cs-sw"><i style="background:#5D6DFF"></i><span>Blue<br>#5D6DFF</span></div>
+                        <div class="cs-sw"><i style="background:#E8553E"></i><span>Red<br>#E8553E</span></div>
+                        <div class="cs-sw"><i style="background:#FFAE02"></i><span>Amber<br>#FFAE02</span></div>
+                        <div class="cs-sw"><i style="background:#2D2D2D"></i><span>Ink<br>#2D2D2D</span></div>
+                        <div class="cs-sw"><i style="background:#BDBDBD"></i><span>Gray<br>#BDBDBD</span></div>
+                        <div class="cs-sw"><i style="background:#89C053"></i><span>Green<br>#89C053</span></div>
+                    </div>
+                    <div class="cs-tbl-wrap" style="margin-top:2rem">
+                        <table class="cs-tbl" style="color:#fff">
+                            <thead><tr><th style="color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.3)">Accessibility fix</th><th style="color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.3)">Before</th><th style="color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.3)">After</th></tr></thead>
+                            <tbody>
+                                <tr><td style="color:#fff;border-color:rgba(255,255,255,.18)">White text on the primary button</td><td style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.18)">4.12 : 1</td><td style="color:#fff;border-color:rgba(255,255,255,.18)">5.86 : 1 with #4351E8</td></tr>
+                                <tr><td style="color:#fff;border-color:rgba(255,255,255,.18)">Error text on white</td><td style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.18)">3.62 : 1</td><td style="color:#fff;border-color:rgba(255,255,255,.18)">6.17 : 1 with #B5301E</td></tr>
+                                <tr><td style="color:#fff;border-color:rgba(255,255,255,.18)">Secondary and placeholder text</td><td style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.18)">1.88 : 1</td><td style="color:#fff;border-color:rgba(255,255,255,.18)">5.33 : 1 with #6B6B6B</td></tr>
+                                <tr><td style="color:#fff;border-color:rgba(255,255,255,.18)">Labels on amber and green</td><td style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.18)">1.86 and 2.16 : 1 (white)</td><td style="color:#fff;border-color:rgba(255,255,255,.18)">7.42 and 6.38 : 1 (ink)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-list" style="margin-top:3.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Foundations</h3><p>Roboto type scale, 4-point spacing, radius and elevation, a 23-icon outline set, layout grid and motion tokens.</p></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Components</h3><p>Buttons, form fields, selection controls, meeting and ticket cards, tab bar with scan button, alerts, toasts, empty states, skeletons and dialogs, all interactive.</p></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>Patterns</h3><p>A three-step booking flow, a ticket status system, QR visitor access, and rules for empty, loading, error and success states.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ UX LAWS ============ -->
+    <section class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">08 · UX principles in the product</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Decisions, <em>and the reasons.</em></h2>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl">
+                    <thead><tr><th>Principle</th><th>Where it shows up in Officiti</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hick's Law</td><td>The tab bar offers four destinations plus scan. Onboarding is three short screens instead of one long explanation.</td></tr>
+                        <tr><td>Fitts's Law</td><td>The scan button is large and centered in the thumb zone. Primary actions are full-width, and targets are at least 48 px.</td></tr>
+                        <tr><td>Jakob's Law</td><td>Bottom tab bar, top-left back arrow, labels above form fields and a standard calendar picker.</td></tr>
+                        <tr><td>Von Restorff Effect</td><td>The dark scan button and single filled primary button stand out from every other element.</td></tr>
+                        <tr><td>Visibility of status</td><td>Dashboard stats, ticket tiles and notifications keep members informed about bookings and requests.</td></tr>
+                        <tr><td>Recognition over recall</td><td>Visible labels, a searchable attendee list with avatars, and Pending and Closed tabs instead of hidden filters.</td></tr>
+                        <tr><td>Common region and proximity</td><td>Cards group each meeting's date, title, room and attendees, so related facts read as one unit.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ AUDIT ============ -->
+    <section id="audit" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">09 · Self-audit</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I'd fix in <em>the first version.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Reviewing the original screens against usability heuristics and WCAG revealed real problems. Listing them is part of the process, and each one is resolved in the design system.</p>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl" style="min-width:820px">
+                    <thead><tr><th>Finding</th><th>Principle</th><th>Severity</th><th>Fix in the design system</th></tr></thead>
+                    <tbody>
+                        <tr><td>Secondary text in ticket details is light gray, at about 1.9 : 1 contrast.</td><td>WCAG 1.4.3 Contrast</td><td class="cs-sev">Major</td><td>Secondary text is now #5C5C5C or #6B6B6B (6.7 : 1 and 5.3 : 1).</td></tr>
+                        <tr><td>Status is shown only by header color (green, blue, red) and by colored notification edges.</td><td>WCAG 1.4.1 Use of color</td><td class="cs-sev">Major</td><td>Every status pairs color with an icon and a word: Resolved, Pending, Not resolved.</td></tr>
+                        <tr><td>Create a Meeting puts seven inputs on one long screen.</td><td>Hick's and Miller's laws</td><td class="cs-sev">Moderate</td><td>Split into three steps (What, When, Who) with a progress bar.</td></tr>
+                        <tr><td>Placeholder text is reused across screens, for example "Problem Type" on the meeting title and room selects.</td><td>Match with the real world</td><td class="cs-sev">Moderate</td><td>Field-specific labels and placeholders such as "e.g. Sprint planning".</td></tr>
+                        <tr><td>The ticket detail screen shows "Status" twice with different values.</td><td>Consistency and standards</td><td class="cs-sev">Moderate</td><td>One status per record, and a separate "Decision" control for Approve and Reject.</td></tr>
+                        <tr><td>White label on the primary blue is 4.12 : 1, and red buttons are 3.62 : 1.</td><td>WCAG 1.4.3 Contrast</td><td class="cs-sev">Moderate</td><td>Action blue #4351E8 (5.86 : 1) and danger #C83E2A (5.03 : 1).</td></tr>
+                        <tr><td>Tab bar labels are 10 px, and some fields use gray-on-gray text.</td><td>Legibility</td><td class="cs-sev">Minor</td><td>Minimum 11 px, and inputs get a visible 1.5 px border.</td></tr>
+                        <tr><td>Tickets are six steps deep from the dashboard.</td><td>Efficiency of use</td><td class="cs-sev">Minor</td><td>Show open tickets directly on the Support tab and shorten the path to detail.</td></tr>
+                        <tr><td>Placeholder copy such as "Some other information here" is still visible in several screens.</td><td>Content quality</td><td class="cs-sev">Minor</td><td>Real microcopy that says what happened and what to do next.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="results" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">10 · Testing and outcome</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What testing <em>told me.</em></h2>
+            <div class="cs-tests" style="margin-top:2.6rem">
+                <div>
+                    <p class="cs-p">Usability testing with five target users checked the main flows: signing in, booking a meeting, adding a visitor and opening a ticket. Feedback was folded back into the designs before the final screens.</p>
+                    <div class="cs-quote" style="margin-top:2rem"><p>“I used to spend hours scrolling Facebook groups or asking friends for space recommendations. This feels like Airbnb for workspaces.”</p><cite>Remote developer, Kathmandu</cite></div>
+                    <div class="cs-quote" style="margin-top:1.6rem"><p>“I can finally sync bookings with my small team. We now meet once a week without the chaos.”</p><cite>Startup founder, small team lead</cite></div>
+                </div>
+                <div>
+                    <div class="cs-label">Projected impact</div>
+                    <div class="cs-facts" style="margin-top:.8rem;grid-template-columns:1fr">
+                        <div class="cs-fact"><div class="n">−60%</div><div class="c">Booking effort</div></div>
+                        <div class="cs-fact"><div class="n">+40%</div><div class="c">Space utilization for companies</div></div>
+                        <div class="cs-fact"><div class="n">−50%</div><div class="c">Workspace search time</div></div>
+                    </div>
+                    <div class="cs-note">These are estimates from concept testing, not measurements from a live product. Officiti is a concept project, so real-world results would need to be validated after launch.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============ -->
+    <section class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">11 · Learnings</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">What I'd carry <em>into the next project.</em></h2>
+                    <div class="cs-list" style="margin-top:2rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Test contrast on day one</h3><p>Brand colors are not automatically accessible. Checking ratios early is cheaper than fixing them across 25 screens.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>Split long forms</h3><p>A form that fits on one screen is not always easier. Steps and progress reduce effort.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">03</span><div><h3>Never rely on color alone</h3><p>Icons and words make status readable for everyone, in any lighting.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">04</span><div><h3>Shorten frequent paths</h3><p>The most common tasks should be the fewest taps away.</p></div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="cs-label">Next steps</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Payment gateway</h3><p>Secure in-app payments and invoices.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Smart matching</h3><p>Recommend spaces based on work style and preferences.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Ratings and reviews</h3><p>Build trust through verified experiences.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Admin dashboard</h3><p>Let space owners manage bookings, utilization and feedback.</p></div></div>
+                    </div>
+                    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center">
+                        <a href="/DesignSystem.html" class="cs-btn">Design system <span>↗</span></a>
+                        <a href="/Casestudy.html" class="cs-link">More case studies →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
         </div>
     </div>
 </footer>
-
-
-
 
   <!-- JavaScript for mobile menu toggle -->
   <script>
@@ -581,6 +632,28 @@
     closeBtn.addEventListener("click", () => {
       mobileMenu.classList.add("translate-x-full");
     });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
   </script>
+<script src="/js/pager.js"></script>
 </body>
 </html>

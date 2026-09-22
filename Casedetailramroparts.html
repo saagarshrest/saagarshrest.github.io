@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCP6GX79Y4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LCP6GX79Y4');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramroparts Case Study: A Mobile App for Motor Parts and Vendors | Saagar</title>
+    <meta name="description" content="A UX/UI case study of Ramroparts, a mobile e-commerce app for buying motor parts and finding vendors in Nepal: research, persona, user flow, style guide, wireframes, high-fidelity screens and testing feedback.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+            <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+            .cs-stage.wide img { max-width: none; width: 100%; filter: none; }
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ramroparts design system: tokens + components (scoped to .rp) */
+        .rp { --font: 'Poppins', system-ui, sans-serif;
+            --brand-ink:#383D3D; --brand-grey:#656975; --brand-blue:#0066FF; --brand-red:#EF473D; --brand-navy:#223263; --brand-tint:#EBF0FF;
+            --blue-600:#0066FF; --blue-700:#0057D9; --blue-800:#0052CC; --blue-900:#0047B3; --blue-50:#EBF0FF; --blue-100:#D6E2FF;
+            --red-500:#EF473D; --red-600:#D62F26; --red-700:#C9251D; --red-50:#FDECEA;
+            --green-700:#1E7B3C; --green-50:#E8F5EC; --amber-800:#8A5A00; --amber-50:#FFF4D6;
+            --n-0:#FFFFFF; --n-50:#F5F6F8; --n-100:#ECEEF2; --n-200:#E4E6EB; --n-300:#C9CCD3; --n-500:#8A8F9C; --n-600:#6B7080; --n-700:#656975; --n-900:#383D3D;
+            --text:#383D3D; --text-2:#656975; --border-ctl:#8A8F9C; --divider:#E4E6EB; --focus:#0066FF;
+            --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:20px; --s6:24px; --s8:32px; --s10:40px;
+            --r-sm:6px; --r-md:12px; --r-lg:20px; --r-full:9999px;
+            --e1:0 1px 3px rgba(34,50,99,.12); --e2:0 6px 16px rgba(34,50,99,.14); --e3:0 16px 32px rgba(34,50,99,.18);
+            --t-fast:100ms; --t-base:200ms; --t-slow:300ms; --ease:cubic-bezier(.2,0,0,1);
+            font-family: var(--font); color: var(--text); font-size: 14px; line-height: 22px; }
+        .rp *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+        .rp button { font-family: inherit; }
+        .rp .ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+        .rp .ic-sm { width: 16px; height: 16px; } .rp .ic-fill { fill: currentColor; stroke: none; }
+        .rp-panel { background: #fff; border: 1px solid rgba(10,10,10,.14); border-radius: 16px; padding: 1.6rem; }
+        .rp-panel.tint { background: var(--n-50); }
+        .rp-grid2 { display: grid; gap: 1.4rem; } @media (min-width: 900px) { .rp-grid2 { grid-template-columns: 1fr 1fr; } }
+        .rp-grid3 { display: grid; gap: 1.4rem; } @media (min-width: 900px) { .rp-grid3 { grid-template-columns: repeat(3, 1fr); } }
+        .rp-h { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); margin-bottom: .9rem; font-family: 'Inter Tight', sans-serif; }
+        .rp-spec { margin-top: 1rem; display: grid; gap: .4rem; font-size: .85rem; line-height: 1.5; color: rgba(10,10,10,.7); font-family: 'Inter Tight', sans-serif; }
+        .rp-spec b { color: #0A0A0A; font-weight: 600; }
+        .rp-sw-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+        .rp-sw { border-radius: 10px; padding: 34px 10px 10px; font: 500 11px/1.35 var(--font); border: 1px solid rgba(0,0,0,.08); }
+        .rp-sw b { display: block; font-size: 12px; } .rp-sw.dk { color: #fff; } .rp-sw.lt { color: #383D3D; }
+        .rp-tbl { width: 100%; border-collapse: collapse; font-size: .88rem; font-family: 'Inter Tight', sans-serif; }
+        .rp-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .7rem .8rem .7rem 0; border-bottom: 1px solid rgba(10,10,10,.25); }
+        .rp-tbl td { padding: .75rem .8rem .75rem 0; border-bottom: 1px solid rgba(10,10,10,.12); vertical-align: middle; color: rgba(10,10,10,.8); line-height: 1.4; }
+        .rp-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .rp-chip { display: inline-grid; place-content: center; min-width: 3.2rem; height: 2rem; padding: 0 .5rem; border-radius: 6px; font: 500 14px/1 var(--font); border: 1px solid rgba(0,0,0,.12); }
+        .rp-pass { color: #1E7B3C; font-weight: 600; } .rp-fail { color: #C9251D; font-weight: 600; }
+        .rp-type { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid rgba(10,10,10,.12); }
+        .rp-type .m { font: 400 .75rem/1.4 'Inter Tight', sans-serif; color: rgba(10,10,10,.6); }
+        .rp-spbar { height: 14px; background: var(--blue-600); border-radius: 2px; }
+        .rp-sprow { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: center; padding: .3rem 0; font: 400 .82rem 'Inter Tight', sans-serif; }
+        .rp-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); border-top: 1px solid var(--divider); border-left: 1px solid var(--divider); }
+        .rp-icon { display: grid; justify-items: center; gap: 8px; padding: 16px 4px 12px; border-right: 1px solid var(--divider); border-bottom: 1px solid var(--divider); font: 400 11px var(--font); color: var(--text-2); }
+        .rp-icon .ic { color: var(--text); }
+
+        /* buttons */
+        .rp-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border-radius: var(--r-md); border: 1.5px solid transparent; font: 500 14px/20px var(--font); cursor: pointer; transition: background var(--t-base) var(--ease), border-color var(--t-base), transform var(--t-fast); }
+        .rp-btn:active { transform: scale(.98); }
+        .rp-btn--primary { background: var(--blue-600); color: #fff; } .rp-btn--primary:hover { background: var(--blue-800); } .rp-btn--primary:active { background: var(--blue-900); }
+        .rp-btn--dark { background: var(--n-900); color: #fff; } .rp-btn--dark:hover { background: #1f2323; }
+        .rp-btn--outline { background: #fff; color: var(--blue-700); border-color: var(--blue-700); } .rp-btn--outline:hover { background: var(--blue-50); }
+        .rp-btn--text { background: transparent; color: var(--blue-700); padding: 0 12px; } .rp-btn--text:hover { background: var(--blue-50); }
+        .rp-btn--danger { background: var(--red-700); color: #fff; } .rp-btn--danger:hover { background: #a91d16; }
+        .rp-btn--block { width: 100%; } .rp-btn--sm { min-height: 40px; padding: 0 16px; }
+        .rp-btn:disabled { background: var(--n-200); color: var(--n-600); border-color: transparent; cursor: not-allowed; transform: none; }
+        .rp-btn[aria-busy="true"] { pointer-events: none; background: var(--blue-800); }
+        .rp-btn[aria-busy="true"]::before { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; animation: rp-spin .7s linear infinite; }
+        @keyframes rp-spin { to { transform: rotate(360deg); } }
+        .rp-iconbtn { width: 48px; height: 48px; display: inline-grid; place-content: center; border-radius: var(--r-full); border: 0; background: transparent; color: var(--text); cursor: pointer; transition: background var(--t-base); position: relative; }
+        .rp-iconbtn:hover { background: var(--n-100); }
+        /* fields */
+        .rp-field { display: grid; gap: 6px; }
+        .rp-label { font: 600 12px/16px var(--font); color: var(--text); }
+        .rp-inwrap { position: relative; display: flex; align-items: center; }
+        .rp-inwrap > .ic { position: absolute; left: 12px; color: var(--text-2); width: 20px; height: 20px; pointer-events: none; }
+        .rp-input { width: 100%; min-height: 48px; padding: 0 12px 0 40px; border: 1.5px solid var(--border-ctl); border-radius: var(--r-md); background: #fff; font: 400 14px/20px var(--font); color: var(--text); transition: border-color var(--t-base), box-shadow var(--t-base); }
+        .rp-input.plain { padding-left: 12px; }
+        .rp-input::placeholder { color: var(--n-600); }
+        .rp-input:hover { border-color: var(--n-700); }
+        .rp-input:focus { outline: none; border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(0,102,255,.25); }
+        .rp-input:disabled { background: var(--n-100); border-color: var(--n-300); color: var(--n-600); }
+        .rp-field.err .rp-input { border-color: var(--red-700); }
+        .rp-help { display: flex; gap: 6px; align-items: flex-start; font: 400 12px/16px var(--font); color: var(--text-2); }
+        .rp-help.err { color: var(--red-700); font-weight: 500; } .rp-help .ic { width: 16px; height: 16px; }
+        .rp-otp { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+        .rp-otp input { min-height: 52px; text-align: center; font: 600 18px var(--font); border: 1.5px solid var(--border-ctl); border-radius: var(--r-md); width: 100%; }
+        .rp-otp input:focus { outline: none; border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(0,102,255,.25); }
+        .rp-check { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; }
+        .rp-check input { appearance: none; width: 22px; height: 22px; margin: 0; border: 2px solid var(--border-ctl); border-radius: 6px; background: #fff; display: grid; place-content: center; flex: none; cursor: pointer; }
+        .rp-check input:checked { background: var(--blue-600); border-color: var(--blue-600); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 16px; background-position: center; background-repeat: no-repeat; }
+        .rp-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .rp-fchip { min-height: 40px; padding: 0 16px; border-radius: var(--r-full); border: 1.5px solid var(--border-ctl); background: #fff; font: 500 13px var(--font); color: var(--text); cursor: pointer; transition: background var(--t-fast), color var(--t-fast); }
+        .rp-fchip[aria-pressed="true"] { background: var(--blue-50); border-color: var(--blue-700); color: var(--blue-700); }
+        /* cards */
+        .rp-card { background: #fff; border-radius: var(--r-md); box-shadow: var(--e1); border: 1px solid var(--divider); overflow: hidden; }
+        .rp-pimg { aspect-ratio: 1/1; background: linear-gradient(135deg, #DDE3EE, #F1F3F8); display: grid; place-content: center; color: var(--n-500); position: relative; }
+        .rp-pimg .ic { width: 40px; height: 40px; }
+        .rp-off { position: absolute; top: 8px; left: 8px; background: var(--red-700); color: #fff; font: 600 11px/16px var(--font); padding: 0 8px; border-radius: 6px; }
+        .rp-fav { position: absolute; top: 4px; right: 4px; }
+        .rp-pbody { padding: 12px; display: grid; gap: 4px; }
+        .rp-pname { font: 600 14px/20px var(--font); }
+        .rp-stars { display: flex; align-items: center; gap: 2px; color: #B7791F; font: 500 12px var(--font); } .rp-stars span { color: var(--text-2); margin-left: 6px; }
+        .rp-stars .ic { width: 14px; height: 14px; }
+        .rp-price { font: 700 16px/24px var(--font); } .rp-price s { font: 400 12px var(--font); color: var(--text-2); margin-left: 6px; }
+        .rp-stock { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/16px var(--font); }
+        .rp-stock .ic { width: 16px; height: 16px; stroke-width: 2.2; }
+        .rp-stock.in { color: var(--green-700); } .rp-stock.low { color: var(--amber-800); } .rp-stock.out { color: var(--red-700); }
+        .rp-tag { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/16px var(--font); padding: 4px 10px; border-radius: 6px; }
+        .rp-tag .ic { width: 14px; height: 14px; stroke-width: 2.2; }
+        .rp-tag.ok { background: var(--green-50); color: var(--green-700); } .rp-tag.wait { background: var(--amber-50); color: var(--amber-800); } .rp-tag.bad { background: var(--red-50); color: var(--red-700); } .rp-tag.info { background: var(--blue-50); color: var(--blue-700); }
+        .rp-vendor { display: grid; gap: 12px; padding: 16px; }
+        .rp-vhead { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: center; }
+        .rp-logo { width: 56px; height: 56px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-content: center; font: 700 16px var(--font); }
+        .rp-vmeta { display: flex; align-items: center; gap: 6px; color: var(--text-2); font: 400 12px/16px var(--font); } .rp-vmeta .ic { width: 16px; height: 16px; }
+        .rp-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        /* phone frame + nav */
+        .rp-phone { width: 300px; max-width: 100%; margin: 0 auto; background: var(--n-50); border-radius: 28px; border: 1px solid var(--divider); box-shadow: var(--e2); overflow: hidden; }
+        .rp-appbar { height: 56px; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; background: #fff; font: 600 16px/24px var(--font); text-align: center; }
+        .rp-tabs { display: grid; grid-template-columns: repeat(5, 1fr); background: #fff; border-top: 1px solid var(--divider); }
+        .rp-tabs button { display: grid; justify-items: center; gap: 2px; min-height: 58px; padding: 8px 0 6px; border: 0; background: transparent; color: var(--n-700); font: 500 11px/14px var(--font); cursor: pointer; position: relative; }
+        .rp-tabs button[aria-current="page"] { color: var(--blue-700); font-weight: 700; }
+        .rp-badge { position: absolute; top: 4px; left: calc(50% + 4px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--red-700); color: #fff; font: 700 11px/18px var(--font); text-align: center; }
+        .rp-row { display: grid; grid-template-columns: 24px 1fr 20px; gap: 12px; align-items: center; min-height: 52px; padding: 0 16px; background: #fff; border-bottom: 1px solid var(--divider); font: 500 14px var(--font); }
+        .rp-row .ic:last-child { width: 18px; height: 18px; color: var(--n-600); }
+        .rp-alert { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 12px 16px; border-radius: var(--r-md); border-left: 4px solid; }
+        .rp-alert b { display: block; font: 600 14px/20px var(--font); } .rp-alert p { margin: 2px 0 0; color: var(--text-2); font-size: 13px; line-height: 18px; }
+        .rp-alert.info { background: var(--blue-50); border-color: var(--blue-700); } .rp-alert.info .ic { color: var(--blue-700); }
+        .rp-alert.ok { background: var(--green-50); border-color: var(--green-700); } .rp-alert.ok .ic { color: var(--green-700); }
+        .rp-alert.warn { background: var(--amber-50); border-color: var(--amber-800); } .rp-alert.warn .ic { color: var(--amber-800); }
+        .rp-alert.bad { background: var(--red-50); border-color: var(--red-700); } .rp-alert.bad .ic { color: var(--red-700); }
+        .rp-toast { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--n-900); color: #fff; padding: 12px 16px; border-radius: var(--r-md); box-shadow: var(--e3); }
+        .rp-toast button { background: none; border: 0; color: #9CC2FF; font: 600 14px var(--font); min-height: 40px; padding: 0 8px; cursor: pointer; }
+        .rp-empty { text-align: center; padding: 24px 16px; display: grid; justify-items: center; gap: 8px; }
+        .rp-empty-art { width: 84px; height: 84px; border-radius: 50%; background: var(--blue-50); color: var(--blue-700); display: grid; place-content: center; margin-bottom: 6px; } .rp-empty-art .ic { width: 38px; height: 38px; }
+        .rp-empty h4 { font: 600 16px/24px var(--font); } .rp-empty p { color: var(--text-2); max-width: 20rem; }
+        .rp-skel { border-radius: 6px; background: linear-gradient(90deg, var(--n-200) 25%, var(--n-100) 50%, var(--n-200) 75%); background-size: 200% 100%; animation: rp-shimmer 1.4s linear infinite; }
+        @keyframes rp-shimmer { to { background-position: -200% 0; } }
+        .rp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .rp-step { display: grid; gap: 8px; font: 500 12px/16px var(--font); color: var(--text-2); } .rp-step i { height: 4px; border-radius: 2px; background: var(--n-300); display: block; }
+        .rp-step.done i, .rp-step.on i { background: var(--blue-600); } .rp-step.on { color: var(--text); font-weight: 700; }
+        .rp-qty { display: inline-grid; grid-template-columns: 44px 44px 44px; align-items: center; border: 1.5px solid var(--border-ctl); border-radius: var(--r-md); overflow: hidden; }
+        .rp-qty button { min-height: 44px; border: 0; background: #fff; font: 600 18px var(--font); cursor: pointer; } .rp-qty button:hover { background: var(--n-100); } .rp-qty output { text-align: center; font: 600 14px var(--font); }
+        .rp-dd { display: grid; gap: 1rem; } @media (min-width: 760px) { .rp-dd { grid-template-columns: 1fr 1fr; } }
+        .rp-do, .rp-dont { border-radius: 10px; padding: 1.1rem 1.2rem; border: 1px solid; font: 400 .92rem/1.5 'Inter Tight', sans-serif; }
+        .rp-do { border-color: #1E7B3C; background: #F1F9F3; } .rp-dont { border-color: #C9251D; background: #FEF3F1; }
+        .rp-do b, .rp-dont b { display: block; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .4rem; } .rp-do b { color: #1E7B3C; } .rp-dont b { color: #C9251D; }
+        .rp-code { background: #141412; color: #F0EBE3; border-radius: 12px; padding: 1.3rem 1.4rem; font: 12.5px/1.65 ui-monospace, Menlo, Consolas, monospace; overflow: auto; max-height: 28rem; white-space: pre; }
+        .rp-checks { border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 760px) { .rp-checks { columns: 2; column-gap: 3rem; } }
+        .rp-checks li { break-inside: avoid; padding: .85rem 0 .85rem 1.7rem; border-bottom: 1px solid rgba(10,10,10,.14); position: relative; line-height: 1.5; font: 400 .95rem/1.5 'Inter Tight', sans-serif; color: rgba(10,10,10,.8); }
+        .rp-checks li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; color: #0A0A0A; } .rp-checks li b { color: #0A0A0A; }
+        .rp-toast-host { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 90; width: min(92vw, 420px); }
+        @media (prefers-reduced-motion: reduce) { .rp-skel, .rp-btn[aria-busy="true"]::before { animation: none; } .rp *, .rp-toast-host * { transition: none !important; } }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html">Photos</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
+
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · UX/UI · Mobile e-commerce app</div>
+            <h1 class="cs-hero-title">Ramroparts: finding motor parts <em>and the people who sell them.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">Ramroparts is an e-commerce app that lets people buy motor parts, find vendors and get easy access to contact them. This case study walks through the research, the user flow, the design system, all the wireframes and high-fidelity screens, and the feedback from testing.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>Ramroparts app</dd></div>
+                <div><dt>Role</dt><dd>UX/UI designer</dd></div>
+                <div><dt>Platform</dt><dd>Mobile app</dd></div>
+                <div><dt>Tools</dt><dd>Figma, Illustrator, Photoshop</dd></div>
+                <div><dt>Duration</dt><dd>14 days</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#problem">Problem</a><a href="#research">Research</a><a href="#define">Define</a><a href="#ideate">Ideate</a><a href="#flow">User flow</a><a href="#ds">Design system</a><a href="#components">Components</a><a href="#patterns">Patterns</a><a href="#wireframes">Wireframes</a><a href="#ui">High fidelity</a><a href="#audit">Audit</a><a href="#testing">Testing</a>
+            </nav>
+            <div class="cs-hero-img" style="margin-top:3rem"><img src="/images/ramroparts/hero.jpg" alt="Illustration of a person shopping for motor parts on a laptop beside boxes and a shopping bag" width="1400" height="924" style="max-height:460px;object-fit:contain;background:#EEF8FD"></div>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">01 · The problem</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">The part exists. <em>Finding it is the hard part.</em></h2>
+                </div>
+                <div>
+                    <p class="cs-p">In Nepal, buying a specific motor part usually means visiting several stores. Not every seller is on the internet, general e-commerce sites don't carry the parts people need, and a web search rarely helps find the right vendor.</p>
+                    <p class="cs-p">Ramroparts brings buying and vendor discovery into one app, so a person can search for a part, buy it, or contact the vendor directly.</p>
+                </div>
+            </div>
+            <h3 class="cs-h3" style="margin-top:4rem">Three problems the design had to solve</h3>
+            <div class="cs-list" style="margin-top:1.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Finding vendors</h3><p>Sellers of motor parts had to be found through a map, or by searching a specific name, and only if they were listed on the web.</p><small><b>Design response.</b> A Centers area with a list of vendors, a detail page for each, and Call and Chat buttons.</small></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Finding parts</h3><p>The products people needed weren't available on existing e-commerce sites.</p><small><b>Design response.</b> A store built around vehicle parts, with categories and filters by brand, price, part number, common name and OEM reference.</small></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>Trust and cost</h3><p>Repeated visits to stores that didn't stock the part, and prices that didn't feel reasonable.</p><small><b>Design response.</b> Clear product pages with ratings and discounts, order tracking, and information about the seller.</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section id="research" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Discover</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I asked, <em>and what it meant.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.4rem">
+                <div>
+                    <h3 class="cs-h3">Method</h3>
+                    <p class="cs-p" style="margin-top:.8rem">Client and user interviews, plus user and competitor research. The process ran through five phases: Discover, Define, Ideate, Design and Testing.</p>
+                    <h3 class="cs-h3" style="margin-top:2.2rem">Interview questions</h3>
+                    <ol class="cs-list" style="margin-top:1rem">
+                        <li class="cs-row"><span class="sx-num">1</span><p style="margin:0;color:#0A0A0A">How do you find the vendors for auto parts?</p></li>
+                        <li class="cs-row"><span class="sx-num">2</span><p style="margin:0;color:#0A0A0A">Do you use online mediums or the internet to locate vendors?</p></li>
+                        <li class="cs-row"><span class="sx-num">3</span><p style="margin:0;color:#0A0A0A">How successful were you in finding the vendor you were searching for?</p></li>
+                        <li class="cs-row"><span class="sx-num">4</span><p style="margin:0;color:#0A0A0A">Did you find it frustrating?</p></li>
+                        <li class="cs-row"><span class="sx-num">5</span><p style="margin:0;color:#0A0A0A">Were the products you ordered delivered to you?</p></li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="cs-h3">What the research showed</h3>
+                    <div class="cs-tbl-wrap" style="margin-top:1rem">
+                        <table class="cs-tbl" style="min-width:0">
+                            <thead><tr><th>What I found</th><th>What it means for the app</th></tr></thead>
+                            <tbody>
+                                <tr><td>Finding vendors and sellers of motor parts was not easy, and meant using a map or searching a specific name.</td><td>A vendor directory inside the app, with contact built in.</td></tr>
+                                <tr><td>Vendors are only findable if they are listed on the web, and not all sellers are online.</td><td>Vendor pages that collect the details a buyer needs in one place.</td></tr>
+                                <tr><td>The products people needed weren't on existing e-commerce sites.</td><td>A catalogue focused on motor and vehicle parts.</td></tr>
+                                <tr><td>Delivery and order status matter to buyers.</td><td>Order list, order detail and notifications.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cs-note">This is qualitative research. It guided decisions rather than proving statistics.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DEFINE ============ -->
+    <section id="define" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">03 · Define</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">One rider, <em>one wallet.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div class="cs-persona">
+                    <div class="cs-label">Persona · Kathmandu, Nepal</div>
+                    <h3 style="margin-top:.6rem">Nikhil Shrestha</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">A software developer who is also pursuing his master's degree. He owns a Royal Enfield bike, and the high charges of service centers for bike parts were putting a strain on his wallet.</p>
+                    <div class="cs-two">
+                        <div><h4>Goals</h4><ul><li>Search for motor parts and buy them online, without bargaining or visiting the store.</li><li>Get genuine products at a reasonable price.</li></ul></div>
+                        <div><h4>Frustrations</h4><ul><li>Not finding a store that sells the part, even after visiting several.</li><li>Prices that aren't reasonable.</li></ul></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Problem statement</h3>
+                    <div class="cs-note" style="margin-top:1rem">Motor part buyers need a reliable way to find genuine parts and trustworthy vendors at a fair price, without visiting store after store.</div>
+                    <h3 class="cs-h3" style="margin-top:2.4rem">How might we…</h3>
+                    <div class="cs-list" style="margin-top:1rem">
+                        <div class="cs-row"><span class="sx-num">01</span><p style="margin:0;color:#0A0A0A;font-weight:500">let people search for a part and buy it without leaving home?</p></div>
+                        <div class="cs-row"><span class="sx-num">02</span><p style="margin:0;color:#0A0A0A;font-weight:500">make vendors easy to find, judge and contact?</p></div>
+                        <div class="cs-row"><span class="sx-num">03</span><p style="margin:0;color:#0A0A0A;font-weight:500">keep the buyer informed from order to delivery?</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ IDEATE ============ -->
+    <section id="ideate" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Ideate</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Three ideas, <em>then a flow.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div>
+                    <h3 class="cs-h3">Solutions from the interviews</h3>
+                    <div class="cs-list" style="margin-top:1rem">
+                        <div class="cs-row"><span class="sx-num">01</span><p style="margin:0">A proper e-commerce or online store focused on vehicle and motor parts.</p></div>
+                        <div class="cs-row"><span class="sx-num">02</span><p style="margin:0">Easy access to detailed information about sellers and vendors.</p></div>
+                        <div class="cs-row"><span class="sx-num">03</span><p style="margin:0">A better UI so users can find the product they are searching for.</p></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Prioritizing what to build first</h3>
+                    <div class="cs-quad" style="margin-top:1rem">
+                        <div class="hot"><h4>Must have</h4><ul><li>Sign up, sign in and OTP</li><li>Search and product detail</li><li>Cart and checkout</li><li>Vendor list with call and chat</li></ul></div>
+                        <div><h4>Should have</h4><ul><li>Categories and filters</li><li>Orders and notifications</li><li>Saved addresses</li></ul></div>
+                        <div><h4>Could have</h4><ul><li>Flash sale banner</li><li>Wishlist</li><li>Contact form</li></ul></div>
+                        <div><h4>Later</h4><ul><li>Product availability count</li><li>Sign-up by mobile number</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ USER FLOW ============ -->
+    <section id="flow" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">05 · Design · User flow</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">How a person <em>places an order.</em></h2>
+            <div class="cs-grid2" style="margin-top:2.6rem;align-items:start">
+                <div>
+                    <p class="cs-p">After signing in with an OTP, the dashboard branches into five areas, each in its own color in the flow chart. The main path is short: search a product, open it, buy or add it to the cart, choose an address and finish.</p>
+                    <div class="cs-list" style="margin-top:2rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Home</h3><p>Search or select a product, view its detail, then buy or add to cart. Notifications sit here too.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>Categories</h3><p>A list of categories that opens into child categories.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">03</span><div><h3>Centers</h3><p>A list of vendors, a detail page for each, and Call or Chat.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">04</span><div><h3>Cart</h3><p>Proceed to buy, select or add an address, choose the next option and finish.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">05</span><div><h3>Account</h3><p>Contact us, FAQ, about us, returns, policy, terms, and the order list with each order's detail.</p></div></div>
+                    </div>
+                </div>
+                <figure>
+                    <div class="cs-stage narrow" style="background:#fff;border:1px solid rgba(10,10,10,.15)"><img src="/images/ramroparts/userflow.jpg" alt="User flow: login or register, OTP, dashboard branching to home, categories, centers, cart and account, then checkout" loading="lazy" width="1300" height="1907" style="filter:grayscale(1) contrast(1.1)"></div>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="r-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+      <symbol id="r-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+      <symbol id="r-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+      <symbol id="r-truck" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+      <symbol id="r-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="r-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+      <symbol id="r-filter" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+      <symbol id="r-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+      <symbol id="r-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+      <symbol id="r-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+      <symbol id="r-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+      <symbol id="r-back" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+      <symbol id="r-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+      <symbol id="r-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+      <symbol id="r-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+      <symbol id="r-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+      <symbol id="r-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+      <symbol id="r-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="r-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+      <symbol id="r-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="r-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol>
+      <symbol id="r-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></symbol>
+      <symbol id="r-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+      <symbol id="r-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+      <symbol id="r-chev" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+    </svg>
+
+    <!-- ============ DESIGN SYSTEM · FOUNDATIONS ============ -->
+    <section id="ds" class="cs-sec light" data-label="Design system">
+        <div class="cs-wrap rp">
+            <div class="cs-label">06 · Design · Design system · Foundations</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">The Ramroparts <em>design system.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">One system keeps every screen of the app consistent: tokens for color, type, space and shape, a line icon set, and live components with every state. It grows out of the original style guide, with Poppins, the blue and the line icons kept, and it tightens contrast, size and states so the app is easier to read and to build. Everything below on this page is built from these tokens.</p>
+            <div class="rp-h" style="margin-top:2.6rem">Where it started: the original style guide</div>
+            <div class="rp-panel tint" style="padding:1rem"><img src="/images/ramroparts/styleguide.jpg" alt="The original Ramroparts style guide showing the Poppins type scale, six colors and the icon set" loading="lazy" width="1600" height="718" style="width:100%;height:auto;border-radius:10px;display:block"></div>
+
+
+            <div class="rp-h" style="margin-top:3rem">Color</div>
+            <div class="rp-sw-row">
+                <div class="rp-sw dk" style="background:#0066FF"><b>Blue 600</b>Brand, fills</div>
+                <div class="rp-sw dk" style="background:#0057D9"><b>Blue 700</b>Text and links</div>
+                <div class="rp-sw dk" style="background:#0052CC"><b>Blue 800</b>Hover</div>
+                <div class="rp-sw dk" style="background:#0047B3"><b>Blue 900</b>Pressed</div>
+                <div class="rp-sw lt" style="background:#EBF0FF"><b>Blue 50</b>Tint</div>
+                <div class="rp-sw dk" style="background:#EF473D"><b>Red 500</b>Brand, graphics</div>
+                <div class="rp-sw dk" style="background:#C9251D"><b>Red 700</b>Text, badges</div>
+                <div class="rp-sw lt" style="background:#FDECEA"><b>Red 50</b>Tint</div>
+                <div class="rp-sw dk" style="background:#1E7B3C"><b>Green 700</b>In stock, success</div>
+                <div class="rp-sw dk" style="background:#8A5A00"><b>Amber 800</b>Low stock</div>
+                <div class="rp-sw dk" style="background:#383D3D"><b>Ink</b>Primary text</div>
+                <div class="rp-sw dk" style="background:#656975"><b>Grey 700</b>Secondary text</div>
+                <div class="rp-sw dk" style="background:#8A8F9C"><b>Grey 500</b>Control border</div>
+                <div class="rp-sw lt" style="background:#E4E6EB"><b>Grey 200</b>Dividers</div>
+                <div class="rp-sw lt" style="background:#F5F6F8"><b>Grey 50</b>Screen surface</div>
+                <div class="rp-sw dk" style="background:#223263"><b>Navy</b>Headings, shadow tint</div>
+            </div>
+            <div class="rp-spec"><div><b>Rule.</b> Brand colors (#0066FF and #EF473D) fill large areas and graphics. Anything that carries small text or an icon uses the darker functional step.</div></div>
+
+            <div class="rp-h" style="margin-top:2.6rem">What changed from the original guide, and why</div>
+            <div style="overflow-x:auto"><table class="rp-tbl" style="min-width:640px">
+                <thead><tr><th>Use</th><th>Sample</th><th>Was</th><th>Now</th><th>Reason</th></tr></thead>
+                <tbody>
+                    <tr><td>Badge and discount text</td><td><span class="rp-chip" style="background:#EF473D;color:#fff">2</span> <span class="rp-chip" style="background:#C9251D;color:#fff">2</span></td><td>3.72 : 1</td><td>5.58 : 1</td><td>Small white text on #EF473D fails 4.5 : 1. Red 700 passes.</td></tr>
+                    <tr><td>Blue text on tinted backgrounds</td><td><span class="rp-chip" style="background:#EBF0FF;color:#0066FF">Blue</span> <span class="rp-chip" style="background:#EBF0FF;color:#0057D9">Blue</span></td><td>4.24 : 1</td><td>5.48 : 1</td><td>Just under the minimum. Blue 700 clears it.</td></tr>
+                    <tr><td>Primary button label</td><td><span class="rp-chip" style="background:#0066FF;color:#fff">Buy</span></td><td>4.83 : 1</td><td>4.83 : 1</td><td>Already passes for 14 px medium text. Kept, with a darker hover and pressed state.</td></tr>
+                    <tr><td>Input borders</td><td><span class="rp-chip" style="border-color:#8A8F9C;border-width:2px;background:#fff">Aa</span></td><td>Not defined</td><td>3.24 : 1</td><td>Controls need 3 : 1 against the page to be found.</td></tr>
+                    <tr><td>Stock and order status</td><td><span class="rp-chip" style="background:#E8F5EC;color:#1E7B3C">Ok</span></td><td>None</td><td>Green, amber, red plus icon and word</td><td>Requested in testing. Color alone would fail WCAG 1.4.1.</td></tr>
+                    <tr><td>Smallest text</td><td style="font:500 11px Poppins">Aa 11</td><td>10 px</td><td>11 px minimum, 12 px preferred</td><td>10 px is hard to read on a phone.</td></tr>
+                </tbody>
+            </table></div>
+
+            <div class="rp-h" style="margin-top:2.6rem">Contrast matrix</div>
+            <p class="cs-p" style="font-size:.9rem;margin-bottom:1rem">Normal text needs 4.5 : 1. Large text and interface components need 3 : 1.</p>
+            <div style="overflow-x:auto"><table class="rp-tbl" style="min-width:640px">
+                <thead><tr><th>Pair</th><th>Sample</th><th>Ratio</th><th>Text</th><th>UI</th></tr></thead>
+                <tbody>
+                    <tr><td>Ink on white</td><td><span class="rp-chip" style="color:#383D3D">Aa</span></td><td>11.04 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Grey 700 on white</td><td><span class="rp-chip" style="color:#656975">Aa</span></td><td>5.48 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Grey 700 on Grey 50</td><td><span class="rp-chip" style="color:#656975;background:#F5F6F8">Aa</span></td><td>5.07 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>White on Blue 600</td><td><span class="rp-chip" style="color:#fff;background:#0066FF">Aa</span></td><td>4.83 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Blue 700 on white</td><td><span class="rp-chip" style="color:#0057D9">Aa</span></td><td>6.24 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Blue 700 on Blue 50</td><td><span class="rp-chip" style="color:#0057D9;background:#EBF0FF">Aa</span></td><td>5.48 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>White on Red 700</td><td><span class="rp-chip" style="color:#fff;background:#C9251D">Aa</span></td><td>5.58 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Green 700 on Green 50</td><td><span class="rp-chip" style="color:#1E7B3C;background:#E8F5EC">Aa</span></td><td>4.73 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Amber 800 on Amber 50</td><td><span class="rp-chip" style="color:#8A5A00;background:#FFF4D6">Aa</span></td><td>5.41 : 1</td><td class="rp-pass">✓ Pass</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Input border on white</td><td><span class="rp-chip" style="border:2px solid #8A8F9C">Aa</span></td><td>3.24 : 1</td><td>Not text</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Old: white on brand red</td><td><span class="rp-chip" style="color:#fff;background:#EF473D">Aa</span></td><td>3.72 : 1</td><td class="rp-fail">✕ Fail</td><td class="rp-pass">✓ Pass</td></tr>
+                    <tr><td>Old: blue on tint</td><td><span class="rp-chip" style="color:#0066FF;background:#EBF0FF">Aa</span></td><td>4.24 : 1</td><td class="rp-fail">✕ Fail</td><td class="rp-pass">✓ Pass</td></tr>
+                </tbody>
+            </table></div>
+
+            <div class="rp-grid2" style="margin-top:3rem">
+                <div>
+                    <div class="rp-h">Typography · Poppins</div>
+                    <div class="rp-panel">
+                        <div class="rp-type"><div class="m"><b>Display</b><br>24 / 32 · Bold</div><div style="font:700 24px/32px Poppins">Genuine parts, fair prices</div></div>
+                        <div class="rp-type"><div class="m"><b>Header</b><br>16 / 24 · Bold</div><div style="font:700 16px/24px Poppins">Combustion filter</div></div>
+                        <div class="rp-type"><div class="m"><b>Subheader</b><br>14 / 20 · Semibold</div><div style="font:600 14px/20px Poppins">Choose a delivery option</div></div>
+                        <div class="rp-type"><div class="m"><b>Body</b><br>14 / 22 · Regular</div><div style="font:400 14px/22px Poppins">Made for four wheelers and bikes, with a one year warranty.</div></div>
+                        <div class="rp-type"><div class="m"><b>Button</b><br>14 / 20 · Medium</div><div style="font:500 14px/20px Poppins">Add to cart</div></div>
+                        <div class="rp-type"><div class="m"><b>Title</b><br>12 / 16 · Bold</div><div style="font:700 12px/16px Poppins">Order #10452</div></div>
+                        <div class="rp-type"><div class="m"><b>Caption</b><br>12 / 16 · Regular</div><div style="font:400 12px/16px Poppins">Ships in 2 to 3 days</div></div>
+                        <div class="rp-type" style="border:0"><div class="m"><b>Micro</b><br>11 / 14 · Medium</div><div style="font:500 11px/14px Poppins">Tab bar label (was 10)</div></div>
+                    </div>
+                    <div class="rp-spec"><div><b>Sizes in rem or platform text styles</b> so the user's font setting works. Prices use tabular numerals. Sentence case throughout.</div></div>
+                </div>
+                <div>
+                    <div class="rp-h">Space, shape and elevation</div>
+                    <div class="rp-panel">
+                        <div class="rp-sprow"><span>space-1 · 4</span><i class="rp-spbar" style="width:4px"></i></div>
+                        <div class="rp-sprow"><span>space-2 · 8</span><i class="rp-spbar" style="width:8px"></i></div>
+                        <div class="rp-sprow"><span>space-3 · 12</span><i class="rp-spbar" style="width:12px"></i></div>
+                        <div class="rp-sprow"><span>space-4 · 16</span><i class="rp-spbar" style="width:16px"></i></div>
+                        <div class="rp-sprow"><span>space-6 · 24</span><i class="rp-spbar" style="width:24px"></i></div>
+                        <div class="rp-sprow"><span>space-8 · 32</span><i class="rp-spbar" style="width:32px"></i></div>
+                        <div class="rp-sprow"><span>space-10 · 40</span><i class="rp-spbar" style="width:40px"></i></div>
+                        <div style="display:flex;gap:12px;margin-top:1.2rem;flex-wrap:wrap;font:400 11px Poppins;color:#656975">
+                            <div><div style="width:52px;height:52px;background:#EBF0FF;border:1.5px solid #0057D9;border-radius:6px"></div>sm · 6</div>
+                            <div><div style="width:52px;height:52px;background:#EBF0FF;border:1.5px solid #0057D9;border-radius:12px"></div>md · 12</div>
+                            <div><div style="width:52px;height:52px;background:#EBF0FF;border:1.5px solid #0057D9;border-radius:20px"></div>lg · 20</div>
+                            <div><div style="width:52px;height:52px;background:#EBF0FF;border:1.5px solid #0057D9;border-radius:9999px"></div>full</div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1.4rem;background:#F5F6F8;padding:14px;border-radius:12px">
+                            <div style="height:64px;border-radius:12px;background:#fff;box-shadow:var(--e1);display:grid;place-content:center;font:500 11px Poppins">elev-1</div>
+                            <div style="height:64px;border-radius:12px;background:#fff;box-shadow:var(--e2);display:grid;place-content:center;font:500 11px Poppins">elev-2</div>
+                            <div style="height:64px;border-radius:12px;background:#fff;box-shadow:var(--e3);display:grid;place-content:center;font:500 11px Poppins">elev-3</div>
+                        </div>
+                    </div>
+                    <div class="rp-spec"><div><b>4 pt grid.</b> 8 inside a component, 16 between fields, 24 between groups. <b>Touch targets 48 px</b> with 8 px between them. Motion is 100, 200 and 300 ms.</div></div>
+                </div>
+            </div>
+
+            <div class="rp-h" style="margin-top:3rem">Iconography · 24 px line, 1.6 px stroke, round caps</div>
+            <div class="rp-panel" style="padding:0;overflow:hidden">
+                <div class="rp-icons">
+                    <div class="rp-icon"><svg class="ic"><use href="#r-home"/></svg>home</div><div class="rp-icon"><svg class="ic"><use href="#r-list"/></svg>categories</div><div class="rp-icon"><svg class="ic"><use href="#r-cart"/></svg>cart</div><div class="rp-icon"><svg class="ic"><use href="#r-truck"/></svg>centers</div><div class="rp-icon"><svg class="ic"><use href="#r-user"/></svg>account</div>
+                    <div class="rp-icon"><svg class="ic"><use href="#r-search"/></svg>search</div><div class="rp-icon"><svg class="ic"><use href="#r-filter"/></svg>filter</div><div class="rp-icon"><svg class="ic"><use href="#r-heart"/></svg>favorite</div><div class="rp-icon"><svg class="ic"><use href="#r-bell"/></svg>notify</div><div class="rp-icon"><svg class="ic"><use href="#r-phone"/></svg>call</div>
+                    <div class="rp-icon"><svg class="ic"><use href="#r-chat"/></svg>chat</div><div class="rp-icon"><svg class="ic"><use href="#r-back"/></svg>back</div><div class="rp-icon"><svg class="ic"><use href="#r-trash"/></svg>delete</div><div class="rp-icon"><svg class="ic"><use href="#r-check"/></svg>done</div><div class="rp-icon"><svg class="ic"><use href="#r-alert"/></svg>warning</div>
+                    <div class="rp-icon"><svg class="ic"><use href="#r-star"/></svg>rating</div><div class="rp-icon"><svg class="ic"><use href="#r-pin"/></svg>location</div><div class="rp-icon"><svg class="ic"><use href="#r-lock"/></svg>password</div><div class="rp-icon"><svg class="ic"><use href="#r-mail"/></svg>email</div><div class="rp-icon"><svg class="ic"><use href="#r-wrench"/></svg>servicing</div>
+                    <div class="rp-icon"><svg class="ic"><use href="#r-box"/></svg>order</div><div class="rp-icon"><svg class="ic"><use href="#r-info"/></svg>info</div><div class="rp-icon"><svg class="ic"><use href="#r-x"/></svg>close</div>
+                </div>
+            </div>
+            <div class="rp-spec"><div><b>Never icon alone unless it is universal.</b> Tab bar icons always carry a label. Icon-only buttons need an accessible name.</div></div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM · COMPONENTS ============ -->
+    <section id="components" class="cs-sec soft" data-label="Components">
+        <div class="cs-wrap rp">
+            <div class="cs-label">07 · Design · Design system · Components</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Every component, <em>live.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">These are working components. Tab through them, press them and read the rule behind each one.</p>
+
+            <div class="rp-grid2" style="margin-top:2.4rem">
+                <div class="rp-panel">
+                    <div class="rp-h">Buttons</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+                        <button class="rp-btn rp-btn--primary">Buy now</button>
+                        <button class="rp-btn rp-btn--outline">Add to cart</button>
+                        <button class="rp-btn rp-btn--dark">Chat</button>
+                        <button class="rp-btn rp-btn--text">Cancel</button>
+                        <button class="rp-btn rp-btn--danger">Remove</button>
+                        <button class="rp-btn rp-btn--primary" disabled>Out of stock</button>
+                        <button class="rp-btn rp-btn--primary" id="rp-load" type="button">Try loading</button>
+                    </div>
+                    <div style="display:flex;gap:12px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--divider)">
+                        <button class="rp-btn rp-btn--primary rp-btn--sm"><svg class="ic ic-sm"><use href="#r-phone"/></svg>Call</button>
+                        <button class="rp-iconbtn" aria-label="Notifications"><svg class="ic"><use href="#r-bell"/></svg><span class="rp-badge" style="top:6px;left:auto;right:4px">3</span></button>
+                        <button class="rp-iconbtn" aria-label="Add to favorites"><svg class="ic"><use href="#r-heart"/></svg></button>
+                    </div>
+                    <div class="rp-spec"><div><b>One primary per screen.</b> Blue for the main action, dark for chat, outline for secondary. Labels are verb plus object.</div><div><b>48 px high,</b> 12 px radius. Loading keeps the label and sets aria-busy. Disabled explains itself: "Out of stock", not "Unavailable".</div></div>
+                </div>
+                <div class="rp-panel">
+                    <div class="rp-h">Form fields</div>
+                    <div style="display:grid;gap:14px">
+                        <div class="rp-field"><label class="rp-label" for="rp-e">Email</label><div class="rp-inwrap"><svg class="ic"><use href="#r-mail"/></svg><input class="rp-input" id="rp-e" placeholder="you@example.com"></div></div>
+                        <div class="rp-field"><label class="rp-label" for="rp-p">Password</label><div class="rp-inwrap"><svg class="ic"><use href="#r-lock"/></svg><input class="rp-input" id="rp-p" type="password" value="secret123"></div></div>
+                        <div class="rp-field err"><label class="rp-label" for="rp-m">Mobile number</label><div class="rp-inwrap"><svg class="ic"><use href="#r-phone"/></svg><input class="rp-input" id="rp-m" value="98123" aria-invalid="true" aria-describedby="rp-m-h"></div><div class="rp-help err" id="rp-m-h"><svg class="ic"><use href="#r-alert"/></svg>Enter a 10-digit number, for example 9812345678.</div></div>
+                        <div class="rp-field"><span class="rp-label">Verification code</span><div class="rp-otp" role="group" aria-label="6 digit code"><input inputmode="numeric" maxlength="1" aria-label="Digit 1" value="4"><input inputmode="numeric" maxlength="1" aria-label="Digit 2" value="8"><input inputmode="numeric" maxlength="1" aria-label="Digit 3"><input inputmode="numeric" maxlength="1" aria-label="Digit 4"><input inputmode="numeric" maxlength="1" aria-label="Digit 5"><input inputmode="numeric" maxlength="1" aria-label="Digit 6"></div><div class="rp-help">Sent to 98•••••678. Resend in 0:42</div></div>
+                        <label class="rp-check"><input type="checkbox" checked> I agree to the terms and conditions</label>
+                    </div>
+                    <div class="rp-spec"><div><b>Labels always visible,</b> above the field. Errors say what to do. Border is Grey 500 at 3.24 : 1.</div><div><b>OTP screen names the destination</b> and shows a resend timer, fixing a gap found in review.</div></div>
+                </div>
+            </div>
+
+            <div class="rp-grid2" style="margin-top:1.4rem">
+                <div class="rp-panel tint">
+                    <div class="rp-h">Product card and stock</div>
+                    <div class="rp-grid2" style="gap:12px">
+                        <div class="rp-card"><div class="rp-pimg"><svg class="ic"><use href="#r-img"/></svg><span class="rp-off">24% off</span><button class="rp-iconbtn rp-fav" aria-label="Add to favorites"><svg class="ic"><use href="#r-heart"/></svg></button></div>
+                            <div class="rp-pbody"><div class="rp-pname">Combustion filter</div><div class="rp-stars"><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic"><use href="#r-star"/></svg><span>4.0 (128)</span></div><div class="rp-price">NPR 299<s>NPR 394</s></div><span class="rp-stock in"><svg class="ic"><use href="#r-check"/></svg>In stock · 24 available</span></div></div>
+                        <div class="rp-card"><div class="rp-pimg"><svg class="ic"><use href="#r-img"/></svg></div>
+                            <div class="rp-pbody"><div class="rp-pname">Brake pad set</div><div class="rp-stars"><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic ic-fill"><use href="#r-star"/></svg><svg class="ic"><use href="#r-star"/></svg><svg class="ic"><use href="#r-star"/></svg><span>3.0 (41)</span></div><div class="rp-price">NPR 1,250</div><span class="rp-stock low"><svg class="ic"><use href="#r-alert"/></svg>Only 3 left</span></div></div>
+                    </div>
+                    <div class="rp-spec"><div><b>Stock is always three things:</b> color, icon and words, and it shows a count. This answers the testing feedback about available product count.</div><div><b>Discount tag</b> uses Red 700 with white text at 11 px semibold. The card is one tap target.</div></div>
+                </div>
+                <div class="rp-panel tint">
+                    <div class="rp-h">Vendor card</div>
+                    <div class="rp-card rp-vendor">
+                        <div class="rp-vhead"><div class="rp-logo">XYZ</div><div><div class="rp-pname">XYZ Company Pvt Ltd</div><div class="rp-vmeta"><svg class="ic"><use href="#r-pin"/></svg>Teku, Kathmandu · 2.4 km</div></div></div>
+                        <p style="font-size:13px;line-height:20px;color:var(--text-2)">Automotive parts and accessories for four wheelers, in business since 2003.</p>
+                        <div class="rp-acts"><button class="rp-btn rp-btn--dark rp-btn--sm"><svg class="ic ic-sm"><use href="#r-chat"/></svg>Chat</button><button class="rp-btn rp-btn--primary rp-btn--sm"><svg class="ic ic-sm"><use href="#r-phone"/></svg>Call</button></div>
+                    </div>
+                    <div class="rp-spec"><div><b>Trust in one card:</b> name, place, distance, a short description and the two actions that matter. Call and Chat sit together at the bottom, in reach of the thumb.</div></div>
+                    <div class="rp-h" style="margin-top:1.4rem">Filter chips and quantity</div>
+                    <div class="rp-chips" id="rp-chips"><button class="rp-fchip" aria-pressed="true">Brand</button><button class="rp-fchip" aria-pressed="false">Price</button><button class="rp-fchip" aria-pressed="false">Part number</button><button class="rp-fchip" aria-pressed="false">OEM reference</button></div>
+                    <div style="margin-top:14px" class="rp-qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease" data-q="-1">−</button><output id="rp-qv">1</output><button type="button" aria-label="Increase" data-q="1">+</button></div>
+                </div>
+            </div>
+
+            <div class="rp-grid2" style="margin-top:1.4rem">
+                <div class="rp-panel tint">
+                    <div class="rp-h">Navigation and lists</div>
+                    <div class="rp-phone">
+                        <div class="rp-appbar"><button class="rp-iconbtn" aria-label="Back"><svg class="ic"><use href="#r-back"/></svg></button><span>Account</span><span></span></div>
+                        <div class="rp-row"><svg class="ic"><use href="#r-phone"/></svg><span>Contact us</span><svg class="ic"><use href="#r-chev"/></svg></div>
+                        <div class="rp-row"><svg class="ic"><use href="#r-info"/></svg><span>FAQ</span><svg class="ic"><use href="#r-chev"/></svg></div>
+                        <div class="rp-row"><svg class="ic"><use href="#r-box"/></svg><span>My orders</span><svg class="ic"><use href="#r-chev"/></svg></div>
+                        <div class="rp-row"><svg class="ic"><use href="#r-wrench"/></svg><span>Servicing detail</span><svg class="ic"><use href="#r-chev"/></svg></div>
+                        <div style="height:60px"></div>
+                        <nav class="rp-tabs" aria-label="Main">
+                            <button><svg class="ic"><use href="#r-home"/></svg>Home</button>
+                            <button><svg class="ic"><use href="#r-list"/></svg>Categories</button>
+                            <button><svg class="ic"><use href="#r-cart"/></svg>Cart<span class="rp-badge">2</span></button>
+                            <button><svg class="ic"><use href="#r-truck"/></svg>Centers</button>
+                            <button aria-current="page"><svg class="ic"><use href="#r-user"/></svg>Account</button>
+                        </nav>
+                    </div>
+                    <div class="rp-spec"><div><b>Five tabs, always labeled,</b> at 11 px medium. Active tab is darker and bold, in Blue 700. The cart badge uses Red 700 so its count is readable.</div><div><b>List rows</b> are 52 px, icon plus label plus chevron, and the whole row is the target.</div></div>
+                </div>
+                <div class="rp-panel tint">
+                    <div class="rp-h">Status, feedback and empty states</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+                        <span class="rp-tag ok"><svg class="ic"><use href="#r-check"/></svg>Delivered</span>
+                        <span class="rp-tag info"><svg class="ic"><use href="#r-truck"/></svg>On the way</span>
+                        <span class="rp-tag wait"><svg class="ic"><use href="#r-box"/></svg>Packed</span>
+                        <span class="rp-tag bad"><svg class="ic"><use href="#r-x"/></svg>Cancelled</span>
+                    </div>
+                    <div style="display:grid;gap:10px">
+                        <div class="rp-alert ok"><svg class="ic"><use href="#r-check"/></svg><div><b>Order placed</b><p>We'll notify you when it ships.</p></div></div>
+                        <div class="rp-alert warn"><svg class="ic"><use href="#r-alert"/></svg><div><b>Only 1 left</b><p>Complete your order soon to secure this part.</p></div></div>
+                        <div class="rp-alert bad"><svg class="ic"><use href="#r-x"/></svg><div><b>Payment failed</b><p>Your card was not charged. Try another method.</p></div></div>
+                        <div class="rp-toast" role="status"><span>Added to cart</span><button type="button">Undo</button></div>
+                        <button class="rp-btn rp-btn--outline" id="rp-toast-btn" type="button">Show a toast</button>
+                    </div>
+                    <div class="rp-card" style="margin-top:14px"><div class="rp-empty"><div class="rp-empty-art"><svg class="ic"><use href="#r-cart"/></svg></div><h4>Your cart is empty</h4><p>Find a part or browse a category to get started.</p><button class="rp-btn rp-btn--primary rp-btn--sm" style="margin-top:6px">Browse parts</button></div></div>
+                    <div class="rp-card" style="margin-top:14px;padding:12px;display:grid;grid-template-columns:64px 1fr;gap:12px" aria-busy="true"><div class="rp-skel" style="height:64px"></div><div style="display:grid;gap:8px"><div class="rp-skel" style="height:14px;width:70%"></div><div class="rp-skel" style="height:12px;width:45%"></div><div class="rp-skel" style="height:12px;width:30%"></div></div></div>
+                    <div class="rp-spec"><div><b>Status always uses color, icon and a word.</b> Toasts confirm reversible actions and last at least 5 seconds. Empty states explain and offer the next step. Skeletons appear after 400 ms.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM · PATTERNS ============ -->
+    <section id="patterns" class="cs-sec light" data-label="Patterns and rules">
+        <div class="cs-wrap rp">
+            <div class="cs-label">08 · Design · Design system · Patterns and rules</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Putting components <em>to work.</em></h2>
+
+            <div class="rp-grid2" style="margin-top:2.4rem">
+                <div class="rp-panel tint">
+                    <div class="rp-h">Checkout in four short steps</div>
+                    <div class="rp-steps" role="group" aria-label="Step 2 of 4"><div class="rp-step done"><i></i>Cart</div><div class="rp-step on"><i></i>Address</div><div class="rp-step"><i></i>Payment</div><div class="rp-step"><i></i>Done</div></div>
+                    <div style="display:grid;gap:12px;margin-top:18px">
+                        <div class="rp-card" style="padding:14px;display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start"><input type="radio" name="rp-a" checked aria-label="Home address" style="margin-top:4px;width:20px;height:20px;accent-color:#0066FF"><div><div class="rp-pname">Home</div><div style="font-size:12px;line-height:16px;color:var(--text-2)">Saagar Shrestha · Baneshwor, Kathmandu<br>9812345678</div></div></div>
+                        <button class="rp-btn rp-btn--outline rp-btn--block">+ Add a new address</button>
+                        <button class="rp-btn rp-btn--primary rp-btn--block">Continue to payment</button>
+                    </div>
+                    <div class="rp-spec"><div><b>The original flow is Cart, address, then finish.</b> Making the steps visible with a progress bar shows people how far they are (goal-gradient effect). The primary action is full width at the bottom of the screen.</div></div>
+                </div>
+                <div>
+                    <div class="rp-h">Content and copy</div>
+                    <div class="rp-dd">
+                        <div class="rp-do"><b>Do</b>Say what happened and what to do next: "Payment failed. Your card was not charged. Try another method."</div>
+                        <div class="rp-dont"><b>Don't</b>Use "Error 402" or "Something went wrong". It blames nobody and helps nobody.</div>
+                        <div class="rp-do"><b>Do</b>Show price with currency and stock with a count: "NPR 1,250 · Only 3 left".</div>
+                        <div class="rp-dont"><b>Don't</b>Show a bare number or "Limited stock" with no count.</div>
+                        <div class="rp-do"><b>Do</b>Use verb plus object on buttons: "Add to cart", "Call vendor".</div>
+                        <div class="rp-dont"><b>Don't</b>Use "Submit", "OK" or "Proceed".</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rp-h" style="margin-top:3rem">UX laws applied</div>
+            <div style="overflow-x:auto"><table class="rp-tbl" style="min-width:640px">
+                <thead><tr><th>Law or heuristic</th><th>Rule in this system</th></tr></thead>
+                <tbody>
+                    <tr><td>Hick's Law</td><td>Five tabs at most. Filters live in a drawer and show only when asked.</td></tr>
+                    <tr><td>Fitts's Law</td><td>48 px targets, 8 px gaps, primary actions full width at the bottom.</td></tr>
+                    <tr><td>Jakob's Law</td><td>Search on top, bottom tabs, cart badge and star ratings, as in other shopping apps.</td></tr>
+                    <tr><td>Von Restorff Effect</td><td>One filled blue action per screen. Everything else is outline or text.</td></tr>
+                    <tr><td>Doherty Threshold</td><td>Responses under about 400 ms. Loading shows a skeleton and a busy button.</td></tr>
+                    <tr><td>Goal-gradient effect</td><td>A step bar in checkout shows progress toward the order.</td></tr>
+                    <tr><td>Recognition over recall</td><td>Visible labels, labeled icons, and a filter list that shows every option.</td></tr>
+                    <tr><td>Error prevention and recovery</td><td>Inline validation, confirmation before removing an item, Undo on toasts.</td></tr>
+                </tbody>
+            </table></div>
+
+            <div class="rp-h" style="margin-top:3rem">Accessibility · WCAG 2.2 AA</div>
+            <ul class="rp-checks" role="list">
+                <li><b>Text 4.5 : 1</b> and UI parts 3 : 1, guaranteed by the tokens above.</li>
+                <li><b>Target size.</b> 48 px minimum, above the 24 px AA requirement.</li>
+                <li><b>Visible focus.</b> 3 px Blue ring with a 2 px offset on every control.</li>
+                <li><b>Labels and names.</b> Visible field labels and accessible names on icon buttons.</li>
+                <li><b>Not by color alone.</b> Stock, order status and errors always add an icon and words.</li>
+                <li><b>Reflow and zoom.</b> Works at 200% text size and 320 px width.</li>
+                <li><b>Reduced motion.</b> Animations are removed when the user asks for less.</li>
+                <li><b>Easy sign-in.</b> Paste works in the OTP field and the code names where it was sent.</li>
+            </ul>
+        </div>
+    </section>
+    <div class="rp rp-toast-host" id="rp-host" aria-live="polite"></div>
+
+    <!-- ============ WIREFRAMES ============ -->
+    <section id="wireframes" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">09 · Design · Wireframes</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Structure first, <em>in grayscale.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Every screen of the app was wireframed before any color or photography. Grey boxes stand in for images, so the work is only about layout, hierarchy and flow.</p>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/wf-1.jpg" alt="Wireframes: login, sign up, OTP, home with flash sale and categories, product list, notifications" loading="lazy" width="1300" height="1436"></div>
+                <figcaption><b>Sign in, home and products</b><span>Login and sign-up ask for very little, with Google and Facebook as shortcuts and a six-box OTP screen. Home has a search field, a flash sale banner, a category grid and a product carousel. The product list shows cards with rating, price and discount.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/wf-2.jpg" alt="Wireframes: filter drawer, product list, notifications, about us, add new address and addresses" loading="lazy" width="1300" height="1421"></div>
+                <figcaption><b>Filters, notifications and addresses</b><span>A filter drawer narrows results by brand, price, part number, common name and OEM reference, with Clear and Apply at the bottom. Notifications, About us, Add new address and the address list follow the same simple layout.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/wf-3.jpg" alt="Wireframes: cart, categories, search results, contact us, order details and my orders" loading="lazy" width="1300" height="1391"></div>
+                <figcaption><b>Cart, categories and orders</b><span>The cart lists items with delivery options and a price summary. Categories use a searchable list with an index. Contact us, order details and My orders complete the after-purchase screens.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/wf-4.jpg" alt="Wireframes: payment, product detail, account, cart and service center" loading="lazy" width="1300" height="1323"></div>
+                <figcaption><b>Payment, product, account and vendor</b><span>Payment offers a short list of methods. Product detail puts Add to cart and Buy at the bottom. Account collects the help and policy links. The service center page shows the vendor's description, a map, and Call and Chat.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ HIGH FIDELITY ============ -->
+    <section id="ui" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">10 · Design · High fidelity</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Adding color, <em>photography and life.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">The high-fidelity design applies the style guide to the approved wireframes. Photography sets the mood on entry screens and product pages, while one blue is reserved for the actions that matter: login, apply, buy and call.</p>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/hf-1.jpg" alt="High-fidelity screens: login, sign up, OTP, home, product list and filter drawer" loading="lazy" width="1300" height="1330"></div>
+                <figcaption><b>Entry, home and browse</b><span>Motorbike photography greets the visitor on login and sign-up. Home leads with a bold flash sale banner and a line-icon category grid, and product cards show photography, rating and price.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/hf-2.jpg" alt="High-fidelity screens: categories, about us, add address, addresses, cart and search results" loading="lazy" width="1300" height="1360"></div>
+                <figcaption><b>Categories, addresses and cart</b><span>Categories are a fast, scannable list. Address forms use labels, checkboxes for default shipping and billing, and a single blue action. The cart shows each product, delivery options and a clear price total.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/hf-3.jpg" alt="High-fidelity screens: contact us, notifications, order details, my orders, payment and product detail" loading="lazy" width="1300" height="1345"></div>
+                <figcaption><b>Orders, payment and product</b><span>Order screens use small status tags, and payment shows the methods as simple, recognisable options. The product page pairs a large image with an Add to cart and Buy pair at the bottom.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/ramroparts/hf-4.jpg" alt="High-fidelity account screen and service center screen shown at an angle" loading="lazy" width="1300" height="665"></div>
+                <figcaption><b>Account and vendor</b><span>The account page groups the help links as icons. The service center page presents the vendor's photo, location, phone number, a map, and the two actions that matter: Call and Chat.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ UX LAWS ============ -->
+    <section class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">11 · UX principles in the product</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Decisions, <em>and the reasons.</em></h2>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl">
+                    <thead><tr><th>Principle</th><th>Where it shows up in Ramroparts</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hick's Law</td><td>The bottom tab bar has five destinations. Filters are hidden in a drawer until needed.</td></tr>
+                        <tr><td>Jakob's Law</td><td>Search on top, cart badge, bottom tabs and product grids follow patterns people know from other shopping apps.</td></tr>
+                        <tr><td>Fitts's Law</td><td>Add to cart and Buy, and Call and Chat, are large buttons at the bottom of the screen.</td></tr>
+                        <tr><td>Von Restorff Effect</td><td>One blue is used for the primary action on each screen, so it stands out from everything else.</td></tr>
+                        <tr><td>Recognition over recall</td><td>Line icons paired with labels, and a filter list showing exactly which fields can narrow results.</td></tr>
+                        <tr><td>Visibility of status</td><td>Cart count badge, notification list, and order list with order detail.</td></tr>
+                        <tr><td>Trust</td><td>Vendor pages with a map, description and contact make sellers feel real.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ AUDIT ============ -->
+    <section id="audit" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">12 · Self-audit</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I'd fix <em>in the next round.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">I reviewed the finished screens against usability heuristics and WCAG. I measured the palette's contrast to check the numbers below. The design system above already applies the fixes.</p>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl" style="min-width:820px">
+                    <thead><tr><th>Finding</th><th>Principle</th><th>Severity</th><th>Proposed fix</th></tr></thead>
+                    <tbody>
+                        <tr><td>The style guide's smallest text is 10 px, and much of the secondary text in the screens is very light and small.</td><td>Legibility, WCAG 1.4.3</td><td class="cs-sev">Major</td><td>Raise the minimum to 12 px and keep body text on ink or grey.</td></tr>
+                        <tr><td>The red (#EF473D) reaches only 3.72 : 1 on white, so it fails for small text such as the cart badge count and discount tags.</td><td>WCAG 1.4.3 Contrast</td><td class="cs-sev">Major</td><td>Use a darker red for text and badges, keeping the bright red for large graphics.</td></tr>
+                        <tr><td>Blue on the light blue tint (#EBF0FF) is 4.24 : 1, just under the 4.5 : 1 needed for normal text.</td><td>WCAG 1.4.3 Contrast</td><td class="cs-sev">Moderate</td><td>Darken the blue used for text on tinted backgrounds.</td></tr>
+                        <tr><td>Many tab bar and card labels are tiny, in light grey, and hard to hit accurately.</td><td>Fitts's Law, touch target size</td><td class="cs-sev">Moderate</td><td>Make tap areas at least 44 px and increase label size.</td></tr>
+                        <tr><td>Sign-up depends on an email and social login, and the flow asks for an OTP without saying where it was sent.</td><td>Visibility of status</td><td class="cs-sev">Moderate</td><td>Name the destination on the OTP screen and add a resend timer. Testers also asked for sign-up by mobile number.</td></tr>
+                        <tr><td>Product cards don't show whether a part is in stock.</td><td>Visibility of status</td><td class="cs-sev">Moderate</td><td>Add an available count, which was also requested in testing.</td></tr>
+                        <tr><td>Some placeholder content, such as repeated sample text and a sample company, is still visible.</td><td>Content quality</td><td class="cs-sev">Minor</td><td>Replace it with real vendor and product copy.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+        
+
+<!-- ============ TESTING ============ -->
+    <section id="testing" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">13 · Testing</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">What testing <em>told me.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">After completing the UI design, I tested the prototype with other users and colleagues to check how easy the UX flow was. It revealed usability issues that I could solve.</p>
+                    <div class="cs-note" style="margin-top:2rem">I don't have measured results for this project, so I haven't included any numbers. The findings below are the feedback that came out of testing.</div>
+                </div>
+                <div>
+                    <div class="cs-label">Feedback for the next phase</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Show the available product count</h3><p>So buyers know how much of a part is available.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>Sign up with a mobile number</h3><p>Testers said this could be useful for people who prefer a phone number to an email.</p></div></div>
+                    </div>
+                    <div class="cs-label" style="margin-top:2.6rem">Learnings</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Design for the whole journey</h3><p>Finding a vendor mattered as much as buying the part.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Check contrast early</h3><p>A vivid brand red looks great and still fails for small text.</p></div></div>
+                    </div>
+                    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center">
+                        <a href="/Casedetail.html" class="cs-btn">Read the ShiftCare case study <span>↗</span></a>
+                        <a href="/Casestudy.html" class="cs-link">All case studies →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-menu-button");
+    const closeBtn = document.getElementById("close-mobile-menu");
+
+    openBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  
+    // ---- Ramroparts design system demos ----
+    (function () {
+        var host = document.getElementById('rp-host');
+        function toast(t) {
+            if (!host) return;
+            var d = document.createElement('div'); d.className = 'rp-toast'; d.setAttribute('role', 'status');
+            d.innerHTML = '<span></span><button type="button">Undo</button>'; d.firstChild.textContent = t; host.appendChild(d);
+            var k = function () { d.remove(); }; d.querySelector('button').onclick = k; setTimeout(k, 5000);
+        }
+        var load = document.getElementById('rp-load');
+        if (load) load.addEventListener('click', function () {
+            var old = load.textContent; load.setAttribute('aria-busy', 'true'); load.textContent = 'Adding…';
+            setTimeout(function () { load.removeAttribute('aria-busy'); load.textContent = old; toast('Added to cart'); }, 1500);
+        });
+        var tb = document.getElementById('rp-toast-btn'); if (tb) tb.addEventListener('click', function () { toast('Added to cart'); });
+        var chips = document.getElementById('rp-chips');
+        if (chips) chips.addEventListener('click', function (e) { var b = e.target.closest('.rp-fchip'); if (b) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); });
+        var qv = document.getElementById('rp-qv');
+        document.querySelectorAll('[data-q]').forEach(function (b) {
+            b.addEventListener('click', function () { qv.textContent = Math.max(1, Math.min(99, (+qv.textContent) + (+b.dataset.q))); });
+        });
+    })();
+</script>
+<script src="/js/pager.js"></script>
+</body>
+</html>

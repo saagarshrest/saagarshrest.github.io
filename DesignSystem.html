@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCP6GX79Y4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LCP6GX79Y4');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Systems - Officiti Case | Saagar</title>
+    <meta name="description" content="A complete design system for Officiti: tokens, components, patterns and accessibility rules based on UX laws and WCAG 2.2.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+        <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================================
+           OFFICITI DESIGN SYSTEM: design tokens (live on this page)
+           ========================================================= */
+        :root {
+            --font-sans: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            /* brand (from the original style guide, unchanged) */
+            --brand-blue: #5D6DFF; --brand-red: #E8553E; --brand-amber: #FFAE02;
+            --brand-ink: #2D2D2D; --brand-gray: #BDBDBD; --brand-green: #89C053;
+            /* primary / action */
+            --primary-50:#EEF0FF; --primary-100:#E0E4FF; --primary-200:#C4CBFF; --primary-300:#A3ADFF; --primary-400:#8290FF;
+            --primary-500:#5D6DFF; --primary-600:#4351E8; --primary-700:#3A46D1; --primary-800:#2F3AB5; --primary-900:#232C8C;
+            /* danger */
+            --danger-50:#FDECE8; --danger-100:#FAD3CB; --danger-500:#E8553E; --danger-600:#C83E2A; --danger-700:#B5301E; --danger-800:#8F2415;
+            /* success */
+            --success-50:#EAF5DD; --success-100:#D5EBBB; --success-500:#89C053; --success-600:#3F7D1E; --success-700:#2F6014;
+            /* warning */
+            --warning-50:#FFF4D6; --warning-100:#FFE7A8; --warning-500:#FFAE02; --warning-800:#7A5200;
+            /* neutral */
+            --neutral-0:#FFFFFF; --neutral-50:#FAFAFA; --neutral-100:#F5F5F5; --neutral-200:#EBEBEB; --neutral-300:#D9D9D9;
+            --neutral-400:#BDBDBD; --neutral-500:#8A8A8A; --neutral-600:#6B6B6B; --neutral-700:#5C5C5C; --neutral-800:#424242; --neutral-900:#2D2D2D;
+            /* semantic */
+            --text-primary: var(--neutral-900); --text-secondary: var(--neutral-700); --text-muted: var(--neutral-600);
+            --text-on-action:#FFFFFF; --text-link: var(--primary-700);
+            --surface: var(--neutral-0); --surface-subtle: var(--neutral-100);
+            --border-control: var(--neutral-500); --divider:#E0E0E0;
+            --action: var(--primary-600); --action-hover: var(--primary-700); --action-pressed: var(--primary-800);
+            --focus-ring: var(--primary-500);
+            --error: var(--danger-700); --success: var(--success-700); --warning: var(--warning-800); --info: var(--primary-700);
+            /* space (4 pt grid) */
+            --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px;
+            /* shape + elevation */
+            --radius-sm:4px; --radius-md:8px; --radius-lg:16px; --radius-full:9999px;
+            --elev-1:0 1px 3px rgba(45,45,45,.12); --elev-2:0 4px 12px rgba(45,45,45,.14); --elev-3:0 12px 28px rgba(45,45,45,.18);
+            /* motion + size */
+            --motion-fast:100ms; --motion-base:200ms; --motion-slow:300ms; --ease-standard:cubic-bezier(.2,0,0,1);
+            --target-min:48px;
+        }
+
+        /* ---------- documentation chrome ---------- */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter Tight', Inter, system-ui, sans-serif; background: #FFFFFF; color: #0A0A0A; }
+        .ds-hero-title { font-size: clamp(3rem, 7vw, 6.4rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .ds-hero-title em, .ds-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #0A0A0A; }
+        .ds-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 38rem; }
+        .ds-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #F2F2F2; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .ds-btn:hover { background: #fff; color: #0A0A0A; box-shadow: inset 0 0 0 1.5px #0A0A0A; transform: translateY(-2px); }
+        .ds-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: color .25s, border-color .25s; }
+        .ds-link:hover { opacity: .55; }
+        .ds-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .ds-wrap { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+        @media (min-width: 1024px) { .ds-wrap { grid-template-columns: 200px 1fr; gap: 4rem; } }
+        .ds-toc { display: none; }
+        @media (min-width: 1024px) { .ds-toc { display: block; position: sticky; top: calc(var(--nav-h, 76px) + 1.5rem); align-self: start; max-height: calc(100vh - 3rem); overflow: auto; } }
+        .ds-toc a { display: block; padding: .38rem 0 .38rem .9rem; border-left: 1px solid rgba(10,10,10,.18); font-size: .88rem; color: rgba(10,10,10,.6); transition: color .2s, border-color .2s; }
+        .ds-toc a:hover { color: #0A0A0A; }
+        .ds-toc a.on { color: #0A0A0A; border-left-color: #0A0A0A; font-weight: 500; }
+        .ds-toc .grp { margin: 1.1rem 0 .3rem; }
+        .ds-sec { padding: 4.5rem 0 1rem; border-top: 1px solid rgba(10,10,10,.18); margin-top: 3rem; }
+        .ds-sec:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+        .ds-h2 { font-size: clamp(2rem, 3.8vw, 3.3rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; margin-top: .8rem; }
+        .ds-h3 { font-size: 1.45rem; letter-spacing: -0.03em; font-weight: 500; margin: 3.2rem 0 .5rem; }
+        .ds-p { color: rgba(10,10,10,.7); line-height: 1.6; max-width: 46rem; }
+        .ds-note { margin-top: 1.4rem; padding: 1.1rem 1.3rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; color: rgba(10,10,10,.8); line-height: 1.55; max-width: 52rem; }
+        .ds-note b { color: #0A0A0A; }
+        .ds-panel { background: #fff; border: 1px solid #E2DDD4; border-radius: 14px; padding: 1.6rem; margin-top: 1.4rem; }
+        .ds-panel.dark { background: #2D2D2D; border-color: #2D2D2D; }
+        .ds-grid2 { display: grid; gap: 1.4rem; }
+        @media (min-width: 760px) { .ds-grid2 { grid-template-columns: 1fr 1fr; } }
+        .ds-grid3 { display: grid; gap: 1.4rem; }
+        @media (min-width: 760px) { .ds-grid3 { grid-template-columns: repeat(3, 1fr); } }
+        .ds-tbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+        .ds-tbl th { text-align: left; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .7rem .8rem .7rem 0; border-bottom: 1px solid rgba(10,10,10,.25); }
+        .ds-tbl td { padding: .8rem .8rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.12); vertical-align: top; color: rgba(10,10,10,.8); line-height: 1.45; }
+        .ds-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .ds-scroll { overflow-x: auto; }
+        .ds-spec { margin-top: 1rem; display: grid; gap: .35rem; font-size: .85rem; color: rgba(10,10,10,.7); line-height: 1.45; }
+        .ds-spec b { color: #0A0A0A; font-weight: 600; }
+        .ds-code { background: #0A0A0A; color: #F2F2F2; border-radius: 12px; padding: 1.3rem 1.4rem; font: 12.5px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow: auto; max-height: 30rem; white-space: pre; }
+        .ds-pass { color: #2F6014; font-weight: 500; } .ds-fail { color: #B5301E; font-weight: 500; }
+        .ds-principles { display: grid; border-top: 1px solid rgba(10,10,10,.2); margin-top: 2rem; }
+        @media (min-width: 760px) { .ds-principles { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
+        .ds-pr { display: grid; grid-template-columns: 3rem 1fr; padding: 1.5rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .ds-pr .n { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.4rem; color: #0A0A0A; line-height: 1; }
+        .ds-pr h4 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; }
+        .ds-pr p { margin-top: .4rem; color: rgba(10,10,10,.65); line-height: 1.5; font-size: .95rem; }
+        .ds-pr small { display: block; margin-top: .55rem; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: #0A0A0A; font-weight: 500; }
+        .ds-checks { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); margin-top: 1.6rem; }
+        @media (min-width: 760px) { .ds-checks { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
+        .ds-checks li { padding: .9rem 0 .9rem 1.7rem; border-bottom: 1px solid rgba(10,10,10,.14); position: relative; line-height: 1.45; color: rgba(10,10,10,.8); }
+        .ds-checks li::before { content: '✓'; position: absolute; left: 0; color: #0A0A0A; font-weight: 700; }
+        .ds-checks li b { color: #0A0A0A; font-weight: 600; }
+
+        /* ---------- swatches, type, spacing, etc. (docs) ---------- */
+        .sw-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 8px; margin-top: 1rem; }
+        .sw { border-radius: 8px; padding: 34px 10px 10px; font: 500 11px/1.3 var(--font-sans); border: 1px solid rgba(0,0,0,.08); }
+        .sw b { display: block; font-size: 12px; }
+        .sw.lt { color: #2D2D2D; } .sw.dk { color: #fff; }
+        .sw-name { margin: 1.6rem 0 0; font-size: .85rem; font-weight: 500; }
+        .ct-cell { display: inline-flex; align-items: center; justify-content: center; min-width: 3.4rem; height: 2.2rem; border-radius: 6px; font: 500 15px/1 var(--font-sans); border: 1px solid rgba(0,0,0,.12); }
+        .type-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: baseline; padding: .9rem 0; border-bottom: 1px solid rgba(10,10,10,.12); }
+        .type-row .m { font-size: .78rem; color: rgba(10,10,10,.6); line-height: 1.4; }
+        .of-specimen { font: 700 120px/1 var(--font-sans); letter-spacing: -0.03em; }
+        .sp-row { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; align-items: center; padding: .4rem 0; font-size: .85rem; }
+        .sp-bar { height: 16px; background: var(--primary-500); border-radius: 2px; }
+        .elev-box { height: 92px; border-radius: 8px; background: #fff; display: grid; place-content: center; font: 500 13px var(--font-sans); color: #2D2D2D; text-align: center; }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 0; border-top: 1px solid #E0E0E0; border-left: 1px solid #E0E0E0; }
+        .icon-cell { display: grid; justify-items: center; gap: 10px; padding: 20px 6px 14px; border-right: 1px solid #E0E0E0; border-bottom: 1px solid #E0E0E0; font: 400 12px var(--font-sans); color: #5C5C5C; }
+        .ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+        .ic-fill { fill: currentColor; stroke: none; }
+        .col-demo { display: grid; gap: 8px; margin-top: .7rem; }
+        .col-demo div { height: 26px; background: var(--primary-100); border-radius: 3px; }
+        .col-demo.c4 { grid-template-columns: repeat(4, 1fr); } .col-demo.c8 { grid-template-columns: repeat(8, 1fr); } .col-demo.c12 { grid-template-columns: repeat(12, 1fr); }
+        .tgt { width: 48px; height: 48px; border: 1.5px dashed var(--primary-500); border-radius: 6px; display: grid; place-content: center; background: var(--primary-50); }
+        .tgt i { width: 24px; height: 24px; background: var(--primary-600); border-radius: 4px; display: block; }
+        .motion-dot { width: 20px; height: 20px; border-radius: 9999px; background: var(--primary-600); animation: mv 2.4s var(--ease-standard) infinite alternate; }
+        @keyframes mv { to { transform: translateX(220px); } }
+
+        /* =========================================================
+           OFFICITI COMPONENTS (of-*) : these classes ARE the system
+           ========================================================= */
+        .of { font-family: var(--font-sans); color: var(--text-primary); font-size: 14px; line-height: 20px; }
+        .of *:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+        .of button { font-family: inherit; }
+        /* buttons */
+        .of-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border-radius: var(--radius-sm); font: 500 14px/20px var(--font-sans); border: 1.5px solid transparent; cursor: pointer; transition: background var(--motion-base) var(--ease-standard), border-color var(--motion-base) var(--ease-standard), transform var(--motion-fast); text-decoration: none; }
+        .of-btn:active { transform: scale(.98); }
+        .of-btn--primary { background: var(--action); color: var(--text-on-action); }
+        .of-btn--primary:hover { background: var(--action-hover); } .of-btn--primary:active { background: var(--action-pressed); }
+        .of-btn--secondary { background: #fff; color: var(--action); border-color: var(--action); }
+        .of-btn--secondary:hover { background: var(--primary-50); }
+        .of-btn--text { background: transparent; color: var(--text-link); padding: 0 12px; }
+        .of-btn--text:hover { background: var(--primary-50); }
+        .of-btn--danger { background: var(--danger-600); color: #fff; } .of-btn--danger:hover { background: var(--danger-700); }
+        .of-btn--md { min-height: 40px; padding: 0 16px; } .of-btn--sm { min-height: 32px; padding: 0 12px; font-size: 12px; line-height: 16px; }
+        .of-btn--block { width: 100%; }
+        .of-btn:disabled { background: var(--neutral-200); color: var(--neutral-600); border-color: transparent; cursor: not-allowed; transform: none; }
+        .of-btn[aria-busy="true"] { pointer-events: none; background: var(--action-hover); }
+        .of-btn[aria-busy="true"]::before { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; animation: of-spin .7s linear infinite; }
+        @keyframes of-spin { to { transform: rotate(360deg); } }
+        .of-icon-btn { width: 48px; height: 48px; display: inline-grid; place-content: center; border-radius: var(--radius-full); background: transparent; border: 0; color: var(--text-primary); cursor: pointer; transition: background var(--motion-base); }
+        .of-icon-btn:hover { background: var(--neutral-100); }
+        /* fields */
+        .of-field { display: grid; gap: 6px; }
+        .of-label { font: 500 14px/20px var(--font-sans); color: var(--text-primary); }
+        .of-opt { font-weight: 400; color: var(--text-muted); }
+        .of-input, .of-select, .of-textarea { width: 100%; min-height: 48px; padding: 0 12px; border: 1.5px solid var(--border-control); border-radius: var(--radius-sm); background: #fff; font: 400 14px/20px var(--font-sans); color: var(--text-primary); transition: border-color var(--motion-base), box-shadow var(--motion-base); }
+        .of-textarea { padding: 12px; min-height: 96px; resize: vertical; }
+        .of-select { appearance: none; padding-right: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235C5C5C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+        .of-input::placeholder, .of-textarea::placeholder { color: var(--text-muted); }
+        .of-input:hover, .of-select:hover, .of-textarea:hover { border-color: var(--neutral-700); }
+        .of-input:focus, .of-select:focus, .of-textarea:focus { outline: none; border-color: var(--action); box-shadow: 0 0 0 3px rgba(93,109,255,.3); }
+        .of-input:disabled { background: var(--neutral-100); border-color: var(--neutral-300); color: var(--neutral-600); cursor: not-allowed; }
+        .of-field.is-error .of-input { border-color: var(--danger-700); }
+        .of-help { display: flex; gap: 6px; align-items: flex-start; font: 400 12px/16px var(--font-sans); color: var(--text-secondary); }
+        .of-help.is-error { color: var(--danger-700); font-weight: 500; }
+        .of-help .ic { width: 16px; height: 16px; }
+        /* choice controls */
+        .of-check { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; }
+        .of-check input[type=checkbox], .of-check input[type=radio] { appearance: none; width: 22px; height: 22px; margin: 0; border: 2px solid var(--border-control); background: #fff; display: grid; place-content: center; cursor: pointer; flex: none; transition: background var(--motion-fast), border-color var(--motion-fast); }
+        .of-check input[type=checkbox] { border-radius: 4px; } .of-check input[type=radio] { border-radius: 50%; }
+        .of-check input:checked { background: var(--action); border-color: var(--action); }
+        .of-check input[type=checkbox]:checked { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 16px; background-position: center; background-repeat: no-repeat; }
+        .of-check input[type=radio]:checked { box-shadow: inset 0 0 0 4px #fff; }
+        .of-switch { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; cursor: pointer; }
+        .of-switch input { appearance: none; width: 48px; height: 28px; margin: 0; border-radius: 9999px; background: var(--neutral-500); position: relative; cursor: pointer; flex: none; transition: background var(--motion-base); }
+        .of-switch input::after { content: ''; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: var(--elev-1); transition: transform var(--motion-base) var(--ease-standard); }
+        .of-switch input:checked { background: var(--action); } .of-switch input:checked::after { transform: translateX(20px); }
+        .of-days { display: flex; gap: 8px; flex-wrap: wrap; }
+        .of-day { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border-control); background: #fff; font: 500 13px var(--font-sans); color: var(--text-primary); cursor: pointer; transition: background var(--motion-fast), color var(--motion-fast); }
+        .of-day[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: #fff; }
+        .of-seg { display: inline-grid; grid-auto-flow: column; gap: 4px; padding: 4px; background: var(--neutral-100); border-radius: var(--radius-sm); }
+        .of-seg button { min-height: 40px; padding: 0 18px; border: 0; border-radius: 3px; background: transparent; font: 500 14px var(--font-sans); color: var(--text-secondary); cursor: pointer; }
+        .of-seg button[aria-selected="true"] { background: var(--neutral-900); color: #fff; }
+        /* cards + status */
+        .of-card { background: #fff; border: 1px solid var(--divider); border-radius: var(--radius-md); box-shadow: var(--elev-1); padding: 16px; }
+        .of-meet { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; }
+        .of-date { width: 56px; height: 64px; border-radius: var(--radius-sm); display: grid; place-content: center; text-align: center; font-weight: 700; }
+        .of-date b { display: block; font-size: 22px; line-height: 24px; } .of-date span { font: 500 12px/16px var(--font-sans); }
+        .of-date--success { background: var(--success-500); color: var(--neutral-900); }
+        .of-date--danger { background: var(--danger-600); color: #fff; }
+        .of-date--info { background: var(--action); color: #fff; }
+        .of-date--warning { background: var(--warning-500); color: var(--neutral-900); }
+        .of-title { font: 700 16px/24px var(--font-sans); }
+        .of-meta { font: 400 12px/16px var(--font-sans); color: var(--text-secondary); margin-top: 2px; }
+        .of-status { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/16px var(--font-sans); }
+        .of-status .ic { width: 16px; height: 16px; stroke-width: 2.4; }
+        .of-status--success { color: var(--success-700); } .of-status--warning { color: var(--warning-800); } .of-status--danger { color: var(--danger-700); } .of-status--info { color: var(--info); }
+        .of-avatars { display: inline-flex; }
+        .of-avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-content: center; font: 700 11px var(--font-sans); border: 2px solid #fff; margin-left: -8px; color: #fff; }
+        .of-avatars .of-avatar:first-child { margin-left: 0; }
+        /* phone frame + nav */
+        .of-phone { width: 300px; max-width: 100%; margin: 0 auto; background: var(--neutral-100); border-radius: 28px; border: 1px solid var(--divider); box-shadow: var(--elev-2); overflow: hidden; position: relative; }
+        .of-appbar { height: 56px; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; background: #fff; font: 700 16px/24px var(--font-sans); text-align: center; }
+        .of-nav { display: grid; grid-template-columns: repeat(5, 1fr); background: #fff; border-top: 1px solid var(--divider); padding-bottom: 4px; align-items: end; }
+        .of-nav button { display: grid; justify-items: center; gap: 2px; min-height: 56px; padding: 8px 0 6px; border: 0; background: transparent; color: var(--neutral-700); font: 500 11px/14px var(--font-sans); cursor: pointer; }
+        .of-nav button[aria-current="page"] { color: var(--primary-700); font-weight: 700; }
+        .of-nav .of-fab { background: var(--neutral-900); color: #fff; min-height: 56px; padding: 0; }
+        .of-fab { width: 56px; height: 56px; border-radius: 50%; background: var(--neutral-900); color: #fff; display: grid; place-content: center; border: 0; box-shadow: var(--elev-3); transform: translateY(-16px); cursor: pointer; margin: 0 auto; }
+        /* alerts, toast, empty, skeleton, steps */
+        .of-alert { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 12px 16px; border-radius: var(--radius-md); border-left: 4px solid; }
+        .of-alert b { display: block; font: 700 14px/20px var(--font-sans); } .of-alert p { margin: 2px 0 0; color: var(--text-secondary); }
+        .of-alert--info { background: var(--primary-50); border-color: var(--primary-600); } .of-alert--info .ic { color: var(--primary-700); }
+        .of-alert--success { background: var(--success-50); border-color: var(--success-600); } .of-alert--success .ic { color: var(--success-700); }
+        .of-alert--warning { background: var(--warning-50); border-color: var(--warning-500); } .of-alert--warning .ic { color: var(--warning-800); }
+        .of-alert--error { background: var(--danger-50); border-color: var(--danger-600); } .of-alert--error .ic { color: var(--danger-700); }
+        .of-toast { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--neutral-900); color: #fff; padding: 12px 16px; border-radius: var(--radius-sm); box-shadow: var(--elev-3); }
+        .of-toast button { min-height: 40px; padding: 0 8px; background: none; border: 0; color: #A3ADFF; font: 700 14px var(--font-sans); cursor: pointer; }
+        .of-empty { text-align: center; padding: 24px 16px; display: grid; justify-items: center; gap: 8px; }
+        .of-empty-art { width: 88px; height: 88px; border-radius: 50%; background: var(--primary-50); color: var(--primary-600); display: grid; place-content: center; margin-bottom: 8px; }
+        .of-empty-art .ic { width: 40px; height: 40px; }
+        .of-empty h4 { font: 700 16px/24px var(--font-sans); } .of-empty p { color: var(--text-secondary); max-width: 22rem; }
+        .of-skel { border-radius: 4px; background: linear-gradient(90deg, var(--neutral-200) 25%, var(--neutral-100) 50%, var(--neutral-200) 75%); background-size: 200% 100%; animation: of-shimmer 1.4s linear infinite; }
+        @keyframes of-shimmer { to { background-position: -200% 0; } }
+        .of-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .of-step { display: grid; gap: 8px; font: 500 12px/16px var(--font-sans); color: var(--text-secondary); }
+        .of-step i { height: 4px; border-radius: 2px; background: var(--neutral-300); display: block; }
+        .of-step.done i, .of-step.on i { background: var(--action); }
+        .of-step.on { color: var(--text-primary); font-weight: 700; }
+        dialog.of-dialog { border: 0; border-radius: var(--radius-lg); padding: 24px; width: min(92vw, 380px); box-shadow: var(--elev-3); font-family: var(--font-sans); }
+        dialog.of-dialog::backdrop { background: rgba(45,45,45,.55); }
+        dialog.of-dialog h4 { font: 700 18px/26px var(--font-sans); } dialog.of-dialog p { margin: 8px 0 20px; color: var(--text-secondary); font-size: 14px; line-height: 20px; }
+        dialog.of-dialog .row { display: grid; gap: 8px; }
+        .of-toast-host { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 90; width: min(92vw, 420px); }
+        .of-toast-host .of-toast { animation: of-in var(--motion-slow) var(--ease-standard); }
+        @keyframes of-in { from { opacity: 0; transform: translateY(12px); } }
+        .do-dont { display: grid; gap: 1rem; } @media (min-width: 760px) { .do-dont { grid-template-columns: 1fr 1fr; } }
+        .dd { border-radius: 10px; padding: 1.1rem 1.2rem; border: 1px solid; font-size: .92rem; line-height: 1.5; }
+        .dd.do { border-color: #89C053; background: #F4FAEC; } .dd.dont { border-color: #E8553E; background: #FEF3F0; }
+        .dd b { display: block; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .4rem; }
+        .dd.do b { color: #2F6014; } .dd.dont b { color: #B5301E; }
+        @media (prefers-reduced-motion: reduce) { .of-skel, .motion-dot, .of-btn[aria-busy="true"]::before { animation: none; } .of *, .of-toast-host * { transition: none !important; } html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 0 0 6v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a2 2 0 0 1 0-6V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h3M20 17v4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-err" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M4 21V4a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v17"/><path d="M2 21h20"/><path d="M13 12v.01"/></symbol>
+</svg>
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html">Case Study</a>
+      <a href="/DesignSystem.html" aria-current="page">Design System</a>
+      <a href="/Photos.html">Photos</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
+
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html">Case Study</a>
+    <a href="/DesignSystem.html" aria-current="page">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- Hero -->
+    <section class="px-6 py-14 md:py-20" style="background:#F2F2F2">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-end">
+            <div class="lg:col-span-8">
+                <div class="ds-label mb-6">Service · 02 &nbsp;/&nbsp; Case: Officiti</div>
+                <h1 class="ds-hero-title">Design <em>Systems.</em></h1>
+                <p class="ds-lead mt-8">Build scalable design systems that ensure consistency across all touchpoints.</p>
+                <p class="ds-lead mt-4" style="font-size:1rem">Below is a complete, working design system for <b>Officiti</b>, a B2B platform for sharing and booking workspace. It starts from the six colors and Roboto type scale in the original case study, then fixes accessibility gaps and adds tokens, components and patterns based on established UX laws and WCAG 2.2.</p>
+                <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    <a href="#tokens" class="ds-btn">Get the tokens <span>↓</span></a>
+                    <a href="/Casedetailofficiti.html" class="ds-link">Read the Officiti case study →</a>
+                </div>
+            </div>
+            <div class="lg:col-span-4">
+                <dl style="border-top:1px solid rgba(10,10,10,.2)">
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Version</dt><dd>1.0</dd></div>
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Platforms</dt><dd>iOS · Android · Web</dd></div>
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Typeface</dt><dd>Roboto</dd></div>
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Base grid</dt><dd>4 pt</dd></div>
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Standard</dt><dd>WCAG 2.2 AA</dd></div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 py-12 ds-wrap">
+        <!-- Table of contents -->
+        <nav class="ds-toc" aria-label="On this page">
+            <div class="ds-label mb-2">Principles</div>
+            <a href="#principles">Design principles</a>
+            <div class="ds-label grp">Foundations</div>
+            <a href="#color">Color</a>
+            <a href="#type">Typography</a>
+            <a href="#space">Space, shape, elevation</a>
+            <a href="#icons">Iconography</a>
+            <a href="#grid">Layout grid</a>
+            <a href="#motion">Motion</a>
+            <div class="ds-label grp">Build</div>
+            <a href="#components">Components</a>
+            <a href="#patterns">Patterns</a>
+            <div class="ds-label grp">Quality</div>
+            <a href="#laws">UX laws map</a>
+            <a href="#a11y">Accessibility</a>
+            <a href="#tokens">Design tokens</a>
+            <a href="#governance">Governance</a>
+        </nav>
+
+        <div class="min-w-0">
+
+        <!-- ================= PRINCIPLES ================= -->
+        <section id="principles" class="ds-sec">
+            <div class="ds-label">01 · Principles</div>
+            <h2 class="ds-h2">Six rules every decision <em>is tested against.</em></h2>
+            <p class="ds-p mt-5">Officiti serves working professionals who book desks, rooms and visitors on the go, often one-handed and in a hurry. These principles turn established UX research into constraints that the components below obey.</p>
+            <div class="ds-principles">
+                <div class="ds-pr"><span class="n">01</span><div><h4>Clear before clever</h4><p>Every element earns its place. Plain labels, generous space and one focal point per screen.</p><small>Aesthetic-Usability · Minimalist design</small></div></div>
+                <div class="ds-pr"><span class="n">02</span><div><h4>Fewer choices, faster decisions</h4><p>Break booking into short steps and reveal detail progressively. Keep menus to five items or fewer.</p><small>Hick's Law · Miller's Law</small></div></div>
+                <div class="ds-pr"><span class="n">03</span><div><h4>Within reach</h4><p>Primary actions live in the thumb zone with targets of at least 48 px and 8 px between them.</p><small>Fitts's Law</small></div></div>
+                <div class="ds-pr"><span class="n">04</span><div><h4>Familiar patterns</h4><p>Use platform conventions for navigation, forms and pickers so nobody has to learn Officiti first.</p><small>Jakob's Law · Consistency</small></div></div>
+                <div class="ds-pr"><span class="n">05</span><div><h4>Always show status</h4><p>Respond within 400 ms, show progress for anything longer, and confirm every result in words.</p><small>Doherty Threshold · Visibility of status</small></div></div>
+                <div class="ds-pr"><span class="n">06</span><div><h4>Accessible by default</h4><p>Contrast, focus, labels and touch size are built into each token and component, not added later.</p><small>WCAG 2.2 AA · Inclusive design</small></div></div>
+            </div>
+        </section>
+
+        <!-- ================= COLOR ================= -->
+        <section id="color" class="ds-sec">
+            <div class="ds-label">02 · Foundations · Color</div>
+            <h2 class="ds-h2">Same brand, <em>accessible in use.</em></h2>
+            <p class="ds-p mt-5">The original style guide defined six colors. They are kept as the brand identity. Testing them against WCAG showed that several cannot carry text or white labels, so each gets a darker functional variant for text and controls.</p>
+
+            <h3 class="ds-h3">Brand colors</h3>
+            <div class="sw-row">
+                <div class="sw dk" style="background:#5D6DFF"><b>Blue</b>#5D6DFF</div>
+                <div class="sw dk" style="background:#E8553E"><b>Red</b>#E8553E</div>
+                <div class="sw lt" style="background:#FFAE02"><b>Amber</b>#FFAE02</div>
+                <div class="sw dk" style="background:#2D2D2D"><b>Ink</b>#2D2D2D</div>
+                <div class="sw lt" style="background:#BDBDBD"><b>Gray</b>#BDBDBD</div>
+                <div class="sw lt" style="background:#89C053"><b>Green</b>#89C053</div>
+            </div>
+            <p class="ds-p mt-4" style="font-size:.92rem">Use brand colors for illustration, highlights, large graphics and date tiles. Use the functional scales below for text, icons and controls.</p>
+
+            <h3 class="ds-h3">Functional scales</h3>
+            <div class="sw-name">Primary / action</div>
+            <div class="sw-row">
+                <div class="sw lt" style="background:#EEF0FF"><b>50</b>#EEF0FF</div><div class="sw lt" style="background:#E0E4FF"><b>100</b>#E0E4FF</div><div class="sw lt" style="background:#C4CBFF"><b>200</b>#C4CBFF</div><div class="sw lt" style="background:#A3ADFF"><b>300</b>#A3ADFF</div><div class="sw lt" style="background:#8290FF"><b>400</b>#8290FF</div>
+                <div class="sw dk" style="background:#5D6DFF"><b>500 · brand</b>#5D6DFF</div><div class="sw dk" style="background:#4351E8"><b>600 · action</b>#4351E8</div><div class="sw dk" style="background:#3A46D1"><b>700 · hover</b>#3A46D1</div><div class="sw dk" style="background:#2F3AB5"><b>800 · pressed</b>#2F3AB5</div><div class="sw dk" style="background:#232C8C"><b>900</b>#232C8C</div>
+            </div>
+            <div class="sw-name">Danger</div>
+            <div class="sw-row">
+                <div class="sw lt" style="background:#FDECE8"><b>50</b>#FDECE8</div><div class="sw lt" style="background:#FAD3CB"><b>100</b>#FAD3CB</div><div class="sw dk" style="background:#E8553E"><b>500 · brand</b>#E8553E</div><div class="sw dk" style="background:#C83E2A"><b>600</b>#C83E2A</div><div class="sw dk" style="background:#B5301E"><b>700 · text</b>#B5301E</div><div class="sw dk" style="background:#8F2415"><b>800</b>#8F2415</div>
+            </div>
+            <div class="sw-name">Success</div>
+            <div class="sw-row">
+                <div class="sw lt" style="background:#EAF5DD"><b>50</b>#EAF5DD</div><div class="sw lt" style="background:#D5EBBB"><b>100</b>#D5EBBB</div><div class="sw lt" style="background:#89C053"><b>500 · brand</b>#89C053</div><div class="sw dk" style="background:#3F7D1E"><b>600</b>#3F7D1E</div><div class="sw dk" style="background:#2F6014"><b>700 · text</b>#2F6014</div>
+            </div>
+            <div class="sw-name">Warning</div>
+            <div class="sw-row">
+                <div class="sw lt" style="background:#FFF4D6"><b>50</b>#FFF4D6</div><div class="sw lt" style="background:#FFE7A8"><b>100</b>#FFE7A8</div><div class="sw lt" style="background:#FFAE02"><b>500 · brand</b>#FFAE02</div><div class="sw dk" style="background:#7A5200"><b>800 · text</b>#7A5200</div>
+            </div>
+            <div class="sw-name">Neutral</div>
+            <div class="sw-row">
+                <div class="sw lt" style="background:#FFFFFF"><b>0</b>#FFFFFF</div><div class="sw lt" style="background:#FAFAFA"><b>50</b>#FAFAFA</div><div class="sw lt" style="background:#F5F5F5"><b>100</b>#F5F5F5</div><div class="sw lt" style="background:#EBEBEB"><b>200</b>#EBEBEB</div><div class="sw lt" style="background:#D9D9D9"><b>300</b>#D9D9D9</div><div class="sw lt" style="background:#BDBDBD"><b>400 · brand</b>#BDBDBD</div><div class="sw dk" style="background:#8A8A8A"><b>500 · border</b>#8A8A8A</div><div class="sw dk" style="background:#6B6B6B"><b>600 · muted</b>#6B6B6B</div><div class="sw dk" style="background:#5C5C5C"><b>700 · body 2</b>#5C5C5C</div><div class="sw dk" style="background:#424242"><b>800</b>#424242</div><div class="sw dk" style="background:#2D2D2D"><b>900 · ink</b>#2D2D2D</div>
+            </div>
+
+            <h3 class="ds-h3">What changed from the case study, and why</h3>
+            <div class="ds-scroll"><table class="ds-tbl">
+                <thead><tr><th>Use</th><th>Was</th><th>Now</th><th>Reason</th></tr></thead>
+                <tbody>
+                    <tr><td>Buttons, links</td><td>#5D6DFF</td><td>#4351E8 (action-600)</td><td>White text on #5D6DFF is 4.12:1, below the 4.5:1 minimum for 14 px text.</td></tr>
+                    <tr><td>Error text, destructive</td><td>#E8553E</td><td>#B5301E text, #C83E2A fill</td><td>#E8553E on white is 3.62:1. The darker steps reach 6.17:1 and 5.03:1.</td></tr>
+                    <tr><td>Secondary and placeholder text</td><td>#BDBDBD</td><td>#5C5C5C / #6B6B6B</td><td>#BDBDBD on white is 1.88:1 and was hard to read in ticket details.</td></tr>
+                    <tr><td>Input borders</td><td>Light gray fill only</td><td>#8A8A8A 1.5 px border</td><td>Controls need 3:1 against the background to be found (WCAG 1.4.11).</td></tr>
+                    <tr><td>Text on amber and green</td><td>White</td><td>Ink #2D2D2D</td><td>White on #FFAE02 is 1.86:1 and on #89C053 is 2.16:1. Ink reaches 7.42:1 and 6.38:1.</td></tr>
+                    <tr><td>Status meaning</td><td>Color only</td><td>Color + icon + word</td><td>Color alone fails WCAG 1.4.1 and excludes color-blind users.</td></tr>
+                </tbody>
+            </table></div>
+
+            <h3 class="ds-h3">Contrast matrix <span style="font-weight:400;color:rgba(10,10,10,.5)">(calculated live)</span></h3>
+            <p class="ds-p">Normal text needs 4.5:1, large text and UI components 3:1, and AAA text 7:1.</p>
+            <div class="ds-panel ds-scroll" style="padding:0 1.4rem 1rem">
+                <table class="ds-tbl" id="contrast-table">
+                    <thead><tr><th>Pair</th><th>Sample</th><th>Ratio</th><th>AA text</th><th>AA large / UI</th><th>AAA text</th></tr></thead>
+                    <tbody>
+                        <tr data-fg="#2D2D2D" data-bg="#FFFFFF" data-l="Primary text on white"></tr>
+                        <tr data-fg="#5C5C5C" data-bg="#FFFFFF" data-l="Secondary text on white"></tr>
+                        <tr data-fg="#6B6B6B" data-bg="#FFFFFF" data-l="Muted text on white"></tr>
+                        <tr data-fg="#6B6B6B" data-bg="#F5F5F5" data-l="Muted text on subtle surface"></tr>
+                        <tr data-fg="#FFFFFF" data-bg="#4351E8" data-l="Button label on action-600"></tr>
+                        <tr data-fg="#3A46D1" data-bg="#FFFFFF" data-l="Link on white (action-700)"></tr>
+                        <tr data-fg="#B5301E" data-bg="#FFFFFF" data-l="Error text on white"></tr>
+                        <tr data-fg="#FFFFFF" data-bg="#C83E2A" data-l="Label on danger-600"></tr>
+                        <tr data-fg="#2F6014" data-bg="#FFFFFF" data-l="Success text on white"></tr>
+                        <tr data-fg="#7A5200" data-bg="#FFF4D6" data-l="Warning text on warning-50"></tr>
+                        <tr data-fg="#2D2D2D" data-bg="#FFAE02" data-l="Ink on amber"></tr>
+                        <tr data-fg="#2D2D2D" data-bg="#89C053" data-l="Ink on green"></tr>
+                        <tr data-fg="#8A8A8A" data-bg="#FFFFFF" data-l="Input border on white" data-ui="1"></tr>
+                        <tr data-fg="#5D6DFF" data-bg="#FFFFFF" data-l="Focus ring on white" data-ui="1"></tr>
+                        <tr data-fg="#FFFFFF" data-bg="#5D6DFF" data-l="Old: label on brand blue" class="old"></tr>
+                        <tr data-fg="#FFFFFF" data-bg="#E8553E" data-l="Old: label on brand red" class="old"></tr>
+                        <tr data-fg="#BDBDBD" data-bg="#FFFFFF" data-l="Old: gray text on white" class="old"></tr>
+                        <tr data-fg="#FFFFFF" data-bg="#89C053" data-l="Old: label on brand green" class="old"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= TYPE ================= -->
+        <section id="type" class="ds-sec">
+            <div class="ds-label">03 · Foundations · Typography</div>
+            <h2 class="ds-h2">Roboto, tuned for <em>small screens.</em></h2>
+            <p class="ds-p mt-5">Roboto stays as the single typeface. It is designed for mobile, has excellent numerals for times and dates, and ships in every weight the app needs. The original scale is kept and completed, with one change: the 10 px sizes are raised to 11 px because text under 11 px is hard to read on phones.</p>
+            <div class="ds-panel of" style="display:grid;gap:2rem;align-items:center" >
+                <div class="ds-grid2" style="align-items:center">
+                    <div class="of-specimen">Aa</div>
+                    <div>
+                        <div style="font:700 28px/36px var(--font-sans)">Roboto</div>
+                        <div style="font:400 13px/1.7 var(--font-sans);color:#6B6B6B;margin-top:8px;word-break:break-all">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</div>
+                        <div style="font:400 13px/1.5 var(--font-sans);color:#5C5C5C;margin-top:10px">Weights: Regular 400 · Medium 500 · Bold 700. The original "Semibold" maps to Medium 500, the closest Roboto weight.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-panel of">
+                <div class="type-row"><div class="m"><b>Display</b><br>28 / 36 · Bold</div><div style="font:700 28px/36px var(--font-sans)">Welcome back, Saagar</div></div>
+                <div class="type-row"><div class="m"><b>Title</b><br>20 / 28 · Bold</div><div style="font:700 20px/28px var(--font-sans)">Create a meeting</div></div>
+                <div class="type-row"><div class="m"><b>Header</b><br>16 / 24 · Bold</div><div style="font:700 16px/24px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+                <div class="type-row"><div class="m"><b>Subheader</b><br>14 / 20 · Medium</div><div style="font:500 14px/20px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+                <div class="type-row"><div class="m"><b>Body / Button</b><br>14 / 20 · Regular, Medium</div><div style="font:400 14px/20px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+                <div class="type-row"><div class="m"><b>Label</b><br>12 / 16 · Bold</div><div style="font:700 12px/16px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+                <div class="type-row"><div class="m"><b>Caption</b><br>12 / 16 · Regular</div><div style="font:400 12px/16px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+                <div class="type-row"><div class="m"><b>Micro</b><br>11 / 14 · Medium (was 10)</div><div style="font:500 11px/14px var(--font-sans)">The spectacle before us was indeed sublime.</div></div>
+            </div>
+            <div class="ds-checks" style="margin-top:1.6rem">
+                <li><b>Line height.</b> At least 1.4 for body text (WCAG 1.4.12) so paragraphs stay readable.</li>
+                <li><b>Line length.</b> Keep reading text to roughly 45 to 75 characters per line.</li>
+                <li><b>Scaling.</b> Define sizes in rem or platform text styles so users' font settings and 200% zoom work.</li>
+                <li><b>Case.</b> Use sentence case. Reserve uppercase for very short overlines.</li>
+                <li><b>Numbers.</b> Use tabular numerals for times, prices and counts so columns align.</li>
+                <li><b>Hierarchy.</b> Limit a screen to three type sizes so the eye finds the main point fast.</li>
+            </div>
+        </section>
+
+        <!-- ================= SPACE ================= -->
+        <section id="space" class="ds-sec">
+            <div class="ds-label">04 · Foundations · Space, shape, elevation</div>
+            <h2 class="ds-h2">One 4-point grid, <em>everywhere.</em></h2>
+            <div class="ds-grid2">
+                <div class="ds-panel of">
+                    <div class="ds-label" style="margin-bottom:.6rem">Spacing scale</div>
+                    <div class="sp-row"><span>space-1 · 4</span><i class="sp-bar" style="width:4px"></i></div>
+                    <div class="sp-row"><span>space-2 · 8</span><i class="sp-bar" style="width:8px"></i></div>
+                    <div class="sp-row"><span>space-3 · 12</span><i class="sp-bar" style="width:12px"></i></div>
+                    <div class="sp-row"><span>space-4 · 16</span><i class="sp-bar" style="width:16px"></i></div>
+                    <div class="sp-row"><span>space-5 · 20</span><i class="sp-bar" style="width:20px"></i></div>
+                    <div class="sp-row"><span>space-6 · 24</span><i class="sp-bar" style="width:24px"></i></div>
+                    <div class="sp-row"><span>space-8 · 32</span><i class="sp-bar" style="width:32px"></i></div>
+                    <div class="sp-row"><span>space-10 · 40</span><i class="sp-bar" style="width:40px"></i></div>
+                    <div class="sp-row"><span>space-12 · 48</span><i class="sp-bar" style="width:48px"></i></div>
+                    <div class="sp-row"><span>space-16 · 64</span><i class="sp-bar" style="width:64px"></i></div>
+                    <p class="ds-p" style="font-size:.85rem;margin-top:.8rem">Related items sit closer than unrelated ones (Law of Proximity). Use 8 inside a component, 16 between fields, 24 to 32 between groups.</p>
+                </div>
+                <div class="ds-panel of">
+                    <div class="ds-label" style="margin-bottom:.9rem">Touch target</div>
+                    <div style="display:flex;gap:8px;align-items:center">
+                        <div class="tgt"><i></i></div><div class="tgt"><i></i></div><div class="tgt"><i></i></div>
+                    </div>
+                    <p class="ds-p" style="font-size:.85rem;margin-top:.9rem">Interactive area is at least <b>48 × 48 px</b>, even when the visible icon is 24 px. Keep at least 8 px between neighboring targets to prevent mis-taps (Fitts's Law, WCAG 2.5.8).</p>
+                    <div class="ds-label" style="margin:1.6rem 0 .7rem">Radius</div>
+                    <div style="display:flex;gap:14px;align-items:flex-end;font:400 12px var(--font-sans);color:#5C5C5C">
+                        <div><div style="width:56px;height:56px;background:var(--primary-100);border:1.5px solid var(--primary-600);border-radius:4px"></div>sm · 4<br>buttons, inputs</div>
+                        <div><div style="width:56px;height:56px;background:var(--primary-100);border:1.5px solid var(--primary-600);border-radius:8px"></div>md · 8<br>cards</div>
+                        <div><div style="width:56px;height:56px;background:var(--primary-100);border:1.5px solid var(--primary-600);border-radius:16px"></div>lg · 16<br>sheets</div>
+                        <div><div style="width:56px;height:56px;background:var(--primary-100);border:1.5px solid var(--primary-600);border-radius:9999px"></div>full<br>avatars, FAB</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-panel" style="background:#F5F5F5">
+                <div class="ds-label" style="margin-bottom:1rem">Elevation</div>
+                <div class="ds-grid3 of">
+                    <div class="elev-box" style="box-shadow:var(--elev-1)">elev-1<br><span style="color:#5C5C5C;font-weight:400">cards, inputs</span></div>
+                    <div class="elev-box" style="box-shadow:var(--elev-2)">elev-2<br><span style="color:#5C5C5C;font-weight:400">sticky bars, menus</span></div>
+                    <div class="elev-box" style="box-shadow:var(--elev-3)">elev-3<br><span style="color:#5C5C5C;font-weight:400">dialogs, FAB, toast</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ICONS ================= -->
+        <section id="icons" class="ds-sec">
+            <div class="ds-label">05 · Foundations · Iconography</div>
+            <h2 class="ds-h2">One icon family, <em>drawn on a 24 px grid.</em></h2>
+            <p class="ds-p mt-5">The original set (wifi, visitors, tickets, alerts, notifications, attachments, home, calendar, dropdown, more, support, lock, back) is redrawn as a consistent outline family with a 2 px stroke and round caps, and completed with the icons needed for status, search and scanning.</p>
+            <div class="ds-panel of" style="padding:0;overflow:hidden">
+                <div class="icon-grid">
+                    <div class="icon-cell"><svg class="ic"><use href="#i-wifi"/></svg>wifi</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-users"/></svg>visitors</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-ticket"/></svg>ticket</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-alert"/></svg>alert</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-bell"/></svg>bell</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-clip"/></svg>attach</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-home"/></svg>home</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-cal"/></svg>calendar</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-chev"/></svg>chevron</div>
+                    <div class="icon-cell"><svg class="ic ic-fill"><use href="#i-more"/></svg>more</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-headset"/></svg>support</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-lock"/></svg>lock</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-back"/></svg>back</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-qr"/></svg>scan</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-plus"/></svg>add</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-check"/></svg>check</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-x"/></svg>close</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-clock"/></svg>pending</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-pin"/></svg>location</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-search"/></svg>search</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-info"/></svg>info</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-err"/></svg>error</div>
+                    <div class="icon-cell"><svg class="ic"><use href="#i-door"/></svg>entry</div>
+                </div>
+            </div>
+            <div class="ds-checks">
+                <li><b>Sizes.</b> 16 (inline with text), 24 (default), 40 (empty states).</li>
+                <li><b>Meaning.</b> An icon that is not universal always gets a text label. Icon-only buttons need an accessible name.</li>
+                <li><b>Color.</b> Icons inherit text color and follow the same contrast rules as text.</li>
+                <li><b>Consistency.</b> Never mix filled and outline icons in one row. Active navigation uses a bolder label, not a different icon style.</li>
+            </div>
+        </section>
+
+        <!-- ================= GRID ================= -->
+        <section id="grid" class="ds-sec">
+            <div class="ds-label">06 · Foundations · Layout grid</div>
+            <h2 class="ds-h2">Mobile first, <em>three breakpoints.</em></h2>
+            <div class="ds-panel">
+                <table class="ds-tbl">
+                    <thead><tr><th>Breakpoint</th><th>Width</th><th>Columns</th><th>Margin</th><th>Gutter</th></tr></thead>
+                    <tbody>
+                        <tr><td>Mobile</td><td>360 to 767</td><td>4</td><td>16</td><td>16</td></tr>
+                        <tr><td>Tablet</td><td>768 to 1199</td><td>8</td><td>24</td><td>24</td></tr>
+                        <tr><td>Desktop web</td><td>1200 and up</td><td>12, max width 1200</td><td>32</td><td>24</td></tr>
+                    </tbody>
+                </table>
+                <div class="col-demo c4"><div></div><div></div><div></div><div></div></div>
+                <div class="col-demo c8"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <div class="col-demo c12"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+        </section>
+
+        <!-- ================= MOTION ================= -->
+        <section id="motion" class="ds-sec">
+            <div class="ds-label">07 · Foundations · Motion</div>
+            <h2 class="ds-h2">Fast enough to feel <em>instant.</em></h2>
+            <div class="ds-grid2">
+                <div class="ds-panel">
+                    <table class="ds-tbl">
+                        <thead><tr><th>Token</th><th>Time</th><th>Use</th></tr></thead>
+                        <tbody>
+                            <tr><td>motion-fast</td><td>100 ms</td><td>Press, toggle, hover</td></tr>
+                            <tr><td>motion-base</td><td>200 ms</td><td>Fields, chips, menus</td></tr>
+                            <tr><td>motion-slow</td><td>300 ms</td><td>Sheets, dialogs, toasts</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="ds-p" style="font-size:.85rem;margin-top:1rem">Easing is <code>cubic-bezier(.2, 0, 0, 1)</code>: quick start, soft landing.</p>
+                </div>
+                <div class="ds-panel of">
+                    <div class="ds-label" style="margin-bottom:1rem">Standard easing</div>
+                    <div class="motion-dot"></div>
+                </div>
+            </div>
+            <div class="ds-checks">
+                <li><b>Feedback under 400 ms.</b> Anything slower shows a loading state (Doherty Threshold).</li>
+                <li><b>Motion explains.</b> Animate to show where something came from or went, never as decoration.</li>
+                <li><b>Respect user settings.</b> With reduced motion on, transitions are removed and state changes are instant.</li>
+                <li><b>No flashing.</b> Nothing flashes more than three times per second.</li>
+            </div>
+        </section>
+
+        <!-- ================= COMPONENTS ================= -->
+        <section id="components" class="ds-sec">
+            <div class="ds-label">08 · Components</div>
+            <h2 class="ds-h2">Every component, <em>live and interactive.</em></h2>
+            <p class="ds-p mt-5">These are real, working components built with the tokens above. Tab through them, press them and read the specs. Each states the UX rule behind it.</p>
+
+            <!-- Buttons -->
+            <h3 class="ds-h3">Buttons</h3>
+            <div class="ds-panel of">
+                <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+                    <button class="of-btn of-btn--primary">Book meeting room</button>
+                    <button class="of-btn of-btn--secondary">Add visitor</button>
+                    <button class="of-btn of-btn--text">Cancel</button>
+                    <button class="of-btn of-btn--danger">Cancel meeting</button>
+                    <button class="of-btn of-btn--primary" disabled>Unavailable</button>
+                    <button class="of-btn of-btn--primary" id="demo-loading" type="button">Try loading state</button>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px;padding-top:24px;border-top:1px solid var(--divider)">
+                    <button class="of-btn of-btn--primary">Large · 48</button>
+                    <button class="of-btn of-btn--primary of-btn--md">Medium · 40</button>
+                    <button class="of-btn of-btn--primary of-btn--sm">Small · 32</button>
+                    <button class="of-icon-btn" aria-label="Go back"><svg class="ic"><use href="#i-back"/></svg></button>
+                    <button class="of-icon-btn" aria-label="Notifications"><svg class="ic"><use href="#i-bell"/></svg></button>
+                    <button class="of-icon-btn" aria-label="More options"><svg class="ic ic-fill"><use href="#i-more"/></svg></button>
+                </div>
+            </div>
+            <div class="ds-spec">
+                <div><b>Anatomy.</b> 48 px high on mobile (40 and 32 for dense web tables), 24 px side padding, 4 px radius, label 14/20 Medium.</div>
+                <div><b>Hierarchy.</b> One primary button per screen so the main action stands out (Von Restorff). Secondary for alternatives, text for low-risk dismissals.</div>
+                <div><b>Labels.</b> Verb plus object: "Book meeting room", never "Submit" or "OK".</div>
+                <div><b>States.</b> Default, hover, pressed, focus (3 px ring), disabled, loading. Loading keeps the label and sets <code>aria-busy</code>.</div>
+                <div><b>Placement.</b> On mobile, the primary action is full width and anchored at the bottom, inside the thumb zone.</div>
+            </div>
+
+            <!-- Fields -->
+            <h3 class="ds-h3">Form fields</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel of" style="display:grid;gap:18px;align-content:start">
+                    <div class="of-field"><label class="of-label" for="f-title">Meeting title</label><input class="of-input" id="f-title" placeholder="e.g. Sprint planning"></div>
+                    <div class="of-field"><label class="of-label" for="f-room">Meeting room</label><select class="of-select" id="f-room"><option>Choose a room</option><option>Conference call room</option><option>Board room</option></select></div>
+                    <div class="of-field"><label class="of-label" for="f-desc">Description <span class="of-opt">(optional)</span></label><textarea class="of-textarea" id="f-desc" placeholder="What should attendees prepare?"></textarea><div class="of-help">Keep it short. Attendees see this in their invite.</div></div>
+                    <div class="of-field"><label class="of-label" for="f-from">Time</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><input class="of-input" id="f-from" type="time" value="13:00" aria-label="From"><input class="of-input" type="time" value="15:00" aria-label="To"></div></div>
+                </div>
+                <div class="ds-panel of" style="display:grid;gap:18px;align-content:start">
+                    <div class="ds-label">States</div>
+                    <div class="of-field"><span class="of-label">Default</span><input class="of-input" placeholder="Placeholder text" aria-label="Default state"></div>
+                    <div class="of-field"><span class="of-label">Focus</span><input class="of-input" value="Typing here" style="border-color:var(--action);box-shadow:0 0 0 3px rgba(93,109,255,.3)" aria-label="Focus state"></div>
+                    <div class="of-field"><span class="of-label">Filled</span><input class="of-input" value="saagar@officiti.com" aria-label="Filled state"></div>
+                    <div class="of-field is-error"><label class="of-label" for="f-err">Mobile number</label><input class="of-input" id="f-err" value="98765" aria-invalid="true" aria-describedby="f-err-h"><div class="of-help is-error" id="f-err-h"><svg class="ic"><use href="#i-err"/></svg>Enter a 10-digit mobile number, for example 9876543210.</div></div>
+                    <div class="of-field"><span class="of-label">Disabled</span><input class="of-input" value="Locked by admin" disabled aria-label="Disabled state"></div>
+                </div>
+            </div>
+            <div class="ds-spec">
+                <div><b>Labels above, always visible.</b> Placeholders disappear and are low contrast, so they never replace a label (recognition over recall).</div>
+                <div><b>Optional, not required.</b> Mark the few optional fields instead of starring most fields. Ask only what is needed (Hick's Law).</div>
+                <div><b>Errors.</b> Inline, below the field, with an icon, red text and a fix: "Enter a 10-digit mobile number". Validate on blur, not on every key press.</div>
+                <div><b>Specs.</b> 48 px high, 1.5 px #8A8A8A border (3.45:1), 4 px radius, 12 px inside padding, focus ring in action color.</div>
+                <div><b>Input help.</b> Use native time and date pickers, autocomplete and correct keyboard types so people type less (Jakob's Law).</div>
+            </div>
+
+            <!-- Controls -->
+            <h3 class="ds-h3">Selection controls</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel of">
+                    <label class="of-check"><input type="checkbox" checked> Send me a reminder 15 minutes before</label>
+                    <label class="of-check"><input type="checkbox"> Add to my calendar</label>
+                    <div style="height:8px"></div>
+                    <label class="of-check"><input type="radio" name="rg" checked> Meeting room</label>
+                    <label class="of-check"><input type="radio" name="rg"> Desk for the day</label>
+                    <div style="height:8px"></div>
+                    <label class="of-switch"><span>Allow visitors to check in</span><input type="checkbox" role="switch" checked></label>
+                </div>
+                <div class="ds-panel of" style="display:grid;gap:24px;align-content:start">
+                    <div><div class="of-label" style="margin-bottom:10px" id="dl">Select days</div>
+                        <div class="of-days" role="group" aria-labelledby="dl" id="days">
+                            <button class="of-day" aria-pressed="false" aria-label="Sunday">S</button><button class="of-day" aria-pressed="true" aria-label="Monday">M</button><button class="of-day" aria-pressed="true" aria-label="Tuesday">T</button><button class="of-day" aria-pressed="false" aria-label="Wednesday">W</button><button class="of-day" aria-pressed="false" aria-label="Thursday">T</button><button class="of-day" aria-pressed="false" aria-label="Friday">F</button><button class="of-day" aria-pressed="false" aria-label="Saturday">S</button>
+                        </div></div>
+                    <div><div class="of-label" style="margin-bottom:10px">My tickets</div>
+                        <div class="of-seg" role="tablist" id="seg"><button role="tab" aria-selected="true">Pending</button><button role="tab" aria-selected="false">Closed</button></div></div>
+                </div>
+            </div>
+            <div class="ds-spec">
+                <div><b>Hit area.</b> Each label row is 48 px high, so the entire row is tappable, not only the 22 px box.</div>
+                <div><b>Selected state.</b> Filled background plus a checkmark or dot, so it is clear without color. Switches also change their label wording where possible.</div>
+                <div><b>Day chips.</b> 40 px circles with 8 px gaps and full-day names for screen readers. Segmented control uses ink (#2D2D2D) for the active tab, as in the original design.</div>
+            </div>
+
+            <!-- Cards -->
+            <h3 class="ds-h3">Cards and status</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel of" style="background:#F5F5F5;display:grid;gap:12px;align-content:start">
+                    <div class="of-card of-meet">
+                        <div class="of-date of-date--info"><b>20</b><span>Dec</span></div>
+                        <div>
+                            <div class="of-title">Officiti App Demo</div>
+                            <div class="of-meta">Office building · 1:00 pm to 2:00 pm</div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+                                <span class="of-avatars"><span class="of-avatar" style="background:#3A46D1">SS</span><span class="of-avatar" style="background:#B5301E">MM</span><span class="of-avatar" style="background:#2F6014">AK</span><span class="of-avatar" style="background:#D9D9D9;color:#2D2D2D">+2</span></span>
+                                <span class="of-status of-status--info"><svg class="ic"><use href="#i-clock"/></svg>Upcoming</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="of-card of-meet">
+                        <div class="of-date of-date--success"><b>22</b><span>Dec</span></div>
+                        <div><div class="of-title">Wi-Fi not connecting</div><div class="of-meta">Ticket #1042 · Resolved</div>
+                            <div style="margin-top:8px"><span class="of-status of-status--success"><svg class="ic"><use href="#i-check"/></svg>Resolved</span></div></div>
+                    </div>
+                    <div class="of-card of-meet">
+                        <div class="of-date of-date--warning"><b>23</b><span>Dec</span></div>
+                        <div><div class="of-title">Projector needs a cable</div><div class="of-meta">Ticket #1047 · Pending review</div>
+                            <div style="margin-top:8px"><span class="of-status of-status--warning"><svg class="ic"><use href="#i-clock"/></svg>Pending</span></div></div>
+                    </div>
+                    <div class="of-card of-meet">
+                        <div class="of-date of-date--danger"><b>22</b><span>Dec</span></div>
+                        <div><div class="of-title">Air conditioning too cold</div><div class="of-meta">Ticket #1039 · Reopened by member</div>
+                            <div style="margin-top:8px"><span class="of-status of-status--danger"><svg class="ic"><use href="#i-x"/></svg>Not resolved</span></div></div>
+                    </div>
+                </div>
+                <div class="ds-panel of">
+                    <div class="ds-label" style="margin-bottom:.8rem">Date tile and status colors</div>
+                    <table class="ds-tbl">
+                        <thead><tr><th>State</th><th>Tile</th><th>Text on tile</th></tr></thead>
+                        <tbody>
+                            <tr><td>Upcoming / info</td><td>action-600</td><td>White · 5.86:1</td></tr>
+                            <tr><td>Resolved</td><td>green-500</td><td>Ink · 6.38:1</td></tr>
+                            <tr><td>Pending</td><td>amber-500</td><td>Ink · 7.42:1</td></tr>
+                            <tr><td>Not resolved</td><td>danger-600</td><td>White · 5.03:1</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ds-spec" style="margin-top:1.2rem">
+                        <div><b>Never color alone.</b> Every status pairs its color with an icon and a word, so it is readable in grayscale and by screen readers.</div>
+                        <div><b>Cards.</b> 8 px radius, 16 px padding, elevation 1. The whole card is one tap target when it opens a detail page.</div>
+                        <div><b>Hierarchy inside.</b> Title 16 Bold, meta 12 Regular, status 12 Medium. Related facts stay together (Law of Common Region).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <h3 class="ds-h3">Navigation</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel of" style="background:#F5F5F5">
+                    <div class="of-phone">
+                        <div class="of-appbar"><button class="of-icon-btn" aria-label="Go back"><svg class="ic"><use href="#i-back"/></svg></button><span>Create a meeting</span><span></span></div>
+                        <div style="padding:16px;display:grid;gap:14px;min-height:190px;background:#fff">
+                            <div class="of-skel" style="height:14px;width:35%"></div><div class="of-skel" style="height:48px"></div>
+                            <div class="of-skel" style="height:14px;width:45%"></div><div class="of-skel" style="height:48px"></div>
+                        </div>
+                        <nav class="of-nav" aria-label="Main">
+                            <button aria-current="page"><svg class="ic"><use href="#i-home"/></svg>Home</button>
+                            <button><svg class="ic"><use href="#i-cal"/></svg>Calendar</button>
+                            <button class="of-fab" aria-label="Scan QR code"><svg class="ic"><use href="#i-qr"/></svg></button>
+                            <button><svg class="ic"><use href="#i-headset"/></svg>Support</button>
+                            <button><svg class="ic ic-fill"><use href="#i-more"/></svg>More</button>
+                        </nav>
+                    </div>
+                </div>
+                <div class="ds-panel">
+                    <div class="ds-spec" style="margin-top:0">
+                        <div><b>Bottom tab bar.</b> Four destinations plus a raised scan button. Five items is the upper limit for one-thumb reach and quick decisions (Hick's and Miller's laws).</div>
+                        <div><b>Scan is always reachable.</b> Scanning a QR code at the door is the most time-critical task, so it sits at the center of the thumb zone in ink (#2D2D2D) and stands out from everything else (Von Restorff, Fitts).</div>
+                        <div><b>Active tab.</b> Darker color and Bold label. Labels are always shown, at 11/14 Medium.</div>
+                        <div><b>Top bar.</b> 56 px, back arrow on the left with a 48 px target, centered title. The back arrow always goes to the previous screen (user control and freedom).</div>
+                        <div><b>Consistent help.</b> Support stays in the same position on every screen (WCAG 3.2.6).</div>
+                        <div><b>Accessible names.</b> Icon-only controls carry labels such as "Scan QR code" and "Go back".</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <h3 class="ds-h3">Feedback and status</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel of" style="display:grid;gap:12px;align-content:start">
+                    <div class="of-alert of-alert--info"><svg class="ic"><use href="#i-info"/></svg><div><b>Visitors need approval</b><p>Guests added after 6 pm are approved by the front desk.</p></div></div>
+                    <div class="of-alert of-alert--success"><svg class="ic"><use href="#i-check"/></svg><div><b>Meeting booked</b><p>Conference call room, 22 Dec, 1:00 pm to 3:00 pm.</p></div></div>
+                    <div class="of-alert of-alert--warning"><svg class="ic"><use href="#i-alert"/></svg><div><b>Room fills up fast</b><p>Only 1 meeting room is left for this time.</p></div></div>
+                    <div class="of-alert of-alert--error"><svg class="ic"><use href="#i-err"/></svg><div><b>This time is taken</b><p>Board room is booked 1 to 3 pm. Choose another time or room.</p></div></div>
+                    <div class="of-toast" role="status"><span>Meeting cancelled</span><button type="button">Undo</button></div>
+                    <button class="of-btn of-btn--secondary" id="demo-toast" type="button">Show a toast</button>
+                </div>
+                <div class="ds-panel of" style="display:grid;gap:22px;align-content:start">
+                    <div class="of-empty" style="border:1px dashed var(--neutral-300);border-radius:8px">
+                        <div class="of-empty-art"><svg class="ic"><use href="#i-cal"/></svg></div>
+                        <h4>No meetings today</h4><p>Book a room for a call or a catch-up with your team.</p>
+                        <button class="of-btn of-btn--primary of-btn--md" style="margin-top:8px">Book a meeting</button>
+                    </div>
+                    <div><div class="ds-label" style="margin-bottom:10px">Loading skeleton</div>
+                        <div class="of-card of-meet" aria-busy="true"><div class="of-skel" style="width:56px;height:64px"></div><div style="display:grid;gap:8px"><div class="of-skel" style="height:16px;width:70%"></div><div class="of-skel" style="height:12px;width:50%"></div><div class="of-skel" style="height:12px;width:35%"></div></div></div></div>
+                    <div><div class="ds-label" style="margin-bottom:10px">Progress, step 2 of 3</div>
+                        <div class="of-steps" role="group" aria-label="Step 2 of 3"><div class="of-step done"><i></i>What</div><div class="of-step on"><i></i>When</div><div class="of-step"><i></i>Who</div></div></div>
+                </div>
+            </div>
+            <div class="ds-spec">
+                <div><b>Alerts.</b> Icon, bold title and one sentence. The message says what happened and what to do next, in plain language.</div>
+                <div><b>Toasts.</b> Confirm reversible actions and offer Undo, staying at least 5 seconds so they can be read and used. Critical errors use inline alerts, not toasts.</div>
+                <div><b>Empty states.</b> Explain why it is empty and give the next action, instead of leaving a blank screen.</div>
+                <div><b>Skeletons.</b> Shown after 400 ms of waiting. They keep the layout stable and feel faster than a spinner (Doherty Threshold).</div>
+            </div>
+
+            <!-- Overlays -->
+            <h3 class="ds-h3">Dialogs</h3>
+            <div class="ds-panel of">
+                <button class="of-btn of-btn--danger" id="open-dialog" type="button">Cancel meeting…</button>
+                <dialog class="of-dialog" id="dialog" aria-labelledby="dlg-t">
+                    <h4 id="dlg-t">Cancel this meeting?</h4>
+                    <p>Officiti App Demo on 20 Dec will be removed and 5 attendees will be notified.</p>
+                    <div class="row">
+                        <button class="of-btn of-btn--danger of-btn--block" data-close>Cancel meeting</button>
+                        <button class="of-btn of-btn--secondary of-btn--block" data-close autofocus>Keep meeting</button>
+                    </div>
+                </dialog>
+            </div>
+            <div class="ds-spec">
+                <div><b>Use sparingly.</b> Dialogs interrupt. Use them only for destructive or irreversible actions (error prevention).</div>
+                <div><b>Clear choices.</b> Buttons repeat the action in words ("Cancel meeting" and "Keep meeting"), never "Yes" and "No". The safe option gets initial focus.</div>
+                <div><b>Behavior.</b> Traps focus, closes with Escape, returns focus to the trigger, and dims the page behind.</div>
+            </div>
+        </section>
+
+        <!-- ================= PATTERNS ================= -->
+        <section id="patterns" class="ds-sec">
+            <div class="ds-label">09 · Patterns</div>
+            <h2 class="ds-h2">Components combined into <em>real journeys.</em></h2>
+
+            <h3 class="ds-h3">Book a room in three short steps</h3>
+            <p class="ds-p">The original create-meeting screen shows every field at once. Splitting it into three steps lowers the number of decisions on screen (Hick's Law), keeps chunks small (Miller's Law) and shows progress, which encourages completion (goal-gradient effect).</p>
+            <div class="ds-grid3">
+                <div class="ds-panel of" style="background:#F5F5F5;display:grid;gap:14px;align-content:start">
+                    <div class="of-steps"><div class="of-step on"><i></i>What</div><div class="of-step"><i></i>When</div><div class="of-step"><i></i>Who</div></div>
+                    <div class="of-field"><label class="of-label" for="p-t">Meeting title</label><input class="of-input" id="p-t" placeholder="e.g. Sprint planning"></div>
+                    <div class="of-field"><label class="of-label" for="p-r">Meeting room</label><select class="of-select" id="p-r"><option>Choose a room</option></select></div>
+                    <button class="of-btn of-btn--primary of-btn--block">Continue</button>
+                </div>
+                <div class="ds-panel of" style="background:#F5F5F5;display:grid;gap:14px;align-content:start">
+                    <div class="of-steps"><div class="of-step done"><i></i>What</div><div class="of-step on"><i></i>When</div><div class="of-step"><i></i>Who</div></div>
+                    <div><div class="of-label" style="margin-bottom:8px">Select days</div><div class="of-days"><button class="of-day" aria-pressed="false" aria-label="Sunday">S</button><button class="of-day" aria-pressed="true" aria-label="Monday">M</button><button class="of-day" aria-pressed="false" aria-label="Tuesday">T</button><button class="of-day" aria-pressed="false" aria-label="Wednesday">W</button></div></div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="of-field"><span class="of-label">From</span><input class="of-input" type="time" value="13:00" aria-label="From"></div><div class="of-field"><span class="of-label">To</span><input class="of-input" type="time" value="15:00" aria-label="To"></div></div>
+                    <button class="of-btn of-btn--primary of-btn--block">Continue</button>
+                </div>
+                <div class="ds-panel of" style="background:#F5F5F5;display:grid;gap:14px;align-content:start">
+                    <div class="of-steps"><div class="of-step done"><i></i>What</div><div class="of-step done"><i></i>When</div><div class="of-step on"><i></i>Who</div></div>
+                    <div class="of-field"><label class="of-label" for="p-a">Attendees</label><input class="of-input" id="p-a" placeholder="Search employees"></div>
+                    <span class="of-avatars"><span class="of-avatar" style="background:#3A46D1">SS</span><span class="of-avatar" style="background:#B5301E">MM</span><span class="of-avatar" style="background:#2F6014">AK</span></span>
+                    <button class="of-btn of-btn--primary of-btn--block">Book meeting room</button>
+                </div>
+            </div>
+
+            <h3 class="ds-h3">Ticket status system</h3>
+            <div class="ds-panel ds-scroll of" style="padding:0 1.4rem 1rem">
+                <table class="ds-tbl">
+                    <thead><tr><th>State</th><th>Tile</th><th>Icon + word</th><th>What it means</th><th>Next action</th></tr></thead>
+                    <tbody>
+                        <tr><td>Pending</td><td><span class="of-date of-date--warning" style="width:44px;height:44px"><b style="font-size:16px;line-height:18px">23</b></span></td><td><span class="of-status of-status--warning"><svg class="ic"><use href="#i-clock"/></svg>Pending</span></td><td>Received, waiting for the workspace team.</td><td>View details, add a note</td></tr>
+                        <tr><td>Resolved</td><td><span class="of-date of-date--success" style="width:44px;height:44px"><b style="font-size:16px;line-height:18px">22</b></span></td><td><span class="of-status of-status--success"><svg class="ic"><use href="#i-check"/></svg>Resolved</span></td><td>The team marked it done.</td><td>Confirm it works or reopen</td></tr>
+                        <tr><td>Not resolved</td><td><span class="of-date of-date--danger" style="width:44px;height:44px"><b style="font-size:16px;line-height:18px">22</b></span></td><td><span class="of-status of-status--danger"><svg class="ic"><use href="#i-x"/></svg>Not resolved</span></td><td>Member says the problem remains.</td><td>Escalate to support</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="ds-h3">Visitor access with a QR code</h3>
+            <div class="ds-grid2">
+                <div class="ds-panel">
+                    <ol class="ds-spec" style="margin-top:0;gap:.9rem;counter-reset:s">
+                        <li><b>1. Add visitor.</b> Name, email, date, time and purpose. Fields already known are prefilled (WCAG 3.3.7, no redundant entry).</li>
+                        <li><b>2. Share the QR code.</b> Visitor receives a code with name, date and time window. It carries a lock icon and expiry so it is clear it is private.</li>
+                        <li><b>3. Scan at the door.</b> The host or front desk scans from the always-visible scan button.</li>
+                        <li><b>4. Check-in confirmed.</b> A clear success state names the visitor and host and closes the loop (Peak-End rule).</li>
+                    </ol>
+                </div>
+                <div class="ds-panel of" style="background:#F5F5F5">
+                    <div class="of-card" style="display:grid;grid-template-columns:1fr 96px;gap:16px;align-items:center">
+                        <div><div class="of-status of-status--info" style="margin-bottom:4px"><svg class="ic"><use href="#i-lock"/></svg>Private access code</div>
+                            <div class="of-title">Saagar Shrestha</div><div class="of-meta">9876543210 · 3 Feb 2021, 1:00 pm<br>Expires at 3:00 pm</div>
+                            <button class="of-btn of-btn--secondary of-btn--sm" style="margin-top:10px">Refresh code</button></div>
+                        <svg viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="#2D2D2D" stroke-width="1.6" aria-label="QR code" role="img"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h3M20 17v4M6 6h1M17 6h1M6 17h1"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="ds-h3">Empty, loading, error and success</h3>
+            <div class="ds-grid2">
+                <div class="do-dont">
+                    <div class="dd do"><b>Empty</b>"No meetings today. Book a room for a call or a catch-up." Explains and offers the next action.</div>
+                    <div class="dd do"><b>Loading</b>Skeleton that matches the final layout, shown after 400 ms. No blank screens.</div>
+                    <div class="dd do"><b>Error</b>"Board room is booked 1 to 3 pm. Choose another time or room." What happened and how to fix it.</div>
+                    <div class="dd do"><b>Success</b>"Meeting booked. Conference call room, 22 Dec, 1:00 pm." Name the result and offer to add it to the calendar.</div>
+                </div>
+                <div class="do-dont">
+                    <div class="dd dont"><b>Avoid</b>"Nothing here." A dead end with no direction.</div>
+                    <div class="dd dont"><b>Avoid</b>A spinner alone on a white screen for several seconds.</div>
+                    <div class="dd dont"><b>Avoid</b>"Error 409" or "Something went wrong." Blames nobody and helps nobody.</div>
+                    <div class="dd dont"><b>Avoid</b>"Success" with no detail, or a message that disappears in one second.</div>
+                </div>
+            </div>
+
+            <h3 class="ds-h3">Writing for the interface</h3>
+            <div class="do-dont">
+                <div class="dd do"><b>Do</b>Use plain words and active voice: "Book meeting room", "Add visitor". Sentence case. Numerals for numbers and clear dates such as "22 Dec, 1:00 pm".</div>
+                <div class="dd dont"><b>Don't</b>Use jargon or vague labels: "Submit", "Proceed", "Utilize", "Ticket ID 0x2F". Never shout in capitals or use only "Yes" and "No" in dialogs.</div>
+            </div>
+        </section>
+
+        <!-- ================= LAWS ================= -->
+        <section id="laws" class="ds-sec">
+            <div class="ds-label">10 · UX laws map</div>
+            <h2 class="ds-h2">Where each law <em>shapes the system.</em></h2>
+            <div class="ds-panel ds-scroll" style="padding:0 1.4rem 1rem">
+                <table class="ds-tbl">
+                    <thead><tr><th>Law or heuristic</th><th>What it says</th><th>How Officiti applies it</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hick's Law</td><td>More options mean slower decisions.</td><td>Five-item tab bar, three-step booking, one primary button per screen.</td></tr>
+                        <tr><td>Miller's Law</td><td>Working memory holds a limited number of items.</td><td>Forms grouped into short chunks. Ticket details split into labeled sections.</td></tr>
+                        <tr><td>Fitts's Law</td><td>Bigger, closer targets are faster to hit.</td><td>48 px targets, 8 px gaps, full-width primary buttons at the bottom, scan button at thumb center.</td></tr>
+                        <tr><td>Jakob's Law</td><td>Users expect familiar patterns.</td><td>Bottom tabs, top-left back arrow, native date and time pickers, labels above fields.</td></tr>
+                        <tr><td>Doherty Threshold</td><td>Responses under about 400 ms keep flow.</td><td>100 to 300 ms motion, skeletons after 400 ms, instant toast confirmation.</td></tr>
+                        <tr><td>Von Restorff Effect</td><td>The distinct item is remembered.</td><td>Ink scan button and the single filled action button stand out from the rest.</td></tr>
+                        <tr><td>Proximity and Common Region</td><td>Nearby, enclosed items read as related.</td><td>8, 16, 24 spacing steps and cards that group a meeting's details.</td></tr>
+                        <tr><td>Aesthetic-Usability Effect</td><td>Attractive interfaces feel easier to use.</td><td>Consistent radius, spacing and a restrained palette across all components.</td></tr>
+                        <tr><td>Goal-Gradient Effect</td><td>People try harder as the goal gets closer.</td><td>Step progress bar in the booking flow.</td></tr>
+                        <tr><td>Peak-End Rule</td><td>Experiences are judged by the peak and the end.</td><td>Confirmed booking and confirmed check-in states with clear next actions.</td></tr>
+                        <tr><td>Postel's Law</td><td>Be liberal in what you accept.</td><td>Phone and time inputs accept common formats and normalize them.</td></tr>
+                        <tr><td>Visibility of system status</td><td>Always tell users what is going on.</td><td>Loading, success, error and pending states on every async action.</td></tr>
+                        <tr><td>Error prevention and recovery</td><td>Stop mistakes, then help fix them.</td><td>Confirm dialogs for destructive actions, Undo on toasts, inline fixes in error text.</td></tr>
+                        <tr><td>Recognition over recall</td><td>Show options instead of asking users to remember.</td><td>Visible labels, attendee search with avatars, recent rooms listed first.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= A11Y ================= -->
+        <section id="a11y" class="ds-sec">
+            <div class="ds-label">11 · Accessibility</div>
+            <h2 class="ds-h2">Built to <em>WCAG 2.2 AA.</em></h2>
+            <ul class="ds-checks" role="list">
+                <li><b>Text contrast 4.5:1</b> (3:1 for large text). Enforced by the functional color scales.</li>
+                <li><b>UI contrast 3:1</b> for input borders, icons and focus rings (WCAG 1.4.11).</li>
+                <li><b>Target size.</b> 48 px minimum interactive area, well above the 24 px AA requirement (2.5.8).</li>
+                <li><b>Keyboard and switch access.</b> Every action reachable in a logical order, no drag-only interactions (2.1.1, 2.5.7).</li>
+                <li><b>Visible focus.</b> 3 px ring with 2 px offset on every interactive element (2.4.7, 2.4.11).</li>
+                <li><b>Labels and names.</b> Visible labels on fields and accessible names on icon-only buttons (1.3.1, 4.1.2).</li>
+                <li><b>Errors identified in text</b> with an icon and a suggested fix, linked with <code>aria-describedby</code> (3.3.1, 3.3.3).</li>
+                <li><b>Not by color alone.</b> Status uses color, icon and words together (1.4.1).</li>
+                <li><b>Zoom and reflow.</b> Layout works at 200% text size and 320 px width without horizontal scroll (1.4.4, 1.4.10).</li>
+                <li><b>Reduced motion.</b> Animations are removed when the user asks for less motion (2.3.3).</li>
+                <li><b>Consistent help.</b> Support stays in the same place on every screen (3.2.6).</li>
+                <li><b>Easy sign-in.</b> Password managers and paste work, and QR sign-in has an alternative (3.3.8).</li>
+                <li><b>Expiring QR codes.</b> Show the expiry time and allow a refresh, so timing is adjustable (2.2.1).</li>
+                <li><b>Redundant entry.</b> Known details such as company and email are prefilled (3.3.7).</li>
+            </ul>
+        </section>
+
+        <!-- ================= TOKENS ================= -->
+        <section id="tokens" class="ds-sec">
+            <div class="ds-label">12 · Design tokens</div>
+            <h2 class="ds-h2">One source of truth, <em>ready to ship.</em></h2>
+            <p class="ds-p mt-5">These are the exact custom properties powering every component on this page. They are read straight from this page's stylesheet, so the code below can never drift from what you see. Map the same names to Figma variables and to platform themes.</p>
+            <div style="margin-top:1.4rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                <button class="ds-btn" id="copy-tokens" type="button" style="border:0;cursor:pointer">Copy tokens.css</button>
+                <span class="ds-label" id="copy-msg" aria-live="polite"></span>
+            </div>
+            <pre class="ds-code" id="tokens-code" tabindex="0" style="margin-top:1rem"></pre>
+        </section>
+
+        <!-- ================= GOVERNANCE ================= -->
+        <section id="governance" class="ds-sec">
+            <div class="ds-label">13 · Governance</div>
+            <h2 class="ds-h2">Keeping it consistent <em>as it grows.</em></h2>
+            <div class="ds-grid2">
+                <div class="ds-panel">
+                    <div class="ds-label" style="margin-bottom:.8rem">Figma library structure</div>
+                    <ol class="ds-spec" style="margin-top:0">
+                        <li><b>0 · Cover and changelog</b></li>
+                        <li><b>1 · Foundations.</b> Color, type, space, radius, elevation, icons, motion.</li>
+                        <li><b>2 · Components.</b> Variants for state, size and type, built with auto layout.</li>
+                        <li><b>3 · Patterns.</b> Booking, tickets, visitor access, states.</li>
+                        <li><b>4 · Templates.</b> Mobile and web page starters.</li>
+                    </ol>
+                    <div class="ds-label" style="margin:1.4rem 0 .8rem">Naming</div>
+                    <div class="ds-spec" style="margin-top:0">
+                        <div><b>Variables.</b> <code>color/primary/600</code>, <code>space/4</code>, <code>radius/sm</code>, <code>type/body</code></div>
+                        <div><b>Components.</b> <code>Button / Primary / Default</code>, <code>Field / Text / Error</code></div>
+                        <div><b>Code.</b> <code>--color-*</code> or <code>--primary-*</code> tokens and <code>of-*</code> component classes.</div>
+                    </div>
+                </div>
+                <div class="ds-panel">
+                    <div class="ds-label" style="margin-bottom:.8rem">Contribution process</div>
+                    <ol class="ds-spec" style="margin-top:0;gap:.7rem">
+                        <li><b>1. Propose.</b> Describe the user problem and where it appears.</li>
+                        <li><b>2. Check reuse.</b> Can an existing component or variant solve it?</li>
+                        <li><b>3. Design and review.</b> Include all states and pass the accessibility checklist above.</li>
+                        <li><b>4. Document.</b> Add usage, specs, do and don't, and the UX rule it follows.</li>
+                        <li><b>5. Release.</b> Publish with a changelog entry and notify design and engineering.</li>
+                    </ol>
+                    <div class="ds-label" style="margin:1.4rem 0 .8rem">Versioning</div>
+                    <div class="ds-spec" style="margin-top:0">
+                        <div><b>Major.</b> Breaking token or API change.</div>
+                        <div><b>Minor.</b> New component or variant.</div>
+                        <div><b>Patch.</b> Bug fix or documentation update.</div>
+                        <div><b>Deprecation.</b> Mark for one minor release before removal.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-note"><b>Next in the roadmap.</b> Dark theme tokens, a date and time picker, a data table for the web admin, and an empty-state illustration set.</div>
+            <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <a href="mailto:saagarshrest@gmail.com?subject=Design%20Systems%20enquiry" class="ds-btn">Build a design system with me <span>↗</span></a>
+                <a href="/Casedetailofficiti.html" class="ds-link">Officiti case study →</a>
+                <a href="/index.html" class="ds-link">Back to home →</a>
+            </div>
+        </section>
+
+        </div><!-- /content -->
+    </div><!-- /wrap -->
+</main>
+<div class="of-toast-host of" id="toast-host" aria-live="polite"></div>
+
+<!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+<!-- Javascript -->
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('mobile-menu-button');
+    const closeBtn = document.getElementById('close-mobile-menu');
+
+    openBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ---- Design system page behaviour ----
+    (function () {
+        // WCAG contrast
+        const chan = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+        const lum = h => { const n = parseInt(h.slice(1), 16); return 0.2126 * chan(n >> 16) + 0.7152 * chan((n >> 8) & 255) + 0.0722 * chan(n & 255); };
+        const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+        const mark = ok => ok ? '<span class="ds-pass">✓ Pass</span>' : '<span class="ds-fail">✕ Fail</span>';
+        document.querySelectorAll('#contrast-table tbody tr').forEach(tr => {
+            const fg = tr.dataset.fg, bg = tr.dataset.bg, r = ratio(fg, bg);
+            tr.innerHTML = '<td>' + tr.dataset.l + '</td>' +
+                '<td><span class="ct-cell" style="color:' + fg + ';background:' + bg + '">Aa</span></td>' +
+                '<td>' + r.toFixed(2) + ':1</td>' + (tr.dataset.ui ? '<td>Not text</td><td>' + mark(r >= 3) + '</td><td>Not text</td>' : '<td>' + mark(r >= 4.5) + '</td><td>' + mark(r >= 3) + '</td><td>' + mark(r >= 7) + '</td>');
+        });
+
+        // tokens.css from the live :root rule
+        const pre = document.getElementById('tokens-code');
+        let css = '';
+        for (const sheet of document.styleSheets) {
+            let rules; try { rules = sheet.cssRules; } catch (e) { continue; }
+            for (const rule of rules) {
+                if (rule.selectorText === ':root' && rule.cssText.indexOf('--brand-blue') > -1) {
+                    css = ':root {\n  ' + rule.cssText.replace(/^:root\s*\{\s*/, '').replace(/\s*\}\s*$/, '').split(/;\s*/).filter(Boolean).join(';\n  ') + ';\n}';
+                }
+            }
+        }
+        if (pre) pre.textContent = '/* Officiti design tokens v1.0 */\n' + css;
+        const cbtn = document.getElementById('copy-tokens'), msg = document.getElementById('copy-msg');
+        if (cbtn) cbtn.addEventListener('click', async () => {
+            try { await navigator.clipboard.writeText(pre.textContent); msg.textContent = 'Copied'; }
+            catch (e) { msg.textContent = 'Select the code and press Ctrl+C'; }
+            setTimeout(() => msg.textContent = '', 2200);
+        });
+
+        // scroll spy
+        const links = Array.from(document.querySelectorAll('.ds-toc a'));
+        const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+        const spy = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) { links.forEach(l => l.classList.remove('on')); const a = map.get(e.target.id); if (a) a.classList.add('on'); }
+        }), { rootMargin: '-15% 0px -70% 0px' });
+        document.querySelectorAll('.ds-sec[id]').forEach(s => spy.observe(s));
+
+        // interactive demos
+        const host = document.getElementById('toast-host');
+        function toast(text, action) {
+            const t = document.createElement('div'); t.className = 'of-toast'; t.setAttribute('role', 'status');
+            t.innerHTML = '<span></span>' + (action ? '<button type="button">' + action + '</button>' : '');
+            t.firstChild.textContent = text; host.appendChild(t);
+            const kill = () => t.remove(); if (action) t.querySelector('button').onclick = kill; setTimeout(kill, 5000);
+        }
+        const load = document.getElementById('demo-loading');
+        if (load) load.addEventListener('click', () => {
+            const old = load.textContent; load.setAttribute('aria-busy', 'true'); load.textContent = 'Booking…';
+            setTimeout(() => { load.removeAttribute('aria-busy'); load.textContent = old; toast('Meeting booked', 'Undo'); }, 1600);
+        });
+        const dt = document.getElementById('demo-toast'); if (dt) dt.addEventListener('click', () => toast('Meeting cancelled', 'Undo'));
+        document.querySelectorAll('.of-days').forEach(g => g.addEventListener('click', e => {
+            const b = e.target.closest('.of-day'); if (b) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true');
+        }));
+        const seg = document.getElementById('seg');
+        if (seg) seg.addEventListener('click', e => {
+            const b = e.target.closest('button'); if (!b) return;
+            seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', x === b));
+        });
+        const dlg = document.getElementById('dialog'), open = document.getElementById('open-dialog');
+        if (dlg && open) {
+            open.addEventListener('click', () => dlg.showModal());
+            dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
+        }
+    })();
+</script>
+<script src="/js/pager.js"></script>
+</body>
+</html>

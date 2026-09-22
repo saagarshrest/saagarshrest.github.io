@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCP6GX79Y4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LCP6GX79Y4');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Audit &amp; Strategy | Saagar</title>
+    <meta name="description" content="UX audit and strategy: analyze and optimize existing products to maximize user engagement and conversion rates.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+        <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter Tight', Inter, system-ui, sans-serif; }
+        .ua-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .ua-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #0A0A0A; }
+        .ua-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #F2F2F2; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .ua-btn:hover { background: #fff; color: #0A0A0A; box-shadow: inset 0 0 0 1.5px #0A0A0A; transform: translateY(-2px); }
+        .ua-btn span { display: inline-block; transition: transform .3s; }
+        .ua-btn:hover span { transform: translate(3px,-3px); }
+        .sx-item h3 { font-size: 1.35rem; }
+        .sx-plain li { line-height: 1.5; font-weight: 400; color: rgba(10,10,10,.75); }
+        .sx-plain li b { color: #0A0A0A; font-weight: 600; }
+        /* heuristics */
+        .ua-grid { display: grid; grid-template-columns: 1fr; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 900px) { .ua-grid { grid-template-columns: 1fr 1fr; column-gap: 4rem; } }
+        .ua-h { display: grid; grid-template-columns: 3.4rem 1fr; padding: 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .ua-h h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: -0.03em; font-weight: 500; }
+        .ua-h p { margin-top: .5rem; color: rgba(10,10,10,.65); line-height: 1.5; max-width: 30rem; }
+        /* laws */
+        .ua-laws { display: grid; grid-template-columns: 1fr; border-top: 1px solid rgba(255,255,255,.2); border-left: 1px solid rgba(255,255,255,.2); }
+        @media (min-width: 700px) { .ua-laws { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .ua-laws { grid-template-columns: repeat(4, 1fr); } }
+        .ua-law { padding: 1.8rem 1.6rem 2rem; border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); transition: background .35s; }
+        .ua-law:hover { background: rgba(255,255,255,.05); }
+        .ua-law h3 { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; font-size: 1.7rem; line-height: 1.05; color: #fff; }
+        .ua-law p { margin-top: .9rem; line-height: 1.5; color: rgba(255,255,255,.85); }
+        .ua-law span { display: block; margin-top: 1rem; font-size: .82rem; line-height: 1.45; color: rgba(255,255,255,.5); }
+        /* steps */
+        .ua-steps { display: grid; grid-template-columns: 1fr; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 900px) { .ua-steps { grid-template-columns: repeat(5, 1fr); border-top: 0; } .ua-steps li { border-top: 1px solid rgba(10,10,10,.2); padding-right: 1.4rem; } }
+        .ua-steps li { padding: 1.4rem 0 1.6rem; border-bottom: 0; }
+        @media (max-width: 899px) { .ua-steps li { border-bottom: 1px solid rgba(10,10,10,.2); } }
+        .ua-steps h3 { margin-top: 1.6rem; font-size: 1.3rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.12; }
+        .ua-steps p { margin-top: .6rem; font-size: .92rem; line-height: 1.5; color: rgba(10,10,10,.65); }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html">Photos</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
+
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- Hero -->
+    <section class="sx sx-cream px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-end">
+            <div class="lg:col-span-7">
+                <div class="sx-label mb-6">Service · 01</div>
+                <h1 class="ua-hero-title">UX Audit &amp; <em>Strategy.</em></h1>
+                <p class="sx-lead mt-8" style="max-width:34rem">
+                    Analyze and optimize existing products to maximize user engagement and conversion rates.
+                </p>
+                <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    <a href="mailto:saagarshrest@gmail.com?subject=UX%20Audit%20%26%20Strategy%20enquiry" class="ua-btn">Book an audit <span>↗</span></a>
+                    <a href="#rules" class="sx-seeall">See what I check <span>↓</span></a>
+                </div>
+            </div>
+            <div class="lg:col-span-5">
+                <div class="sx-label">What you get</div>
+                <ol class="sx-list mt-4">
+                    <li class="sx-item"><span class="sx-num">01</span><div><h3>Heuristic evaluation report</h3></div></li>
+                    <li class="sx-item"><span class="sx-num">02</span><div><h3>Prioritized issue list</h3></div></li>
+                    <li class="sx-item"><span class="sx-num">03</span><div><h3>Quick wins to ship now</h3></div></li>
+                    <li class="sx-item"><span class="sx-num">04</span><div><h3>Strategy and roadmap</h3></div></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why audit -->
+    <section class="sx sx-light px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10">
+            <h2 class="sx-title lg:col-span-6">Fix what users <em>actually struggle with.</em></h2>
+            <div class="lg:col-span-6 space-y-5 sx-lead" style="max-width:none">
+                <p>Most products lose users in small moments: a confusing label, a form that asks too much, a button that is hard to find or tap. Those moments rarely show up in a roadmap, but they show up in drop-off rates.</p>
+                <p>A UX audit measures your product against established usability principles, accessibility standards and real behavior data. The result is a clear, ranked list of problems and a plan to fix them, so design effort goes where it moves engagement and conversion the most.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heuristics -->
+    <section id="rules" class="sx sx-cream px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-8 items-end">
+                <h2 class="sx-title lg:col-span-7">10 usability heuristics, <em>applied.</em></h2>
+                <p class="sx-lead lg:col-span-5">Jakob Nielsen's ten heuristics are the backbone of every audit. Each screen and flow is scored against them.</p>
+            </div>
+            <div class="ua-grid mt-12">
+                <div class="ua-h"><span class="sx-num">01</span><div><h3>Visibility of system status</h3><p>Does the product always show what is happening? Loading states, progress, confirmations, and where the user is in a flow.</p></div></div>
+                <div class="ua-h"><span class="sx-num">02</span><div><h3>Match with the real world</h3><p>Does the language, iconography and order follow the user's world instead of internal jargon?</p></div></div>
+                <div class="ua-h"><span class="sx-num">03</span><div><h3>User control and freedom</h3><p>Can people undo, cancel, go back and exit without penalty? Clear emergency exits from every state.</p></div></div>
+                <div class="ua-h"><span class="sx-num">04</span><div><h3>Consistency and standards</h3><p>Do the same words, patterns and components behave the same everywhere, and match platform conventions?</p></div></div>
+                <div class="ua-h"><span class="sx-num">05</span><div><h3>Error prevention</h3><p>Are risky actions confirmed and are constraints, defaults and inline validation used to stop mistakes early?</p></div></div>
+                <div class="ua-h"><span class="sx-num">06</span><div><h3>Recognition over recall</h3><p>Are options, actions and information visible or easy to retrieve, so users do not have to remember them?</p></div></div>
+                <div class="ua-h"><span class="sx-num">07</span><div><h3>Flexibility and efficiency</h3><p>Do shortcuts, search, filters and saved preferences serve experienced users without hurting beginners?</p></div></div>
+                <div class="ua-h"><span class="sx-num">08</span><div><h3>Aesthetic and minimalist design</h3><p>Does every element earn its place? Extra content competes with what matters and lowers focus.</p></div></div>
+                <div class="ua-h"><span class="sx-num">09</span><div><h3>Error recovery</h3><p>Are error messages plain language, precise about the problem, and constructive about the fix?</p></div></div>
+                <div class="ua-h"><span class="sx-num">10</span><div><h3>Help and documentation</h3><p>Is help easy to find, searchable, task focused and short, for the moments when users get stuck?</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laws of UX -->
+    <section class="sx sx-dark bg-primary px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-8 items-end">
+                <h2 class="sx-title lg:col-span-7">Laws of UX that <em>shape decisions.</em></h2>
+                <p class="sx-lead lg:col-span-5">Behavioral principles help explain why users hesitate, miss things or leave. I use them to turn opinions into testable fixes.</p>
+            </div>
+            <div class="ua-laws mt-12">
+                <div class="ua-law">
+                    <h3>Hick's Law</h3>
+                    <p>The more choices you present, the longer people take to decide.</p>
+                    <span>Check: navigation depth, menu size, pricing options, crowded forms.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Fitts's Law</h3>
+                    <p>Time to reach a target depends on its distance and size.</p>
+                    <span>Check: primary button size, tap target spacing, thumb-friendly placement.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Jakob's Law</h3>
+                    <p>Users spend most of their time on other products and expect yours to work the same way.</p>
+                    <span>Check: unconventional patterns, unusual icons, non-standard checkout.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Miller's Law</h3>
+                    <p>Working memory is limited, so information is easier to process in small chunks.</p>
+                    <span>Check: long lists, dense tables, walls of text, unbroken forms.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Doherty Threshold</h3>
+                    <p>Productivity rises when the system responds in under about 400 ms.</p>
+                    <span>Check: response feedback, skeleton loaders, slow interactions.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Von Restorff Effect</h3>
+                    <p>When several similar items appear, the one that differs is the one remembered.</p>
+                    <span>Check: does the main call to action stand out from everything else?</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Aesthetic-Usability Effect</h3>
+                    <p>Users perceive attractive interfaces as easier to use and forgive small flaws.</p>
+                    <span>Check: visual hierarchy, spacing, alignment, consistency of style.</span>
+                </div>
+                <div class="ua-law">
+                    <h3>Peak-End Rule</h3>
+                    <p>People judge an experience by its most intense moment and its ending.</p>
+                    <span>Check: confirmation screens, success states, and the worst friction point.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility + conversion -->
+    <section class="sx sx-light px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14">
+            <div>
+                <div class="sx-label">Accessibility · WCAG</div>
+                <h2 class="sx-title mt-4" style="font-size:clamp(2rem,3.6vw,3.4rem)">Usable by <em>everyone.</em></h2>
+                <ul class="sx-plain mt-8">
+                    <li><b>Perceivable.</b> Text contrast of at least 4.5:1 (3:1 for large text), alt text on meaningful images, captions for media.</li>
+                    <li><b>Operable.</b> Everything reachable by keyboard, a visible focus state, and touch targets around 44 × 44 px.</li>
+                    <li><b>Understandable.</b> Visible form labels, clear error text, predictable navigation and plain language.</li>
+                    <li><b>Robust.</b> Semantic markup and sensible ARIA so screen readers and assistive tools work reliably.</li>
+                </ul>
+            </div>
+            <div>
+                <div class="sx-label">Conversion · Performance</div>
+                <h2 class="sx-title mt-4" style="font-size:clamp(2rem,3.6vw,3.4rem)">Clear path to <em>the goal.</em></h2>
+                <ul class="sx-plain mt-8">
+                    <li><b>Value proposition.</b> Can a new visitor say what this is and why it matters within a few seconds, above the fold?</li>
+                    <li><b>One primary action.</b> Each screen has one obvious next step, with supporting actions visually quieter.</li>
+                    <li><b>Lean forms.</b> Only essential fields, sensible defaults, inline validation and progress in long flows.</li>
+                    <li><b>Trust and speed.</b> Social proof and clear pricing near decisions, and good Core Web Vitals: LCP under 2.5 s, INP under 200 ms, CLS under 0.1.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="sx sx-cream px-6 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-8 items-end">
+                <h2 class="sx-title lg:col-span-7">How the audit <em>works.</em></h2>
+                <p class="sx-lead lg:col-span-5">A structured process that ends with decisions, not just observations.</p>
+            </div>
+            <ol class="ua-steps mt-12">
+                <li><span class="sx-num">01</span><h3>Goals and context</h3><p>Define business goals, key user journeys, audience and success metrics.</p></li>
+                <li><span class="sx-num">02</span><h3>Data review</h3><p>Study analytics, funnels, heatmaps, session recordings and support feedback to find where users struggle.</p></li>
+                <li><span class="sx-num">03</span><h3>Expert evaluation</h3><p>Walk each key flow against heuristics, the laws of UX and accessibility guidelines.</p></li>
+                <li><span class="sx-num">04</span><h3>Prioritize</h3><p>Rate every issue by severity and effort, so the highest impact fixes rise to the top.</p></li>
+                <li><span class="sx-num">05</span><h3>Strategy and roadmap</h3><p>Deliver recommendations, quick wins and a phased plan, then validate changes with testing.</p></li>
+            </ol>
+            <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <a href="mailto:saagarshrest@gmail.com?subject=UX%20Audit%20%26%20Strategy%20enquiry" class="ua-btn">Request an audit <span>↗</span></a>
+                <a href="/index.html" class="sx-seeall">Back to home <span>→</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+<!-- Javascript -->
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('mobile-menu-button');
+    const closeBtn = document.getElementById('close-mobile-menu');
+
+    openBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+</script></body>
+<script src="/js/pager.js"></script>
+</html>

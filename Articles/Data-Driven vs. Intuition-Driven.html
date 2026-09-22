@@ -13,7 +13,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX Designer Portfolio</title>
+    <title>Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards | Saagar</title>
+    <meta name="description" content="Data dashboards have transformed decision-making processes, empowering organizations with data-driven insights.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,101 +32,60 @@
 
             <!-- Buy me a coffee -->
 
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#26B0A1" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="bg-white min-h-screen flex flex-col">
 <!-- Navigation -->
-<nav class="bg-white shadow-sm px-6 py-4">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/index.html" class="block">
-      <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-sm">UX</span>
-        </div>
-        <span class="font-bold text-xl text-gray-900">Saagar</span>
-      </div>
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
     </a>
 
-    <!-- Desktop Nav Links -->
-    <div class="hidden md:flex space-x-8">
-      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
-      <a href="/Article.html" class="font-bold underline hover:text-primary">Articles</a>
-      <a href="/Casestudy.html" class="text-gray-700 hover:text-primary">Case Study</a>
-      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Photos</a>
-      <a href="/Logos.html" class="text-gray-700 hover:text-primary">Clients</a>
-      <a href="/Palettegen.html" class="text-gray-700 hover:text-primary">Tools</a>
-      <a href="/contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html">Photos</a>
     </div>
 
-    <!-- Desktop CTA -->
-    <div class="hidden md:block">
-    <a href="mailto:saagarshrest@gmail.com">
-        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-        Let's Work Together
-        </button>
-    </a>
-    </div>
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
 
-
-    <!-- Mobile Hamburger Button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
   </div>
 </nav>
 
 <!-- Mobile Navigation Menu -->
-<div id="mobile-menu"
-  class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
-  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
-    <!-- Mobile Logo -->
-    <div class="flex items-center space-x-2">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <span class="text-primary font-bold text-sm">UX</span>
-      </div>
-      <span class="font-bold text-xl text-white">Saagar</span>
-    </div>
-
-    <!-- Close Button -->
-    <button id="close-mobile-menu" class="text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18L18 6M6 6l12 12" />
-      </svg>
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
-
-  <!-- Centered Menu Content -->
-  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
-    <a href="https://dribbble.com/saagarshrest" class="hover:underline hover:text-white/90">Designs</a>
-    <a href="/Article.html" class="font-bold underline hover:text-primary">Articles</a>
-    <a href="/Casestudy.html" class="hover:underline hover:text-white/90">Case Study</a>
-    <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-white/90">Photos</a>
-    <a href="/Logos.html" class="hover:underline hover:text-white/90">Clients</a>
-    <a href="/Palettegen.html" class="hover:underline hover:text-white/90">Tools</a>
-    <a href="/Contact.html" class="hover:underline hover:text-white/90">Contact</a>
-
-    <!-- Social Icons -->
-    <div class="flex space-x-4 pt-6">
-      <a href="https://instagram.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
-        </svg>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
       </a>
-      <a href="https://twitter.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" />
-        </svg>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
       </a>
     </div>
   </div>
@@ -133,23 +93,21 @@
 
 
   <!-- Article Section -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-10">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4 leading-tight">
-          Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards
-        </h1>
-        <p class="text-gray-600 text-[22px] italic">
-          Data dashboards have transformed decision-making processes, empowering organizations with data-driven insights.
-        </p>
-      </div>
-      <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*Csqjn0OiLj-2_AZh"
-        alt="Case Study Cover" class="w-full h-auto rounded-lg shadow mb-10" />
-      <div class="space-y-8 text-[22px] leading-relaxed text-gray-700">
+  <section class="sx sx-light px-6 py-14 md:py-20">
+    <div class="max-w-7xl mx-auto">
+      <header class="art-head">
+        <a href="/Article.html" class="art-back">&larr; All articles</a>
+        <div class="art-meta">Decision-Making &middot; Aug 7, 2023 &middot; By Saagar</div>
+        <h1 class="art-title">Data-Driven vs. Intuition-Driven Decision-Making: <em>Assessing the Value of Data Dashboards</em></h1>
+        <p class="art-dek">Data dashboards have transformed decision-making processes, empowering organizations with data-driven insights.</p>
+      </header>
+      <div class="art-grid">
+        <aside class="art-side"><div class="art-side__in"><div class="art-read">Reading time<b data-readtime>&nbsp;</b></div><nav class="art-toc" aria-label="In this article"></nav></div></aside>
+        <div class="art">
+<div class="art-cover"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*Csqjn0OiLj-2_AZh"
+        alt="Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards" /></div><div class="space-y-8 text-[22px] leading-relaxed text-gray-700">
         <div>
-          <p>
-            In today’s data-driven world, decision-making processes have evolved to incorporate data analysis and visualization through the use of data dashboards. Data dashboards have become ubiquitous tools for presenting information, tracking performance, and guiding decision-making across various domains. However, a critical question arises: should decision-makers solely rely on data-driven insights, or is there still a place for intuition-driven decision-making? This Article aims to assess the value of data dashboards in facilitating both data-driven and intuition-driven decision-making, explore their respective benefits and limitations, and provide guidelines for leveraging the synergy between the two approaches.
-          </p>
+          <p class="art-lead">In today’s data-driven world, decision-making processes have evolved to incorporate data analysis and visualization through the use of data dashboards. Data dashboards have become ubiquitous tools for presenting information, tracking performance, and guiding decision-making across various domains. However, a critical question arises: should decision-makers solely rely on data-driven insights, or is there still a place for intuition-driven decision-making? This Article aims to assess the value of data dashboards in facilitating both data-driven and intuition-driven decision-making, explore their respective benefits and limitations, and provide guidelines for leveraging the synergy between the two approaches.</p>
         </div>
         <div>
         <p class="text-gray-600 text-[22px] italic">
@@ -157,123 +115,134 @@
         </p>
       </div>
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          Data-Driven Decision-Making:
-        </h1>
-          <p>
-          Data-driven decision-making emphasizes the use of quantitative data and empirical evidence to guide choices and actions. Data dashboards offer a comprehensive view of real-time metrics and trends, enabling decision-makers to identify patterns, correlations, and anomalies that may not be apparent otherwise. By relying on objective data, decision-makers can minimize bias, make informed choices, and respond to changing circumstances swiftly. Moreover, data-driven decisions are more transparent, allowing stakeholders to understand the rationale behind the choices made.<br>
-          </p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Data-Driven Decision-Making:
+        </h2>
+          <p>Data-driven decision-making emphasizes the use of quantitative data and empirical evidence to guide choices and actions. Data dashboards offer a comprehensive view of real-time metrics and trends, enabling decision-makers to identify patterns, correlations, and anomalies that may not be apparent otherwise. By relying on objective data, decision-makers can minimize bias, make informed choices, and respond to changing circumstances swiftly. Moreover, data-driven decisions are more transparent, allowing stakeholders to understand the rationale behind the choices made.</p>
         </div>
                 <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          The Power of Intuition in Decision-Making:
-        </h1>
-          <p>
-          Intuition-driven decision-making relies on instinct, experience, and subjective judgment. Intuition is honed through years of experience and can provide valuable insights when data is limited, ambiguous, or uncertain. Intuition allows decision-makers to make rapid judgments based on their tacit knowledge, creativity, and emotional intelligence. While intuition may not always be quantifiable or explainable, it can be highly effective in navigating complex and uncertain situations.<br><br>
-          </p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">The Power of Intuition in Decision-Making:
+        </h2>
+          <p>Intuition-driven decision-making relies on instinct, experience, and subjective judgment. Intuition is honed through years of experience and can provide valuable insights when data is limited, ambiguous, or uncertain. Intuition allows decision-makers to make rapid judgments based on their tacit knowledge, creativity, and emotional intelligence. While intuition may not always be quantifiable or explainable, it can be highly effective in navigating complex and uncertain situations.</p>
         </div>
         </div>
-        <br><br>
-        <img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Case Study Cover" class="w-full h-auto rounded-lg shadow mb-10" />
+<img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Illustration for: Data-Driven vs. Intuition-Driven Decision-Making: Assessing the Value of Data Dashboards" class="w-full h-auto rounded-lg shadow mb-10" />
         <div class="space-y-8 text-[22px] leading-relaxed text-gray-700">
           <div>
 
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          The Synergy between Data-Driven and Intuition-Driven Decision-Making:</h1>
-          <p>
-          Rather than viewing data-driven and intuition-driven decision-making as competing approaches, organizations can harness the synergy between the two. Data dashboards provide the foundation for informed decision-making, offering objective evidence to support intuitive insights. Intuition can help decision-makers identify critical variables, prioritize issues, and make sense of complex data. By integrating both approaches, decision-makers can arrive at more robust and holistic decisions.
-          </p><br>
-        </div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">The Synergy between Data-Driven and Intuition-Driven Decision-Making:</h2>
+          <p>Rather than viewing data-driven and intuition-driven decision-making as competing approaches, organizations can harness the synergy between the two. Data dashboards provide the foundation for informed decision-making, offering objective evidence to support intuitive insights. Intuition can help decision-makers identify critical variables, prioritize issues, and make sense of complex data. By integrating both approaches, decision-makers can arrive at more robust and holistic decisions.</p>
+</div>
 
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          Limitations of Data Dashboards:</h1>
-          <p>
-          Data dashboards are not without their limitations. They rely heavily on the quality of data collected and the accuracy of algorithms used for analysis. Decision-makers must be cautious of data biases and be aware of the potential for misinterpretation. Moreover, data dashboards may not capture subtle nuances and contextual factors, requiring human judgment for interpretation.
-          </p><br>
-        </div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Limitations of Data Dashboards:</h2>
+          <p>Data dashboards are not without their limitations. They rely heavily on the quality of data collected and the accuracy of algorithms used for analysis. Decision-makers must be cautious of data biases and be aware of the potential for misinterpretation. Moreover, data dashboards may not capture subtle nuances and contextual factors, requiring human judgment for interpretation.</p>
+</div>
 
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          Balancing Data-Driven and Intuition-Driven Approaches:</h1>
-          <p>
-          Effective decision-making requires striking a balance between data-driven and intuition-driven approaches. Organizations should invest in data literacy and provide training to enable decision-makers to interpret data effectively. Moreover, fostering a culture that encourages open discussion and values intuition can lead to more innovative and adaptive decision-making processes.
-          </p><br>
-        </div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Balancing Data-Driven and Intuition-Driven Approaches:</h2>
+          <p>Effective decision-making requires striking a balance between data-driven and intuition-driven approaches. Organizations should invest in data literacy and provide training to enable decision-makers to interpret data effectively. Moreover, fostering a culture that encourages open discussion and values intuition can lead to more innovative and adaptive decision-making processes.</p>
+</div>
 
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-          Conclusion:</h1>
-          <p>
-          In conclusion, data dashboards have transformed decision-making processes, empowering organizations with data-driven insights. However, they should not replace intuition-driven decision-making, which remains a valuable aspect of decision-making. By leveraging the synergy between data-driven and intuition-driven approaches, organizations can make more informed, creative, and adaptive decisions. Striking a harmonious balance between data-driven evidence and intuition-driven insights is the key to unlocking the full potential of decision-making in the data-driven era.
-          </p><br>
-        </div>
+          <h2 class="art-end">Conclusion:</h2>
+          <p>In conclusion, data dashboards have transformed decision-making processes, empowering organizations with data-driven insights. However, they should not replace intuition-driven decision-making, which remains a valuable aspect of decision-making. By leveraging the synergy between data-driven and intuition-driven approaches, organizations can make more informed, creative, and adaptive decisions. Striking a harmonious balance between data-driven evidence and intuition-driven insights is the key to unlocking the full potential of decision-making in the data-driven era.</p>
+</div>
 
         <div>
-          <p>
-            Reference: <a href="https://www.researchgate.net/publication/323059235_Data-driven_decision_making" target="_blank" rel="noopener noreferrer" class="text-secondary underline hover:text-accent">https://www.researchgate.net/publication/323059235_Data-driven_decision_making</a><br><br>
-
-            Citation: Diván, Mario. (2017). Data-driven decision making. 50–56. 10.1109/ICTUS.2017.8285973.
-          </p><br>
-        </div>
+          <p class="art-ref">Reference: <a href="https://www.researchgate.net/publication/323059235_Data-driven_decision_making" target="_blank" rel="noopener noreferrer" class="text-secondary underline hover:text-accent">https://www.researchgate.net/publication/323059235_Data-driven_decision_making</a></p>
+      <p>Citation: Diván, Mario. (2017). Data-driven decision making. 50–56. 10.1109/ICTUS.2017.8285973.</p>
+</div>
         
+      </div>
+      </div><!-- /art --></div><!-- /grid -->
+    </div>
+  
+    </div></section>
+  <section class="sx sx-cream art-more px-6 py-14 md:py-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-end justify-between gap-4"><h2 class="sx-title" style="font-size:clamp(2rem,3.6vw,3.2rem)">Keep <em>reading.</em></h2><a href="/Article.html" class="sx-seeall">All articles <span>→</span></a></div>
+      <div class="sx-arts art-list" style="margin-top:2rem">
+        <a href="/Articles/Designing for Emotion.html" class="sx-art"><div class="sx-art-body"><div class="sx-meta"><span>Emotional Design</span><span>Mar 26, 2023</span></div><h3>Designing for Emotion: The Role of Emotional Design in User Experience</h3><p>Emotional design, the practice of intentionally designing interfaces that elicit emotional responses from users, is becoming an increasingly important aspect of UX design.</p></div><div class="sx-thumb"><img src="https://images.unsplash.com/photo-1605909247405-077c153bc75b?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy"></div></a>
+        <a href="/Articles/Design Thinking an Iterative Process.html" class="sx-art"><div class="sx-art-body"><div class="sx-meta"><span>Design Thinking</span><span>Mar 26, 2023</span></div><h3>Design Thinking an Iterative Process</h3><p>The process of design thinking is non-linear and iterative. This only implies that the design team regularly evaluates, challenges, and improves its original hypotheses, comprehensions, and outcomes.</p></div><div class="sx-thumb"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Ss_LylfOEI_oHiRaBTQw_A.jpeg" alt="" loading="lazy"></div></a>
+        <a href="/Articles/Revolutionizing User Experience with AI.html" class="sx-art"><div class="sx-art-body"><div class="sx-meta"><span>User Experience</span><span>Mar 26, 2023</span></div><h3>Revolutionizing User Experience with AI: How AI Tools are Transforming UIUX Design</h3><p>The incorporation of Artificial Intelligence (AI) techniques has had a considerable impact on the field of User Experience (UX) Design in recent years.</p></div><div class="sx-thumb"><img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy"></div></a>
       </div>
     </div>
   </section>
 
-<!-- Footer -->
-<footer class="bg-primary text-white py-16 px-6 mt-auto">
+
+<!-- Contact / Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
     <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <a href="/index.html" class="block">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-primary font-bold text-sm">UX</span>
-                        </div>
-                        <span class="font-bold text-xl text-white">Saagar</span>
-                    </div>
-                    </a>
-                </div>
-                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
-                
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Freebies</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
-                <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
-
-                </div>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Contact</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
-                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
-                    <div>Kathmandu, Nepal</div>
-                    <div>Available for freelance</div>
-                </div>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Follow</h3>
-                <div class="space-y-2 text-gray-400">
-                <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
-                <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
-                <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
-                <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
-            </div>
-
-            </div>
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
         </div>
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to innovate, 
+                let's talk.
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
         </div>
     </div>
 </footer>
+
 </body>
 </html>
 
@@ -291,4 +260,51 @@
     closeBtn.addEventListener('click', () => {
         mobileMenu.classList.add('translate-x-full');
     });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ---- Article: reading time + table of contents ----
+    (function () {
+        const art = document.querySelector('.art');
+        if (!art) return;
+        const words = (art.textContent || '').trim().split(/\s+/).length;
+        const rt = document.querySelector('[data-readtime]');
+        if (rt) rt.textContent = Math.max(1, Math.round(words / 200)) + ' min read';
+        const toc = document.querySelector('.art-toc');
+        const heads = art.querySelectorAll('h2');
+        heads.forEach(h => { if (h.children.length === 0) h.textContent = h.textContent.trim().replace(/:\s*$/, ""); });
+        if (!toc || !heads.length) return;
+        let html = '<div class="lbl">In this article</div>';
+        heads.forEach((h, i) => {
+            h.id = h.id || 'section-' + (i + 1);
+            html += '<a href="#' + h.id + '">' + h.textContent.trim().replace(/[:.]\s*$/, '') + '</a>';
+        });
+        toc.innerHTML = html; toc.classList.add('has');
+        const links = toc.querySelectorAll('a');
+        if (!('IntersectionObserver' in window)) return;
+        const io = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+        }), { rootMargin: '-15% 0px -75% 0px' });
+        heads.forEach(h => io.observe(h));
+    })();
 </script>
+<script src="/js/pager.js"></script>

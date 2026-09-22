@@ -13,7 +13,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX Designer Portfolio</title>
+    <title>ShiftCare Case Study: A Human-Centered Roster and Client Management System | Saagar</title>
+    <meta name="description" content="An analytical UX/UI case study of ShiftCare, a care management platform for NDIS providers: research, data model, design system, web dashboard, employee and user mobile apps, and a self-audit.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,542 +32,596 @@
 
             <!-- Buy me a coffee -->
 
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#26B0A1" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+            .cs-stage.wide img { max-width: none; width: 100%; filter: none; }
+</style>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="bg-white min-h-screen flex flex-col">
 <!-- Navigation -->
-<nav class="bg-white shadow-sm px-6 py-4">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/index.html" class="block">
-      <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-sm">UX</span>
-        </div>
-        <span class="font-bold text-xl text-gray-900">Saagar</span>
-      </div>
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
     </a>
 
-    <!-- Desktop Nav Links -->
-    <div class="hidden md:flex space-x-8">
-      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Design</a>
-      <a href="/Article.html" class="text-gray-700 hover:text-primary">Articles</a>
-      <a href="/Casestudy.html" class="font-bold underline hover:text-primary">Case Study</a>
-      <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-primary">Photos</a>
-      <a href="/Logos.html" class="text-gray-700 hover:text-primary">Clients</a>
-      <a href="/Palettegen.html" class="text-gray-700 hover:text-primary">Tools</a>
-      <a href="/contact.html" class="text-gray-700 hover:text-primary">Contact</a>
+    <div class="site-links">
+      <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+      <a href="/Article.html">Articles</a>
+      <a href="/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/DesignSystem.html">Design System</a>
+      <a href="/Photos.html">Photos</a>
     </div>
 
-    <!-- Desktop CTA -->
-    <div class="hidden md:block">
-    <a href="mailto:saagarshrest@gmail.com">
-        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-        Let's Work Together
-        </button>
-    </a>
-    </div>
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Let's Work Together</a>
 
-
-    <!-- Mobile Hamburger Button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
   </div>
 </nav>
 
 <!-- Mobile Navigation Menu -->
-<div id="mobile-menu"
-  class="fixed inset-0 bg-primary z-50 transform translate-x-full transition-transform duration-300 md:hidden">
-  <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
-    <!-- Mobile Logo -->
-    <div class="flex items-center space-x-2">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <span class="text-primary font-bold text-sm">UX</span>
-      </div>
-      <span class="font-bold text-xl text-white">Saagar</span>
-    </div>
-
-    <!-- Close Button -->
-    <button id="close-mobile-menu" class="text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18L18 6M6 6l12 12" />
-      </svg>
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
-
-  <!-- Centered Menu Content -->
-  <div class="flex flex-col items-center justify-center h-full space-y-6 text-white text-lg">
-    <a href="https://dribbble.com/saagarshrest" class="hover:underline hover:text-white/90">Designs</a>
-    <a href="/Article.html" class="hover:underline hover:text-white/90">Articles</a>
-    <a href="/Casestudy.html" class="font-bold text-accent hover:underline hover:text-white/90">Case Study</a>
-    <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-white/90">Photos</a>
-    <a href="/Logos.html" class="hover:underline hover:text-white/90">Clients</a>
-    <a href="/Palettegen.html" class="hover:underline hover:text-white/90">Tools</a>
-    <a href="/contact.html" class="hover:underline hover:text-white/90">Contact</a>
-
-    <!-- Social Icons -->
-    <div class="flex space-x-4 pt-6">
-      <a href="https://instagram.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
-        </svg>
+  <div class="site-menu__links">
+    <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer">Design</a>
+    <a href="/Article.html">Articles</a>
+    <a href="/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/DesignSystem.html">Design System</a>
+    <a href="/Photos.html">Photos</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
       </a>
-      <a href="https://twitter.com" target="_blank" class="hover:text-white/80">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" />
-        </svg>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
       </a>
     </div>
   </div>
 </div>
 
-<!-- Main Content -->
-<main class="flex-1">
-    <!-- Case Study Section -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="max-w-4xl mx-auto">
-      <!-- Header -->
-      <div class="mb-16">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-4xl">🩺</span>
-          <h1 class="text-4xl font-bold text-gray-900 leading-tight">
-            ShiftCare: A Human-Centered Roster and Client Management System
-          </h1>
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · UX/UI · Care management SaaS</div>
+            <h1 class="cs-hero-title">ShiftCare: a human-centered <em>roster and client system.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">A people-first platform for Australia's NDIS providers, in-home aged carers and allied health professionals. This case study covers the research, the data model, one design system shared by a web dashboard and two mobile apps, more than 60 screens, and an honest audit of what I would improve next.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>ShiftCare platform</dd></div>
+                <div><dt>Role</dt><dd>UX/UI designer &amp; researcher</dd></div>
+                <div><dt>Platforms</dt><dd>Web dashboard, iOS and Android</dd></div>
+                <div><dt>Year</dt><dd>2025</dd></div>
+                <div><dt>Scope</dt><dd>Research, data model, design system, 3 products</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#problem">Problem</a><a href="#research">Research</a><a href="#define">Define</a><a href="#ideate">Ideate</a><a href="#system">Design system</a><a href="#web">Web dashboard</a><a href="#employee">Employee app</a><a href="#user">User app</a><a href="#audit">Audit</a><a href="#results">Results</a>
+            </nav>
+            <div class="cs-hero-img" style="margin-top:3rem"><img src="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ShiftCare case study hero image" width="1600" height="686" style="aspect-ratio:21/9;object-fit:cover"></div>
         </div>
-        <p class="text-gray-600 text-[22px] italic mb-8">
-          UX/UI Case Study - Empowering Australia's NDIS providers with a people-first SaaS platform
-        </p>
-        
-        <!-- Project Details -->
-        <div class="grid md:grid-cols-4 gap-6 bg-white p-6 rounded-lg shadow-sm">
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Product</h3>
-            <p class="text-gray-600">ShiftCare Web Platform</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Role</h3>
-            <p class="text-gray-600">UX/UI Designer & Researcher</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Platform</h3>
-            <p class="text-gray-600">Web</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 mb-2">Year</h3>
-            <p class="text-gray-600">2025</p>
-          </div>
-        </div>
-      </div>
+    </section>
 
-      <!-- Hero Image with Source -->
-      <div 
-        class="w-full h-96 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg mb-16 flex items-center justify-center bg-cover bg-center" 
-        style="background-image: url('/images/shiftcare\ video.gif');">
-      </div>
-
-
-      <!-- Content -->
-      <div class="space-y-12 text-[22px] leading-relaxed text-gray-700">
-        
-        <!-- Overview -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>📍</span> Overview
-          </h2>
-          <p>
-            ShiftCare is a people-first SaaS platform designed to empower Australia's <strong>NDIS providers, in-home aged carers, and allied health professionals</strong>. The system simplifies employee and client management by offering a robust roster, task, and communication platform — all tailored to meet regulatory needs and enhance care delivery.
-          </p>
-          <p class="mt-4">
-            This case study focuses on the <strong>Roster Management System</strong>, <strong>User/Employee Profile Architecture</strong>, and the <strong>Task Workflow</strong> — designed for operational efficiency without losing human empathy.
-          </p>
-        </div>
-
-        <!-- Problem Space -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🧩</span> Problem Space
-          </h2>
-          <p class="mb-4">In Australia, care providers face overlapping challenges:</p>
-          <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-lg">
-            <div class="grid md:grid-cols-2 gap-4 text-lg">
-              <div class="space-y-2">
-                <p>• Staying <strong>NDIS compliant</strong></p>
-                <p>• Managing <strong>multiple workers and clients</strong></p>
-                <p>• Logging <strong>shift-based activities</strong></p>
-              </div>
-              <div class="space-y-2">
-                <p>• Handling <strong>certification and document expiry</strong></p>
-                <p>• <strong>Geolocation and navigation</strong> to client sites</p>
-                <p>• Relying on outdated tools (spreadsheets, email chains)</p>
-              </div>
-            </div>
-          </div>
-          <p class="mt-4">
-            We aimed to replace fragmented tools with a <strong>unified, digital-first platform</strong> optimized for field-based support work.
-          </p>
-        </div>
-
-        <!-- Goals -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🎯</span> Goals
-          </h2>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
-              <h3 class="text-xl font-semibold text-blue-900 mb-4">Business Goals</h3>
-              <div class="space-y-2 text-lg">
-                <p>• Improve compliance & efficiency</p>
-                <p>• Reduce admin & human error</p>
-                <p>• Create a scalable product for providers</p>
-              </div>
-            </div>
-            <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
-              <h3 class="text-xl font-semibold text-green-900 mb-4">User Goals</h3>
-              <div class="space-y-2 text-lg">
-                <p>• Seamlessly manage schedules & documents</p>
-                <p>• Reduce mental load of manual tracking</p>
-                <p>• Empower workers to focus more on care than forms</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Target Personas -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>👤</span> Target Personas
-          </h2>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
-              <h3 class="text-xl font-semibold text-purple-900 mb-3">Sarah - Field Support Worker</h3>
-              <p class="text-purple-700 mb-4 text-lg">29, casual care staff</p>
-              <div class="space-y-2 text-lg">
-                <p><strong>Needs:</strong> Track shifts, check in/out, upload licenses, add feedback, log incidents</p>
-                <p><strong>Profile:</strong> Low technical literacy; prefers mobile-first simplicity</p>
-                <p><strong>Values:</strong> Clear navigation, alerts, task checklists</p>
-              </div>
-            </div>
-            <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
-              <h3 class="text-xl font-semibold text-orange-900 mb-3">Thomas - Roster Manager</h3>
-              <p class="text-orange-700 mb-4 text-lg">45, Admin</p>
-              <div class="space-y-2 text-lg">
-                <p><strong>Needs:</strong> Assign shifts, verify certifications, get reports, manage unavailability</p>
-                <p><strong>Profile:</strong> Experienced with admin tools</p>
-                <p><strong>Values:</strong> Transparency, batch operations, error-free logs</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Research & Discovery -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🔍</span> Research & Discovery
-          </h2>
-          <div class="mb-6">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Primary Research</h3>
-            <div class="bg-gray-100 p-6 rounded-lg">
-              <div class="grid md:grid-cols-3 gap-4 text-lg">
-                <p>• 5 user interviews with NDIS support workers</p>
-                <p>• 3 shadowing sessions with roster managers</p>
-                <p>• Survey with 30 responses from small to medium provider networks</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Insights</h3>
-            <div class="space-y-3 text-lg">
-              <div class="flex items-start gap-3">
-                <span class="text-yellow-500 text-xl">💡</span>
-                <p>Staff forget to upload new certifications → trigger alerts required</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-yellow-500 text-xl">💡</span>
-                <p>Navigation to client site is a frequent frustration → maps & route planner added</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-yellow-500 text-xl">💡</span>
-                <p>Manual note-taking during shifts often gets lost → digital logs essential</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-yellow-500 text-xl">💡</span>
-                <p>Staff often forget to check-in → early check-in prompt before shift</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- UX Strategy -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🧪</span> UX Strategy
-          </h2>
-          <p class="mb-6">
-            We chose to follow <strong>Human-Centered Design (HCD)</strong> and <strong>Design Thinking</strong>, progressing through:
-          </p>
-          <div class="grid md:grid-cols-5 gap-4">
-            <div class="bg-gradient-to-b from-blue-500 to-blue-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">1</div>
-              <h4 class="font-semibold mb-2">Empathize</h4>
-              <p class="text-sm">Interview support workers, understand context</p>
-            </div>
-            <div class="bg-gradient-to-b from-green-500 to-green-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">2</div>
-              <h4 class="font-semibold mb-2">Define</h4>
-              <p class="text-sm">Core pain points (shift tracking, task compliance, doc renewal)</p>
-            </div>
-            <div class="bg-gradient-to-b from-yellow-500 to-yellow-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">3</div>
-              <h4 class="font-semibold mb-2">Ideate</h4>
-              <p class="text-sm">Paper sketches → wireframes → Figma prototypes</p>
-            </div>
-            <div class="bg-gradient-to-b from-purple-500 to-purple-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">4</div>
-              <h4 class="font-semibold mb-2">Prototype</h4>
-              <p class="text-sm">Usability-focused design with minimal friction</p>
-            </div>
-            <div class="bg-gradient-to-b from-red-500 to-red-600 text-white p-4 rounded-lg text-center">
-              <div class="text-2xl mb-2">5</div>
-              <h4 class="font-semibold mb-2">Test</h4>
-              <p class="text-sm">2 usability rounds via Maze and moderated Zoom sessions</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- UI System & Structure -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>💻</span> UI System & Structure
-          </h2>
-          <div class="space-y-8">
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Add User Flow</h3>
-              <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <p class="mb-3"><strong>Fields:</strong> Name, Contact, NDIS ID, License Expiry, Photo Upload</p>
-                <p class="mb-3">• Smart validation for expired licenses</p>
-                <p class="mb-3">• Drag-and-drop doc import or upload via URL</p>
-                <p>• Password fields with toggle visibility (accessibility-first)</p>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Add Employee Flow</h3>
-              <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
-                <p class="mb-3">• Similar to user flow but includes license number</p>
-                <p class="mb-3">• One-click "Add Employee" CTA with confirmation modal</p>
-                <p>• Auto-reminders based on License Expiry Date</p>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Roster Flow</h3>
-              <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-400">
-                <p class="mb-3">• Assign multiple employees to one user or vice versa</p>
-                <p class="mb-3">• Date/Time selector with smart constraints</p>
-                <p class="mb-3">• Task grouping with contextual user/employee dropdowns</p>
-                <p class="mb-3">• Location field with geolocation (Google Maps API embedded)</p>
-                <p class="mb-3">• Expandable goal/task components</p>
-                <p>• Visual feedback on added shifts for fast iteration</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Impact & Outcome -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>📈</span> Impact & Outcome
-          </h2>
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6">
-              <h3 class="text-xl font-semibold">Results That Matter</h3>
-            </div>
-            <div class="p-6">
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center p-4 bg-red-50 rounded-lg">
-                    <span class="font-semibold">Missed shifts</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">~12/month → ↓ 80%</div>
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
-                    <span class="font-semibold">License expiry non-compliance</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">18% → ↓ 95%</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                    <span class="font-semibold">Roster creation time</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">~6 min/shift → ↓ 60%</div>
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-center p-4 bg-yellow-50 rounded-lg">
-                    <span class="font-semibold">Notes lost or incomplete</span>
-                    <div class="text-right">
-                      <div class="text-sm text-gray-600">Frequent → ↓ 70%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- User Feedback -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>💬</span> User Feedback
-          </h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
-              <div class="flex items-start gap-3 mb-4">
-                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
                 <div>
-                  <h4 class="font-semibold text-gray-900">Field Staff</h4>
-                  <p class="text-gray-600 text-sm">Support Worker</p>
+                    <div class="cs-label">01 · The problem</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Care is human. <em>The paperwork around it isn't.</em></h2>
                 </div>
-              </div>
-              <blockquote class="text-lg italic text-gray-700">
-                "The check-in alert saved me so many times. I used to forget the exact shift start."
-              </blockquote>
-            </div>
-            <div class="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
-              <div class="flex items-start gap-3 mb-4">
-                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
                 <div>
-                  <h4 class="font-semibold text-gray-900">Roster Manager</h4>
-                  <p class="text-gray-600 text-sm">Admin</p>
+                    <p class="cs-p">ShiftCare is a people-first SaaS platform designed to empower Australia's NDIS providers, in-home aged carers and allied health professionals. It simplifies employee and client management with a roster, task and communication platform tailored to regulatory needs.</p>
+                    <p class="cs-p">This case study focuses on the roster management system, the user and employee profile architecture, and the task workflow. The aim was operational efficiency without losing human empathy.</p>
                 </div>
-              </div>
-              <blockquote class="text-lg italic text-gray-700">
-                "Now I can assign 5 shifts in a few clicks, and see who has an expired cert in one place."
-              </blockquote>
             </div>
-          </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-            <span>🔚</span> Conclusion
-          </h2>
-          <p class="mb-6">
-            ShiftCare's reimagined employee and roster management UI bridges the gap between <strong>compliance</strong> and <strong>care</strong>. Through a refined UX process rooted in empathy and supported by research, we delivered a platform that's not just functional — but deeply meaningful in the context of human service.
-          </p>
-          
-          <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg">
-            <h3 class="text-2xl font-semibold mb-4 flex items-center gap-3">
-              <span>🚀</span> Next Steps
-            </h3>
-            <div class="grid md:grid-cols-3 gap-4 text-lg">
-              <div class="flex items-start gap-2">
-                <span>•</span>
-                <span>Mobile app rollout with offline-first capability</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span>•</span>
-                <span>AI-generated behavior log suggestions</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span>•</span>
-                <span>Predictive unavailability based on past patterns</span>
-              </div>
+            <h3 class="cs-h3" style="margin-top:4rem">Six overlapping challenges, grouped into three themes</h3>
+            <div class="cs-list" style="margin-top:1.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Compliance</h3><p>Staying NDIS compliant and handling certification and document expiry.</p><small><b>Design response.</b> License expiry fields with validation, automatic reminders, and a single place to see who is expired.</small></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Coordination</h3><p>Managing multiple workers and clients, with geolocation and navigation to client sites.</p><small><b>Design response.</b> A roster that links employees, clients and addresses, with a route to each site.</small></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>Record keeping</h3><p>Logging shift-based activities on outdated tools such as spreadsheets and email chains.</p><small><b>Design response.</b> Digital task, medicine and behaviour logs filled in during the shift, and a check-in and check-out by QR code.</small></div></div>
             </div>
-          </div>
+            <div class="cs-note">We aimed to replace fragmented tools with a unified, digital-first platform optimized for field-based support work.</div>
         </div>
+    </section>
 
-      </div>
-    </div>
-
-</main>
-
-<!-- Banner Section -->
-    <section class="bg-gray-50 py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-1 gap-8">
-            <div class="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
-                <div class="relative z-10">
-                <div class="text-2xl font-bold mb-4">Ready to Transform Your Product?</div>
-                <p class="text-gray-300 mb-6">Let's discuss how we can create exceptional user experiences together.</p>
-                <a href="mailto:saagarshrest@gmail.com"
-                    class="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-green-500 transition-colors inline-block">
-                    Start Your Project →
-                </a>
+    <!-- ============ RESEARCH ============ -->
+    <section id="research" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Discover</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I asked, <em>and what it meant.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.4rem">
+                <div>
+                    <h3 class="cs-h3">Primary research</h3>
+                    <div class="cs-facts" style="margin-top:1rem;grid-template-columns:1fr">
+                        <div class="cs-fact"><div class="n">5</div><div class="c">Interviews with NDIS support workers</div></div>
+                        <div class="cs-fact"><div class="n">3</div><div class="c">Shadowing sessions with roster managers</div></div>
+                        <div class="cs-fact"><div class="n">30</div><div class="c">Survey responses from small to medium provider networks</div></div>
+                    </div>
                 </div>
-                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full"></div>
-                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-accent opacity-30 rounded-full"></div>
-            </div>
+                <div>
+                    <h3 class="cs-h3">Insights turned into design decisions</h3>
+                    <div class="cs-tbl-wrap" style="margin-top:1rem">
+                        <table class="cs-tbl" style="min-width:0">
+                            <thead><tr><th>What I found</th><th>What I built</th></tr></thead>
+                            <tbody>
+                                <tr><td>Staff forget to upload new certifications.</td><td>Alerts triggered by license expiry date.</td></tr>
+                                <tr><td>Getting to the client's site is a frequent frustration.</td><td>Address on every task, with distance and a maps route planner.</td></tr>
+                                <tr><td>Notes taken by hand during shifts get lost.</td><td>Digital task, medicine and behaviour logs.</td></tr>
+                                <tr><td>Staff often forget to check in.</td><td>Check-in prompt before the shift, and QR check-in and check-out.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cs-note">The research is qualitative and small in scale. It guided decisions rather than proving statistics.</div>
+                </div>
             </div>
         </div>
     </section>
 
- <!-- Footer -->
-<footer class="bg-primary text-white py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <a href="/index.html" class="block">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-primary font-bold text-sm">UX</span>
-                        </div>
-                        <span class="font-bold text-xl text-white">Saagar</span>
+    <!-- ============ DEFINE ============ -->
+    <section id="define" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">03 · Define</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Three people, <em>three surfaces.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">The platform serves an organization and the people on either side of care. Each gets the interface that fits their context.</p>
+            <div class="cs-grid2 even" style="margin-top:2.6rem;gap:2rem">
+                <div class="cs-persona">
+                    <div class="cs-label">Persona · Field support worker · Employee app</div>
+                    <h3 style="margin-top:.6rem">Sarah</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">29, casual care staff. Low technical literacy and prefers mobile-first simplicity.</p>
+                    <div class="cs-two">
+                        <div><h4>Needs</h4><ul><li>Track shifts and check in and out</li><li>Upload licenses</li><li>Add feedback and log incidents</li></ul></div>
+                        <div><h4>Values</h4><ul><li>Clear navigation</li><li>Alerts</li><li>Task checklists</li></ul></div>
                     </div>
-                    </a>
                 </div>
-                <p class="text-gray-400 mb-6">Creating exceptional user experiences that drive business results through strategic design solutions.</p>
-                
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Freebies</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Figma</a></div>
-                <div><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Gumroad</a></div>
-
+                <div class="cs-persona">
+                    <div class="cs-label">Persona · Roster manager · Web dashboard</div>
+                    <h3 style="margin-top:.6rem">Thomas</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">45, admin. Experienced with admin tools and works from a desktop all day.</p>
+                    <div class="cs-two">
+                        <div><h4>Needs</h4><ul><li>Assign shifts</li><li>Verify certifications</li><li>Get reports and manage unavailability</li></ul></div>
+                        <div><h4>Values</h4><ul><li>Transparency</li><li>Batch operations</li><li>Error-free logs</li></ul></div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h3 class="font-bold mb-4">Contact</h3>
-                <div class="space-y-2 text-gray-400">
-                    <div><a href="mailto:saagarshrest@gmail.com" class="hover:underline">saagarshrest@gmail.com</a></div>
-                    <div><a href="tel:+9779860332656" class="hover:underline">+977-9860332656</a></div>
-                    <div>Kathmandu, Nepal</div>
-                    <div>Available for freelance</div>
-                </div>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">Follow</h3>
-                <div class="space-y-2 text-gray-400">
-                <div><a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></div>
-                <div><a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Medium</a></div>
-                <div><a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></div>
-                <div><a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="hover:underline">Unsplash</a></div>
-            </div>
-
+            <div class="cs-note" style="margin-top:2rem"><b>The third audience.</b> The client, called a "user" in the product, sees their own tasks, notes and budget in a light mobile app. James is the example used in the screens below.</div>
+            <h3 class="cs-h3" style="margin-top:3rem">How might we…</h3>
+            <div class="cs-list" style="margin-top:1rem">
+                <div class="cs-row"><span class="sx-num">01</span><p style="margin:0;color:#0A0A0A;font-weight:500">make sure no shift is missed and no license silently expires?</p></div>
+                <div class="cs-row"><span class="sx-num">02</span><p style="margin:0;color:#0A0A0A;font-weight:500">let a manager build a roster in a few clicks instead of a spreadsheet?</p></div>
+                <div class="cs-row"><span class="sx-num">03</span><p style="margin:0;color:#0A0A0A;font-weight:500">help workers record what happened during care without adding paperwork?</p></div>
+                <div class="cs-row"><span class="sx-num">04</span><p style="margin:0;color:#0A0A0A;font-weight:500">give clients visibility of their tasks and budget without exposing what they shouldn't see?</p></div>
             </div>
         </div>
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Saagar. All rights reserved. Crafted with ❤️ for amazing clients.</p>
+    </section>
+
+    <!-- ============ IDEATE ============ -->
+    <section id="ideate" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Ideate</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Human-centered design, <em>from paper to Figma.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div>
+                    <h3 class="cs-h3">The process</h3>
+                    <ol class="cs-list" style="margin-top:1rem">
+                        <li class="cs-row"><span class="sx-num">1</span><div><h3>Empathize</h3><p>Interview support workers and understand their context.</p></div></li>
+                        <li class="cs-row"><span class="sx-num">2</span><div><h3>Define</h3><p>Core pain points: shift tracking, task compliance and document renewal.</p></div></li>
+                        <li class="cs-row"><span class="sx-num">3</span><div><h3>Ideate</h3><p>Paper sketches, then wireframes, then Figma prototypes.</p></div></li>
+                        <li class="cs-row"><span class="sx-num">4</span><div><h3>Prototype</h3><p>Usability-focused design with minimal friction.</p></div></li>
+                        <li class="cs-row"><span class="sx-num">5</span><div><h3>Test</h3><p>Two usability rounds through Maze and moderated Zoom sessions.</p></div></li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="cs-h3">Prioritizing what to build first</h3>
+                    <div class="cs-quad" style="margin-top:1rem">
+                        <div class="hot"><h4>Must have</h4><ul><li>Sign in for all three roles</li><li>Employee and user records</li><li>Roster with tasks</li><li>Check-in and check-out</li></ul></div>
+                        <div><h4>Should have</h4><ul><li>Task, medicine and behaviour logs</li><li>License expiry alerts</li><li>Profile and budget view</li></ul></div>
+                        <div><h4>Could have</h4><ul><li>Calendar day, week and list views</li><li>PDF import</li><li>Search and pagination</li></ul></div>
+                        <div><h4>Later</h4><ul><li>Offline-first mobile</li><li>AI log suggestions</li><li>Predictive unavailability</li></ul></div>
+                    </div>
+                </div>
+            </div>
+
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/shiftcare/erd.jpg" alt="Hand-drawn data model showing Employee, Address, Support user, User, Medicine, Roster, User Employee Task, Tasks, Behaviours, Behaviour log and complaint tables" loading="lazy" width="1800" height="933"></div>
+                <figcaption><b>Data model, sketched on paper first</b><span>Before any screens, I drew the data model by hand. An employee is assigned to a roster entry, and a roster entry joins one employee, one user and one address, with planned and actual start and end times plus goals. Tasks hang off the roster through a user employee task with remarks. Employees fill in medicine and behaviour logs against a user. A support user creates employees. Drawing this first made the roster the center of the product, and it decided what each screen had to show.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM ============ -->
+    <section id="system" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">05 · Design system</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">One system for <em>three products.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">A web dashboard and two mobile apps had to feel like the same product. I defined one system in Figma: color styles, a Lexend type scale, and components with every state, built once and used everywhere.</p>
+                    <div class="cs-list" style="margin-top:2rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Color</h3><p>Primary blue and navy, secondary and extended colors for status, and a grey ramp for surfaces and text.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>Typography</h3><p>Lexend from H1 at 40 px down to inline text at 14 px, with line heights fixed per level.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">03</span><div><h3>Components</h3><p>Inputs, dropdowns, buttons in six states, date and year pickers, PDF upload, pagination, pills and a task calendar.</p></div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-foundations.jpg" alt="Color styles and typography scale for ShiftCare" loading="lazy" width="1800" height="1037" style="max-width:100%;border-radius:10px"></div>
+                </div>
+            </div>
+            <div class="cs-grid2 even" style="margin-top:3rem;gap:1.6rem">
+                <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-components.jpg" alt="Web components: inputs, buttons in every state, icons, pagination" loading="lazy" width="1500" height="1605" style="max-width:100%;border-radius:10px"></div>
+                <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-mobile.jpg" alt="Mobile components: inputs, dropdowns, date picker, roster dates and tab bar" loading="lazy" width="1100" height="2569" style="max-width:100%;border-radius:10px"></div>
+            </div>
+            <p class="cs-p" style="margin-top:1.6rem">Each control is documented in default, hover, active, typing and disabled states, so developers never guess. The mobile set adds larger touch targets and a bottom tab bar with a raised scan button.</p>
+        </div>
+    </section>
+
+    <!-- ============ WEB ============ -->
+    <section id="web" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">06 · Design · Organization web dashboard</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Built for the <em>roster manager.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">The web dashboard is where an organization manages employees, users, rosters, tasks and behaviors. A left navigation gives one section per record type. Every section repeats the same pattern: a searchable table, an add form and an update form. Once a manager learns one, they know all of them.</p>
+            <figure class="cs-fig">
+                <div class="cs-stage wide"><img src="/images/shiftcare/web-login.jpg" alt="Web login screen and the welcome dashboard with left navigation" loading="lazy" width="1500" height="484"></div>
+                <figcaption><b>Sign in and dashboard</b><span>A split sign-in screen with a welcome message, then a dashboard with a persistent left navigation and a friendly greeting.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage wide"><img src="/images/shiftcare/web-employee.jpg" alt="Employee list, add employee form, update employee, details and success message" loading="lazy" width="1900" height="398"></div>
+                <figcaption><b>Employees</b><span>A list with search and pagination leads to an add form, an update form and a long details form split into sections: tax details, bank details, superannuation fund, emergency contact and acknowledgements. A green confirmation appears after saving. License number and expiry live here and drive the reminders.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage wide"><img src="/images/shiftcare/web-users-a.jpg" alt="User list, add user, PDF import and user details screens" loading="lazy" width="1900" height="615"></div>
+                <figcaption><b>Users, part one</b><span>Adding a user includes a PDF import area with drag and drop or upload from a URL, so an existing support plan doesn't need retyping. Details, contact and emergency contact are separate steps.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage wide"><img src="/images/shiftcare/web-users-b.jpg" alt="Health questionnaire, schedule of supports, privacy and consent and agreement screens" loading="lazy" width="1900" height="738"></div>
+                <figcaption><b>Users, part two</b><span>The onboarding of a client continues with a health questionnaire, a schedule of supports, privacy and consent, and a service agreement. These are long, so each sits on its own page with clear Back and Next actions.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage wide"><img src="/images/shiftcare/web-roster.jpg" alt="Roster month calendar, add roster and update roster forms" loading="lazy" width="1900" height="327"></div>
+                <figcaption><b>Roster</b><span>The heart of the product. A calendar with month, week, day and list views shows shifts at a glance. Add roster lets a manager pick the employee, the user, date and time, location and tasks. Shifts appear on the calendar immediately, so changes give instant feedback.</span></figcaption>
+            </figure>
+            <div class="cs-grid2 even" style="gap:1.6rem">
+                <figure class="cs-fig" style="margin-top:3rem">
+                    <div class="cs-stage wide"><img src="/images/shiftcare/web-task.jpg" alt="Task list and add or update task forms" loading="lazy" width="1900" height="457"></div>
+                    <figcaption style="grid-template-columns:1fr"><b>Tasks</b><span>A shared library of tasks that rosters reuse, with the same list, add and update pattern.</span></figcaption>
+                </figure>
+                <figure class="cs-fig" style="margin-top:3rem">
+                    <div class="cs-stage wide"><img src="/images/shiftcare/web-behaviour.jpg" alt="Behavior list and add or update behavior forms" loading="lazy" width="1500" height="348"></div>
+                    <figcaption style="grid-template-columns:1fr"><b>Behaviors</b><span>A library of behavior categories that workers select when logging an incident.</span></figcaption>
+                </figure>
+            </div>
+            <div class="cs-list" style="margin-top:3.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Add user and add employee flows</h3><p>Fields cover name, contact, NDIS ID, license expiry and photo. Expired licenses are validated, documents can be dragged in or imported by URL, and password fields have a visibility toggle.</p></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Roster flow</h3><p>Assign several employees to one user or the reverse, choose date and time with smart constraints, group tasks, and set the location with an embedded map. Goals and tasks expand in place.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ EMPLOYEE APP ============ -->
+    <section id="employee" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">07 · Design · Employee mobile app</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">One hand, <em>on the move.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Sarah is walking between clients with a phone in one hand. The app opens on the next thing she has to do and keeps the rest one tap away.</p>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-a.jpg" alt="Employee app login, home with assigned task and check-in, and roster" loading="lazy" width="872" height="872"></div>
+                <figcaption><b>Sign in, home and check-in</b><span>Home shows the assigned task with a large Check in button, then the upcoming tasks for the day, each with the client address and its distance. Coloured edges separate tasks visually.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-roster.jpg" alt="Employee roster calendar for the month" loading="lazy" width="470" height="788"></div>
+                <figcaption><b>Roster</b><span>A month calendar with a marked selected day, and the shifts for that day listed underneath.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/shiftcare/emp-b.jpg" alt="Add forms menu, add employee task, add medicine log and add behaviour log" loading="lazy" width="1700" height="459"></div>
+                <figcaption><b>Add forms</b><span>Instead of paper, three quick forms: employee task, medicine log and behaviour log. Each begins with a dropdown of the client and the item, so the worker selects instead of typing, then adds a note.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/shiftcare/emp-c.jpg" alt="Forms list with employee tasks, medicine log and behavior log tabs" loading="lazy" width="1500" height="696"></div>
+                <figcaption><b>Forms list</b><span>Everything the worker has recorded is in one list with three tabs, so it is easy to check what was already logged before a shift ends.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-d.jpg" alt="Employee profile form with tax, bank and emergency contact sections plus success and error messages" loading="lazy" width="1300" height="934"></div>
+                <figcaption><b>Profile and compliance details</b><span>The profile holds the details an employer needs: tax, bank and emergency contact, with a Browse button for uploads. Success and error messages are shown as clear cards.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ USER APP ============ -->
+    <section id="user" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">08 · Design · User mobile app</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Visibility for <em>the person receiving care.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">James is a client. His app is deliberately lighter. It shows the care he has received, what the worker noted, and his budget, and it lets him confirm a visit with a QR code.</p>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/shiftcare/user-a.jpg" alt="User app login and home with running task and upcoming tasks" loading="lazy" width="786" height="922"></div>
+                <figcaption><b>Sign in and home</b><span>The home screen puts the running task first, then upcoming tasks for the day, each with its time and place.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/shiftcare/user-b.jpg" alt="Completed tasks, task list with remarks, and roster calendar" loading="lazy" width="1600" height="871"></div>
+                <figcaption><b>Completed tasks and roster</b><span>Completed tasks link to a task list showing who did what, the medicine, time log, remarks, behavior and any warning signs. The roster is a calendar of upcoming visits.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage"><img src="/images/shiftcare/user-c.jpg" alt="Profile with personal and financial details, edit profile, and success and error messages" loading="lazy" width="1500" height="559"></div>
+                <figcaption><b>Profile and budget</b><span>Personal details and financial details: total budget, total expenditure and remaining balance. Profile edits end with a clear saved or error message.</span></figcaption>
+            </figure>
+            <figure class="cs-fig">
+                <div class="cs-stage narrow"><img src="/images/shiftcare/user-qr.jpg" alt="QR scanner screen with the instruction Scan QR Code" loading="lazy" width="470" height="922"></div>
+                <figcaption><b>QR scanner</b><span>One instruction and a framed scanning area, with nothing else to distract.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ UX LAWS ============ -->
+    <section class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">09 · UX principles in the product</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Decisions, <em>and the reasons.</em></h2>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl">
+                    <thead><tr><th>Principle</th><th>Where it shows up in ShiftCare</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hick's Law</td><td>The mobile tab bar has four destinations plus scan. Web navigation has one entry per record type.</td></tr>
+                        <tr><td>Jakob's Law</td><td>Tables, search and pagination look like every admin tool a manager already knows. Mobile follows bottom tabs and a calendar.</td></tr>
+                        <tr><td>Fitts's Law</td><td>Check in is a full-width button placed at the bottom of the first card. The scan button is raised and centered.</td></tr>
+                        <tr><td>Consistency</td><td>Every web section uses the same list, add and update pattern, and one design system serves all three products.</td></tr>
+                        <tr><td>Recognition over recall</td><td>Workers select the client and item from dropdowns instead of typing them.</td></tr>
+                        <tr><td>Error prevention</td><td>License expiry validation, confirmation before adding an employee, and constraints on roster times.</td></tr>
+                        <tr><td>Visibility of status</td><td>Success and error cards after saving, colour-coded task edges, and a visible running task.</td></tr>
+                        <tr><td>Chunking (Miller's Law)</td><td>Long client onboarding is split into separate pages, each with a single topic.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ AUDIT ============ -->
+    <section id="audit" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">10 · Self-audit</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What I'd fix <em>in the next round.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Reviewing my own screens against usability heuristics and accessibility guidelines showed real gaps. Listing them is part of the process.</p>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl" style="min-width:820px">
+                    <thead><tr><th>Finding</th><th>Principle</th><th>Severity</th><th>Proposed fix</th></tr></thead>
+                    <tbody>
+                        <tr><td>Task and status are separated only by the colour of a thin left edge (red, green, yellow, blue).</td><td>WCAG 1.4.1 Use of color</td><td class="cs-sev">Major</td><td>Add a text status and an icon beside each task.</td></tr>
+                        <tr><td>Secondary text in the mobile cards is very small and light grey.</td><td>WCAG 1.4.3 Contrast, legibility</td><td class="cs-sev">Major</td><td>Minimum 12 px and a darker grey that reaches 4.5 : 1.</td></tr>
+                        <tr><td>Mobile profile is one long form with about twenty fields.</td><td>Hick's and Miller's laws</td><td class="cs-sev">Moderate</td><td>Split into steps with a progress bar, as the web onboarding already does.</td></tr>
+                        <tr><td>Web tables are dense, with small text and icon-only edit and delete actions.</td><td>Recognition over recall</td><td class="cs-sev">Moderate</td><td>Larger row height, labelled actions and confirmation on delete.</td></tr>
+                        <tr><td>Field labels sit inside outlined boxes and can be low contrast against the input border.</td><td>WCAG 1.4.11 Non-text contrast</td><td class="cs-sev">Moderate</td><td>Visible labels above fields and a border that reaches 3 : 1.</td></tr>
+                        <tr><td>Check-in depends on a QR scan, with no fallback if the camera fails.</td><td>Error recovery</td><td class="cs-sev">Moderate</td><td>Offer a manual check-in with a reason, and log it for the manager.</td></tr>
+                        <tr><td>Placeholder text such as "Placeholder" and repeated sample remarks still appear in several screens.</td><td>Content quality</td><td class="cs-sev">Minor</td><td>Field-specific hints and real microcopy.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="results" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">11 · Testing and outcome</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What testing <em>told me.</em></h2>
+            <div class="cs-tests" style="margin-top:2.6rem">
+                <div>
+                    <p class="cs-p">Two usability rounds, run through Maze and moderated Zoom sessions, checked check-in, roster creation and logging. Feedback shaped the screens above.</p>
+                    <div class="cs-quote" style="margin-top:2rem"><p>“The check-in alert saved me so many times. I used to forget the exact shift start.”</p><cite>Support worker, field staff</cite></div>
+                    <div class="cs-quote" style="margin-top:1.6rem"><p>“Now I can assign 5 shifts in a few clicks, and see who has an expired cert in one place.”</p><cite>Roster manager, admin</cite></div>
+                </div>
+                <div>
+                    <div class="cs-label">Reported impact</div>
+                    <div class="cs-facts" style="margin-top:.8rem;grid-template-columns:1fr">
+                        <div class="cs-fact"><div class="n">−80%</div><div class="c">Missed shifts, from about 12 per month</div></div>
+                        <div class="cs-fact"><div class="n">−95%</div><div class="c">License expiry non-compliance, from 18%</div></div>
+                        <div class="cs-fact"><div class="n">−60%</div><div class="c">Roster creation time, from about 6 minutes per shift</div></div>
+                        <div class="cs-fact"><div class="n">−70%</div><div class="c">Notes lost or incomplete</div></div>
+                    </div>
+                    <div class="cs-note">These figures come from my earlier write-up of this project. Please treat them as reported estimates rather than audited measurements.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============ -->
+    <section class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">12 · Conclusion</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Compliance and care, <em>in one place.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">ShiftCare's employee and roster management bridges the gap between compliance and care. Through a process rooted in empathy and supported by research, the result is a platform that is not just functional, but meaningful in the daily work of care.</p>
+                    <div class="cs-list" style="margin-top:2rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Model the data first</h3><p>A hand-drawn data model made the roster the center of every screen.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>One system, many surfaces</h3><p>Components built once kept three products consistent.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">03</span><div><h3>Never rely on colour alone</h3><p>Status needs text and icons, especially in a job done on the move.</p></div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="cs-label">Next steps</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Mobile rollout, offline-first</h3><p>Let workers keep logging where reception is poor.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>AI behavior log suggestions</h3><p>Suggest wording from earlier logs for a worker to confirm.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Predictive unavailability</h3><p>Warn managers early based on past patterns.</p></div></div>
+                    </div>
+                    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center">
+                        <a href="/Casedetailofficiti.html" class="cs-btn">Read the Officiti case study <span>↗</span></a>
+                        <a href="/Casestudy.html" class="cs-link">All case studies →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
         </div>
     </div>
 </footer>
-
-
-
 
   <!-- JavaScript for mobile menu toggle -->
   <script>
@@ -581,6 +636,28 @@
     closeBtn.addEventListener("click", () => {
       mobileMenu.classList.add("translate-x-full");
     });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
   </script>
+<script src="/js/pager.js"></script>
 </body>
 </html>
