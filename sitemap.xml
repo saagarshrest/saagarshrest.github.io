@@ -26,6 +26,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://saagarshrest.com.np/Design.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://saagarshrest.com.np/DesignSystem.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -74,5 +79,15 @@
     <loc>https://saagarshrest.com.np/Photos.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://saagarshrest.com.np/Resume.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://saagarshrest.com.np/ImageCleaner.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
