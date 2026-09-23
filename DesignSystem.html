@@ -149,7 +149,6 @@
         .ds-scroll { overflow-x: auto; }
         .ds-spec { margin-top: 1rem; display: grid; gap: .35rem; font-size: .85rem; color: rgba(10,10,10,.7); line-height: 1.45; }
         .ds-spec b { color: #0A0A0A; font-weight: 600; }
-        .ds-code { background: #0A0A0A; color: #F2F2F2; border-radius: 12px; padding: 1.3rem 1.4rem; font: 12.5px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow: auto; max-height: 30rem; white-space: pre; }
         .ds-pass { color: #2F6014; font-weight: 500; } .ds-fail { color: #B5301E; font-weight: 500; }
         .ds-principles { display: grid; border-top: 1px solid rgba(10,10,10,.2); margin-top: 2rem; }
         @media (min-width: 760px) { .ds-principles { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
@@ -183,7 +182,7 @@
         .ic-fill { fill: currentColor; stroke: none; }
         .col-demo { display: grid; gap: 8px; margin-top: .7rem; }
         .col-demo div { height: 26px; background: var(--primary-100); border-radius: 3px; }
-        .col-demo.c4 { grid-template-columns: repeat(4, 1fr); } .col-demo.c8 { grid-template-columns: repeat(8, 1fr); } .col-demo.c12 { grid-template-columns: repeat(12, 1fr); }
+        .col-demo.c4 { grid-template-columns: repeat(4, 1fr); } .col-demo.c8 { grid-template-columns: repeat(8, 1fr); }
         .tgt { width: 48px; height: 48px; border: 1.5px dashed var(--primary-500); border-radius: 6px; display: grid; place-content: center; background: var(--primary-50); }
         .tgt i { width: 24px; height: 24px; background: var(--primary-600); border-radius: 4px; display: block; }
         .motion-dot { width: 20px; height: 20px; border-radius: 9999px; background: var(--primary-600); animation: mv 2.4s var(--ease-standard) infinite alternate; }
@@ -393,14 +392,13 @@
                 <p class="ds-lead mt-8">Build scalable design systems that ensure consistency across all touchpoints.</p>
                 <p class="ds-lead mt-4" style="font-size:1rem">Below is a complete, working design system for <b>Officiti</b>, a B2B platform for sharing and booking workspace. It starts from the six colors and Roboto type scale in the original case study, then fixes accessibility gaps and adds tokens, components and patterns based on established UX laws and WCAG 2.2.</p>
                 <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-                    <a href="#tokens" class="ds-btn">Get the tokens <span>↓</span></a>
                     <a href="/Casedetailofficiti.html" class="ds-link">Read the Officiti case study →</a>
                 </div>
             </div>
             <div class="lg:col-span-4">
                 <dl style="border-top:1px solid rgba(10,10,10,.2)">
                     <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Version</dt><dd>1.0</dd></div>
-                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Platforms</dt><dd>iOS · Android · Web</dd></div>
+                    <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Platforms</dt><dd>iOS · Android</dd></div>
                     <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Typeface</dt><dd>Roboto</dd></div>
                     <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Base grid</dt><dd>4 pt</dd></div>
                     <div class="flex justify-between py-3" style="border-bottom:1px solid rgba(10,10,10,.2)"><dt class="ds-label">Standard</dt><dd>WCAG 2.2 AA</dd></div>
@@ -425,9 +423,8 @@
             <a href="#components">Components</a>
             <a href="#patterns">Patterns</a>
             <div class="ds-label grp">Quality</div>
-            <a href="#laws">UX laws map</a>
+            <a href="#laws">UX laws</a>
             <a href="#a11y">Accessibility</a>
-            <a href="#tokens">Design tokens</a>
             <a href="#governance">Governance</a>
         </nav>
 
@@ -439,7 +436,7 @@
             <h2 class="ds-h2">Six rules every decision <em>is tested against.</em></h2>
             <p class="ds-p mt-5">Officiti serves working professionals who book desks, rooms and visitors on the go, often one-handed and in a hurry. These principles turn established UX research into constraints that the components below obey.</p>
             <div class="ds-principles">
-                <div class="ds-pr"><span class="n">01</span><div><h4>Clear before clever</h4><p>Every element earns its place. Plain labels, generous space and one focal point per screen.</p><small>Aesthetic-Usability · Minimalist design</small></div></div>
+                <div class="ds-pr"><span class="n">01</span><div><h4>Clear before clever</h4><p>Every element earns its place. Plain labels, generous space and one focal point per screen.</p><small>Minimalist design</small></div></div>
                 <div class="ds-pr"><span class="n">02</span><div><h4>Fewer choices, faster decisions</h4><p>Break booking into short steps and reveal detail progressively. Keep menus to five items or fewer.</p><small>Hick's Law · Miller's Law</small></div></div>
                 <div class="ds-pr"><span class="n">03</span><div><h4>Within reach</h4><p>Primary actions live in the thumb zone with targets of at least 48 px and 8 px between them.</p><small>Fitts's Law</small></div></div>
                 <div class="ds-pr"><span class="n">04</span><div><h4>Familiar patterns</h4><p>Use platform conventions for navigation, forms and pickers so nobody has to learn Officiti first.</p><small>Jakob's Law · Consistency</small></div></div>
@@ -469,7 +466,7 @@
             <div class="sw-name">Primary / action</div>
             <div class="sw-row">
                 <div class="sw lt" style="background:#EEF0FF"><b>50</b>#EEF0FF</div><div class="sw lt" style="background:#E0E4FF"><b>100</b>#E0E4FF</div><div class="sw lt" style="background:#C4CBFF"><b>200</b>#C4CBFF</div><div class="sw lt" style="background:#A3ADFF"><b>300</b>#A3ADFF</div><div class="sw lt" style="background:#8290FF"><b>400</b>#8290FF</div>
-                <div class="sw dk" style="background:#5D6DFF"><b>500 · brand</b>#5D6DFF</div><div class="sw dk" style="background:#4351E8"><b>600 · action</b>#4351E8</div><div class="sw dk" style="background:#3A46D1"><b>700 · hover</b>#3A46D1</div><div class="sw dk" style="background:#2F3AB5"><b>800 · pressed</b>#2F3AB5</div><div class="sw dk" style="background:#232C8C"><b>900</b>#232C8C</div>
+                <div class="sw dk" style="background:#5D6DFF"><b>500 · brand</b>#5D6DFF</div><div class="sw dk" style="background:#4351E8"><b>600 · action</b>#4351E8</div><div class="sw dk" style="background:#3A46D1"><b>700</b>#3A46D1</div><div class="sw dk" style="background:#2F3AB5"><b>800 · pressed</b>#2F3AB5</div><div class="sw dk" style="background:#232C8C"><b>900</b>#232C8C</div>
             </div>
             <div class="sw-name">Danger</div>
             <div class="sw-row">
@@ -582,7 +579,7 @@
                     <div class="sp-row"><span>space-10 · 40</span><i class="sp-bar" style="width:40px"></i></div>
                     <div class="sp-row"><span>space-12 · 48</span><i class="sp-bar" style="width:48px"></i></div>
                     <div class="sp-row"><span>space-16 · 64</span><i class="sp-bar" style="width:64px"></i></div>
-                    <p class="ds-p" style="font-size:.85rem;margin-top:.8rem">Related items sit closer than unrelated ones (Law of Proximity). Use 8 inside a component, 16 between fields, 24 to 32 between groups.</p>
+                    <p class="ds-p" style="font-size:.85rem;margin-top:.8rem">Related items sit closer than unrelated ones. Use 8 inside a component, 16 between fields, 24 to 32 between groups.</p>
                 </div>
                 <div class="ds-panel of">
                     <div class="ds-label" style="margin-bottom:.9rem">Touch target</div>
@@ -652,19 +649,17 @@
         <!-- ================= GRID ================= -->
         <section id="grid" class="ds-sec">
             <div class="ds-label">06 · Foundations · Layout grid</div>
-            <h2 class="ds-h2">Mobile first, <em>three breakpoints.</em></h2>
+            <h2 class="ds-h2">Phones and tablets, <em>two breakpoints.</em></h2>
             <div class="ds-panel">
                 <table class="ds-tbl">
                     <thead><tr><th>Breakpoint</th><th>Width</th><th>Columns</th><th>Margin</th><th>Gutter</th></tr></thead>
                     <tbody>
-                        <tr><td>Mobile</td><td>360 to 767</td><td>4</td><td>16</td><td>16</td></tr>
-                        <tr><td>Tablet</td><td>768 to 1199</td><td>8</td><td>24</td><td>24</td></tr>
-                        <tr><td>Desktop web</td><td>1200 and up</td><td>12, max width 1200</td><td>32</td><td>24</td></tr>
+                        <tr><td>Phone</td><td>360 to 767</td><td>4</td><td>16</td><td>16</td></tr>
+                        <tr><td>Tablet</td><td>768 and up</td><td>8</td><td>24</td><td>24</td></tr>
                     </tbody>
                 </table>
                 <div class="col-demo c4"><div></div><div></div><div></div><div></div></div>
                 <div class="col-demo c8"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                <div class="col-demo c12"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         </section>
 
@@ -677,7 +672,7 @@
                     <table class="ds-tbl">
                         <thead><tr><th>Token</th><th>Time</th><th>Use</th></tr></thead>
                         <tbody>
-                            <tr><td>motion-fast</td><td>100 ms</td><td>Press, toggle, hover</td></tr>
+                            <tr><td>motion-fast</td><td>100 ms</td><td>Press, toggle, selection</td></tr>
                             <tr><td>motion-base</td><td>200 ms</td><td>Fields, chips, menus</td></tr>
                             <tr><td>motion-slow</td><td>300 ms</td><td>Sheets, dialogs, toasts</td></tr>
                         </tbody>
@@ -701,7 +696,7 @@
         <section id="components" class="ds-sec">
             <div class="ds-label">08 · Components</div>
             <h2 class="ds-h2">Every component, <em>live and interactive.</em></h2>
-            <p class="ds-p mt-5">These are real, working components built with the tokens above. Tab through them, press them and read the specs. Each states the UX rule behind it.</p>
+            <p class="ds-p mt-5">These are real, working components built with the tokens above. Try them out and read the specs. Each states the UX rule behind it.</p>
 
             <!-- Buttons -->
             <h3 class="ds-h3">Buttons</h3>
@@ -724,10 +719,10 @@
                 </div>
             </div>
             <div class="ds-spec">
-                <div><b>Anatomy.</b> 48 px high on mobile (40 and 32 for dense web tables), 24 px side padding, 4 px radius, label 14/20 Medium.</div>
-                <div><b>Hierarchy.</b> One primary button per screen so the main action stands out (Von Restorff). Secondary for alternatives, text for low-risk dismissals.</div>
+                <div><b>Anatomy.</b> 48 px high, 24 px side padding, 4 px radius, label 14/20 Medium.</div>
+                <div><b>Hierarchy.</b> One primary button per screen so the main action stands out. Secondary for alternatives, text for low-risk dismissals.</div>
                 <div><b>Labels.</b> Verb plus object: "Book meeting room", never "Submit" or "OK".</div>
-                <div><b>States.</b> Default, hover, pressed, focus (3 px ring), disabled, loading. Loading keeps the label and sets <code>aria-busy</code>.</div>
+                <div><b>States.</b> Default, pressed, focus (3 px ring), disabled, loading. Loading keeps the label and sets <code>aria-busy</code>.</div>
                 <div><b>Placement.</b> On mobile, the primary action is full width and anchored at the bottom, inside the thumb zone.</div>
             </div>
 
@@ -856,7 +851,7 @@
                 <div class="ds-panel">
                     <div class="ds-spec" style="margin-top:0">
                         <div><b>Bottom tab bar.</b> Four destinations plus a raised scan button. Five items is the upper limit for one-thumb reach and quick decisions (Hick's and Miller's laws).</div>
-                        <div><b>Scan is always reachable.</b> Scanning a QR code at the door is the most time-critical task, so it sits at the center of the thumb zone in ink (#2D2D2D) and stands out from everything else (Von Restorff, Fitts).</div>
+                        <div><b>Scan is always reachable.</b> Scanning a QR code at the door is the most time-critical task, so it sits at the center of the thumb zone in ink (#2D2D2D) and stands out from everything else (Fitts's Law).</div>
                         <div><b>Active tab.</b> Darker color and Bold label. Labels are always shown, at 11/14 Medium.</div>
                         <div><b>Top bar.</b> 56 px, back arrow on the left with a 48 px target, centered title. The back arrow always goes to the previous screen (user control and freedom).</div>
                         <div><b>Consistent help.</b> Support stays in the same position on every screen (WCAG 3.2.6).</div>
@@ -921,7 +916,7 @@
             <h2 class="ds-h2">Components combined into <em>real journeys.</em></h2>
 
             <h3 class="ds-h3">Book a room in three short steps</h3>
-            <p class="ds-p">The original create-meeting screen shows every field at once. Splitting it into three steps lowers the number of decisions on screen (Hick's Law), keeps chunks small (Miller's Law) and shows progress, which encourages completion (goal-gradient effect).</p>
+            <p class="ds-p">The original create-meeting screen shows every field at once. Splitting it into three steps lowers the number of decisions on screen (Hick's Law), keeps chunks small (Miller's Law) and shows progress, which encourages people to finish.</p>
             <div class="ds-grid3">
                 <div class="ds-panel of" style="background:#F5F5F5;display:grid;gap:14px;align-content:start">
                     <div class="of-steps"><div class="of-step on"><i></i>What</div><div class="of-step"><i></i>When</div><div class="of-step"><i></i>Who</div></div>
@@ -962,7 +957,7 @@
                         <li><b>1. Add visitor.</b> Name, email, date, time and purpose. Fields already known are prefilled (WCAG 3.3.7, no redundant entry).</li>
                         <li><b>2. Share the QR code.</b> Visitor receives a code with name, date and time window. It carries a lock icon and expiry so it is clear it is private.</li>
                         <li><b>3. Scan at the door.</b> The host or front desk scans from the always-visible scan button.</li>
-                        <li><b>4. Check-in confirmed.</b> A clear success state names the visitor and host and closes the loop (Peak-End rule).</li>
+                        <li><b>4. Check-in confirmed.</b> A clear success state names the visitor and host and closes the loop.</li>
                     </ol>
                 </div>
                 <div class="ds-panel of" style="background:#F5F5F5">
@@ -1000,26 +995,18 @@
 
         <!-- ================= LAWS ================= -->
         <section id="laws" class="ds-sec">
-            <div class="ds-label">10 · UX laws map</div>
-            <h2 class="ds-h2">Where each law <em>shapes the system.</em></h2>
+            <div class="ds-label">10 · UX laws</div>
+            <h2 class="ds-h2">Five laws <em>behind the design.</em></h2>
+            <p class="ds-p mt-5">A handful of well-known UX laws do most of the work in this system. These are the five it leans on.</p>
             <div class="ds-panel ds-scroll" style="padding:0 1.4rem 1rem">
                 <table class="ds-tbl">
-                    <thead><tr><th>Law or heuristic</th><th>What it says</th><th>How Officiti applies it</th></tr></thead>
+                    <thead><tr><th>Law</th><th>In plain words</th><th>In Officiti</th></tr></thead>
                     <tbody>
-                        <tr><td>Hick's Law</td><td>More options mean slower decisions.</td><td>Five-item tab bar, three-step booking, one primary button per screen.</td></tr>
-                        <tr><td>Miller's Law</td><td>Working memory holds a limited number of items.</td><td>Forms grouped into short chunks. Ticket details split into labeled sections.</td></tr>
-                        <tr><td>Fitts's Law</td><td>Bigger, closer targets are faster to hit.</td><td>48 px targets, 8 px gaps, full-width primary buttons at the bottom, scan button at thumb center.</td></tr>
-                        <tr><td>Jakob's Law</td><td>Users expect familiar patterns.</td><td>Bottom tabs, top-left back arrow, native date and time pickers, labels above fields.</td></tr>
-                        <tr><td>Doherty Threshold</td><td>Responses under about 400 ms keep flow.</td><td>100 to 300 ms motion, skeletons after 400 ms, instant toast confirmation.</td></tr>
-                        <tr><td>Von Restorff Effect</td><td>The distinct item is remembered.</td><td>Ink scan button and the single filled action button stand out from the rest.</td></tr>
-                        <tr><td>Proximity and Common Region</td><td>Nearby, enclosed items read as related.</td><td>8, 16, 24 spacing steps and cards that group a meeting's details.</td></tr>
-                        <tr><td>Aesthetic-Usability Effect</td><td>Attractive interfaces feel easier to use.</td><td>Consistent radius, spacing and a restrained palette across all components.</td></tr>
-                        <tr><td>Goal-Gradient Effect</td><td>People try harder as the goal gets closer.</td><td>Step progress bar in the booking flow.</td></tr>
-                        <tr><td>Peak-End Rule</td><td>Experiences are judged by the peak and the end.</td><td>Confirmed booking and confirmed check-in states with clear next actions.</td></tr>
-                        <tr><td>Postel's Law</td><td>Be liberal in what you accept.</td><td>Phone and time inputs accept common formats and normalize them.</td></tr>
-                        <tr><td>Visibility of system status</td><td>Always tell users what is going on.</td><td>Loading, success, error and pending states on every async action.</td></tr>
-                        <tr><td>Error prevention and recovery</td><td>Stop mistakes, then help fix them.</td><td>Confirm dialogs for destructive actions, Undo on toasts, inline fixes in error text.</td></tr>
-                        <tr><td>Recognition over recall</td><td>Show options instead of asking users to remember.</td><td>Visible labels, attendee search with avatars, recent rooms listed first.</td></tr>
+                        <tr><td>Hick's Law</td><td>Fewer choices, faster decisions.</td><td>Five-item tab bar, three-step booking, one main button per screen.</td></tr>
+                        <tr><td>Miller's Law</td><td>People hold only a few things in mind.</td><td>Short form groups, and ticket details split into labeled sections.</td></tr>
+                        <tr><td>Fitts's Law</td><td>Big, close targets are easy to tap.</td><td>48 px targets and full-width buttons within thumb reach.</td></tr>
+                        <tr><td>Jakob's Law</td><td>People expect familiar patterns.</td><td>Bottom tabs, a top-left back arrow, and native date and time pickers.</td></tr>
+                        <tr><td>Doherty Threshold</td><td>Replies under 400 ms feel instant.</td><td>100 to 300 ms motion, and loading skeletons after 400 ms.</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1047,21 +1034,9 @@
             </ul>
         </section>
 
-        <!-- ================= TOKENS ================= -->
-        <section id="tokens" class="ds-sec">
-            <div class="ds-label">12 · Design tokens</div>
-            <h2 class="ds-h2">One source of truth, <em>ready to ship.</em></h2>
-            <p class="ds-p mt-5">These are the exact custom properties powering every component on this page. They are read straight from this page's stylesheet, so the code below can never drift from what you see. Map the same names to Figma variables and to platform themes.</p>
-            <div style="margin-top:1.4rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-                <button class="ds-btn" id="copy-tokens" type="button" style="border:0;cursor:pointer">Copy tokens.css</button>
-                <span class="ds-label" id="copy-msg" aria-live="polite"></span>
-            </div>
-            <pre class="ds-code" id="tokens-code" tabindex="0" style="margin-top:1rem"></pre>
-        </section>
-
         <!-- ================= GOVERNANCE ================= -->
         <section id="governance" class="ds-sec">
-            <div class="ds-label">13 · Governance</div>
+            <div class="ds-label">12 · Governance</div>
             <h2 class="ds-h2">Keeping it consistent <em>as it grows.</em></h2>
             <div class="ds-grid2">
                 <div class="ds-panel">
@@ -1071,7 +1046,7 @@
                         <li><b>1 · Foundations.</b> Color, type, space, radius, elevation, icons, motion.</li>
                         <li><b>2 · Components.</b> Variants for state, size and type, built with auto layout.</li>
                         <li><b>3 · Patterns.</b> Booking, tickets, visitor access, states.</li>
-                        <li><b>4 · Templates.</b> Mobile and web page starters.</li>
+                        <li><b>4 · Templates.</b> Screen starters for iOS and Android.</li>
                     </ol>
                     <div class="ds-label" style="margin:1.4rem 0 .8rem">Naming</div>
                     <div class="ds-spec" style="margin-top:0">
@@ -1098,7 +1073,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ds-note"><b>Next in the roadmap.</b> Dark theme tokens, a date and time picker, a data table for the web admin, and an empty-state illustration set.</div>
+            <div class="ds-note"><b>Next in the roadmap.</b> Dark theme tokens, a date and time picker, and an empty-state illustration set.</div>
             <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <a href="mailto:saagarshrest@gmail.com?subject=Design%20Systems%20enquiry" class="ds-btn">Build a design system with me <span>↗</span></a>
                 <a href="/Casedetailofficiti.html" class="ds-link">Officiti case study →</a>
@@ -1228,25 +1203,6 @@
             tr.innerHTML = '<td>' + tr.dataset.l + '</td>' +
                 '<td><span class="ct-cell" style="color:' + fg + ';background:' + bg + '">Aa</span></td>' +
                 '<td>' + r.toFixed(2) + ':1</td>' + (tr.dataset.ui ? '<td>Not text</td><td>' + mark(r >= 3) + '</td><td>Not text</td>' : '<td>' + mark(r >= 4.5) + '</td><td>' + mark(r >= 3) + '</td><td>' + mark(r >= 7) + '</td>');
-        });
-
-        // tokens.css from the live :root rule
-        const pre = document.getElementById('tokens-code');
-        let css = '';
-        for (const sheet of document.styleSheets) {
-            let rules; try { rules = sheet.cssRules; } catch (e) { continue; }
-            for (const rule of rules) {
-                if (rule.selectorText === ':root' && rule.cssText.indexOf('--brand-blue') > -1) {
-                    css = ':root {\n  ' + rule.cssText.replace(/^:root\s*\{\s*/, '').replace(/\s*\}\s*$/, '').split(/;\s*/).filter(Boolean).join(';\n  ') + ';\n}';
-                }
-            }
-        }
-        if (pre) pre.textContent = '/* Officiti design tokens v1.0 */\n' + css;
-        const cbtn = document.getElementById('copy-tokens'), msg = document.getElementById('copy-msg');
-        if (cbtn) cbtn.addEventListener('click', async () => {
-            try { await navigator.clipboard.writeText(pre.textContent); msg.textContent = 'Copied'; }
-            catch (e) { msg.textContent = 'Select the code and press Ctrl+C'; }
-            setTimeout(() => msg.textContent = '', 2200);
         });
 
         // scroll spy

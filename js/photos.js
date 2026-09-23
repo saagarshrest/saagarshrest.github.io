@@ -180,7 +180,10 @@
         { p: "photo-1748591184748-c23fbd17e431", slug: "-ryGD49seic", r: 0.75, alt: "Oku Bahal Rudra Varna Mahavihar" }
     ];
 
-    var url = function (p, width, q) { return 'https://images.unsplash.com/' + p.p + '?w=' + width + '&q=' + (q || 72) + '&auto=format&fit=max'; };
+    // 90% quality in the best format the browser supports (AVIF/WebP): looks identical, far lighter.
+    // The viewer shows a 2560px copy; "Full resolution" opens the untouched original.
+    var url = function (p, width) { return 'https://images.unsplash.com/' + p.p + '?w=' + width + '&q=90&auto=format&fit=max'; };
+    var original = function (p) { return 'https://images.unsplash.com/' + p.p; };
     var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); };
     var label = function (p) { return p.alt ? p.alt.charAt(0).toUpperCase() + p.alt.slice(1) : UNTITLED; };
 
@@ -227,7 +230,7 @@
             return '<div class="ph-group"' + (hidden ? ' aria-hidden="true"' : '') + '>' + idx.map(function (i) {
                 var p = PHOTOS[i], l = esc(label(p));
                 return '<button type="button" class="ph-m" data-mi="' + i + '" style="width:calc(var(--mh) * ' + p.r + ')"' + (hidden ? ' tabindex="-1"' : ' aria-label="Open photo: ' + l + '"') + '>' +
-                    '<img src="' + url(p, 360, 62) + '" alt="' + (hidden ? '' : l) + '" width="' + Math.round(p.r * 200) + '" height="200" decoding="async"></button>';
+                    '<img src="' + url(p, 720) + '" alt="' + (hidden ? '' : l) + '" width="' + Math.round(p.r * 200) + '" height="200" decoding="async"></button>';
             }).join('') + '</div>';
         };
         var row = function (idx, cls) { return '<div class="ph-row"><div class="ph-track ' + cls + '">' + group(idx, false) + group(idx, true) + '</div></div>'; };
@@ -249,10 +252,10 @@
         '<figure class="lb__stage"><img class="lb__img" alt=""></figure>' +
         '<button type="button" class="lb__btn lb__nav lb__prev" aria-label="Previous photo">←</button>' +
         '<button type="button" class="lb__btn lb__nav lb__next" aria-label="Next photo">→</button>' +
-        '<div class="lb__bar"><div><p class="lb__title"></p><p class="lb__by">' + BY + '</p></div><div class="lb__links"><a class="lb__buy">Buy this photo ↗</a><a class="lb__link" target="_blank" rel="noopener noreferrer">View on Unsplash ↗</a></div></div>';
+        '<div class="lb__bar"><div><p class="lb__title"></p><p class="lb__by">' + BY + '</p></div><div class="lb__links"><a class="lb__buy">Buy this photo ↗</a><a class="lb__link lb__full" target="_blank" rel="noopener noreferrer">Full resolution ↗</a><a class="lb__link lb__unsplash" target="_blank" rel="noopener noreferrer">View on Unsplash ↗</a></div></div>';
     document.body.appendChild(lb);
     var q = function (s) { return lb.querySelector(s); };
-    var stage = q('.lb__stage'), img = q('.lb__img'), count = q('.lb__count'), title = q('.lb__title'), link = q('.lb__link'), buy = q('.lb__buy'), closeBtn = q('.lb__close');
+    var stage = q('.lb__stage'), img = q('.lb__img'), count = q('.lb__count'), title = q('.lb__title'), link = q('.lb__unsplash'), full = q('.lb__full'), buy = q('.lb__buy'), closeBtn = q('.lb__close');
 
     var cur = -1, opener = null, openerIdx = -1, busy = false, dur = reduce ? 0 : 520;
     var pad = function (n) { return String(n).padStart(3, '0'); };
@@ -270,13 +273,14 @@
         img.src = thumbSrc || url(p, 900);
         var big = new Image();               // upgrade to the large version once it has loaded
         big.onload = function () { if (cur === i) img.src = big.src; };
-        big.src = url(p, 2000, 82);
+        big.src = url(p, 2560);
         count.textContent = pad(i + 1) + ' / ' + pad(PHOTOS.length);
         title.textContent = label(p);
         link.href = 'https://unsplash.com/photos/' + p.slug;
+        full.href = original(p);
         buy.href = 'mailto:saagarshrest@gmail.com?subject=' + encodeURIComponent('Photo purchase enquiry: ' + label(p) + ' (' + p.slug + ')') +
             '&body=' + encodeURIComponent('Hi Saagar,\n\nI would like to buy this photo:\n' + label(p) + '\nhttps://unsplash.com/photos/' + p.slug + '\n\nHow I would use it (print, website, editorial, other):\n');
-        [i - 1, i + 1].forEach(function (n) { if (PHOTOS[n]) { var pre = new Image(); pre.src = url(PHOTOS[n], 1400, 78); } });
+        [i - 1, i + 1].forEach(function (n) { if (PHOTOS[n]) { var pre = new Image(); pre.src = url(PHOTOS[n], 2560); } });
     }
     function flip(fromRect, then) {          // animate the photo between a thumbnail and the stage
         var to = img.getBoundingClientRect();

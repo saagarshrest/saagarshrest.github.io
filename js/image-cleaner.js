@@ -202,13 +202,13 @@ async function setBg(bg) {
         const bmp = await createImageBitmap(S.cut), c = document.createElement('canvas');
         c.width = bmp.width; c.height = bmp.height;
         const ctx = c.getContext('2d'); ctx.fillStyle = bg; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(bmp, 0, 0);
-        out = await toBlob(c, 'image/jpeg', 0.92); ext = 'jpg';
+        out = await toBlob(c, 'image/png');                          // lossless, same as the transparent version
     }
     if (run !== bgRun) return;
     el.cutDl.href = url(out);
     el.cutDl.download = `${S.base}-no-background.${ext}`;
     el.cutDl.firstChild.nodeValue = `Download ${ext.toUpperCase()} `;
-    el.cutNote.textContent = `${fmt(out.size)}. ${ext === 'png' ? 'Transparent PNG' : 'JPG on a solid background'}, no hidden data.`;
+    el.cutNote.textContent = `${fmt(out.size)}. ${bg === 'transparent' ? 'Transparent PNG' : 'PNG on a solid background'}, no hidden data.`;
 }
 
 // ---------- tabs ----------

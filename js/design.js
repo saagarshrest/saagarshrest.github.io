@@ -1,46 +1,47 @@
 /* =====================================================================
    Design page: one slide per kind of design (title left, grid right)
-   + an expanding viewer. Dribbble shots are hotlinked; other work lives in
-   /images/Designportfolio/ (a full image plus a smaller -thumb for the grid).
+   + an expanding viewer. Dribbble shots are hotlinked; other work lives in /images/Designportfolio/
+   as name.png (the untouched original, "View original" in the viewer), name.webp (90% quality,
+   max 2200px wide, what the viewer shows) and name-thumb.webp (90% quality, the grid tile).
+   Each section's images load only when that section is opened.
    To add work: add an item to a group below. To add a new kind (brochures...):
    add a group object. `story: true` shows tall 9:16 tiles, four in a row.
    ===================================================================== */
 (function () {
     'use strict';
-    var PROFILE = 'https://dribbble.com/saagarshrest';
     var U = 'https://cdn.dribbble.com/userupload/';
     var L = '/images/Designportfolio/';
 
-    // item: t = title, img = image, th = thumbnail (local images), s = Dribbble shot path, r = width/height (default 4/3),
+    // item: t = title, img = image, th = thumbnail (local images), s = Dribbble shot id (kept for reference, not linked), r = width/height (default 4/3),
     //       long = a full-page design: the thumbnail is its top section and the viewer scrolls through the page
     var GROUPS = [
         {
             id: 'websites', label: 'Websites', title: 'Company <em>websites.</em>',
             text: 'Websites and pages I have designed for home-service companies, a law firm, online stores, startups and community platforms. Here are some of them; open one to scroll through the whole page.',
             items: [
-                { t: 'Larson Air Conditioning website', img: L + 'web/larson-air.jpg', th: L + 'web/larson-air-thumb.jpg', r: 0.2178, long: true },
-                { t: 'Legacy Roofing website', img: L + 'web/legacy-roofing.jpg', th: L + 'web/legacy-roofing-thumb.jpg', r: 0.2396, long: true },
-                { t: 'LocalRoofs website', img: L + 'web/localroofs.jpg', th: L + 'web/localroofs-thumb.jpg', r: 0.1642, long: true },
-                { t: 'Frank\'s Repair Plumbing website', img: L + 'web/franks-plumbing.jpg', th: L + 'web/franks-plumbing-thumb.jpg', r: 0.2135, long: true },
-                { t: 'TRIO Heating & Air website', img: L + 'web/trio.jpg', th: L + 'web/trio-thumb.jpg', r: 0.2045, long: true },
-                { t: 'Ad Leverage agency website', img: L + 'web/ad-leverage.jpg', th: L + 'web/ad-leverage-thumb.jpg', r: 0.2593, long: true },
-                { t: 'Call Jacob law firm: Lakers sponsorship page', img: L + 'web/call-jacob.jpg', th: L + 'web/call-jacob-thumb.jpg', r: 0.2527, long: true },
-                { t: 'Sheesham furniture and interiors website', img: L + 'web/sheesham.jpg', th: L + 'web/sheesham-thumb.jpg', r: 0.2426, long: true },
-                { t: 'Kothari Sons ethnic wear store', img: L + 'web/ethnic-store.jpg', th: L + 'web/ethnic-store-thumb.jpg', r: 0.2114, long: true },
-                { t: 'BlackNorth Connect jobs platform', img: L + 'web/blacknorth-connect.jpg', th: L + 'web/blacknorth-connect-thumb.jpg', r: 0.2103, long: true },
-                { t: 'BlackNorth B.E.G.I.N. website', img: L + 'web/blacknorth-begin.jpg', th: L + 'web/blacknorth-begin-thumb.jpg', r: 0.3947, long: true },
-                { t: 'futurestore AI tools directory', img: L + 'web/futurestore.jpg', th: L + 'web/futurestore-thumb.jpg', r: 0.3071, long: true },
-                { t: 'Betting Zone gaming website', img: L + 'web/betting-zone.jpg', th: L + 'web/betting-zone-thumb.jpg', r: 0.4967, long: true }
+                { t: 'Larson Air Conditioning website', img: L + 'web/larson-air.webp', th: L + 'web/larson-air-thumb.webp', orig: L + 'web/larson-air.png', r: 0.2178, long: true },
+                { t: 'Legacy Roofing website', img: L + 'web/legacy-roofing.webp', th: L + 'web/legacy-roofing-thumb.webp', orig: L + 'web/legacy-roofing.png', r: 0.2396, long: true },
+                { t: 'LocalRoofs website', img: L + 'web/localroofs.webp', th: L + 'web/localroofs-thumb.webp', orig: L + 'web/localroofs.png', r: 0.1642, long: true },
+                { t: 'Frank\'s Repair Plumbing website', img: L + 'web/franks-plumbing.webp', th: L + 'web/franks-plumbing-thumb.webp', orig: L + 'web/franks-plumbing.png', r: 0.2135, long: true },
+                { t: 'TRIO Heating & Air website', img: L + 'web/trio.webp', th: L + 'web/trio-thumb.webp', orig: L + 'web/trio.png', r: 0.2045, long: true },
+                { t: 'Ad Leverage agency website', img: L + 'web/ad-leverage.webp', th: L + 'web/ad-leverage-thumb.webp', orig: L + 'web/ad-leverage.png', r: 0.2593, long: true },
+                { t: 'Call Jacob law firm: Lakers sponsorship page', img: L + 'web/call-jacob.webp', th: L + 'web/call-jacob-thumb.webp', orig: L + 'web/call-jacob.png', r: 0.2527, long: true },
+                { t: 'Sheesham furniture and interiors website', img: L + 'web/sheesham.webp', th: L + 'web/sheesham-thumb.webp', orig: L + 'web/sheesham.png', r: 0.2426, long: true },
+                { t: 'Kothari Sons ethnic wear store', img: L + 'web/ethnic-store.webp', th: L + 'web/ethnic-store-thumb.webp', orig: L + 'web/ethnic-store.png', r: 0.2114, long: true },
+                { t: 'BlackNorth Connect jobs platform', img: L + 'web/blacknorth-connect.webp', th: L + 'web/blacknorth-connect-thumb.webp', orig: L + 'web/blacknorth-connect.png', r: 0.2103, long: true },
+                { t: 'BlackNorth B.E.G.I.N. website', img: L + 'web/blacknorth-begin.webp', th: L + 'web/blacknorth-begin-thumb.webp', orig: L + 'web/blacknorth-begin.png', r: 0.3947, long: true },
+                { t: 'futurestore AI tools directory', img: L + 'web/futurestore.webp', th: L + 'web/futurestore-thumb.webp', orig: L + 'web/futurestore.png', r: 0.3071, long: true },
+                { t: 'Betting Zone gaming website', img: L + 'web/betting-zone.webp', th: L + 'web/betting-zone-thumb.webp', orig: L + 'web/betting-zone.png', r: 0.4967, long: true }
             ]
         },
         {
             id: 'social', label: 'Social posts & stories', title: 'Social posts <em>&amp; stories.</em>', story: true,
             text: 'Promotional stories for home-service brands: one offer, a bold headline and a call to action that reads at a glance on a phone.',
             items: [
-                { t: 'Hansen Super Techs: $50 off story', img: L + 'social/hansen-50-off.jpg', th: L + 'social/hansen-50-off-thumb.jpg', r: 0.5581 },
-                { t: 'TRIO: financing special story', img: L + 'social/trio-financing.jpg', th: L + 'social/trio-financing-thumb.jpg', r: 0.5622 },
-                { t: 'TRIO: $58 tune-up special story', img: L + 'social/trio-tune-up.jpg', th: L + 'social/trio-tune-up-thumb.jpg', r: 0.5628 },
-                { t: 'TRIO: $100 off repairs story', img: L + 'social/trio-repairs.jpg', th: L + 'social/trio-repairs-thumb.jpg', r: 0.5628 }
+                { t: 'Hansen Super Techs: $50 off story', img: L + 'social/hansen-50-off.webp', th: L + 'social/hansen-50-off-thumb.webp', orig: L + 'social/hansen-50-off.png', r: 0.5581 },
+                { t: 'TRIO: financing special story', img: L + 'social/trio-financing.webp', th: L + 'social/trio-financing-thumb.webp', orig: L + 'social/trio-financing.png', r: 0.5622 },
+                { t: 'TRIO: $58 tune-up special story', img: L + 'social/trio-tune-up.webp', th: L + 'social/trio-tune-up-thumb.webp', orig: L + 'social/trio-tune-up.png', r: 0.5628 },
+                { t: 'TRIO: $100 off repairs story', img: L + 'social/trio-repairs.webp', th: L + 'social/trio-repairs-thumb.webp', orig: L + 'social/trio-repairs.png', r: 0.5628 }
             ]
         },
         {
@@ -73,15 +74,15 @@
             id: 'unbounce', label: 'Unbounce pages', title: 'Unbounce <em>pages.</em>',
             text: 'Landing pages built in Unbounce for ad campaigns: one offer, a short form and a clear call to action, refined through A/B testing.',
             items: [
-                { t: 'LocalRoofs: Danville roof replacement page', img: L + 'unbounce/localroofs-danville.jpg', th: L + 'unbounce/localroofs-danville-thumb.jpg', r: 0.166, long: true },
-                { t: 'Restorerz: mold remediation page', img: L + 'unbounce/restorerz-mold.jpg', th: L + 'unbounce/restorerz-mold-thumb.jpg', r: 0.1927, long: true },
-                { t: 'Construction Unlimited: roof rejuvenation offer', img: L + 'unbounce/construction-unlimited.jpg', th: L + 'unbounce/construction-unlimited-thumb.jpg', r: 0.2636, long: true },
-                { t: 'Sam\'s Air Control: A/C installation page', img: L + 'unbounce/sams-air-control.jpg', th: L + 'unbounce/sams-air-control-thumb.jpg', r: 0.237, long: true },
-                { t: 'Republic Home Services: heating installation page', img: L + 'unbounce/republic-home.jpg', th: L + 'unbounce/republic-home-thumb.jpg', r: 0.2228, long: true },
-                { t: 'Dean\'s Home Services: permanent exterior lighting', img: L + 'unbounce/deans-lighting.jpg', th: L + 'unbounce/deans-lighting-thumb.jpg', r: 0.2695, long: true },
-                { t: 'Call Jacob: truck accident case review page', img: L + 'unbounce/call-jacob-truck-accident.jpg', th: L + 'unbounce/call-jacob-truck-accident-thumb.jpg', r: 0.1851, long: true },
-                { t: 'Call Jacob: dog bite case review page', img: L + 'unbounce/call-jacob-dog-bite.jpg', th: L + 'unbounce/call-jacob-dog-bite-thumb.jpg', r: 0.4325, long: true },
-                { t: 'CHUD Cooling & Heating: oldest HVAC system giveaway', img: L + 'unbounce/chud-giveaway.jpg', th: L + 'unbounce/chud-giveaway-thumb.jpg', r: 0.4995, long: true }
+                { t: 'LocalRoofs: Danville roof replacement page', img: L + 'unbounce/localroofs-danville.webp', th: L + 'unbounce/localroofs-danville-thumb.webp', orig: L + 'unbounce/localroofs-danville.png', r: 0.166, long: true },
+                { t: 'Restorerz: mold remediation page', img: L + 'unbounce/restorerz-mold.webp', th: L + 'unbounce/restorerz-mold-thumb.webp', orig: L + 'unbounce/restorerz-mold.png', r: 0.1927, long: true },
+                { t: 'Construction Unlimited: roof rejuvenation offer', img: L + 'unbounce/construction-unlimited.webp', th: L + 'unbounce/construction-unlimited-thumb.webp', orig: L + 'unbounce/construction-unlimited.png', r: 0.2636, long: true },
+                { t: 'Sam\'s Air Control: A/C installation page', img: L + 'unbounce/sams-air-control.webp', th: L + 'unbounce/sams-air-control-thumb.webp', orig: L + 'unbounce/sams-air-control.png', r: 0.237, long: true },
+                { t: 'Republic Home Services: heating installation page', img: L + 'unbounce/republic-home.webp', th: L + 'unbounce/republic-home-thumb.webp', orig: L + 'unbounce/republic-home.png', r: 0.2228, long: true },
+                { t: 'Dean\'s Home Services: permanent exterior lighting', img: L + 'unbounce/deans-lighting.webp', th: L + 'unbounce/deans-lighting-thumb.webp', orig: L + 'unbounce/deans-lighting.png', r: 0.2695, long: true },
+                { t: 'Call Jacob: truck accident case review page', img: L + 'unbounce/call-jacob-truck-accident.webp', th: L + 'unbounce/call-jacob-truck-accident-thumb.webp', orig: L + 'unbounce/call-jacob-truck-accident.png', r: 0.1851, long: true },
+                { t: 'Call Jacob: dog bite case review page', img: L + 'unbounce/call-jacob-dog-bite.webp', th: L + 'unbounce/call-jacob-dog-bite-thumb.webp', orig: L + 'unbounce/call-jacob-dog-bite.png', r: 0.4325, long: true },
+                { t: 'CHUD Cooling & Heating: oldest HVAC system giveaway', img: L + 'unbounce/chud-giveaway.webp', th: L + 'unbounce/chud-giveaway-thumb.webp', orig: L + 'unbounce/chud-giveaway.png', r: 0.4995, long: true }
             ]
         },
         {
@@ -111,12 +112,11 @@
     ];
 
     var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); };
-    var isDrib = function (src) { return src.indexOf(U) === 0; };
-    var src = function (it, w) { return isDrib(it.img) ? it.img + '?format=webp&resize=' + w + 'x' + Math.round(w * 3 / 4) + '&vertical=center' : (w <= 800 && it.th) || it.img; };
-    var srcset = function (it) { return isDrib(it.img) ? src(it, 400) + ' 400w, ' + src(it, 800) + ' 800w' : it.th && !it.long ? it.th + ' 480w, ' + it.img + ' 1080w' : ''; };
-    var big = function (it) { return isDrib(it.img) ? it.img + '?format=webp&resize=2000x0' : it.img; };
+    // grid: local 90% WebP thumbnail, or Dribbble's lossless 800x600 PNG resize (its WebP is too lossy)
+    var src = function (it) { return it.th || it.img + '?resize=800x600&vertical=center'; };
+    var big = function (it) { return it.img; };                  // viewer
+    var orig = function (it) { return it.orig || it.img; };      // "View original": the untouched file
     var ratio = function (it) { return it.r || 4 / 3; };
-    var link = function (it) { return it.s ? 'https://dribbble.com/shots/' + it.s : (it.href || PROFILE); };
     var pad = function (n) { return String(n).padStart(2, '0'); };
 
     var host = document.getElementById('dz-groups');
@@ -136,19 +136,16 @@
     // ---------------- one section per group, alternating backgrounds ----------------
     var html = GROUPS.map(function (g, gi) {
         var tiles = g.items.map(function (it, ii) {
-            var set = srcset(it), sizes = g.story ? '(min-width:1024px) 14vw, 46vw' : '(min-width:1280px) 22vw, (min-width:1024px) 20vw, 48vw';
             return '<figure class="dz-tile"><button type="button" class="dz-btn' + (g.story ? ' dz-btn--story' : '') + '" data-g="' + gi + '" data-i="' + ii + '" aria-label="Open design: ' + esc(it.t) + '">' +
-                '<img src="' + src(it, 800) + '"' + (set ? ' srcset="' + set + '" sizes="' + sizes + '"' : '') + ' alt="' + esc(it.t) + '" width="' + (g.story ? 480 : 400) + '" height="' + (g.story ? 853 : 300) + '" loading="lazy" decoding="async">' +
+                '<img data-src="' + src(it) + '" alt="' + esc(it.t) + '" width="' + (g.story ? 480 : 400) + '" height="' + (g.story ? 853 : 300) + '" loading="lazy" decoding="async">' +
                 '<span class="dz-cap">' + esc(it.t) + '<span aria-hidden="true">↗</span></span></button></figure>';
         }).join('');
-        var onDribbble = g.items.some(function (it) { return it.s; });
         return '<section id="' + g.id + '" class="sx ' + (gi % 2 ? 'sx-light' : 'sx-cream') + ' dz-sec dz-tint-' + (gi % 7) + ' px-6" data-label="' + esc(g.label) + '">' +
             '<div class="max-w-7xl mx-auto dz-row">' +
                 '<div class="dz-side"><div class="dz-side__in">' +
                     '<p class="sx-label">' + pad(gi + 1) + ' / ' + pad(GROUPS.length) + ' &nbsp;·&nbsp; ' + g.items.length + ' ' + (g.items.length === 1 ? 'design' : 'designs') + '</p>' +
                     '<h2 class="dz-title">' + g.title + '</h2>' +
                     '<p class="sx-lead dz-text">' + esc(g.text) + '</p>' +
-                    (onDribbble ? '<a href="' + PROFILE + '" target="_blank" rel="noopener noreferrer" class="sx-seeall dz-more">More on Dribbble <span>↗</span></a>' : '') +
                 '</div></div>' +
                 '<div class="dz-grid' + (g.story ? ' dz-grid--story' : g.items.length === 4 ? ' dz-grid--two' : '') + '">' + tiles + '</div>' +
             '</div></section>';
@@ -158,8 +155,29 @@
 
     Array.prototype.forEach.call(document.querySelectorAll('.dz-btn img'), function (im) {
         var on = function () { im.classList.add('on'); };
-        if (im.complete && im.naturalWidth) on(); else { im.addEventListener('load', on); im.addEventListener('error', on); }
+        im.addEventListener('load', on); im.addEventListener('error', on);
     });
+
+    // ---------------- load a section's images only when it is opened ----------------
+    // The pager stacks every section in the same screen area, so the browser's own lazy loading would
+    // fetch all of them at once. Tiles load when their section becomes the active slide (plus the next
+    // one, ready for the scroll), or, without the pager (phones), as the section nears the viewport.
+    var secs = Array.prototype.slice.call(document.querySelectorAll('.dz-sec'));
+    var pagerOn = function () { return root.classList.contains('pager-on'); };
+    function loadSec(sec) {
+        if (!sec || sec.dataset.loaded) return;
+        sec.dataset.loaded = '1';
+        Array.prototype.forEach.call(sec.querySelectorAll('img[data-src]'), function (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); });
+    }
+    function loadNear() {
+        if (pagerOn()) { secs.forEach(function (s, i) { if (s.classList.contains('pg-active')) { loadSec(s); loadSec(secs[i + 1]); } }); return; }
+        secs.forEach(function (s) { var r = s.getBoundingClientRect(); if (r.top < innerHeight + 600 && r.bottom > -600) loadSec(s); });
+    }
+    var watch = new MutationObserver(loadNear);                     // the pager marks the open slide with .pg-active
+    secs.forEach(function (s) { watch.observe(s, { attributes: true, attributeFilter: ['class'] }); });
+    window.addEventListener('scroll', function () { if (!pagerOn()) loadNear(); }, { passive: true });
+    window.addEventListener('resize', loadNear);
+    window.addEventListener('load', function () { loadNear(); loadSec(secs[0]); });   // first section, ready for the first scroll
 
     // ---------------- viewer (styles shared with the Photos page) ----------------
     var lb = document.createElement('div');
@@ -171,10 +189,10 @@
         '<figure class="lb__stage"><img class="lb__img" alt=""></figure>' +
         '<button type="button" class="lb__btn lb__nav lb__prev" aria-label="Previous design">←</button>' +
         '<button type="button" class="lb__btn lb__nav lb__next" aria-label="Next design">→</button>' +
-        '<div class="lb__bar"><div><p class="lb__title"></p><p class="lb__by"></p></div><div class="lb__links"><a class="lb__link" target="_blank" rel="noopener noreferrer">View on Dribbble ↗</a></div></div>';
+        '<div class="lb__bar"><div><p class="lb__title"></p><p class="lb__by"></p></div><div class="lb__links"><a class="lb__link lb__orig" target="_blank" rel="noopener">View original ↗</a></div></div>';
     document.body.appendChild(lb);
     var q = function (s) { return lb.querySelector(s); };
-    var stage = q('.lb__stage'), img = q('.lb__img'), count = q('.lb__count'), title = q('.lb__title'), by = q('.lb__by'), ext = q('.lb__link'), closeBtn = q('.lb__close');
+    var stage = q('.lb__stage'), img = q('.lb__img'), count = q('.lb__count'), title = q('.lb__title'), by = q('.lb__by'), origLink = q('.lb__orig'), closeBtn = q('.lb__close');
     var curG = -1, curI = -1, busy = false, dur = reduce ? 0 : 520;
 
     var btnOf = function (g, i) { return document.querySelector('.dz-btn[data-g="' + g + '"][data-i="' + i + '"]'); };
@@ -197,7 +215,7 @@
             img.src = big(it);
         } else {
             img.style.background = '';
-            img.src = thumbSrc || src(it, 800);
+            img.src = thumbSrc || src(it);
             var hi = new Image();
             hi.onload = function () { if (curG === g && curI === i) img.src = hi.src; };
             hi.src = big(it);
@@ -205,8 +223,7 @@
         count.textContent = grp.label + '  ·  ' + pad(i + 1) + ' / ' + pad(grp.items.length);
         title.textContent = it.t;
         by.textContent = grp.label + ' by Saagar Shrestha' + (it.long ? '  ·  Scroll to see the whole page' : '');
-        ext.href = link(it);
-        ext.hidden = !(it.s || it.href);
+        origLink.href = orig(it);
         [i - 1, i + 1].forEach(function (n) { if (grp.items[n]) { var pre = new Image(); pre.src = big(grp.items[n]); } });
     }
     function morph(fromRect, ease) {
