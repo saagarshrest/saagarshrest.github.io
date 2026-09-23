@@ -316,7 +316,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 1rem); }
 .pager-on :where(.pg-sec) { background-color: #fff; }
 /* older pages that still carry the previous colorful design: keep the site monochrome */
 .legacy section { filter: grayscale(1); }
-.pager-on .pg-sec.ds-sec { border-top: 0; margin-top: 0; padding-top: 0; }
+.pager-on .pg-sec.ds-sec { border-top: var(--nav-h) solid transparent; margin-top: 0; padding-top: 0; }
 .pager-on .pg-sec.ds-sec .pg-wrap { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 .site-menu { z-index: 80 !important; }
 @media (min-width: 1024px) {
