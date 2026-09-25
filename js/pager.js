@@ -110,7 +110,7 @@
     });
     document.body.appendChild(dots);
 
-    var cur = 0, locked = false, lastWheel = 0, gestureAtEdge = false;
+    var cur = 0, locked = false, lastWheel = 0, gestureAtEdge = false, gestureMoved = false;
     var mq = window.matchMedia('(min-width: 1024px)');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
     var enabled = function () { return mq.matches && !reduce.matches; };
@@ -149,12 +149,16 @@
         lastWheel = now;
         var dir = Math.sign(e.deltaY);
         if (!dir) return;
+        if (newGesture) gestureMoved = false;
+        // the rest of a gesture that already changed slides (trackpad momentum) must not scroll
+        // the new slide, or it opens part-way down and the next flick skips past it
+        if (locked || gestureMoved) { e.preventDefault(); return; }
         var s = st();
         var atEdge = dir > 0 ? s.atBottom : s.atTop;
         if (newGesture) gestureAtEdge = atEdge;
         if (!atEdge) return;
         e.preventDefault();
-        if (gestureAtEdge && Math.abs(e.deltaY) > 3 && !locked) go(cur + dir, dir < 0);
+        if (gestureAtEdge && Math.abs(e.deltaY) > 3) { gestureMoved = true; go(cur + dir, dir < 0); }
     }
     function onKey(e) {
         if (!enabled() || root.classList.contains("lb-open") || /input|textarea|select/i.test(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;

@@ -48,20 +48,12 @@
         },
         {
             id: 'mobile-apps', label: 'Mobile apps', title: 'Mobile <em>apps.</em>',
-            text: 'iOS and Android screens for home care, finance, learning, fitness and food: thumb-friendly layouts and flows that finish in a few taps.',
+            text: 'iOS and Android screens for home care, motor parts, workspaces and fashion: thumb-friendly layouts and flows that finish in a few taps.',
             items: [
                 { t: 'ShiftCare caregiver app', img: L + 'mobile/shift-care.webp', th: L + 'mobile/shift-care-thumb.webp', orig: L + 'mobile/shift-care.png' },
-                { t: 'Stock trading app', img: U + '32547485/file/original-34544cb2a6232baecf01f0549e7e2005.png', s: '16062130-Stock-trading-app' },
-                { t: 'E-learning app', img: U + '30962191/file/original-bc7f2face669e655624c0bbd40fb5621.png', s: '15278664-E-Learning-App' },
-                { t: 'Visitor details pass', img: U + '30757909/file/original-e7ae719f5a83e0ed11657f8012660ae1.png', s: '15178314-Visitors-Detail' },
-                { t: 'hmoney crypto wallet', img: U + '30538925/file/original-449d38540e35a9b1d9e5e106fb210e54.png', s: '15068547-hmoney-crypto-wallet' },
-                { t: 'Crypto wallet app', img: U + '30234537/file/original-a65d9f088757ed9a82067e052a67b48e.png', s: '14917829-Crypto-Wallet-App-Design' },
-                { t: 'Seven minutes workout app', img: U + '27378572/file/original-c7bd3f11fed9ecd8d18fe85a44c5f2ab.png', s: '11604695-Seven-Minutes-Workout-Mobile-App-Design' },
-                { t: 'E-learning app design', img: U + '27149314/file/original-b6b11c1b122f4ea68a4aca24cbd23642.png', s: '11350009-Elearning-app-design' },
-                { t: 'Food delivery onboarding', img: U + '26798490/file/original-878cd2d648ad2efea31df65257c6ef70.png', s: '11046339-Minimal-Onboard-screen-for-food-delivery-app' },
-                { t: 'Restaurant app', img: U + '26638765/file/original-e9f56c95d5919ce946a046ec14aadd31.png', s: '10882464-RESTAURANT-APP', r: 1 },
-                { t: 'Amusement park payment app', img: U + '26268220/file/original-8d9743400c9ec5f7f78b0214ac6660e3.png', s: '10513453-Amusement-park' },
-                { t: 'Minimal note app', img: U + '23371188/file/original-fa7cb8fafb31ed3f6f8e97853fc02742.jpg', s: '4940637-Minimal-Ui-ux-design-of-note-app' }
+                { t: 'RamroParts motor parts app', img: L + 'mobile/ramro-parts.webp', th: L + 'mobile/ramro-parts-thumb.webp', orig: L + 'mobile/ramro-parts.png' },
+                { t: 'Officiti flexible workspace app', img: L + 'mobile/officiti.webp', th: L + 'mobile/officiti-thumb.webp', orig: L + 'mobile/officiti.png' },
+                { t: 'Camaieu fashion shopping app', img: L + 'mobile/camaieu.webp', th: L + 'mobile/camaieu-thumb.webp', orig: L + 'mobile/camaieu.png' }
             ]
         },
         {
