@@ -99,9 +99,10 @@
         .ua-law span { display: block; margin-top: 1rem; font-size: .82rem; line-height: 1.45; color: rgba(255,255,255,.5); }
         /* steps */
         .ua-steps { display: grid; grid-template-columns: 1fr; border-top: 1px solid rgba(10,10,10,.2); }
-        @media (min-width: 900px) { .ua-steps { grid-template-columns: repeat(5, 1fr); border-top: 0; } .ua-steps li { border-top: 1px solid rgba(10,10,10,.2); padding-right: 1.4rem; } }
         .ua-steps li { padding: 1.4rem 0 1.6rem; border-bottom: 0; }
         @media (max-width: 899px) { .ua-steps li { border-bottom: 1px solid rgba(10,10,10,.2); } }
+        /* after the base li rule, so its padding shorthand doesn't reset the column gap */
+        @media (min-width: 900px) { .ua-steps { grid-template-columns: repeat(5, 1fr); border-top: 0; } .ua-steps li { border-top: 1px solid rgba(10,10,10,.2); padding-right: 1.4rem; } }
         .ua-steps h3 { margin-top: 1.6rem; font-size: 1.3rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.12; }
         .ua-steps p { margin-top: .6rem; font-size: .92rem; line-height: 1.5; color: rgba(10,10,10,.65); }
     </style>
