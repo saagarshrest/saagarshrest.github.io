@@ -48,12 +48,14 @@
         },
         {
             id: 'mobile-apps', label: 'Mobile apps', title: 'Mobile <em>apps.</em>',
-            text: 'iOS and Android screens for home care, motor parts, workspaces and fashion: thumb-friendly layouts and flows that finish in a few taps.',
+            text: 'iOS and Android screens for home care, motor parts, workspaces, fashion and crypto: thumb-friendly layouts and flows that finish in a few taps.',
             items: [
                 { t: 'ShiftCare caregiver app', img: L + 'mobile/shift-care.webp', th: L + 'mobile/shift-care-thumb.webp', orig: L + 'mobile/shift-care.png' },
                 { t: 'RamroParts motor parts app', img: L + 'mobile/ramro-parts.webp', th: L + 'mobile/ramro-parts-thumb.webp', orig: L + 'mobile/ramro-parts.png' },
                 { t: 'Officiti flexible workspace app', img: L + 'mobile/officiti.webp', th: L + 'mobile/officiti-thumb.webp', orig: L + 'mobile/officiti.png' },
-                { t: 'Camaieu fashion shopping app', img: L + 'mobile/camaieu.webp', th: L + 'mobile/camaieu-thumb.webp', orig: L + 'mobile/camaieu.png' }
+                { t: 'Camaieu fashion shopping app', img: L + 'mobile/camaieu.webp', th: L + 'mobile/camaieu-thumb.webp', orig: L + 'mobile/camaieu.png' },
+                { t: 'Latido leather jacket store app', img: L + 'mobile/latido.webp', th: L + 'mobile/latido-thumb.webp', orig: L + 'mobile/latido.png' },
+                { t: 'Harmony crypto wallet app', img: L + 'mobile/harmony.webp', th: L + 'mobile/harmony-thumb.webp', orig: L + 'mobile/harmony.png' }
             ]
         },
         {
