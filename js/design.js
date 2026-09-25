@@ -39,6 +39,8 @@
             text: 'Promotional stories for home-service brands: one offer, a bold headline and a call to action that reads at a glance on a phone.',
             items: [
                 { t: 'Hansen Super Techs: $50 off story', img: L + 'social/hansen-50-off.webp', th: L + 'social/hansen-50-off-thumb.webp', orig: L + 'social/hansen-50-off.png', r: 0.5581 },
+                { t: 'Hansen Super Techs: $50 off plumbing repair story', img: L + 'social/hansen-plumbing-repair.webp', th: L + 'social/hansen-plumbing-repair-thumb.webp', orig: L + 'social/hansen-plumbing-repair.png', r: 0.5622 },
+                { t: 'Hansen Super Techs: free surge protector story', img: L + 'social/hansen-surge-protector.webp', th: L + 'social/hansen-surge-protector-thumb.webp', orig: L + 'social/hansen-surge-protector.png', r: 0.5622 },
                 { t: 'TRIO: financing special story', img: L + 'social/trio-financing.webp', th: L + 'social/trio-financing-thumb.webp', orig: L + 'social/trio-financing.png', r: 0.5622 },
                 { t: 'TRIO: $58 tune-up special story', img: L + 'social/trio-tune-up.webp', th: L + 'social/trio-tune-up-thumb.webp', orig: L + 'social/trio-tune-up.png', r: 0.5628 },
                 { t: 'TRIO: $100 off repairs story', img: L + 'social/trio-repairs.webp', th: L + 'social/trio-repairs-thumb.webp', orig: L + 'social/trio-repairs.png', r: 0.5628 }
@@ -46,8 +48,9 @@
         },
         {
             id: 'mobile-apps', label: 'Mobile apps', title: 'Mobile <em>apps.</em>',
-            text: 'iOS and Android screens for finance, learning, fitness and food: thumb-friendly layouts and flows that finish in a few taps.',
+            text: 'iOS and Android screens for home care, finance, learning, fitness and food: thumb-friendly layouts and flows that finish in a few taps.',
             items: [
+                { t: 'ShiftCare caregiver app', img: L + 'mobile/shift-care.webp', th: L + 'mobile/shift-care-thumb.webp', orig: L + 'mobile/shift-care.png' },
                 { t: 'Stock trading app', img: U + '32547485/file/original-34544cb2a6232baecf01f0549e7e2005.png', s: '16062130-Stock-trading-app' },
                 { t: 'E-learning app', img: U + '30962191/file/original-bc7f2face669e655624c0bbd40fb5621.png', s: '15278664-E-Learning-App' },
                 { t: 'Visitor details pass', img: U + '30757909/file/original-e7ae719f5a83e0ed11657f8012660ae1.png', s: '15178314-Visitors-Detail' },
