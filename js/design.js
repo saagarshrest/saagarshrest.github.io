@@ -66,12 +66,11 @@
             ]
         },
         {
-            id: 'dashboards', label: 'Dashboards', title: 'Dashboards <em>&amp; wearables.</em>',
+            id: 'dashboards', label: 'Dashboards', title: 'Dashboards <em>&amp; admin panels.</em>',
             text: 'Data-heavy screens made scannable: the numbers that matter first, everything else one click or glance away.',
             items: [
-                { t: 'Old age homecare dashboard', img: U + '36024287/file/original-a5123dffa508668cc2a30e3457ec9893.png', s: '17754406-Old-Age-Homecare-Service-App-Dashboard' },
-                { t: 'Food app dashboard', img: U + '26723366/file/original-388717fd47e8cf879e1dee9986b95adc.png', s: '10981298-Dashboard-for-food-app' },
-                { t: 'Music and fitness for Apple Watch', img: U + '27151337/file/original-ec80dfccc30771614a9200408d18a912.jpg', s: '11351359-Music-and-fitness-meter-design-for-apple-watch', r: 1.5 }
+                { t: 'Appulse care coordination dashboard', img: L + 'dashboards/appulse.webp', th: L + 'dashboards/appulse-thumb.webp', orig: L + 'dashboards/appulse.png', r: 1.3358 },
+                { t: 'Nagarik Abhiyan projects and team dashboard', img: L + 'dashboards/nagarik.webp', th: L + 'dashboards/nagarik-thumb.webp', orig: L + 'dashboards/nagarik.png', r: 1.3358 }
             ]
         },
         {
@@ -155,7 +154,7 @@
                     '<p class="sx-lead dz-text">' + esc(g.text) + '</p>' +
                 '</div></div>' +
                 '<div class="dz-works">' +
-                    '<div class="dz-grid' + (g.story ? ' dz-grid--story' : g.items.length === 4 ? ' dz-grid--two' : '') + '">' + tiles + '</div>' +
+                    '<div class="dz-grid' + (g.story ? ' dz-grid--story' : (g.items.length === 2 || g.items.length === 4) ? ' dz-grid--two' : '') + '">' + tiles + '</div>' +
                     (posts ? '<div class="dz-grid dz-grid--posts">' + posts + '</div>' : '') +
                 '</div>' +
             '</div></section>';
