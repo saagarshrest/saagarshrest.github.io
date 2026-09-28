@@ -5,7 +5,8 @@
    max 2200px wide, what the viewer shows) and name-thumb.webp (90% quality, the grid tile).
    Each section's images load only when that section is opened.
    To add work: add an item to a group below. To add a new kind (brochures...):
-   add a group object. `story: true` shows tall 9:16 tiles, four in a row.
+   add a group object. `story: true` shows tall 9:16 tiles, four in a row; items with `sq: true` (square posts)
+   go in a row of square tiles under them.
    ===================================================================== */
 (function () {
     'use strict';
@@ -13,7 +14,9 @@
     var L = '/images/Designportfolio/';
 
     // item: t = title, img = image, th = thumbnail (local images), s = Dribbble shot id (kept for reference, not linked), r = width/height (default 4/3),
-    //       long = a full-page design: the thumbnail is its top section and the viewer scrolls through the page
+    //       long = a full-page design: the thumbnail is its top section and the viewer scrolls through the page,
+    //       sq = a square post: shown in its own row of square tiles, below a group's stories,
+    //       fill = a background color: the tile shows the whole design on it instead of cropping (for work that isn't the tile's shape)
     var GROUPS = [
         {
             id: 'websites', label: 'Websites', title: 'Company <em>websites.</em>',
@@ -36,14 +39,18 @@
         },
         {
             id: 'social', label: 'Social posts & stories', title: 'Social posts <em>&amp; stories.</em>', story: true,
-            text: 'Promotional stories for home-service brands: one offer, a bold headline and a call to action that reads at a glance on a phone.',
+            text: 'Promotional stories and posts for home-service brands: one offer, a bold headline and a call to action that reads at a glance on a phone.',
             items: [
                 { t: 'Hansen Super Techs: $50 off story', img: L + 'social/hansen-50-off.webp', th: L + 'social/hansen-50-off-thumb.webp', orig: L + 'social/hansen-50-off.png', r: 0.5581 },
                 { t: 'Hansen Super Techs: $50 off plumbing repair story', img: L + 'social/hansen-plumbing-repair.webp', th: L + 'social/hansen-plumbing-repair-thumb.webp', orig: L + 'social/hansen-plumbing-repair.png', r: 0.5622 },
                 { t: 'Hansen Super Techs: free surge protector story', img: L + 'social/hansen-surge-protector.webp', th: L + 'social/hansen-surge-protector-thumb.webp', orig: L + 'social/hansen-surge-protector.png', r: 0.5622 },
-                { t: 'TRIO: financing special story', img: L + 'social/trio-financing.webp', th: L + 'social/trio-financing-thumb.webp', orig: L + 'social/trio-financing.png', r: 0.5622 },
-                { t: 'TRIO: $58 tune-up special story', img: L + 'social/trio-tune-up.webp', th: L + 'social/trio-tune-up-thumb.webp', orig: L + 'social/trio-tune-up.png', r: 0.5628 },
-                { t: 'TRIO: $100 off repairs story', img: L + 'social/trio-repairs.webp', th: L + 'social/trio-repairs-thumb.webp', orig: L + 'social/trio-repairs.png', r: 0.5628 }
+                { t: 'Hansen Super Techs: furnace installation story', img: L + 'social/hansen-furnace.webp', th: L + 'social/hansen-furnace-thumb.webp', orig: L + 'social/hansen-furnace.png', r: 0.5622 },
+                { t: 'TRIO: $100 off repairs story', img: L + 'social/trio-repairs.webp', th: L + 'social/trio-repairs-thumb.webp', orig: L + 'social/trio-repairs.png', r: 0.5628 },
+                { t: 'TRIO: $79 AC tune-up special story', img: L + 'social/trio-ac-tune-up.webp', th: L + 'social/trio-ac-tune-up-thumb.webp', orig: L + 'social/trio-ac-tune-up.png', r: 0.5622 },
+                { t: 'Orlando roofing: $1,500 off new roof ad', img: L + 'social/orlando-roofing.webp', th: L + 'social/orlando-roofing-thumb.webp', orig: L + 'social/orlando-roofing.png', r: 0.6817, fill: '#232323' },
+                { t: 'Construction Unlimited: storm damage inspection post', img: L + 'social/cu-storm-damage.webp', th: L + 'social/cu-storm-damage-thumb.webp', orig: L + 'social/cu-storm-damage.png', r: 1, sq: true },
+                { t: 'Construction Unlimited: home financing post', img: L + 'social/cu-financing.webp', th: L + 'social/cu-financing-thumb.webp', orig: L + 'social/cu-financing.png', r: 1, sq: true },
+                { t: 'Construction Unlimited: new roof from $115/month post', img: L + 'social/cu-new-roof.webp', th: L + 'social/cu-new-roof-thumb.webp', orig: L + 'social/cu-new-roof.png', r: 1, sq: true }
             ]
         },
         {
@@ -132,11 +139,14 @@
 
     // ---------------- one section per group, alternating backgrounds ----------------
     var html = GROUPS.map(function (g, gi) {
-        var tiles = g.items.map(function (it, ii) {
-            return '<figure class="dz-tile"><button type="button" class="dz-btn' + (g.story ? ' dz-btn--story' : '') + '" data-g="' + gi + '" data-i="' + ii + '" aria-label="Open design: ' + esc(it.t) + '">' +
-                '<img data-src="' + src(it) + '" alt="' + esc(it.t) + '" width="' + (g.story ? 480 : 400) + '" height="' + (g.story ? 853 : 300) + '" loading="lazy" decoding="async">' +
+        var tile = function (it, ii) {
+            var story = g.story && !it.sq;
+            return '<figure class="dz-tile"><button type="button" class="dz-btn' + (story ? ' dz-btn--story' : it.sq ? ' dz-btn--sq' : '') + (it.fill ? ' dz-btn--fit" style="background:' + it.fill : '') + '" data-g="' + gi + '" data-i="' + ii + '" aria-label="Open design: ' + esc(it.t) + '">' +
+                '<img data-src="' + src(it) + '" alt="' + esc(it.t) + '" width="' + (story ? 480 : 400) + '" height="' + (story ? 853 : it.sq ? 400 : 300) + '" loading="lazy" decoding="async">' +
                 '<span class="dz-cap">' + esc(it.t) + '<span aria-hidden="true">↗</span></span></button></figure>';
-        }).join('');
+        };
+        var tiles = g.items.map(function (it, ii) { return it.sq ? '' : tile(it, ii); }).join('');
+        var posts = g.items.map(function (it, ii) { return it.sq ? tile(it, ii) : ''; }).join('');
         return '<section id="' + g.id + '" class="sx ' + (gi % 2 ? 'sx-light' : 'sx-cream') + ' dz-sec dz-tint-' + (gi % 7) + ' px-6" data-label="' + esc(g.label) + '">' +
             '<div class="max-w-7xl mx-auto dz-row">' +
                 '<div class="dz-side"><div class="dz-side__in">' +
@@ -144,7 +154,10 @@
                     '<h2 class="dz-title">' + g.title + '</h2>' +
                     '<p class="sx-lead dz-text">' + esc(g.text) + '</p>' +
                 '</div></div>' +
-                '<div class="dz-grid' + (g.story ? ' dz-grid--story' : g.items.length === 4 ? ' dz-grid--two' : '') + '">' + tiles + '</div>' +
+                '<div class="dz-works">' +
+                    '<div class="dz-grid' + (g.story ? ' dz-grid--story' : g.items.length === 4 ? ' dz-grid--two' : '') + '">' + tiles + '</div>' +
+                    (posts ? '<div class="dz-grid dz-grid--posts">' + posts + '</div>' : '') +
+                '</div>' +
             '</div></section>';
     }).join('');
     host.insertAdjacentHTML('beforebegin', html);
