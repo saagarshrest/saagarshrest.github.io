@@ -1,6 +1,8 @@
 /* Nav mascot: a green pixel-art dragon flies beside the "Available for work" button,
    breathes fire at it and now and then lies down on top of it, while a mini boss
-   hides behind the button. Palette echoes Commando.html. */
+   hides behind the button. Every so often it leaves the nav to roam the page, perching
+   only on top of components, only where it covers nothing but bare background.
+   Rubbing it with the mouse sends it home. Palette echoes Commando.html. */
 (function () {
     var cta = document.querySelector('.site-nav .site-cta');
     if (!cta || cta.closest('.cta-wrap')) return;
@@ -101,6 +103,7 @@
     }
     var FLY = [0, 1, 2, 1].map(function (w) { return [pair(outlined(FW, FH, function (g) { paintFly(g, w, false); })), pair(outlined(FW, FH, function (g) { paintFly(g, w, true); }))]; });
     var REST = [[0, 0], [1, 0], [0, 1]].map(function (v) { return outlined(RW, RH, function (g) { paintRest(g, v[0], v[1]); }); });
+    var RESTV = REST.map(pair);
     var FIRE = ['#ffffff', '#fff4c2', '#fee761', '#feae34', '#f77622', '#e43b44'];
 
     /* ---------- DOM: dragon canvas spans left of + over the button, boss canvas behind it ---------- */
@@ -130,7 +133,7 @@
         canFly = heroU >= FW + 8;
         maxX = Math.max(0, heroU - FW - 6);
         perchLo = heroU + 2; perchHi = Math.max(perchLo, heroU + bw - RW - 2);
-        if (!canFly && D.st !== 'rest') rest(1e9);
+        if (!canFly && D.st !== 'rest' && D.st !== 'away') rest(1e9);
         if (canFly && /fly|windup|breathe/.test(D.st) && D.x > maxX) D.x = maxX;
         if (D.st === 'rest') D.x = Math.min(Math.max(D.x, perchLo), perchHi);
         bossC.width = bw; bossC.height = bh; bossC.style.width = bw * 2 + 'px'; bossC.style.height = bh * 2 + 'px';
@@ -194,7 +197,9 @@
     }
     function drawHero() {
         hg.clearRect(0, 0, heroC.width, heroC.height);
-        if (D.st === 'rest') {
+        if (D.st === 'away') {
+            // out roaming the page; drawn on its own canvas
+        } else if (D.st === 'rest') {
             var blink = D.t % 170 > 162, flick = !blink && D.t % 95 > 80;
             hg.drawImage(REST[blink ? 1 : flick ? 2 : 0], Math.round(D.x), 0);
         } else {
@@ -243,6 +248,179 @@
         P(bg, K, f > 0 ? x + 22 : x - 3, y + 11, 5, 3); P(bg, '#8b9bb4', f > 0 ? x + 23 : x - 2, y + 12, 3, 1);
     }
 
+    /* ---------- roaming: perch on page components, fly home when rubbed ---------- */
+    var RS = 2, PAD = 8;       // css px per sprite unit; canvas margin (units) for smoke and hearts
+    var roamC = mk(FW + PAD * 2, RW + PAD * 2); roamC.className = 'cta-roam'; roamC.setAttribute('aria-hidden', 'true');
+    roamC.style.width = roamC.width * RS + 'px'; roamC.style.height = roamC.height * RS + 'px'; roamC.style.display = 'none';
+    document.body.appendChild(roamC);
+    var rg = roamC.getContext('2d');
+    var R = { on: false, st: 'fly', x: 0, y: 0, vx: 0, vy: 0, face: 1, flap: 0, t: 0, dur: 0, spot: null, homeX: 0, rub: 0, rubbed: false, box: null };
+    var puffs = [], hearts = [];
+    var homeT = 60 * (6 + Math.random() * 6);
+    var SEL = 'h1,h2,h3,h4,p,img,picture,video,button,a,li,figure,article,blockquote,input,textarea,select,' +
+        '[class*="card"],[class*="btn"],[class*="case"],[class*="shot"],[class*="tile"]';
+    var navEl = document.querySelector('.site-nav');
+    function navBottom() { return navEl ? navEl.getBoundingClientRect().bottom : 0; }
+    // where the resting sprite sits, in viewport px: lying along the component's top edge
+    function spotBox(s) {
+        var r = s.el.getBoundingClientRect();
+        return { x: r.left + s.off, y: r.top - RH * RS, w: RW * RS, h: RH * RS };
+    }
+    function overlaps(b, r, m) { return b.x - m < r.right && b.x + b.w + m > r.left && b.y - m < r.bottom && b.y + b.h + m > r.top; }
+    // a spot is clear when every pixel under the dragon is bare background: the page, or a box that
+    // merely wraps the target, with no loose text or media of its own there
+    function clear(s) {
+        var el = s.el;
+        if (!el.isConnected) return false;
+        if (el.checkVisibility && !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) return false;
+        var b = spotBox(s);
+        if (b.x < 6 || b.y < navBottom() + 6 || b.x + b.w > innerWidth - 6 || b.y + b.h > innerHeight - 6) return false;
+        var r = el.getBoundingClientRect();
+        var under = document.elementFromPoint(Math.min(Math.max(b.x + b.w / 2, r.left + 1), r.right - 1), Math.min(r.top + 2, r.bottom - 1));
+        if (!under || !el.contains(under)) return false;   // target is covered by something else
+        var anc = [], hits = [], i, j;
+        for (var p = el.parentElement; p; p = p.parentElement) anc.push(p);
+        var nx = Math.max(2, Math.ceil(b.w / 14)), ny = Math.max(2, Math.ceil(b.h / 14));
+        for (i = 0; i < nx; i++) for (j = 0; j < ny; j++) {
+            var e = document.elementFromPoint(b.x + 1 + (b.w - 2) * i / (nx - 1), b.y + 1 + (b.h - 2) * j / (ny - 1));
+            if (!e || anc.indexOf(e) < 0) return false;
+            if (hits.indexOf(e) < 0) hits.push(e);
+        }
+        var range = document.createRange();
+        for (i = 0; i < hits.length; i++) {
+            var kids = hits[i].childNodes;
+            for (j = 0; j < kids.length; j++) {
+                if (kids[j].nodeType !== 3 || !/\S/.test(kids[j].data)) continue;
+                range.selectNodeContents(kids[j]);
+                var rects = range.getClientRects();
+                for (var k = 0; k < rects.length; k++) if (overlaps(b, rects[k], 3)) return false;
+            }
+        }
+        // media with pointer-events: none is invisible to elementFromPoint, so check it by box
+        var media = document.querySelectorAll('img,svg,video,canvas,iframe');
+        for (i = 0; i < media.length; i++) {
+            var m = media[i];
+            if (m === roamC || m === heroC || m === bossC) continue;
+            var mr = m.getBoundingClientRect();
+            if (mr.width && mr.height && overlaps(b, mr, 0) && (!m.checkVisibility || m.checkVisibility({ opacityProperty: true, visibilityProperty: true }))) return false;
+        }
+        return true;
+    }
+    function pickSpot(avoid) {
+        var nb = navBottom(), list = [], all = document.querySelectorAll(SEL), i;
+        for (i = 0; i < all.length; i++) {
+            var el = all[i];
+            if (el === avoid || (navEl && navEl.contains(el))) continue;
+            var r = el.getBoundingClientRect();
+            if (r.width < 40 || r.height < 16 || r.bottom < nb + 30 || r.top > innerHeight - 30 || r.right < 0 || r.left > innerWidth) continue;
+            list.push(el);
+        }
+        for (i = list.length - 1; i > 0; i--) { var q = Math.random() * (i + 1) | 0, t = list[i]; list[i] = list[q]; list[q] = t; }
+        // only ever on top of a component, never beside one
+        for (i = 0; i < list.length && i < 160; i++) {
+            var room = list[i].getBoundingClientRect().width - RW * RS;
+            if (room < 0) continue;
+            var s = { el: list[i], off: Math.random() * room, face: Math.random() < 0.5 ? 1 : -1 };
+            if (clear(s)) return s;
+        }
+        return null;
+    }
+    // flying-sprite position for touching down on a spot, and for slotting back into the nav
+    function landAt(s) { var b = spotBox(s); return { x: b.x, y: b.y + b.h - FH * RS }; }
+    function homeAt() {
+        var hr = heroC.getBoundingClientRect();
+        if (canFly) return { x: hr.left + R.homeX * RS, y: hr.top + flyY * RS };
+        return { x: hr.left + (perchLo + ((perchHi - perchLo) / 2 | 0)) * RS, y: hr.top + (RH - FH) * RS };
+    }
+    function steer(T) {
+        var dx = T.x - R.x, dy = T.y - R.y, d = Math.hypot(dx, dy);
+        if (d < 1.5) { R.x = T.x; R.y = T.y; R.vx = R.vy = 0; return true; }
+        if (d < 8) { R.x += dx * 0.3; R.y += dy * 0.3; return false; }
+        var sp = Math.min(7, 1.5 + d / 14);
+        R.vx += (dx / d * sp - R.vx) * 0.1; R.vy += (dy / d * sp - R.vy) * 0.1;
+        R.x += R.vx; R.y += R.vy;
+        if (Math.abs(R.vx) > 0.4) R.face = R.vx > 0 ? 1 : -1;
+        return false;
+    }
+    function leaveNav() {
+        if (--homeT > 0 || !(D.st === 'fly' || (D.st === 'rest' && !canFly))) return;
+        var s = pickSpot(null);
+        if (!s) { homeT = 300; return; }
+        var hr = heroC.getBoundingClientRect();
+        R.x = hr.left + D.x * RS;
+        R.y = D.st === 'rest' ? hr.top + (RH - FH) * RS : hr.top + (D.y + bob()) * RS;
+        R.vx = 0; R.vy = -3; R.face = D.face; R.flap = D.flap; R.rub = 0; R.rubbed = false;
+        R.on = true; R.st = 'fly'; R.t = 0; R.spot = s;
+        D.st = 'away';
+    }
+    function goHome() { R.st = 'home'; R.t = 0; R.spot = null; R.homeX = Math.round(Math.random() * maxX); }
+    function hop(forced) {
+        var s = pickSpot(R.spot.el);
+        if (s) { R.st = 'fly'; R.t = 0; R.spot = s; }
+        else if (forced) goHome();
+        else R.dur += 120;
+    }
+    function updateRoam() {
+        R.t++; R.rub *= 0.99;
+        if (R.st === 'fly') {
+            R.flap += 1.4;
+            if (R.t % 30 === 0 && !clear(R.spot)) { var s = pickSpot(R.spot.el); if (s) R.spot = s; else goHome(); }
+            if (R.st === 'fly' && steer(landAt(R.spot))) { R.st = 'perch'; R.t = 0; R.dur = 60 * (6 + Math.random() * 8); }
+        } else if (R.st === 'perch') {
+            var at = landAt(R.spot); R.x = at.x; R.y = at.y;
+            if (R.t % 20 === 0 && !clear(R.spot)) hop(true);
+            else if (R.t >= R.dur && R.rub < 30) hop(false);
+            if (R.st === 'perch' && R.t % 110 === 60) {
+                var f = R.spot.face, nx = f > 0 ? NOSE_X : RW - 1 - NOSE_X;
+                for (var m = 0; m < 3; m++) puffs.push({ x: nx + m * 0.6 * f, y: NOSE_Y - m * 0.8, vx: 0.12 * f, vy: -0.18, life: 34 });
+            }
+            if (R.rub > 40 && R.t % 9 === 0) addHeart();
+        } else if (R.st === 'home') {
+            R.flap += 1.4;
+            if (steer(homeAt())) {
+                R.on = false; roamC.style.display = 'none'; puffs.length = hearts.length = 0;
+                if (canFly) { D.st = 'fly'; D.t = 0; D.dur = 60 + Math.random() * 100; D.x = D.tx = R.homeX; D.y = flyY; D.face = R.face; D.flap = R.flap; }
+                else rest(1e9);
+                homeT = 60 * (R.rubbed ? 25 + Math.random() * 20 : 10);
+            }
+        }
+        for (var i = puffs.length - 1; i >= 0; i--) { var p = puffs[i]; p.x += p.vx; p.y += p.vy; if (--p.life <= 0) puffs.splice(i, 1); }
+        for (var j = hearts.length - 1; j >= 0; j--) { var h = hearts[j]; h.x += h.vx; h.y += h.vy; if (--h.life <= 0) hearts.splice(j, 1); }
+    }
+    function addHeart() { hearts.push({ x: (R.box ? R.box.w / RS : RW) / 2 + (Math.random() - 0.5) * 12, y: 2, vx: (Math.random() - 0.5) * 0.2, vy: -0.3, life: 30 }); }
+    function heart(g, x, y) { P(g, '#ff5d8f', x + 1, y); P(g, '#ff5d8f', x + 3, y); P(g, '#ff5d8f', x, y + 1, 5, 1); P(g, '#ff5d8f', x + 1, y + 2, 3, 1); P(g, '#ff5d8f', x + 2, y + 3); }
+    function drawRoam() {
+        rg.clearRect(0, 0, roamC.width, roamC.height);
+        var spr, bx, by;
+        if (R.st === 'perch') {
+            var s = R.spot, b = spotBox(s);
+            var blink = R.rub > 40 || R.t % 170 > 162, flick = !blink && R.t % 95 > 80;
+            var v = RESTV[blink ? 1 : flick ? 2 : 0];
+            spr = v[s.face > 0 ? 'r' : 'l'];
+            bx = b.x; by = b.y;
+        } else {
+            spr = FLY[((R.flap / 6) | 0) % 4][0][R.face > 0 ? 'r' : 'l'];
+            bx = R.x; by = R.y + Math.round(Math.sin(R.flap / 9) * 2);
+        }
+        rg.drawImage(spr, PAD, PAD);
+        puffs.forEach(function (p) { P(rg, p.life > 18 ? '#c9d0c9' : '#9aa39a', PAD + Math.round(p.x), PAD + Math.round(p.y)); });
+        hearts.forEach(function (h) { heart(rg, PAD + Math.round(h.x) - 2, PAD + Math.round(h.y) - 4); });
+        roamC.style.transform = 'translate(' + Math.round(bx - PAD * RS) + 'px,' + Math.round(by - PAD * RS) + 'px)';
+        R.box = { x: bx, y: by, w: spr.width * RS, h: spr.height * RS };
+    }
+    // rubbing: mouse movement over the dragon adds up; enough of it and it flies home happy
+    var lastPX = null, lastPY = 0;
+    document.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        var x = e.clientX, y = e.clientY, px = lastPX, py = lastPY;
+        lastPX = x; lastPY = y;
+        if (!R.on || R.st === 'home' || !R.box || px === null) return;
+        var b = R.box;
+        if (x < b.x - 10 || x > b.x + b.w + 10 || y < b.y - 10 || y > b.y + b.h + 10) return;
+        R.rub += Math.hypot(x - px, y - py);
+        if (R.rub > 220) { R.rubbed = true; for (var i = 0; i < 4; i++) addHeart(); goHome(); }
+    }, { passive: true });
+
     /* ---------- loop ---------- */
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     B.y = hideY();
@@ -254,11 +432,14 @@
     var acc = 0, last = performance.now(), STEP = 1000 / 60;
     function loop(now) {
         acc += Math.min(100, now - last); last = now;
-        if (wrap.offsetParent !== null) {
+        var shown = wrap.offsetParent !== null;
+        if (shown) {
             var n = 0;
-            while (acc >= STEP && n < 4) { updateHero(); updateBoss(); acc -= STEP; n++; }
+            while (acc >= STEP && n < 4) { updateHero(); updateBoss(); if (R.on) updateRoam(); else leaveNav(); acc -= STEP; n++; }
             drawHero(); drawBoss();
+            if (R.on) drawRoam();
         }
+        roamC.style.display = shown && R.on ? '' : 'none';
         acc %= STEP;
         requestAnimationFrame(loop);
     }
