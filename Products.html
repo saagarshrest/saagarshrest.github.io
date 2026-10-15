@@ -70,6 +70,7 @@
         .pd-grid .sx-case:hover .sx-case-img img { filter: none; }
         .pd-grid .sx-case h2 { font-size: 1.3rem; }
         .pd-grid .pd-static:hover h2 { text-decoration-color: transparent; }
+        .pd-blur { filter: blur(8px); user-select: none; pointer-events: none; }
         .pd-grid .pd-static:hover .sx-case-img img { transform: none; }
         .pd-main { display: block; }
         .pd-dl { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin-top: .75rem; font-size: .85rem; color: rgba(10, 10, 10, .6); }
@@ -157,10 +158,11 @@
                 <button type="button" class="pd-tab" data-filter="websites" aria-pressed="false">Websites</button>
                 <button type="button" class="pd-tab" data-filter="mobile" aria-pressed="false">Mobile apps</button>
                 <button type="button" class="pd-tab" data-filter="saas" aria-pressed="false">SAAS</button>
+                <button type="button" class="pd-tab" data-filter="games" aria-pressed="false">Games</button>
             </div>
 
             <div class="pd-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="sx-case" data-category="websites mobile">
+                <div class="sx-case" data-category="websites mobile games">
                     <a href="/Commando.html" class="pd-main">
                         <div class="sx-case-img">
                             <img src="/images/products/commando-thumb.webp" width="600" height="529" alt="Coin Commando title screen: a pixel-art hero with a blaster on a grassy hill under the game logo">
@@ -176,7 +178,7 @@
                         <a href="/Products/Coin_commando/CoinCommando.jad" download>JAD <b>↓</b></a>
                     </div>
                 </div>
-                <div class="sx-case pd-static" data-category="mobile">
+                <div class="sx-case pd-static pd-blur" data-category="mobile">
                     <div class="sx-case-img">
                         <img src="/images/products/period-tracker-thumb.webp" width="1024" height="500" style="object-position:left center" alt="Simple Period Tracker: app icon of a girl holding a phone, next to the app's calendar and cycle-day screens">
                     </div>
