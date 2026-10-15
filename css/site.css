@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: inherit; 
 @media (min-width: 1024px) { .cta-wrap { display: inline-flex; } }
 .cta-wrap .site-cta { position: relative; z-index: 1; }
 .cta-hero, .cta-boss { position: absolute; image-rendering: pixelated; image-rendering: crisp-edges; pointer-events: none; }
-.cta-hero { right: 100%; bottom: 0; height: 40px; }
+.cta-hero { z-index: 2; }
 .cta-boss { left: 0; top: -18px; z-index: 0; }
 .site-cta.is-hit { animation: cta-hit .45s ease-out; }
 @keyframes cta-hit {
