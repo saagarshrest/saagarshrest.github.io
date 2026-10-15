@@ -1,0 +1,11 @@
+MIDlet-1: Coin Commando, /icon.png, CoinCommando
+MIDlet-Name: Coin Commando
+MIDlet-Vendor: Sagar
+MIDlet-Version: 1.0.0
+MIDlet-Icon: /icon.png
+MIDlet-Description: NES-style run and gun platformer, 32 stages
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+Nokia-MIDlet-Category: Game
+MIDlet-Jar-URL: CoinCommando.jar
+MIDlet-Jar-Size: 51331

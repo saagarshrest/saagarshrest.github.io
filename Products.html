@@ -69,8 +69,13 @@
         .pd-grid .sx-case-img img { height: auto; aspect-ratio: 4 / 3; }
         .pd-grid .sx-case:hover .sx-case-img img { filter: none; }
         .pd-grid .sx-case h2 { font-size: 1.3rem; }
-        .pd-grid div.sx-case:hover h2 { text-decoration-color: transparent; }
-        .pd-grid div.sx-case:hover .sx-case-img img { transform: none; }
+        .pd-grid .pd-static:hover h2 { text-decoration-color: transparent; }
+        .pd-grid .pd-static:hover .sx-case-img img { transform: none; }
+        .pd-main { display: block; }
+        .pd-dl { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin-top: .75rem; font-size: .85rem; color: rgba(10, 10, 10, .6); }
+        .pd-dl span { margin-right: auto; }
+        .pd-dl a { color: #0A0A0A; font-weight: 500; text-decoration: underline; text-decoration-color: rgba(10, 10, 10, .25); text-underline-offset: 4px; transition: text-decoration-color .2s; }
+        .pd-dl a:hover { text-decoration-color: #0A0A0A; }
         .pd-aside { display: inline-block; font-size: .95rem; font-style: normal; font-weight: 400; letter-spacing: 0; line-height: 1.4; color: rgba(10, 10, 10, .55); white-space: nowrap; }
         .pd-empty { margin-top: 2.5rem; font-size: .95rem; color: rgba(10, 10, 10, .6); }
     </style>
@@ -155,16 +160,23 @@
             </div>
 
             <div class="pd-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <a href="/Commando.html" class="sx-case" data-category="websites">
-                    <div class="sx-case-img">
-                        <img src="/images/products/commando-thumb.webp" width="600" height="529" alt="Coin Commando title screen: a pixel-art hero with a blaster on a grassy hill under the game logo">
+                <div class="sx-case" data-category="websites mobile">
+                    <a href="/Commando.html" class="pd-main">
+                        <div class="sx-case-img">
+                            <img src="/images/products/commando-thumb.webp" width="600" height="529" alt="Coin Commando title screen: a pixel-art hero with a blaster on a grassy hill under the game logo">
+                        </div>
+                        <div class="sx-meta"><span>Browser Game</span><span>Web · Java phones</span></div>
+                        <h2>Coin Commando</h2>
+                        <p>An original NES-style run and gun platformer that plays right in the browser, with 32 stages, coins to collect and a saved high score.</p>
+                        <div class="sx-foot"><span>By Saagar</span><span class="sx-read">Play game <b>↗</b></span></div>
+                    </a>
+                    <div class="pd-dl">
+                        <span>Java phone (J2ME) version</span>
+                        <a href="/Products/Coin_commando/CoinCommando.jar" download>JAR <b>↓</b></a>
+                        <a href="/Products/Coin_commando/CoinCommando.jad" download>JAD <b>↓</b></a>
                     </div>
-                    <div class="sx-meta"><span>Browser Game</span><span>Website</span></div>
-                    <h2>Coin Commando</h2>
-                    <p>An original NES-style run and gun platformer that plays right in the browser, with 32 stages, coins to collect and a saved high score.</p>
-                    <div class="sx-foot"><span>By Saagar</span><span class="sx-read">Play game <b>↗</b></span></div>
-                </a>
-                <div class="sx-case" data-category="mobile">
+                </div>
+                <div class="sx-case pd-static" data-category="mobile">
                     <div class="sx-case-img">
                         <img src="/images/products/period-tracker-thumb.webp" width="1024" height="500" style="object-position:left center" alt="Simple Period Tracker: app icon of a girl holding a phone, next to the app's calendar and cycle-day screens">
                     </div>
