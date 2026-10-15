@@ -50,6 +50,11 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: inherit; 
 }
 @media (prefers-reduced-motion: reduce) { .site-cta, .site-cta.is-hit { animation: none; } }
 .site-burger { display: inline-grid; place-content: center; width: 44px; height: 44px; border: 0; background: none; color: #0A0A0A; cursor: pointer; }
+/* phones: round WhatsApp button beside the menu button */
+.site-wa { display: inline-grid; place-content: center; width: 42px; height: 42px; margin-left: auto; margin-right: -1.25rem; border-radius: 9999px; background: #15803D; color: #fff; flex: none; transition: background .25s; }
+.site-wa:hover { background: #166534; }
+.site-wa svg { width: 22px; height: 22px; }
+@media (min-width: 768px) { .site-wa { display: none; } }
 @media (min-width: 768px) { .site-links { display: flex; } .site-cta { display: inline-flex; } .site-burger { display: none; } }
 /* tablets: six links + CTA don't fit, so tighten the links and drop the CTA (email is in the footer) */
 .site-links a, .site-cta { white-space: nowrap; }
