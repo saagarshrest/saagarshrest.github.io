@@ -78,9 +78,11 @@ rather than the generated HTML, then re-run it.
 - The 404 page and its siblings run a canvas pixel-art scene
   (`assets/js/error-scene.js`). The code and caption come from the canvas
   `data-code` / `data-sub` attributes, so any error page can reuse it.
-- The contact form has no backend (GitHub Pages is static). `assets/js/contact-form.js`
-  composes the message and hands it to the visitor's own mail app with `mailto:`,
-  then reveals a copy-and-send fallback if no mail handler is configured.
-  Nothing is transmitted until they press send in their email client.
+- The contact form has no backend of its own (GitHub Pages is static).
+  `assets/js/contact-form.js` POSTs the message in the background to FormSubmit's
+  AJAX endpoint (`formsubmit.co/ajax/<email>`), which emails it on, and shows the
+  result inline without leaving the page. If the request fails it reveals a
+  copy-and-send / `mailto:` fallback. FormSubmit needs a one-time activation:
+  the first submission sends a confirmation email to the inbox.
 - `assets/images/Designportfolio/` is large (~272 MB); consider compressing it
   if the repository needs to stay slim.

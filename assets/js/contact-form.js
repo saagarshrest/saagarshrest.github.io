@@ -1,8 +1,8 @@
-/* Contact form without a backend.
-   The site is static, so instead of POSTing somewhere we compose the message
-   and hand it to the visitor's own mail app (mailto:). Nothing leaves the
-   browser unless they press send there. If no mail handler is configured we
-   reveal the same text with a copy button. */
+/* Contact form without a backend of our own.
+   The site is static, so the message is POSTed in the background to
+   FormSubmit's AJAX endpoint, which emails it to me. The visitor stays on the
+   page and sees the result inline. If the request fails, we reveal the same
+   text with a copy button and a mailto: link so the message is never lost. */
 (function () {
     'use strict';
 
@@ -10,16 +10,43 @@
     if (!form) return;
 
     var TO = 'saagarshrest@gmail.com';
+    var ENDPOINT = 'https://formsubmit.co/ajax/' + TO;
+    var submitBtn = document.getElementById('cf-submit');
     var fallback = document.getElementById('cf-fallback');
     var copyBox = document.getElementById('cf-copy');
     var copyBtn = document.getElementById('cf-copy-btn');
     var copied = document.getElementById('cf-copied');
     var retry = document.getElementById('cf-retry');
     var status = document.getElementById('cf-status');
+    var btnLabel = submitBtn ? submitBtn.innerHTML : '';
 
     function val(id) {
         var el = document.getElementById(id);
         return el ? el.value.trim() : '';
+    }
+
+    function say(text) {
+        if (!status) return;
+        status.textContent = text;
+        status.classList.remove('hidden');
+    }
+
+    function busy(on) {
+        if (!submitBtn) return;
+        submitBtn.disabled = on;
+        submitBtn.setAttribute('aria-busy', on ? 'true' : 'false');
+        submitBtn.innerHTML = on ? 'Sending…' : btnLabel;
+    }
+
+    function showFallback(subject, body) {
+        if (copyBox) copyBox.value = body;
+        if (retry) {
+            retry.href = 'mailto:' + TO +
+                         '?subject=' + encodeURIComponent(subject) +
+                         '&body=' + encodeURIComponent(body);
+        }
+        if (copied) copied.classList.add('hidden');
+        if (fallback) fallback.classList.remove('hidden');
     }
 
     form.addEventListener('submit', function (e) {
@@ -29,9 +56,17 @@
         var email = val('cf-email');
         var topic = val('cf-subject') || 'Website enquiry';
         var message = val('cf-msg');
+        var honey = form.querySelector('[name="_honey"]');
 
         if (!name || !email || !message) {
             form.reportValidity();
+            return;
+        }
+
+        // Bots fill every field; pretend it worked and send nothing.
+        if (honey && honey.value) {
+            form.reset();
+            say('Thanks — your message has been sent.');
             return;
         }
 
@@ -40,26 +75,42 @@
                    'Email: ' + email + '\n\n' +
                    message + '\n';
 
-        var href = 'mailto:' + TO +
-                   '?subject=' + encodeURIComponent(subject) +
-                   '&body=' + encodeURIComponent(body);
+        if (fallback) fallback.classList.add('hidden');
+        busy(true);
+        say('Sending your message…');
 
-        if (copyBox) copyBox.value = body;
-        if (retry) retry.href = href;
-        if (fallback) fallback.classList.remove('hidden');
-        if (copied) copied.classList.add('hidden');
-
-        if (status) {
-            status.textContent = href.length > 1800
-                ? 'Your email app should be opening. This message is long, so if it arrives cut short, copy it below instead.'
-                : 'Your email app should be opening with the message ready to send.';
-            status.classList.remove('hidden');
-        }
-
-        // Give the browser a tick to paint the fallback before handing off.
-        setTimeout(function () {
-            window.location.href = href;
-        }, 60);
+        fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                topic: topic,
+                message: message,
+                _subject: subject,
+                _replyto: email,
+                _template: 'table',
+                _captcha: 'false'
+            })
+        })
+            .then(function (res) {
+                return res.json().then(function (data) {
+                    if (!res.ok || String(data.success) !== 'true') {
+                        throw new Error(data.message || 'Request failed');
+                    }
+                });
+            })
+            .then(function () {
+                form.reset();
+                say('Thanks, ' + name + ' — your message has been sent. I’ll reply to ' + email + ' soon.');
+            })
+            .catch(function () {
+                say('Sorry, something went wrong and your message wasn’t sent.');
+                showFallback(subject, body);
+            })
+            .then(function () {
+                busy(false);
+            });
     });
 
     if (copyBtn && copyBox) {
