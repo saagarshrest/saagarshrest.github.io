@@ -422,6 +422,8 @@ PAGES['contact.html'] = page(
                     <input type="hidden" name="_subject" value="New message from saagarshrest.com.np">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://saagarshrest.com.np/thank-you.html">
+                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
                     <div>
                         <label for="cf-name" class="block text-sm font-medium mb-2">Name</label>
                         <input id="cf-name" name="name" type="text" required autocomplete="name"
