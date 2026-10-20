@@ -7,33 +7,33 @@ LINKS = '''        <!-- Site pages -->
         <div class="ct-sitemap">
             <div class="ct-sitemap__group">
                 <span class="ct-label">Explore</span>
-                <a href="/Design.html">Design</a>
-                <a href="/Article.html">Articles</a>
-                <a href="/Casestudy.html">Case Study</a>
-                <a href="/Products.html">Products</a>
-                <a href="/Photos.html">Photos</a>
-                <a href="/Resume.html">Resume</a>
-                <a href="/archive.html">Archive</a>
+                <a href="/work/Design.html">Design</a>
+                <a href="/Articles/Article.html">Articles</a>
+                <a href="/work/Casestudy.html">Case Study</a>
+                <a href="/products/Products.html">Products</a>
+                <a href="/about/Photos.html">Photos</a>
+                <a href="/about/Resume.html">Resume</a>
+                <a href="/pages/archive.html">Archive</a>
             </div>
             <div class="ct-sitemap__group">
                 <span class="ct-label">Site</span>
-                <a href="/contact.html">Contact</a>
-                <a href="/faq.html">FAQ</a>
-                <a href="/sitemap-page.html">Sitemap</a>
-                <a href="/accessibility.html">Accessibility</a>
+                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/faq.html">FAQ</a>
+                <a href="/pages/sitemap-page.html">Sitemap</a>
+                <a href="/legal/accessibility.html">Accessibility</a>
             </div>
             <div class="ct-sitemap__group">
                 <span class="ct-label">Legal</span>
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Use</a>
-                <a href="/cookie-policy.html">Cookie Policy</a>
-                <a href="/disclaimer.html">Disclaimer</a>
+                <a href="/legal/privacy.html">Privacy Policy</a>
+                <a href="/legal/terms.html">Terms of Use</a>
+                <a href="/legal/cookie-policy.html">Cookie Policy</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
             </div>
         </div>'''
 MARKER = '        <!-- Bottom bar -->'
 
-files = sorted(glob.glob(os.path.join(ROOT, '*.html'))) + \
-        sorted(glob.glob(os.path.join(ROOT, 'Articles', '*.html')))
+files = sorted(f for f in glob.glob(os.path.join(ROOT, '**', '*.html'), recursive=True)
+               if not os.path.relpath(f, ROOT).startswith(('assets', 'tools')))
 
 changed = []
 for f in files:

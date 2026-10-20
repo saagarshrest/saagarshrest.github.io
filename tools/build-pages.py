@@ -78,27 +78,27 @@ FOOTER_LINKS = """
         <div class="ct-sitemap">
             <div class="ct-sitemap__group">
                 <span class="ct-label">Explore</span>
-                <a href="/Design.html">Design</a>
-                <a href="/Article.html">Articles</a>
-                <a href="/Casestudy.html">Case Study</a>
-                <a href="/Products.html">Products</a>
-                <a href="/Photos.html">Photos</a>
-                <a href="/Resume.html">Resume</a>
-                <a href="/archive.html">Archive</a>
+                <a href="/work/Design.html">Design</a>
+                <a href="/Articles/Article.html">Articles</a>
+                <a href="/work/Casestudy.html">Case Study</a>
+                <a href="/products/Products.html">Products</a>
+                <a href="/about/Photos.html">Photos</a>
+                <a href="/about/Resume.html">Resume</a>
+                <a href="/pages/archive.html">Archive</a>
             </div>
             <div class="ct-sitemap__group">
                 <span class="ct-label">Site</span>
-                <a href="/contact.html">Contact</a>
-                <a href="/faq.html">FAQ</a>
-                <a href="/sitemap-page.html">Sitemap</a>
-                <a href="/accessibility.html">Accessibility</a>
+                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/faq.html">FAQ</a>
+                <a href="/pages/sitemap-page.html">Sitemap</a>
+                <a href="/legal/accessibility.html">Accessibility</a>
             </div>
             <div class="ct-sitemap__group">
                 <span class="ct-label">Legal</span>
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Use</a>
-                <a href="/cookie-policy.html">Cookie Policy</a>
-                <a href="/disclaimer.html">Disclaimer</a>
+                <a href="/legal/privacy.html">Privacy Policy</a>
+                <a href="/legal/terms.html">Terms of Use</a>
+                <a href="/legal/cookie-policy.html">Cookie Policy</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
             </div>
         </div>
 """
@@ -199,44 +199,44 @@ def error_page(code, sub, message, cta_label='Back to home', cta_href='/',
 """
 
 
-PAGES['500.html'] = page(
+PAGES['errors/500.html'] = page(
     'Something went wrong | Saagar Shrestha',
     'An unexpected error occurred on this site.',
     error_page(500, 'SERVER ERROR',
                'Something broke on our end. This one is on us — try again in a moment, and if it keeps happening, let me know.',
                cta_label='Try again', cta_href='/',
-               links=[('Report a problem', '/contact.html')]),
+               links=[('Report a problem', '/pages/contact.html')]),
     robots='noindex', extra_head=PX_STYLE, extra_tail=PX_SCRIPT)
 
-PAGES['403.html'] = page(
+PAGES['errors/403.html'] = page(
     'Access denied | Saagar Shrestha',
     'You do not have permission to view this page.',
     error_page(403, 'ACCESS DENIED',
                'This area is restricted. If you believe you should have access, get in touch and I’ll sort it out.',
                cta_label='Back to home', cta_href='/',
-               links=[('Report a problem', '/contact.html')]),
+               links=[('Report a problem', '/pages/contact.html')]),
     robots='noindex', extra_head=PX_STYLE, extra_tail=PX_SCRIPT)
 
-PAGES['503.html'] = page(
+PAGES['errors/503.html'] = page(
     'Back shortly | Saagar Shrestha',
     'The site is temporarily unavailable.',
     error_page(503, 'SERVICE UNAVAILABLE',
                'The site is being updated or is temporarily offline. Everything should be back within the hour.',
                cta_label='Back to home', cta_href='/',
-               links=[('Report a problem', '/contact.html')]),
+               links=[('Report a problem', '/pages/contact.html')]),
     robots='noindex', extra_head=PX_STYLE, extra_tail=PX_SCRIPT)
 
-PAGES['error.html'] = page(
+PAGES['errors/error.html'] = page(
     'Error | Saagar Shrestha',
     'An unexpected error occurred.',
     error_page('ERR', 'SOMETHING WENT WRONG',
                'An unexpected error interrupted the request. The page may have been moved or renamed.',
                cta_label='Back to home', cta_href='/',
                sr='Error: something went wrong',
-               links=[('Report a problem', '/contact.html')]),
+               links=[('Report a problem', '/pages/contact.html')]),
     robots='noindex', extra_head=PX_STYLE, extra_tail=PX_SCRIPT)
 
-PAGES['offline.html'] = page(
+PAGES['errors/offline.html'] = page(
     'Offline | Saagar Shrestha',
     'You appear to be offline.',
     error_page('OFF', 'NO CONNECTION',
@@ -247,7 +247,7 @@ PAGES['offline.html'] = page(
     robots='noindex', extra_head=PX_STYLE, extra_tail=PX_SCRIPT)
 
 # ---------------------------------------------------------------- privacy
-PAGES['privacy.html'] = page(
+PAGES['legal/privacy.html'] = page(
     'Privacy Policy | Saagar Shrestha',
     'How this website collects, uses and protects your personal data.',
     hero('Legal', 'Privacy <em>Policy</em>',
@@ -285,13 +285,13 @@ PAGES['privacy.html'] = page(
         h2('Children') +
         p('This site is not directed at anyone under 13, and I do not knowingly collect data from children.') +
         h2('Changes to this policy') +
-        p('If this policy changes I will update the “last updated” date at the top of the page. Material changes will also be noted on the <a href="/Article.html">articles</a> page.') +
+        p('If this policy changes I will update the “last updated” date at the top of the page. Material changes will also be noted on the <a href="/Articles/Article.html">articles</a> page.') +
         h2('Contact') +
-        p('Questions about privacy? <a href="mailto:saagarshrest@gmail.com">saagarshrest@gmail.com</a>. Prefer a form? Use the <a href="/contact.html">contact page</a>.')
+        p('Questions about privacy? <a href="mailto:saagarshrest@gmail.com">saagarshrest@gmail.com</a>. Prefer a form? Use the <a href="/pages/contact.html">contact page</a>.')
     ))
 
 # ---------------------------------------------------------------- terms
-PAGES['terms.html'] = page(
+PAGES['legal/terms.html'] = page(
     'Terms of Use | Saagar Shrestha',
     'The terms that apply to using this website.',
     hero('Legal', 'Terms of <em>Use</em>',
@@ -325,7 +325,7 @@ PAGES['terms.html'] = page(
     ))
 
 # ---------------------------------------------------------------- cookies
-PAGES['cookie-policy.html'] = page(
+PAGES['legal/cookie-policy.html'] = page(
     'Cookie Policy | Saagar Shrestha',
     'What cookies and local storage this website uses.',
     hero('Legal', 'Cookie <em>Policy</em>',
@@ -352,7 +352,7 @@ PAGES['cookie-policy.html'] = page(
     ))
 
 # ---------------------------------------------------------------- disclaimer
-PAGES['disclaimer.html'] = page(
+PAGES['legal/disclaimer.html'] = page(
     'Disclaimer | Saagar Shrestha',
     'General disclaimers about the content on this website.',
     hero('Legal', 'Disclaimer',
@@ -375,7 +375,7 @@ PAGES['disclaimer.html'] = page(
     ))
 
 # ---------------------------------------------------------------- access
-PAGES['accessibility.html'] = page(
+PAGES['legal/accessibility.html'] = page(
     'Accessibility Statement | Saagar Shrestha',
     'An accessibility statement for this website.',
     hero('Standards', 'Accessibility <em>Statement</em>',
@@ -408,7 +408,7 @@ PAGES['accessibility.html'] = page(
     ))
 
 # ---------------------------------------------------------------- contact
-PAGES['contact.html'] = page(
+PAGES['pages/contact.html'] = page(
     'Contact | Saagar Shrestha',
     'Get in touch about design, UX and product work.',
     hero('Contact', 'Let’s <em>talk</em>',
@@ -420,7 +420,7 @@ PAGES['contact.html'] = page(
                 <h2 class="sx-title !text-[clamp(1.8rem,3vw,2.6rem)]">Send a message</h2>
                 <p class="sx-lead mt-4">I read everything and reply to most messages within two working days.</p>
                 <form class="mt-8 space-y-5" id="contact-form" action="https://formsubmit.co/saagarshrest@gmail.com" method="post" data-contact-form>
-                    <input type="hidden" name="_next" value="https://saagarshrest.com.np/thank-you.html">
+                    <input type="hidden" name="_next" value="https://saagarshrest.com.np/pages/thank-you.html">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
                     <div>
@@ -508,7 +508,7 @@ PAGES['contact.html'] = page(
     extra_tail=CONTACT_JS)
 
 # ---------------------------------------------------------------- thanks
-PAGES['thank-you.html'] = page(
+PAGES['pages/thank-you.html'] = page(
     'Thank you | Saagar Shrestha',
     'Your message has been sent.',
     hero('Message sent', 'Thank <em>you</em>',
@@ -519,10 +519,10 @@ PAGES['thank-you.html'] = page(
             <div class="lg:col-span-7">
                 <p class="sx-lead">While you wait, a few things you might want to look at:</p>
                 <ul class="doc-list list-disc pl-6 space-y-3 mt-6 text-lg">
-                    <li><a href="/Casestudy.html" class="underline underline-offset-4">Selected case studies</a></li>
-                    <li><a href="/Products.html" class="underline underline-offset-4">Free tools and products</a></li>
-                    <li><a href="/Article.html" class="underline underline-offset-4">Articles on design and UX</a></li>
-                    <li><a href="/Resume.html" class="underline underline-offset-4">Resume</a></li>
+                    <li><a href="/work/Casestudy.html" class="underline underline-offset-4">Selected case studies</a></li>
+                    <li><a href="/products/Products.html" class="underline underline-offset-4">Free tools and products</a></li>
+                    <li><a href="/Articles/Article.html" class="underline underline-offset-4">Articles on design and UX</a></li>
+                    <li><a href="/about/Resume.html" class="underline underline-offset-4">Resume</a></li>
                 </ul>
                 <div class="hero-actions mt-10">
                     <a href="/" class="hero-btn">Back to home <span class="hero-btn-arrow">↗</span></a>
@@ -543,7 +543,7 @@ def qa(q, a):
         </details>"""
 
 
-PAGES['faq.html'] = page(
+PAGES['pages/faq.html'] = page(
     'FAQ | Saagar Shrestha',
     'Frequently asked questions about working with Saagar Shrestha.',
     hero('Questions', 'Frequently asked <em>questions</em>',
@@ -556,22 +556,22 @@ PAGES['faq.html'] = page(
                     <div class="art-read">Still stuck<b>Send the question over</b></div>
                     <p class="sx-lead mt-6">There is no such thing as a silly one. I answer every message myself.</p>
                     <div class="hero-actions mt-6">
-                        <a href="/contact.html" class="hero-btn !text-sm !px-5 !py-2.5">Contact me <span class="hero-btn-arrow">↗</span></a>
+                        <a href="/pages/contact.html" class="hero-btn !text-sm !px-5 !py-2.5">Contact me <span class="hero-btn-arrow">↗</span></a>
                     </div>
                 </div>
             </aside>
             <div class="lg:col-span-8">
 """ + ''.join([
         qa('What do you do?', 'I design digital products and experiences — end-to-end UX, interface design, and design systems. I work with startups and product teams who need a clear, well-crafted interface and a system that scales with them.'),
-        qa('Are you available for freelance work?', 'Yes, with limited capacity. The site footer shows the current status, and <a href="/contact.html">the contact page</a> is the fastest way to start a conversation. I take on a small number of engagements at a time so each one gets proper attention.'),
+        qa('Are you available for freelance work?', 'Yes, with limited capacity. The site footer shows the current status, and <a href="/pages/contact.html">the contact page</a> is the fastest way to start a conversation. I take on a small number of engagements at a time so each one gets proper attention.'),
         qa('Where are you based, and do you work remotely?', 'I am based in Kathmandu, Nepal, and work with clients across time zones. Most collaboration happens over calls, shared design files and short written briefs — timezone rarely matters as long as there is overlap for a weekly sync.'),
         qa('How long does a project take?', 'A focused UX audit or design system sprint is typically two to four weeks. A full product engagement runs longer and is scoped in phases, so you get value early rather than all at the end.'),
         qa('What do you charge?', 'I work mostly on an hourly basis at <strong>$25–35 per hour</strong>, or a <strong>fixed monthly price</strong> for ongoing work. Either way the rate is agreed before we start, so there are no surprises on the invoice. Tell me what you need and I will send a proposal.'),
         qa('Do you work with existing design teams?', 'Often. I slot into internal teams for audits, system definition, or hands-on interface work, and I am comfortable working from your research rather than insisting on my own process.'),
-        qa('Are the tools on this site free?', 'Yes — every tool in <a href="/Products.html">Products</a> is free to use, in the browser, with no account and no data sent to a server. They are built with plain HTML, CSS and JavaScript so they keep working offline.'),
+        qa('Are the tools on this site free?', 'Yes — every tool in <a href="/products/Products.html">Products</a> is free to use, in the browser, with no account and no data sent to a server. They are built with plain HTML, CSS and JavaScript so they keep working offline.'),
         qa('Can I use the pixel art on this site?', 'The mascot and 404 artwork are original. You are welcome to use them in your own project with a credit line. If you want them without attribution for a commercial product, get in touch and we can sort something out.'),
-        qa('Do you write the articles yourself?', 'Yes. Everything in <a href="/Article.html">Articles</a> is written by me, based on real project experience. Some pieces are also published on Medium.'),
-        qa('Can I republish your work?', 'Quote and share with attribution and a link back. Do not republish whole articles or case studies as your own. Full details are in the <a href="/terms.html">Terms of Use</a>.'),
+        qa('Do you write the articles yourself?', 'Yes. Everything in <a href="/Articles/Article.html">Articles</a> is written by me, based on real project experience. Some pieces are also published on Medium.'),
+        qa('Can I republish your work?', 'Quote and share with attribution and a link back. Do not republish whole articles or case studies as your own. Full details are in the <a href="/legal/terms.html">Terms of Use</a>.'),
         qa('What is the fastest way to reach you?', 'Email <a href="mailto:saagarshrest@gmail.com">saagarshrest@gmail.com</a> — it lands directly in my inbox and I answer it myself. WhatsApp works too if the message is short.'),
     ]) + """
             </div>
@@ -597,7 +597,7 @@ def rows(items):
         + '</a>' for t, u, d in items)
 
 
-PAGES['archive.html'] = page(
+PAGES['pages/archive.html'] = page(
     'Archive | Saagar Shrestha',
     'Every page, article and case study on saagarshrest.com.np in one place.',
     hero('Everything', 'The <em>archive</em>',
@@ -620,23 +620,23 @@ PAGES['archive.html'] = page(
                 <h2 class="doc-h2">Work</h2>
                 <div class="doc-rows">
 """ + rows([
-        ('Case studies', '/Casestudy.html', ''),
-        ('Officiti — healthcare platform', '/Casedetailofficiti.html', ''),
-        ('Ramo Parts — parts commerce', '/Casedetailramroparts.html', ''),
-        ('ShiftCare', '/Shiftcarecase.html', ''),
-        ('UX audit', '/UXAudit.html', ''),
-        ('Clients', '/Clients.html', ''),
+        ('Case studies', '/work/Casestudy.html', ''),
+        ('Officiti — healthcare platform', '/work/Casedetailofficiti.html', ''),
+        ('Ramo Parts — parts commerce', '/work/Casedetailramroparts.html', ''),
+        ('ShiftCare', '/work/Shiftcarecase.html', ''),
+        ('UX audit', '/work/UXAudit.html', ''),
+        ('Clients', '/work/Clients.html', ''),
     ]) + """
                 </div>
 
                 <h2 class="doc-h2">Tools &amp; products</h2>
                 <div class="doc-rows">
 """ + rows([
-        ('All products', '/Products.html', ''),
-        ('Image Cleaner', '/ImageCleaner.html', ''),
-        ('Design System Creator', '/DesignSystemCreator.html', ''),
-        ('Commando', '/Commando.html', ''),
-        ('Kathmandu Shadows', '/KathmanduShadows.html', ''),
+        ('All products', '/products/Products.html', ''),
+        ('Image Cleaner', '/products/ImageCleaner.html', ''),
+        ('Design System Creator', '/products/DesignSystemCreator.html', ''),
+        ('Commando', '/products/Commando.html', ''),
+        ('Kathmandu Shadows', '/products/KathmanduShadows.html', ''),
         ('Period trackers', '/TandC-Period-tracker.html', ''),
     ]) + """
                 </div>
@@ -644,12 +644,12 @@ PAGES['archive.html'] = page(
                 <h2 class="doc-h2">More</h2>
                 <div class="doc-rows">
 """ + rows([
-        ('Design', '/Design.html', ''),
-        ('Design systems', '/DesignSystem.html', ''),
-        ('Photos', '/Photos.html', ''),
-        ('Resume', '/Resume.html', ''),
-        ('Contact', '/contact.html', ''),
-        ('FAQ', '/faq.html', ''),
+        ('Design', '/work/Design.html', ''),
+        ('Design systems', '/work/DesignSystem.html', ''),
+        ('Photos', '/about/Photos.html', ''),
+        ('Resume', '/about/Resume.html', ''),
+        ('Contact', '/pages/contact.html', ''),
+        ('FAQ', '/pages/faq.html', ''),
     ]) + """
                 </div>
             </div>
@@ -658,7 +658,7 @@ PAGES['archive.html'] = page(
 """)
 
 # ---------------------------------------------------------------- sitemap page
-PAGES['sitemap-page.html'] = page(
+PAGES['pages/sitemap-page.html'] = page(
     'Sitemap | Saagar Shrestha',
     'A human-readable index of every page on saagarshrest.com.np.',
     hero('Index', 'Sitemap',
@@ -680,29 +680,29 @@ PAGES['sitemap-page.html'] = page(
                 <div class="doc-rows">
 """ + rows([
         ('Home', '/', 'Introduction and latest work'),
-        ('Design', '/Design.html', 'Design approach and services'),
-        ('Articles', '/Article.html', 'Writing on design and UX'),
+        ('Design', '/work/Design.html', 'Design approach and services'),
+        ('Articles', '/Articles/Article.html', 'Writing on design and UX'),
         ('Designing for Accessibility', '/Articles/Designing for Accessibility.html', 'Article'),
         ('Designing for Emotion', '/Articles/Designing for Emotion.html', 'Article'),
         ('Revolutionizing User Experience with AI', '/Articles/Revolutionizing User Experience with AI.html', 'Article'),
         ('Design Thinking an Iterative Process', '/Articles/Design Thinking an Iterative Process.html', 'Article'),
         ('Why Artificial Intelligence needs Good User Experience', '/Articles/Why Artificial Intelligence needs Good User Experience.html', 'Article'),
         ('Data-Driven vs. Intuition-Driven', '/Articles/Data-Driven vs. Intuition-Driven.html', 'Article'),
-        ('Case Study', '/Casestudy.html', 'Selected engagements'),
-        ('Officiti', '/Casedetailofficiti.html', 'Healthcare platform case study'),
-        ('Ramo Parts', '/Casedetailramroparts.html', 'Parts commerce case study'),
-        ('Products', '/Products.html', 'Free tools and products'),
-        ('Design System', '/DesignSystem.html', 'Design system work'),
-        ('Photos', '/Photos.html', 'Photography'),
-        ('Resume', '/Resume.html', 'Experience and skills'),
-        ('Archive', '/archive.html', 'Everything on the site'),
-        ('Contact', '/contact.html', 'Get in touch'),
-        ('FAQ', '/faq.html', 'Common questions'),
-        ('Privacy Policy', '/privacy.html', 'Legal'),
-        ('Terms of Use', '/terms.html', 'Legal'),
-        ('Cookie Policy', '/cookie-policy.html', 'Legal'),
-        ('Disclaimer', '/disclaimer.html', 'Legal'),
-        ('Accessibility Statement', '/accessibility.html', 'Standards'),
+        ('Case Study', '/work/Casestudy.html', 'Selected engagements'),
+        ('Officiti', '/work/Casedetailofficiti.html', 'Healthcare platform case study'),
+        ('Ramo Parts', '/work/Casedetailramroparts.html', 'Parts commerce case study'),
+        ('Products', '/products/Products.html', 'Free tools and products'),
+        ('Design System', '/work/DesignSystem.html', 'Design system work'),
+        ('Photos', '/about/Photos.html', 'Photography'),
+        ('Resume', '/about/Resume.html', 'Experience and skills'),
+        ('Archive', '/pages/archive.html', 'Everything on the site'),
+        ('Contact', '/pages/contact.html', 'Get in touch'),
+        ('FAQ', '/pages/faq.html', 'Common questions'),
+        ('Privacy Policy', '/legal/privacy.html', 'Legal'),
+        ('Terms of Use', '/legal/terms.html', 'Legal'),
+        ('Cookie Policy', '/legal/cookie-policy.html', 'Legal'),
+        ('Disclaimer', '/legal/disclaimer.html', 'Legal'),
+        ('Accessibility Statement', '/legal/accessibility.html', 'Standards'),
     ]) + """
                 </div>
             </div>
@@ -712,6 +712,7 @@ PAGES['sitemap-page.html'] = page(
 
 # --- write everything ------------------------------------------------------
 for name, html in PAGES.items():
+    os.makedirs(os.path.dirname(os.path.join(ROOT, name)), exist_ok=True)
     open(os.path.join(ROOT, name), 'w', encoding='utf-8').write(html)
     print('wrote', name)
 
