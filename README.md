@@ -78,6 +78,9 @@ rather than the generated HTML, then re-run it.
 - The 404 page and its siblings run a canvas pixel-art scene
   (`assets/js/error-scene.js`). The code and caption come from the canvas
   `data-code` / `data-sub` attributes, so any error page can reuse it.
-- The contact form posts through FormSubmit to `saagarshrest@gmail.com`.
+- The contact form has no backend (GitHub Pages is static). `assets/js/contact-form.js`
+  composes the message and hands it to the visitor's own mail app with `mailto:`,
+  then reveals a copy-and-send fallback if no mail handler is configured.
+  Nothing is transmitted until they press send in their email client.
 - `assets/images/Designportfolio/` is large (~272 MB); consider compressing it
   if the repository needs to stay slim.

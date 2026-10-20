@@ -175,6 +175,7 @@ PX_STYLE = """
     </style>
 """
 PX_SCRIPT = '<script src="/assets/js/error-scene.js"></script>\n'
+CONTACT_JS = '<script src="/assets/js/contact-form.js"></script>\n'
 
 
 def error_page(code, sub, message, cta_label='Back to home', cta_href='/',
@@ -253,14 +254,14 @@ PAGES['privacy.html'] = page(
          'What this site collects, why, and what I do with it. Plain language, no legalese gymnastics.',
          meta='Last updated · 20 October 2026') +
     doc(
-        '<p class="art-lead">This is a personal portfolio site. It has no accounts, no login, and no database. The only things that leave your browser are the analytics numbers described below. I never sell, rent or share your data with anyone.</p>' +
+        '<p class="art-lead">This is a personal portfolio site. It has no accounts, no login, and no database. The only things that leave your browser are anonymous analytics and the message you choose to email me. I never sell, rent or share your data with anyone.</p>' +
         h2('The short version') +
         note('I collect anonymous usage analytics so I can see which pages are useful, and your contact details if you choose to write to me. Nothing else, and nothing to anyone else.') +
         h2('What this site collects') +
         ul([
             '<strong>Server logs.</strong> My host (GitHub Pages) records standard request logs such as IP address, browser type, and the page requested, in order to serve the site and prevent abuse. These are handled under the host’s own policy.',
             '<strong>Google Analytics.</strong> Anonymous usage statistics — which pages you visit, your approximate region, and your browser and device — collected through Google Analytics (measurement ID <code>G-FYVQB18KQB</code>) so I can understand which work is actually useful to visitors.',
-            '<strong>Contact details.</strong> If you email me, message me on WhatsApp, or submit the contact form, I receive your name, email address and message so I can reply. That correspondence stays in my inbox.',
+            '<strong>Contact details.</strong> If you email me, message me on WhatsApp, or use the contact form, I receive your name, email address and message so I can reply. The form has no server behind it — it opens your own mail app — so nothing reaches me until you press send.',
         ]) +
         h2('What I do <em>not</em> collect') +
         ul([
@@ -418,12 +419,7 @@ PAGES['contact.html'] = page(
             <div class="lg:col-span-7">
                 <h2 class="sx-title !text-[clamp(1.8rem,3vw,2.6rem)]">Send a message</h2>
                 <p class="sx-lead mt-4">I read everything and reply to most messages within two working days.</p>
-                <form class="mt-8 space-y-5" action="https://formsubmit.co/saagarshrest@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New message from saagarshrest.com.np">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://saagarshrest.com.np/thank-you.html">
-                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+                <form class="mt-8 space-y-5" id="contact-form" action="mailto:saagarshrest@gmail.com" method="post" enctype="text/plain" data-contact-form>
                     <div>
                         <label for="cf-name" class="block text-sm font-medium mb-2">Name</label>
                         <input id="cf-name" name="name" type="text" required autocomplete="name"
@@ -452,7 +448,19 @@ PAGES['contact.html'] = page(
                                   class="w-full border border-neutral-300 rounded-lg px-4 py-3 focus:outline-none focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10"></textarea>
                     </div>
                     <button type="submit" class="hero-btn">Send message <span class="hero-btn-arrow">↗</span></button>
-                    <p class="text-xs text-neutral-500 leading-relaxed">Submitting this form sends your message by email. Your details are used only to reply — see the <a href="/privacy.html" class="underline underline-offset-2">Privacy Policy</a>.</p>
+                    <p class="text-xs text-neutral-500 leading-relaxed">This opens your own email app with the message ready to send. Nothing is stored on this site and nothing is sent to anyone else.</p>
+                    <p id="cf-status" class="hidden text-sm text-neutral-700" role="status" aria-live="polite"></p>
+                    <div id="cf-fallback" class="hidden rounded-xl border border-neutral-200 bg-neutral-50 p-5">
+                        <p class="text-sm font-medium text-neutral-900">If your mail app didn’t open…</p>
+                        <p class="mt-2 text-sm text-neutral-600 leading-relaxed">Copy the message below and send it to <a href="mailto:saagarshrest@gmail.com" class="underline underline-offset-2">saagarshrest@gmail.com</a>. Nothing has been sent automatically.</p>
+                        <textarea id="cf-copy" readonly rows="7" aria-label="Message ready to copy"
+                                  class="mt-4 w-full rounded-lg border border-neutral-300 bg-white p-3 text-sm text-neutral-700 focus:outline-none focus:border-neutral-900"></textarea>
+                        <div class="mt-3 flex flex-wrap items-center gap-3">
+                            <button type="button" id="cf-copy-btn" class="hero-btn !text-sm !px-4 !py-2">Copy message</button>
+                            <a id="cf-retry" href="mailto:saagarshrest@gmail.com" class="hero-link !text-sm">Open mail app again</a>
+                            <span id="cf-copied" class="hidden text-xs text-neutral-500">Copied</span>
+                        </div>
+                    </div>
                 </form>
             </div>
             <aside class="lg:col-span-5">
@@ -493,7 +501,8 @@ PAGES['contact.html'] = page(
             </aside>
         </div>
     </section>
-""")
+""",
+    extra_tail=CONTACT_JS)
 
 # ---------------------------------------------------------------- thanks
 PAGES['thank-you.html'] = page(
