@@ -15,10 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Officiti Case Study: Redefining Flexible Workspaces | Saagar</title>
     <meta name="description" content="An analytical UX/UI case study of Officiti, a B2B workspace-sharing app: research, user flow, wireframes, UI design, design system and a self-audit.">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
     <link rel="canonical" href="https://saagarshrest.com.np/Casedetailofficiti.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Saagar Shrestha">
@@ -26,13 +28,13 @@
     <meta property="og:url" content="https://saagarshrest.com.np/Casedetailofficiti.html">
     <meta property="og:title" content="Officiti Case Study: Redefining Flexible Workspaces | Saagar">
     <meta property="og:description" content="An analytical UX/UI case study of Officiti, a B2B workspace-sharing app: research, user flow, wireframes, UI design, design system and a self-audit.">
-    <meta property="og:image" content="https://saagarshrest.com.np/images/officiti/og.jpg">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/officiti/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Officiti Case Study: Redefining Flexible Workspaces | Saagar">
     <meta name="twitter:description" content="An analytical UX/UI case study of Officiti, a B2B workspace-sharing app: research, user flow, wireframes, UI design, design system and a self-audit.">
-    <meta name="twitter:image" content="https://saagarshrest.com.np/images/officiti/og.jpg">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/officiti/og.jpg">
     <meta name="author" content="Saagar Shrestha">
     <script type="application/ld+json">
     {
@@ -42,7 +44,7 @@
       "headline": "} . esc(Officiti Case Study: Redefining Flexible Workspaces | Saagar) . qq{",
       "name": "} . esc(Officiti Case Study: Redefining Flexible Workspaces | Saagar) . qq{",
       "description": "} . esc(An analytical UX/UI case study of Officiti, a B2B workspace-sharing app: research, user flow, wireframes, UI design, design system and a self-audit.) . qq{",
-      "image": "https://saagarshrest.com.np/images/officiti/og.jpg",
+      "image": "https://saagarshrest.com.np/assets/images/officiti/og.jpg",
       "url": "https://saagarshrest.com.np/Casedetailofficiti.html",
       "datePublished": "2021-02-12",
       "author": { "@type": "Person", "name": "Saagar Shrestha", "url": "https://saagarshrest.com.np/" },
@@ -72,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
     <style>
         html { scroll-behavior: smooth; }
         .cs-wrap { max-width: 80rem; margin: 0 auto; }
@@ -239,7 +241,7 @@
             <nav class="cs-toc" aria-label="Case study sections">
                 <a href="#problem">Problem</a><a href="#research">Research</a><a href="#define">Define</a><a href="#ideate">Ideate</a><a href="#wireframes">Wireframes</a><a href="#ui">UI design</a><a href="#system">Design system</a><a href="#audit">Audit</a><a href="#results">Results</a>
             </nav>
-            <div class="cs-hero-img" style="margin-top:3rem"><img src="/images/officiti/hero.jpg" alt="Officiti logo beside an illustration of a freelancer working at a desk on a video call" width="2000" height="1118"></div>
+            <div class="cs-hero-img" style="margin-top:3rem"><img src="/assets/images/officiti/hero.jpg" alt="Officiti logo beside an illustration of a freelancer working at a desk on a video call" width="2000" height="1118"></div>
         </div>
     </section>
 
@@ -367,7 +369,7 @@
             </div>
 
             <figure class="cs-fig">
-                <div class="cs-stage flow"><img src="/images/officiti/userflow.jpg" alt="Officiti user flow from onboarding and login to the dashboard, calendar, scan, support and more, including tickets, Wi-Fi access, booking, report and logout" loading="lazy" width="1600" height="1792"></div>
+                <div class="cs-stage flow"><img src="/assets/images/officiti/userflow.jpg" alt="Officiti user flow from onboarding and login to the dashboard, calendar, scan, support and more, including tickets, Wi-Fi access, booking, report and logout" loading="lazy" width="1600" height="1792"></div>
                 <figcaption><b>User flow</b><span>From onboarding and login, the dashboard branches into four destinations: Calendar, Scan, Support and More. Four choices stay within Hick's Law, and Scan is always one tap away. The deepest path is tickets: Dashboard, More, My Tickets, Pending or Closed, Ticket detail, Cancel, Share. That is six steps and the first thing I would shorten in the next version.</span></figcaption>
             </figure>
         </div>
@@ -381,31 +383,31 @@
             <p class="cs-p" style="margin-top:1.4rem">Low-fidelity wireframes settled hierarchy, navigation and content before any color or style. Working in grayscale forced every screen to communicate through layout and text alone.</p>
 
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/wf-onboarding.png" alt="Three onboarding wireframes: Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="860"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/wf-onboarding.png" alt="Three onboarding wireframes: Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="860"></div>
                 <figcaption><b>Onboarding in three steps</b><span>Each screen carries one idea (book meetings, access the system, manage the team) with a single Next button and progress dots. Value is explained in seconds, and the flow can be skipped.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/wf-auth.png" alt="Create account and Login wireframes with email and password fields" loading="lazy" width="1000" height="900"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/wf-auth.png" alt="Create account and Login wireframes with email and password fields" loading="lazy" width="1000" height="900"></div>
                 <figcaption><b>Account creation and sign-in</b><span>Only email and password are asked for, with social sign-up as a shortcut. Fewer fields at the start means less drop-off at the door.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/officiti/wf-home.png" alt="Dashboard wireframe with ticket stats, today's meetings, attendee search and past meetings" loading="lazy" width="1500" height="890"></div>
+                <div class="cs-stage"><img src="/assets/images/officiti/wf-home.png" alt="Dashboard wireframe with ticket stats, today's meetings, attendee search and past meetings" loading="lazy" width="1500" height="890"></div>
                 <figcaption><b>Dashboard, search and meetings</b><span>The home screen answers "what is happening today?" first: a status summary (tickets solved, Wi-Fi connected, past meetings, notifications), then today's meetings. A centered scan button sits in the thumb zone of the tab bar.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/officiti/wf-tickets.png" alt="Notification list, notification dialog and My Tickets wireframes" loading="lazy" width="1500" height="860"></div>
+                <div class="cs-stage"><img src="/assets/images/officiti/wf-tickets.png" alt="Notification list, notification dialog and My Tickets wireframes" loading="lazy" width="1500" height="860"></div>
                 <figcaption><b>Notifications and tickets</b><span>Notifications open in a dialog, and My Tickets separates Pending from Closed with a segmented control. A dated tile on the left makes each ticket easy to scan.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/officiti/wf-visitor.png" alt="Ticket details, Add Visitor form and Visitors Details wireframes" loading="lazy" width="1500" height="860"></div>
+                <div class="cs-stage"><img src="/assets/images/officiti/wf-visitor.png" alt="Ticket details, Add Visitor form and Visitors Details wireframes" loading="lazy" width="1500" height="860"></div>
                 <figcaption><b>Visitors and details</b><span>Add Visitor is a single, top-to-bottom form with labels above each field. The details screen ends with clear Cancel and Share actions.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/officiti/wf-meeting.png" alt="Visitor invitation, Create a Meeting form and date picker wireframes" loading="lazy" width="1500" height="900"></div>
+                <div class="cs-stage"><img src="/assets/images/officiti/wf-meeting.png" alt="Visitor invitation, Create a Meeting form and date picker wireframes" loading="lazy" width="1500" height="900"></div>
                 <figcaption><b>Booking a meeting</b><span>Title, room, description, dates, time and attendees live on one screen, with an inline calendar for dates. It works, but it is long. This is the screen I later split into three steps in the design system.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/officiti/wf-support.png" alt="Technical Support, My Tickets and Open a Ticket wireframes" loading="lazy" width="1500" height="860"></div>
+                <div class="cs-stage"><img src="/assets/images/officiti/wf-support.png" alt="Technical Support, My Tickets and Open a Ticket wireframes" loading="lazy" width="1500" height="860"></div>
                 <figcaption><b>Support</b><span>Technical Support shows the member's package and remaining days, with shortcuts for Wi-Fi access, booking, tickets and reporting a problem. Opening a ticket asks for type, category, a message and an optional file.</span></figcaption>
             </figure>
         </div>
@@ -419,31 +421,31 @@
             <p class="cs-p" style="margin-top:1.4rem">The high-fidelity design applies the brand palette and Roboto to the approved wireframes. Illustration makes onboarding friendly, while color is used with meaning: green for resolved, red for problems, blue for actions and amber for pending.</p>
 
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-onboarding.png" alt="Onboarding screens with illustrations for Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="880"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-onboarding.png" alt="Onboarding screens with illustrations for Book Meetings, Access System and Manage Team" loading="lazy" width="1500" height="880"></div>
                 <figcaption><b>Onboarding</b><span>Friendly illustrations and an amber progress indicator introduce the three core benefits. The last screen switches the button from Next to Skip, so the goal is always clear.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-auth-home.png" alt="Login, Create account and Dashboard screens in the Officiti brand colors" loading="lazy" width="1500" height="880"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-auth-home.png" alt="Login, Create account and Dashboard screens in the Officiti brand colors" loading="lazy" width="1500" height="880"></div>
                 <figcaption><b>Sign-in and dashboard</b><span>Bold shapes give the entry screens a confident identity, while the dashboard stays calm and functional. Stats sit in a compact grid above today's meetings, and the scan button anchors the tab bar.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-meeting.png" alt="Empty meetings state, Create a Meeting form and Add Visitor form" loading="lazy" width="1500" height="880"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-meeting.png" alt="Empty meetings state, Create a Meeting form and Add Visitor form" loading="lazy" width="1500" height="880"></div>
                 <figcaption><b>Meetings and visitors</b><span>The empty state explains "No Meetings Today" with an illustration and a green add button. Forms use labels above fields, filled-gray inputs and a day selector for choosing meeting dates.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-details.png" alt="Ticket detail screens with green resolved, blue and red not resolved header tiles" loading="lazy" width="1500" height="880"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-details.png" alt="Ticket detail screens with green resolved, blue and red not resolved header tiles" loading="lazy" width="1500" height="880"></div>
                 <figcaption><b>Ticket details and status color</b><span>A colored date header tells the ticket's state at a glance: green for resolved and red for not resolved. Color helps scanning, but in the audit below I show why it should never carry meaning alone.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-tickets.png" alt="My Tickets in Pending and Closed tabs and a visitor invitation card with a QR code" loading="lazy" width="1500" height="890"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-tickets.png" alt="My Tickets in Pending and Closed tabs and a visitor invitation card with a QR code" loading="lazy" width="1500" height="890"></div>
                 <figcaption><b>My tickets and invitations</b><span>Pending and Closed tabs use a dark segmented control, and each ticket keeps its dated tile. The visitor invitation packages name, host, time and a QR code into one shareable card.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-visitor.png" alt="Visitors Details, ticket approve and reject screen, and Notifications list" loading="lazy" width="1500" height="880"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-visitor.png" alt="Visitors Details, ticket approve and reject screen, and Notifications list" loading="lazy" width="1500" height="880"></div>
                 <figcaption><b>Approvals and notifications</b><span>Hosts can Approve or Reject with a review note, and share or cancel a visitor's details. Notifications are listed with a colored edge to hint at their type.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/officiti/ui-qr.png" alt="QR scanner screen and a notification dialog" loading="lazy" width="1000" height="900"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/officiti/ui-qr.png" alt="QR scanner screen and a notification dialog" loading="lazy" width="1000" height="900"></div>
                 <figcaption><b>Scanning and notifications</b><span>The scanner screen has one instruction, "Place your mobile screen near QR Scanner", and nothing else to distract. The notification dialog shows a booking confirmation over a dimmed screen.</span></figcaption>
             </figure>
         </div>
@@ -655,6 +657,34 @@
             <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
         </div>
 
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/Design.html">Design</a>
+                <a href="/Article.html">Articles</a>
+                <a href="/Casestudy.html">Case Study</a>
+                <a href="/Products.html">Products</a>
+                <a href="/Photos.html">Photos</a>
+                <a href="/Resume.html">Resume</a>
+                <a href="/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/contact.html">Contact</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/sitemap-page.html">Sitemap</a>
+                <a href="/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Use</a>
+                <a href="/cookie-policy.html">Cookie Policy</a>
+                <a href="/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
         <!-- Bottom bar -->
         <div class="ct-bottom">
             <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
@@ -698,7 +728,7 @@
         if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     })();
   </script>
-<script src="/js/pager.js"></script>
-<script src="/js/nav-hero.js"></script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Saagar Shrestha</title>
+    <link>https://saagarshrest.com.np/</link>
+    <description>Writing on product design, UX and design systems by Saagar Shrestha.</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 15 Oct 2026 14:13:32 +0545</lastBuildDate>
+    <atom:link href="https://saagarshrest.com.np/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Designing for Accessibility</title>
+      <link>https://saagarshrest.com.np/Articles/Designing%20for%20Accessibility.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Designing%20for%20Accessibility.html</guid>
+      <description>Accessibility is a design decision, not a checklist bolted on at the end.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+    <item>
+      <title>Designing for Emotion</title>
+      <link>https://saagarshrest.com.np/Articles/Designing%20for%20Emotion.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Designing%20for%20Emotion.html</guid>
+      <description>How to make an interface feel something, not just work.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+    <item>
+      <title>Revolutionizing User Experience with AI</title>
+      <link>https://saagarshrest.com.np/Articles/Revolutionizing%20User%20Experience%20with%20AI.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Revolutionizing%20User%20Experience%20with%20AI.html</guid>
+      <description>Where AI genuinely changes the way products should be built.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+    <item>
+      <title>Design Thinking an Iterative Process</title>
+      <link>https://saagarshrest.com.np/Articles/Design%20Thinking%20an%20Iterative%20Process.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Design%20Thinking%20an%20Iterative%20Process.html</guid>
+      <description>Why the loop matters more than the whiteboard.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+    <item>
+      <title>Why Artificial Intelligence needs Good User Experience</title>
+      <link>https://saagarshrest.com.np/Articles/Why%20Artificial%20Intelligence%20needs%20Good%20User%20Experience.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Why%20Artificial%20Intelligence%20needs%20Good%20User%20Experience.html</guid>
+      <description>Bad AI UX is worse than no AI UX.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+    <item>
+      <title>Data-Driven vs. Intuition-Driven</title>
+      <link>https://saagarshrest.com.np/Articles/Data-Driven%20vs.%20Intuition-Driven.html</link>
+      <guid isPermaLink="true">https://saagarshrest.com.np/Articles/Data-Driven%20vs.%20Intuition-Driven.html</guid>
+      <description>Where each one wins, and how to know which one you are in.</description>
+      <pubDate>Thu, 15 Oct 2026 14:13:32 +0545</pubDate>
+    </item>
+  </channel>
+</rss>

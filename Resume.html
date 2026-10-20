@@ -14,10 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume | Saagar</title>
     <meta name="description" content="Resume of Saagar Shrestha, UI/UX and product designer in Kathmandu: 10 years of experience across fintech, crypto, edtech, health tech and more.">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
     <link rel="canonical" href="https://saagarshrest.com.np/Resume.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Saagar Shrestha">
@@ -25,13 +27,13 @@
     <meta property="og:url" content="https://saagarshrest.com.np/Resume.html">
     <meta property="og:title" content="Resume | Saagar">
     <meta property="og:description" content="Resume of Saagar Shrestha, UI/UX and product designer in Kathmandu: 10 years of experience across fintech, crypto, edtech, health tech and more.">
-    <meta property="og:image" content="https://saagarshrest.com.np/images/og-default.png">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Resume | Saagar">
     <meta name="twitter:description" content="Resume of Saagar Shrestha, UI/UX and product designer in Kathmandu: 10 years of experience across fintech, crypto, edtech, health tech and more.">
-    <meta name="twitter:image" content="https://saagarshrest.com.np/images/og-default.png">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/og-default.png">
     <meta name="author" content="Saagar Shrestha">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -47,11 +49,11 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="/css/resume.css">
+    <link rel="stylesheet" href="/assets/css/resume.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9024176667555201"
      crossorigin="anonymous"></script>
@@ -125,7 +127,7 @@
                 <h1 class="sx-title">Saagar <em>Shrestha.</em></h1>
                 <p class="sx-lead">UI/UX and product designer who takes products from user research and prototypes to high-fidelity design and developer handoff.</p>
                 <div class="rs-actions">
-                    <a href="/files/Saagar_Shrestha_Resume.pdf" download class="hero-btn">Download PDF <span class="hero-btn-arrow">↓</span></a>
+                    <a href="/assets/files/Saagar_Shrestha_Resume.pdf" download class="hero-btn">Download PDF <span class="hero-btn-arrow">↓</span></a>
                     <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="sx-seeall">LinkedIn <span>↗</span></a>
                 </div>
             </div>
@@ -422,6 +424,34 @@
             <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
         </div>
 
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/Design.html">Design</a>
+                <a href="/Article.html">Articles</a>
+                <a href="/Casestudy.html">Case Study</a>
+                <a href="/Products.html">Products</a>
+                <a href="/Photos.html">Photos</a>
+                <a href="/Resume.html">Resume</a>
+                <a href="/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/contact.html">Contact</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/sitemap-page.html">Sitemap</a>
+                <a href="/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Use</a>
+                <a href="/cookie-policy.html">Cookie Policy</a>
+                <a href="/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
         <!-- Bottom bar -->
         <div class="ct-bottom">
             <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
@@ -464,7 +494,7 @@
         if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     })();
 </script>
-<script src="/js/pager.js"></script>
-<script src="/js/nav-hero.js"></script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
 </body>
 </html>

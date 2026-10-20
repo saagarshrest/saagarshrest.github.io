@@ -15,10 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShiftCare Case Study: Roster &amp; Client Management UX | Saagar</title>
     <meta name="description" content="A UX/UI case study of ShiftCare, a care management platform for NDIS providers: research, design system, web and mobile app screens, and a self-audit.">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
     <link rel="canonical" href="https://saagarshrest.com.np/Casedetail.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Saagar Shrestha">
@@ -26,13 +28,13 @@
     <meta property="og:url" content="https://saagarshrest.com.np/Casedetail.html">
     <meta property="og:title" content="ShiftCare Case Study: Roster &amp; Client Management UX | Saagar">
     <meta property="og:description" content="A UX/UI case study of ShiftCare, a care management platform for NDIS providers: research, design system, web and mobile app screens, and a self-audit.">
-    <meta property="og:image" content="https://saagarshrest.com.np/images/og-default.png">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ShiftCare Case Study: Roster &amp; Client Management UX | Saagar">
     <meta name="twitter:description" content="A UX/UI case study of ShiftCare, a care management platform for NDIS providers: research, design system, web and mobile app screens, and a self-audit.">
-    <meta name="twitter:image" content="https://saagarshrest.com.np/images/og-default.png">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/og-default.png">
     <meta name="author" content="Saagar Shrestha">
     <script type="application/ld+json">
     {
@@ -42,7 +44,7 @@
       "headline": "} . esc(ShiftCare Case Study: Roster & Client Management UX | Saagar) . qq{",
       "name": "} . esc(ShiftCare Case Study: Roster & Client Management UX | Saagar) . qq{",
       "description": "} . esc(A UX/UI case study of ShiftCare, a care management platform for NDIS providers: research, design system, web and mobile app screens, and a self-audit.) . qq{",
-      "image": "https://saagarshrest.com.np/images/og-default.png",
+      "image": "https://saagarshrest.com.np/assets/images/og-default.png",
       "url": "https://saagarshrest.com.np/Casedetail.html",
       "datePublished": "2023-01-28",
       "author": { "@type": "Person", "name": "Saagar Shrestha", "url": "https://saagarshrest.com.np/" },
@@ -72,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
     <style>
         html { scroll-behavior: smooth; }
         .cs-wrap { max-width: 80rem; margin: 0 auto; }
@@ -365,7 +367,7 @@
             </div>
 
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/shiftcare/erd.jpg" alt="Hand-drawn data model showing Employee, Address, Support user, User, Medicine, Roster, User Employee Task, Tasks, Behaviours, Behaviour log and complaint tables" loading="lazy" width="1800" height="933"></div>
+                <div class="cs-stage"><img src="/assets/images/shiftcare/erd.jpg" alt="Hand-drawn data model showing Employee, Address, Support user, User, Medicine, Roster, User Employee Task, Tasks, Behaviours, Behaviour log and complaint tables" loading="lazy" width="1800" height="933"></div>
                 <figcaption><b>Data model, sketched on paper first</b><span>Before any screens, I drew the data model by hand. An employee is assigned to a roster entry, and a roster entry joins one employee, one user and one address, with planned and actual start and end times plus goals. Tasks hang off the roster through a user employee task with remarks. Employees fill in medicine and behaviour logs against a user. A support user creates employees. Drawing this first made the roster the center of the product, and it decided what each screen had to show.</span></figcaption>
             </figure>
         </div>
@@ -386,12 +388,12 @@
                     </div>
                 </div>
                 <div>
-                    <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-foundations.jpg" alt="Color styles and typography scale for ShiftCare" loading="lazy" width="1800" height="1037" style="max-width:100%;border-radius:10px"></div>
+                    <div class="cs-stage dk" style="padding:1.2rem"><img src="/assets/images/shiftcare/ds-foundations.jpg" alt="Color styles and typography scale for ShiftCare" loading="lazy" width="1800" height="1037" style="max-width:100%;border-radius:10px"></div>
                 </div>
             </div>
             <div class="cs-grid2 even" style="margin-top:3rem;gap:1.6rem">
-                <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-components.jpg" alt="Web components: inputs, buttons in every state, icons, pagination" loading="lazy" width="1500" height="1605" style="max-width:100%;border-radius:10px"></div>
-                <div class="cs-stage dk" style="padding:1.2rem"><img src="/images/shiftcare/ds-mobile.jpg" alt="Mobile components: inputs, dropdowns, date picker, roster dates and tab bar" loading="lazy" width="1100" height="2569" style="max-width:100%;border-radius:10px"></div>
+                <div class="cs-stage dk" style="padding:1.2rem"><img src="/assets/images/shiftcare/ds-components.jpg" alt="Web components: inputs, buttons in every state, icons, pagination" loading="lazy" width="1500" height="1605" style="max-width:100%;border-radius:10px"></div>
+                <div class="cs-stage dk" style="padding:1.2rem"><img src="/assets/images/shiftcare/ds-mobile.jpg" alt="Mobile components: inputs, dropdowns, date picker, roster dates and tab bar" loading="lazy" width="1100" height="2569" style="max-width:100%;border-radius:10px"></div>
             </div>
             <p class="cs-p" style="margin-top:1.6rem">Each control is documented in default, hover, active, typing and disabled states, so developers never guess. The mobile set adds larger touch targets and a bottom tab bar with a raised scan button.</p>
         </div>
@@ -404,32 +406,32 @@
             <h2 class="cs-h2" style="margin-top:.8rem">Built for the <em>roster manager.</em></h2>
             <p class="cs-p" style="margin-top:1.4rem">The web dashboard is where an organization manages employees, users, rosters, tasks and behaviors. A left navigation gives one section per record type. Every section repeats the same pattern: a searchable table, an add form and an update form. Once a manager learns one, they know all of them.</p>
             <figure class="cs-fig">
-                <div class="cs-stage wide"><img src="/images/shiftcare/web-login.jpg" alt="Web login screen and the welcome dashboard with left navigation" loading="lazy" width="1500" height="484"></div>
+                <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-login.jpg" alt="Web login screen and the welcome dashboard with left navigation" loading="lazy" width="1500" height="484"></div>
                 <figcaption><b>Sign in and dashboard</b><span>A split sign-in screen with a welcome message, then a dashboard with a persistent left navigation and a friendly greeting.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage wide"><img src="/images/shiftcare/web-employee.jpg" alt="Employee list, add employee form, update employee, details and success message" loading="lazy" width="1900" height="398"></div>
+                <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-employee.jpg" alt="Employee list, add employee form, update employee, details and success message" loading="lazy" width="1900" height="398"></div>
                 <figcaption><b>Employees</b><span>A list with search and pagination leads to an add form, an update form and a long details form split into sections: tax details, bank details, superannuation fund, emergency contact and acknowledgements. A green confirmation appears after saving. License number and expiry live here and drive the reminders.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage wide"><img src="/images/shiftcare/web-users-a.jpg" alt="User list, add user, PDF import and user details screens" loading="lazy" width="1900" height="615"></div>
+                <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-users-a.jpg" alt="User list, add user, PDF import and user details screens" loading="lazy" width="1900" height="615"></div>
                 <figcaption><b>Users, part one</b><span>Adding a user includes a PDF import area with drag and drop or upload from a URL, so an existing support plan doesn't need retyping. Details, contact and emergency contact are separate steps.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage wide"><img src="/images/shiftcare/web-users-b.jpg" alt="Health questionnaire, schedule of supports, privacy and consent and agreement screens" loading="lazy" width="1900" height="738"></div>
+                <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-users-b.jpg" alt="Health questionnaire, schedule of supports, privacy and consent and agreement screens" loading="lazy" width="1900" height="738"></div>
                 <figcaption><b>Users, part two</b><span>The onboarding of a client continues with a health questionnaire, a schedule of supports, privacy and consent, and a service agreement. These are long, so each sits on its own page with clear Back and Next actions.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage wide"><img src="/images/shiftcare/web-roster.jpg" alt="Roster month calendar, add roster and update roster forms" loading="lazy" width="1900" height="327"></div>
+                <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-roster.jpg" alt="Roster month calendar, add roster and update roster forms" loading="lazy" width="1900" height="327"></div>
                 <figcaption><b>Roster</b><span>The heart of the product. A calendar with month, week, day and list views shows shifts at a glance. Add roster lets a manager pick the employee, the user, date and time, location and tasks. Shifts appear on the calendar immediately, so changes give instant feedback.</span></figcaption>
             </figure>
             <div class="cs-grid2 even" style="gap:1.6rem">
                 <figure class="cs-fig" style="margin-top:3rem">
-                    <div class="cs-stage wide"><img src="/images/shiftcare/web-task.jpg" alt="Task list and add or update task forms" loading="lazy" width="1900" height="457"></div>
+                    <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-task.jpg" alt="Task list and add or update task forms" loading="lazy" width="1900" height="457"></div>
                     <figcaption style="grid-template-columns:1fr"><b>Tasks</b><span>A shared library of tasks that rosters reuse, with the same list, add and update pattern.</span></figcaption>
                 </figure>
                 <figure class="cs-fig" style="margin-top:3rem">
-                    <div class="cs-stage wide"><img src="/images/shiftcare/web-behaviour.jpg" alt="Behavior list and add or update behavior forms" loading="lazy" width="1500" height="348"></div>
+                    <div class="cs-stage wide"><img src="/assets/images/shiftcare/web-behaviour.jpg" alt="Behavior list and add or update behavior forms" loading="lazy" width="1500" height="348"></div>
                     <figcaption style="grid-template-columns:1fr"><b>Behaviors</b><span>A library of behavior categories that workers select when logging an incident.</span></figcaption>
                 </figure>
             </div>
@@ -447,23 +449,23 @@
             <h2 class="cs-h2" style="margin-top:.8rem">One hand, <em>on the move.</em></h2>
             <p class="cs-p" style="margin-top:1.4rem">Sarah is walking between clients with a phone in one hand. The app opens on the next thing she has to do and keeps the rest one tap away.</p>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-a.jpg" alt="Employee app login, home with assigned task and check-in, and roster" loading="lazy" width="872" height="872"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/shiftcare/emp-a.jpg" alt="Employee app login, home with assigned task and check-in, and roster" loading="lazy" width="872" height="872"></div>
                 <figcaption><b>Sign in, home and check-in</b><span>Home shows the assigned task with a large Check in button, then the upcoming tasks for the day, each with the client address and its distance. Coloured edges separate tasks visually.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-roster.jpg" alt="Employee roster calendar for the month" loading="lazy" width="470" height="788"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/shiftcare/emp-roster.jpg" alt="Employee roster calendar for the month" loading="lazy" width="470" height="788"></div>
                 <figcaption><b>Roster</b><span>A month calendar with a marked selected day, and the shifts for that day listed underneath.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/shiftcare/emp-b.jpg" alt="Add forms menu, add employee task, add medicine log and add behaviour log" loading="lazy" width="1700" height="459"></div>
+                <div class="cs-stage"><img src="/assets/images/shiftcare/emp-b.jpg" alt="Add forms menu, add employee task, add medicine log and add behaviour log" loading="lazy" width="1700" height="459"></div>
                 <figcaption><b>Add forms</b><span>Instead of paper, three quick forms: employee task, medicine log and behaviour log. Each begins with a dropdown of the client and the item, so the worker selects instead of typing, then adds a note.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/shiftcare/emp-c.jpg" alt="Forms list with employee tasks, medicine log and behavior log tabs" loading="lazy" width="1500" height="696"></div>
+                <div class="cs-stage"><img src="/assets/images/shiftcare/emp-c.jpg" alt="Forms list with employee tasks, medicine log and behavior log tabs" loading="lazy" width="1500" height="696"></div>
                 <figcaption><b>Forms list</b><span>Everything the worker has recorded is in one list with three tabs, so it is easy to check what was already logged before a shift ends.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/shiftcare/emp-d.jpg" alt="Employee profile form with tax, bank and emergency contact sections plus success and error messages" loading="lazy" width="1300" height="934"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/shiftcare/emp-d.jpg" alt="Employee profile form with tax, bank and emergency contact sections plus success and error messages" loading="lazy" width="1300" height="934"></div>
                 <figcaption><b>Profile and compliance details</b><span>The profile holds the details an employer needs: tax, bank and emergency contact, with a Browse button for uploads. Success and error messages are shown as clear cards.</span></figcaption>
             </figure>
         </div>
@@ -476,19 +478,19 @@
             <h2 class="cs-h2" style="margin-top:.8rem">Visibility for <em>the person receiving care.</em></h2>
             <p class="cs-p" style="margin-top:1.4rem">James is a client. His app is deliberately lighter. It shows the care he has received, what the worker noted, and his budget, and it lets him confirm a visit with a QR code.</p>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/shiftcare/user-a.jpg" alt="User app login and home with running task and upcoming tasks" loading="lazy" width="786" height="922"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/shiftcare/user-a.jpg" alt="User app login and home with running task and upcoming tasks" loading="lazy" width="786" height="922"></div>
                 <figcaption><b>Sign in and home</b><span>The home screen puts the running task first, then upcoming tasks for the day, each with its time and place.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/shiftcare/user-b.jpg" alt="Completed tasks, task list with remarks, and roster calendar" loading="lazy" width="1600" height="871"></div>
+                <div class="cs-stage"><img src="/assets/images/shiftcare/user-b.jpg" alt="Completed tasks, task list with remarks, and roster calendar" loading="lazy" width="1600" height="871"></div>
                 <figcaption><b>Completed tasks and roster</b><span>Completed tasks link to a task list showing who did what, the medicine, time log, remarks, behavior and any warning signs. The roster is a calendar of upcoming visits.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage"><img src="/images/shiftcare/user-c.jpg" alt="Profile with personal and financial details, edit profile, and success and error messages" loading="lazy" width="1500" height="559"></div>
+                <div class="cs-stage"><img src="/assets/images/shiftcare/user-c.jpg" alt="Profile with personal and financial details, edit profile, and success and error messages" loading="lazy" width="1500" height="559"></div>
                 <figcaption><b>Profile and budget</b><span>Personal details and financial details: total budget, total expenditure and remaining balance. Profile edits end with a clear saved or error message.</span></figcaption>
             </figure>
             <figure class="cs-fig">
-                <div class="cs-stage narrow"><img src="/images/shiftcare/user-qr.jpg" alt="QR scanner screen with the instruction Scan QR Code" loading="lazy" width="470" height="922"></div>
+                <div class="cs-stage narrow"><img src="/assets/images/shiftcare/user-qr.jpg" alt="QR scanner screen with the instruction Scan QR Code" loading="lazy" width="470" height="922"></div>
                 <figcaption><b>QR scanner</b><span>One instruction and a framed scanning area, with nothing else to distract.</span></figcaption>
             </figure>
         </div>
@@ -659,6 +661,34 @@
             <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
         </div>
 
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/Design.html">Design</a>
+                <a href="/Article.html">Articles</a>
+                <a href="/Casestudy.html">Case Study</a>
+                <a href="/Products.html">Products</a>
+                <a href="/Photos.html">Photos</a>
+                <a href="/Resume.html">Resume</a>
+                <a href="/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/contact.html">Contact</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/sitemap-page.html">Sitemap</a>
+                <a href="/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Use</a>
+                <a href="/cookie-policy.html">Cookie Policy</a>
+                <a href="/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
         <!-- Bottom bar -->
         <div class="ct-bottom">
             <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
@@ -702,7 +732,7 @@
         if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     })();
   </script>
-<script src="/js/pager.js"></script>
-<script src="/js/nav-hero.js"></script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
 </body>
 </html>

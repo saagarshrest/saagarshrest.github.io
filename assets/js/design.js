@@ -1,6 +1,6 @@
 /* =====================================================================
    Design page: one slide per kind of design (title left, grid right)
-   + an expanding viewer. Dribbble shots are hotlinked; other work lives in /images/Designportfolio/
+   + an expanding viewer. Dribbble shots are hotlinked; other work lives in /assets/images/Designportfolio/
    as name.png (the untouched original, "View original" in the viewer), name.webp (90% quality,
    max 2200px wide, what the viewer shows) and name-thumb.webp (90% quality, the grid tile).
    Each section's images load only when that section is opened.
@@ -11,7 +11,7 @@
 (function () {
     'use strict';
     var U = 'https://cdn.dribbble.com/userupload/';
-    var L = '/images/Designportfolio/';
+    var L = '/assets/images/Designportfolio/';
 
     // item: t = title, img = image, th = thumbnail (local images), s = Dribbble shot id (kept for reference, not linked), r = width/height (default 4/3),
     //       long = a full-page design: the thumbnail is its top section and the viewer scrolls through the page,

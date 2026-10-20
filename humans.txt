@@ -1,0 +1,13 @@
+/* TEAM */
+Design & UX: Saagar Shrestha — https://saagarshrest.com.np/
+Site: saagarshrest.com.np
+Location: Kathmandu, Nepal
+Contact: saagarshrest@gmail.com
+
+/* SITE */
+Generator: hand-written HTML, CSS and JavaScript
+Components: Tailwind CSS (CDN), plain CSS, plain JavaScript
+Hosting: GitHub Pages
+Icons: hand-drawn SVG / PNG favicons
+Doctype: HTML5
+Language: English
