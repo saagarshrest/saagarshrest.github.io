@@ -421,6 +421,38 @@
         if (R.rub > 220) { R.rubbed = true; for (var i = 0; i < 4; i++) addHeart(); goHome(); }
     }, { passive: true });
 
+    /* ---------- hand-off: lets another script borrow the dragon (used by 404.html) ----------
+       origin() is where the flying sprite is now, in viewport px (null when the mascot is hidden);
+       hold() takes it out of the nav; home() is where to bring it back; release() puts it back. */
+    var held = false, heldX = 0;
+    window.navHero = {
+        sprites: { FLY: FLY, FW: FW, FH: FH, MOUTH_X: MOUTH_X, MOUTH_Y: MOUTH_Y, FIRE: FIRE, scale: RS },
+        origin: function () {
+            if (wrap.offsetParent === null) return null;
+            if (R.on) return { x: R.x, y: R.y, face: R.face };
+            var hr = heroC.getBoundingClientRect();
+            if (D.st === 'rest' || D.st === 'toPerch' || D.st === 'fromPerch') return { x: hr.left + D.x * RS, y: hr.top + (RH - FH) * RS, face: 1 };
+            return { x: hr.left + D.x * RS, y: hr.top + (D.y + bob()) * RS, face: D.face };
+        },
+        hold: function () {
+            held = true;
+            if (R.on) { R.on = false; roamC.style.display = 'none'; puffs.length = hearts.length = 0; }
+            D.st = 'away'; flames.length = sparks.length = smoke.length = 0;
+            hg.clearRect(0, 0, heroC.width, heroC.height);
+            heldX = Math.round(Math.random() * maxX);
+        },
+        home: function () {
+            if (wrap.offsetParent === null) return null;
+            var hr = heroC.getBoundingClientRect();
+            return canFly ? { x: hr.left + heldX * RS, y: hr.top + flyY * RS } : { x: hr.left + (perchLo + ((perchHi - perchLo) / 2 | 0)) * RS, y: hr.top + (RH - FH) * RS };
+        },
+        release: function (face) {
+            held = false; homeT = 60 * 20;
+            if (canFly) { D.st = 'fly'; D.t = 0; D.dur = 60 + Math.random() * 100; D.x = D.tx = heldX; D.y = flyY; D.face = face || 1; }
+            else rest(1e9);
+        }
+    };
+
     /* ---------- loop ---------- */
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     B.y = hideY();
@@ -435,7 +467,7 @@
         var shown = wrap.offsetParent !== null;
         if (shown) {
             var n = 0;
-            while (acc >= STEP && n < 4) { updateHero(); updateBoss(); if (R.on) updateRoam(); else leaveNav(); acc -= STEP; n++; }
+            while (acc >= STEP && n < 4) { if (!held) updateHero(); updateBoss(); if (R.on) updateRoam(); else if (!held) leaveNav(); acc -= STEP; n++; }
             drawHero(); drawBoss();
             if (R.on) drawRoam();
         }
