@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FYVQB18KQB');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Service Ops Case Study: From First Call to Finished Job | Saagar</title>
+    <meta name="description" content="UX case study: an operations platform for small residential HVAC contractors, from lead capture and estimates to dispatch and a technician app.">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
+    <link rel="canonical" href="https://saagarshrest.com.np/work/Casedetailhvac.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Saagar Shrestha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://saagarshrest.com.np/work/Casedetailhvac.html">
+    <meta property="og:title" content="Field Service Ops Case Study: From First Call to Finished Job | Saagar">
+    <meta property="og:description" content="UX case study: an operations platform for small residential HVAC contractors, from lead capture and estimates to dispatch and a technician app.">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/hvac/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Field Service Ops Case Study: From First Call to Finished Job | Saagar">
+    <meta name="twitter:description" content="UX case study: an operations platform for small residential HVAC contractors, from lead capture and estimates to dispatch and a technician app.">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/hvac/og.jpg">
+    <meta name="author" content="Saagar Shrestha">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "additionalType": "https://schema.org/Article",
+      "headline": "Field Service Ops Case Study: From First Call to Finished Job | Saagar",
+      "name": "Field Service Ops Case Study: From First Call to Finished Job | Saagar",
+      "description": "UX case study: an operations platform for small residential HVAC contractors, from lead capture and estimates to dispatch and a technician app.",
+      "image": "https://saagarshrest.com.np/assets/images/hvac/og.jpg",
+      "url": "https://saagarshrest.com.np/work/Casedetailhvac.html",
+      "datePublished": "2026-10-23",
+      "author": { "@type": "Person", "name": "Saagar Shrestha", "url": "https://saagarshrest.com.np/" },
+      "creator": { "@type": "Person", "name": "Saagar Shrestha" }
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+            <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } .cs-grid2 > * { min-width: 0; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        .cs-shot { display: block; }
+        .cs-shot.dk { border-color: rgba(255,255,255,.18); background: #0A0A0A; }
+        .cs-persona .cs-ticks { margin-top: 1.4rem; }
+        .cs-ticks li { padding: .6rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-steps { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-steps { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1100px) { .cs-steps { grid-template-columns: repeat(6, 1fr); } }
+        .cs-steps li { padding: 1.2rem 1.2rem 1.4rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-steps b { display: block; margin-top: .7rem; font-weight: 500; font-size: 1.1rem; letter-spacing: -0.02em; }
+        .cs-steps p { margin-top: .3rem; font-size: .88rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        @media (min-width: 900px) { .cs-facts.four { grid-template-columns: repeat(4, 1fr); } }
+        .cs-fact .c b { color: #0A0A0A; font-weight: 600; }
+        .cs-dec { display: grid; gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(10,10,10,.2); }
+        .cs-dec > * { min-width: 0; }
+        @media (min-width: 900px) { .cs-dec { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: center; } .cs-dec.flip > :first-child { order: 2; } }
+        .cs-trade { margin-top: 1.2rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.5; max-width: 44rem; }
+        .cs-trade b { color: #0A0A0A; font-weight: 600; }
+        .cs-states { display: flex; flex-wrap: wrap; margin-top: 1.6rem; border: 1px solid rgba(10,10,10,.25); }
+        .cs-states li { flex: 1 1 auto; padding: .8rem 1rem; font-weight: 500; font-size: .92rem; border-right: 1px solid rgba(10,10,10,.14); }
+        .cs-states li:last-child { border-right: 0; background: #0A0A0A; color: #fff; }
+        .cs-states li::after { content: " →"; color: rgba(10,10,10,.4); }
+        .cs-states li:last-child::after { content: none; }
+        .cs-states span { font-weight: 400; color: rgba(255,255,255,.6); }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9024176667555201"
+     crossorigin="anonymous"></script>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="/work/Design.html">Design</a>
+      <a href="/Articles/Article.html">Articles</a>
+      <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/products/Products.html">Products</a>
+      <a href="/work/DesignSystem.html">Design System</a>
+      <a href="/about/Photos.html">Photos</a>
+      <a href="/about/Resume.html">Resume</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Available for work</a>
+
+    <a href="https://wa.me/9779860332656" class="site-wa" target="_blank" rel="noopener noreferrer" aria-label="Message Saagar on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+    </a>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="/work/Design.html">Design</a>
+    <a href="/Articles/Article.html">Articles</a>
+    <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/products/Products.html">Products</a>
+    <a href="/work/DesignSystem.html">Design System</a>
+    <a href="/about/Photos.html">Photos</a>
+    <a href="/about/Resume.html">Resume</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · B2B SaaS · Field service · 2026</div>
+            <h1 class="cs-hero-title">From first call to finished job, <em>without the whiteboard.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">Designing an operations platform for small residential HVAC contractors: lead capture, estimates, follow-ups, dispatch and a technician app, built as one product so nothing falls between the cracks.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>Field service ops platform</dd></div>
+                <div><dt>Role</dt><dd>Lead product designer, end to end</dd></div>
+                <div><dt>Platform</dt><dd>Web app + technician mobile</dd></div>
+                <div><dt>Scope</dt><dd>Research, UX, UI, design system</dd></div>
+                <div><dt>Status</dt><dd>Pre-launch pilot</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#problem">Problem</a><a href="#research">Research</a><a href="#goals">Goals</a><a href="#decisions">Decisions</a><a href="#system">Design system</a><a href="#accessibility">Accessibility</a><a href="#next">What's next</a><a href="#learnings">Learnings</a>
+            </nav>
+            <a href="/assets/images/hvac/01-hero.png" class="cs-hero-img cs-shot" style="margin-top:3rem" target="_blank" rel="noopener" aria-label="Open the full-resolution dashboard image"><img src="/assets/images/hvac/01-hero.webp" alt="Owner dashboard showing estimates awaiting decision, the lead pipeline and items that need attention." width="1600" height="1200"></a>
+            <div class="cs-note"><b>Under NDA.</b> The product hasn't launched, so its name is withheld and only a few cropped screens are shown. All customer names and figures in the images are seeded test data.</div>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">01 · The problem</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Revenue leaks <em>between tools.</em></h2>
+                </div>
+                <div>
+                    <p class="cs-p">A typical shop has 2–25 people. Calls land on the owner's phone, leads live in a notebook or spreadsheet, estimates are built in a word processor, and the schedule is a whiteboard in the office. Each hand-off between those tools is a place where a job quietly disappears.</p>
+                    <p class="cs-p">The pattern was consistent across conversations: <b style="color:#0A0A0A;font-weight:500">the work wasn't lost because people were careless, it was lost because nothing told them it was waiting.</b> A lead not called back within the hour, an estimate sent and never chased, a technician who didn't know the job had moved.</p>
+                </div>
+            </div>
+            <figure class="cs-fig">
+                <a href="/assets/images/hvac/02-problem.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution problem diagram"><img src="/assets/images/hvac/02-problem.webp" alt="Diagram of the leaks between phone, notebook, document and whiteboard workflows, with what was designed for each step." loading="lazy" width="1600" height="1200"></a>
+                <figcaption><b>Five hand-offs, five leaks</b><span>Inquiry, estimate, follow-up, job and invoice each had a "before" that depended on someone remembering. The product replaces each one with a step that surfaces itself.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section id="research" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Research</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Two people, <em>two very different days.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">Contextual interviews with owners and office staff, ride-alongs with technicians, and a review of the spreadsheets and paper forms shops already used. That shaped two primary personas.</p>
+            <div class="cs-grid2 even" style="margin-top:2.6rem">
+                <div class="cs-persona">
+                    <div class="cs-label">Persona 1</div>
+                    <h3 style="margin-top:.6rem">The owner / office manager</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">At a desk or in the truck between calls. Juggles sales, scheduling and money.</p>
+                    <ul class="cs-ticks">
+                        <li>Needs to know, at a glance, what is waiting on <em>them</em>.</li>
+                        <li>Won't open five screens to answer "who's free Thursday?"</li>
+                        <li>Has been burned by software that lets the numbers drift.</li>
+                    </ul>
+                </div>
+                <div class="cs-persona">
+                    <div class="cs-label">Persona 2</div>
+                    <h3 style="margin-top:.6rem">The technician</h3>
+                    <p class="cs-p" style="margin-top:.6rem;font-size:.95rem">On a roof or in a crawlspace, gloves on, patchy signal, phone in one hand.</p>
+                    <ul class="cs-ticks">
+                        <li>Wants today's jobs, the address and the access notes. Nothing else.</li>
+                        <li>Large targets, one-thumb reach, readable in sunlight.</li>
+                        <li>Will abandon anything that asks for data entry on site.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="cs-h3" style="margin-top:3.4rem">The journey we designed around</h3>
+            <ol class="cs-steps" style="margin-top:1.2rem">
+                <li><span class="sx-num">01</span><b>Call comes in</b><p>Lead captured in under a minute</p></li>
+                <li><span class="sx-num">02</span><b>Site visit</b><p>Booked from the lead</p></li>
+                <li><span class="sx-num">03</span><b>Estimate</b><p>Options, sent by link</p></li>
+                <li><span class="sx-num">04</span><b>Follow-up</b><p>Automatic, day 2 · 5 · 10</p></li>
+                <li><span class="sx-num">05</span><b>Dispatch</b><p>Assigned on the board</p></li>
+                <li><span class="sx-num">06</span><b>Done</b><p>Closed from the field</p></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============ GOALS ============ -->
+    <section id="goals" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">03 · Design goals</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What "good" <em>had to mean.</em></h2>
+            <div class="cs-facts four" style="margin-top:2.4rem">
+                <div class="cs-fact"><div class="n">60<span style="font-size:1.4rem">min</span></div><div class="c"><b>Response target.</b> Any lead older than an hour without contact surfaces in "Needs attention".</div></div>
+                <div class="cs-fact"><div class="n">0</div><div class="c"><b>Silent drops.</b> Every sent estimate either gets a decision or a scheduled follow-up.</div></div>
+                <div class="cs-fact"><div class="n">1</div><div class="c"><b>Source of truth.</b> Totals and statuses come from one set of rules, never from the screen.</div></div>
+                <div class="cs-fact"><div class="n">AA</div><div class="c"><b>WCAG 2.1.</b> Contrast, focus and target sizes in light and dark themes.</div></div>
+            </div>
+            <div class="cs-note">These are design targets set before the pilot, not measured results.</div>
+        </div>
+    </section>
+
+    <!-- ============ DECISIONS ============ -->
+    <section id="decisions" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Key decisions</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Five calls that <em>shaped the product.</em></h2>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">01 · Home</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">A dashboard that answers "what's waiting on me?"</h3>
+                    <p class="cs-p" style="margin-top:1rem">Early concepts led with charts. Owners skipped right past them. The final home puts money awaiting a decision first, then a ranked <em>Needs attention</em> list written as sentences ("8 open estimates have no active follow-up"), each linking straight to the fix. The pipeline sits beside it for context, not as the hero.</p>
+                    <p class="cs-trade"><b>Trade-off.</b> Fewer vanity metrics on screen, in exchange for zero-thought next actions.</p>
+                </div>
+                <a href="/assets/images/hvac/01-hero.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution dashboard image"><img src="/assets/images/hvac/01-hero.webp" alt="Dashboard crop with awaiting-decision value and the needs-attention list." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec flip">
+                <div>
+                    <div class="cs-label">02 · Capture</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">A lead form you can fill while still on the phone</h3>
+                    <p class="cs-p" style="margin-top:1rem">Only name and one way to reach the customer are required; everything else can wait for the site visit. Duplicate detection runs on email and phone as you type, so a repeat caller is linked rather than re-entered. Converting a lead to a customer is safe to press twice: a double tap never creates two records.</p>
+                    <p class="cs-trade"><b>Trade-off.</b> Thinner records up front; we rely on the pipeline stages to prompt for the rest later.</p>
+                </div>
+                <a href="/assets/images/hvac/04-capture.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution lead form image"><img src="/assets/images/hvac/04-capture.webp" alt="New lead form with contact, source and service fields." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">03 · Estimates and follow-up</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Make the chase the default, not a chore</h3>
+                </div>
+                <div>
+                    <p class="cs-p">Sending an estimate schedules follow-ups on day 2, 5 and 10 automatically. They stop the moment the customer approves, declines or replies, so nobody gets nagged after saying yes. The office sees the schedule on the estimate and can pause it in one click.</p>
+                    <p class="cs-p">Estimates move through a fixed set of states (draft, sent, viewed, approved, declined). The UI only offers the actions that state allows, and totals are always recalculated by the system in whole cents, so a line item edited on one screen can never disagree with the total on another.</p>
+                    <ol class="cs-states" aria-label="Estimate states">
+                        <li>Draft</li><li>Sent</li><li>Viewed</li><li>Approved <span>or</span> Declined</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">04 · Dispatch</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">A board that can't be dragged wrong</h3>
+                    <p class="cs-p" style="margin-top:1rem">Office staff think in columns, so the job board is a kanban. But a free-for-all kanban lets you drag a job from <em>New</em> straight to <em>Completed</em>. Here, columns a job can't legally reach dim while dragging, and the server enforces the same rule.</p>
+                    <p class="cs-p">Technicians are assigned from a menu on the card. The change shows instantly and rolls back with a clear message if saving fails, a fix that came directly from a pilot complaint that the board "didn't update".</p>
+                </div>
+                <a href="/assets/images/hvac/03-dispatch.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution job board image"><img src="/assets/images/hvac/03-dispatch.webp" alt="Job board crop with New, Scheduled, In progress and Completed columns." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec flip">
+                <div>
+                    <div class="cs-label">05 · Field</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">One job, one big button</h3>
+                    <p class="cs-p" style="margin-top:1rem">The technician view drops everything office-shaped. Today's jobs, the address with one-tap directions, access notes, and a single primary action that changes with the job: <em>Start</em>, then <em>Complete</em>. Targets are at least 44px and the primary action sits in thumb reach.</p>
+                    <p class="cs-trade"><b>Trade-off.</b> No estimate editing in the field for v1. Ride-alongs showed it happened back at the truck anyway.</p>
+                </div>
+                <a href="/assets/images/hvac/05-field.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution technician app image"><img src="/assets/images/hvac/05-field.webp" alt="Technician mobile job screen with address, access notes and a large status button." loading="lazy" width="1600" height="1200"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM ============ -->
+    <section id="system" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-label">05 · Design system</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Named by role, <em>enforced by lint.</em></h2>
+            <div class="cs-list" style="margin-top:2.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Tokens named for what they do</h3><p>Ink, muted, panel, line: not what they look like. Dark mode re-points the same names instead of adding a second palette.</p></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Five status families</h3><p>Success, danger, warning, info and neutral. Every status pairs colour with an icon or word, so it reads for colour-blind users and in grayscale print.</p></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>The linter holds the line</h3><p>It rejects raw palette colours, hex values and ad-hoc radii or shadows. Four radii (chip, control, card, shell) cover every surface.</p></div></div>
+            </div>
+            <figure class="cs-fig">
+                <a href="/assets/images/hvac/06-system.png" class="cs-hero-img cs-shot dk" target="_blank" rel="noopener" aria-label="Open the full-resolution design system sheet"><img src="/assets/images/hvac/06-system.webp" alt="Design system sheet: colour tokens, status chips, radii, type, and the dashboard in light and dark." loading="lazy" width="1600" height="1200"></a>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ ACCESSIBILITY ============ -->
+    <section id="accessibility" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">06 · Accessibility</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Built in, <em>not bolted on.</em></h2>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Contrast AA in both themes</h3><p>Checked per token pair, including muted text on panels.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Keyboard-complete board</h3><p>Every drag has a menu equivalent.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Errors in plain words</h3><p>Say what happened and what to do next, tied to the field.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>Tabular numbers</h3><p>Money lines up in columns, so totals are scannable.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEXT ============ -->
+    <section id="next" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">07 · Outcomes and what's next</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Measuring against the targets, <em>not guessing.</em></h2>
+            <p class="cs-p" style="margin-top:1.4rem">The product is entering a paid pilot. Results aren't in yet, so this study makes no outcome claims. The pilot will track:</p>
+            <div class="cs-tbl-wrap" style="margin-top:2rem">
+                <table class="cs-tbl">
+                    <thead><tr><th>Pilot metric</th><th>Measured against</th></tr></thead>
+                    <tbody>
+                        <tr><td>Median lead response time</td><td>The 60-minute target</td></tr>
+                        <tr><td>Estimate decision rate</td><td>With and without follow-ups</td></tr>
+                        <tr><td>Technician adoption</td><td>Jobs closed from the field</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cs-note"><b>Next up.</b> Customer self-booking, card payments on invoices, and offline mode for the technician app.</div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============ -->
+    <section id="learnings" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">08 · Learnings</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">What I'd tell myself <em>at the start.</em></h2>
+                    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center">
+                        <a href="/work/Casestudy.html" class="cs-btn">More case studies <span>↗</span></a>
+                        <a href="/work/DesignSystem.html" class="cs-link">Design system work →</a>
+                    </div>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Design the rules, then the screens</h3><p>Writing the estimate and job state machines first removed whole classes of UI states we'd otherwise have had to invent and test.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Sentences beat charts for busy people</h3><p>"3 leads waiting over an hour" tells an owner what to do; a graph of the same data only tells them something changed.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Let the tooling hold the line</h3><p>A lint rule for tokens kept the system consistent in a way review comments never would.</p></div></div>
+                </div>
+            </div>
+            <p class="cs-p" style="margin-top:3rem;font-size:.85rem">Confidential product, shared with permission in partial form. Images use seeded test data.</p>
+        </div>
+    </section>
+</main>
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/work/Design.html">Design</a>
+                <a href="/Articles/Article.html">Articles</a>
+                <a href="/work/Casestudy.html">Case Study</a>
+                <a href="/products/Products.html">Products</a>
+                <a href="/about/Photos.html">Photos</a>
+                <a href="/about/Resume.html">Resume</a>
+                <a href="/pages/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/faq.html">FAQ</a>
+                <a href="/pages/sitemap-page.html">Sitemap</a>
+                <a href="/legal/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/legal/privacy.html">Privacy Policy</a>
+                <a href="/legal/terms.html">Terms of Use</a>
+                <a href="/legal/cookie-policy.html">Cookie Policy</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-menu-button");
+    const closeBtn = document.getElementById("close-mobile-menu");
+
+    openBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
+</body>
+</html>
