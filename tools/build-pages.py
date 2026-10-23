@@ -23,7 +23,7 @@ HEAD = """<!DOCTYPE html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-FYVQB18KQB');
 </script>
@@ -41,16 +41,16 @@ HEAD = """<!DOCTYPE html>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: {{
-                extend: {{
-                    colors: {{
+            theme: {
+                extend: {
+                    colors: {
                         primary: '#0D0D0D',
                         secondary: '#1E40AF',
                         accent: '#F59E0B',
-                    }}
-                }}
-            }}
-        }}
+                    }
+                }
+            }
+        }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
