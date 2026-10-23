@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FYVQB18KQB');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Period Tracker Case Study: Private by Construction | Saagar</title>
+    <meta name="description" content="UX case study: an offline-first Android period tracker with no account and no backend, honest predictions and descriptive, never diagnostic, insights.">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
+    <link rel="canonical" href="https://saagarshrest.com.np/work/Casedetailperiodtracker.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Saagar Shrestha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://saagarshrest.com.np/work/Casedetailperiodtracker.html">
+    <meta property="og:title" content="Simple Period Tracker Case Study: Private by Construction | Saagar">
+    <meta property="og:description" content="UX case study: an offline-first Android period tracker with no account and no backend, honest predictions and descriptive, never diagnostic, insights.">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/period-tracker/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simple Period Tracker Case Study: Private by Construction | Saagar">
+    <meta name="twitter:description" content="UX case study: an offline-first Android period tracker with no account and no backend, honest predictions and descriptive, never diagnostic, insights.">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/period-tracker/og.jpg">
+    <meta name="author" content="Saagar Shrestha">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "additionalType": "https://schema.org/Article",
+      "headline": "Simple Period Tracker Case Study: Private by Construction | Saagar",
+      "name": "Simple Period Tracker Case Study: Private by Construction | Saagar",
+      "description": "UX case study: an offline-first Android period tracker with no account and no backend, honest predictions and descriptive, never diagnostic, insights.",
+      "image": "https://saagarshrest.com.np/assets/images/period-tracker/og.jpg",
+      "url": "https://saagarshrest.com.np/work/Casedetailperiodtracker.html",
+      "datePublished": "2026-10-23",
+      "author": { "@type": "Person", "name": "Saagar Shrestha", "url": "https://saagarshrest.com.np/" },
+      "creator": { "@type": "Person", "name": "Saagar Shrestha" }
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+            <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } .cs-grid2 > * { min-width: 0; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        .cs-tbl-dk th { color: rgba(255,255,255,.55); border-bottom-color: rgba(255,255,255,.3); }
+        .cs-tbl-dk td { color: rgba(255,255,255,.72); border-bottom-color: rgba(255,255,255,.14); }
+        .cs-tbl-dk td:first-child { color: #fff; }
+        .cs-p code { font-size: .88em; padding: .05em .35em; border: 1px solid currentColor; border-radius: 6px; }
+        .soft .cs-note { background: #fff; }
+        .cs-shot { display: block; }
+        .cs-shot.dk { border-color: rgba(255,255,255,.18); background: #0A0A0A; }
+        .cs-persona .cs-ticks { margin-top: 1.4rem; }
+        .cs-ticks li { padding: .6rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-steps { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-steps { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1100px) { .cs-steps { grid-template-columns: repeat(6, 1fr); } }
+        .cs-steps li { padding: 1.2rem 1.2rem 1.4rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-steps b { display: block; margin-top: .7rem; font-weight: 500; font-size: 1.1rem; letter-spacing: -0.02em; }
+        .cs-steps p { margin-top: .3rem; font-size: .88rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        @media (min-width: 900px) { .cs-facts.four { grid-template-columns: repeat(4, 1fr); } }
+        .cs-fact .c b { color: #0A0A0A; font-weight: 600; }
+        .cs-dec { display: grid; gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(10,10,10,.2); }
+        .cs-dec > * { min-width: 0; }
+        @media (min-width: 900px) { .cs-dec { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: center; } .cs-dec.flip > :first-child { order: 2; } }
+        .cs-trade { margin-top: 1.2rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.5; max-width: 44rem; }
+        .cs-trade b { color: #0A0A0A; font-weight: 600; }
+        .cs-states { display: flex; flex-wrap: wrap; margin-top: 1.6rem; border: 1px solid rgba(10,10,10,.25); }
+        .cs-states li { flex: 1 1 auto; padding: .8rem 1rem; font-weight: 500; font-size: .92rem; border-right: 1px solid rgba(10,10,10,.14); }
+        .cs-states li:last-child { border-right: 0; background: #0A0A0A; color: #fff; }
+        .cs-states li::after { content: " →"; color: rgba(10,10,10,.4); }
+        .cs-states li:last-child::after { content: none; }
+        .cs-states span { font-weight: 400; color: rgba(255,255,255,.6); }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9024176667555201"
+     crossorigin="anonymous"></script>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="/work/Design.html">Design</a>
+      <a href="/Articles/Article.html">Articles</a>
+      <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/products/Products.html">Products</a>
+      <a href="/work/DesignSystem.html">Design System</a>
+      <a href="/about/Photos.html">Photos</a>
+      <a href="/about/Resume.html">Resume</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Available for work</a>
+
+    <a href="https://wa.me/9779860332656" class="site-wa" target="_blank" rel="noopener noreferrer" aria-label="Message Saagar on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+    </a>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="/work/Design.html">Design</a>
+    <a href="/Articles/Article.html">Articles</a>
+    <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/products/Products.html">Products</a>
+    <a href="/work/DesignSystem.html">Design System</a>
+    <a href="/about/Photos.html">Photos</a>
+    <a href="/about/Resume.html">Resume</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · Consumer health · Android · 2026</div>
+            <h1 class="cs-hero-title">A cycle tracker that keeps <em>your data to itself.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">Simple Period Tracker is an offline-first period and cycle tracker for Android. There's no account and no backend, and nothing leaves the phone. It predicts only from the cycles you've actually logged, and it describes your data without diagnosing it.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>Simple Period Tracker</dd></div>
+                <div><dt>Role</dt><dd>Solo designer and developer</dd></div>
+                <div><dt>Platform</dt><dd>Android (Expo / React Native)</dd></div>
+                <div><dt>Scope</dt><dd>Product, UX, UI, illustration, engineering</dd></div>
+                <div><dt>Status</dt><dd>v1.0.3, Google Play release build</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#problem">Problem</a><a href="#goals">Goals</a><a href="#principles">Principles</a><a href="#decisions">Decisions</a><a href="#system">System</a><a href="#outcome">Outcome</a>
+            </nav>
+            <a href="/assets/images/period-tracker/01-hero.png" class="cs-hero-img cs-shot" style="margin-top:3rem" target="_blank" rel="noopener" aria-label="Open the full-resolution hero image"><img src="/assets/images/period-tracker/01-hero.webp" alt="Three phone screens: the October calendar, the home screen showing cycle day 12, and the Insights summary." width="1600" height="1200"></a>
+            <div class="cs-note"><b>About the screens.</b> Every image is a real screenshot of the release build running on an Android emulator. The data is a made-up profile ("Maya", six months of cycles) loaded through the app's own import feature. No real health data was used.</div>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">01 · The problem</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Sensitive data, <em>treated like ad inventory.</em></h2>
+                </div>
+                <div>
+                    <p class="cs-p">Period data is some of the most sensitive data a phone holds. Popular trackers often want an account first, sync to their own servers and ship analytics SDKs. Some have shared health events with advertising platforms. For many people, especially where reproductive health is politically charged, that's a real risk rather than an abstract one.</p>
+                    <p class="cs-p">The products also get the maths and the tone wrong. Many show a confident 28-day prediction on day one, and some label a cycle "irregular" after three data points. That's medical-sounding language with nothing behind it.</p>
+                </div>
+            </div>
+            <figure class="cs-fig">
+                <a href="/assets/images/period-tracker/02-problem.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution problem image"><img src="/assets/images/period-tracker/02-problem.webp" alt="Four common failures of period trackers (accounts, analytics SDKs, a 28-day default and a diagnostic tone) beside the app's onboarding screen." loading="lazy" width="1600" height="1200"></a>
+                <figcaption><b>Four common failures</b><span>Accounts, analytics SDKs, a 28-day default and a diagnostic tone, shown beside the app's own onboarding screen.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ GOALS ============ -->
+    <section id="goals" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Goals</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">What success <em>looked like.</em></h2>
+            <div class="cs-facts" style="margin-top:2.4rem">
+                <div class="cs-fact"><div class="n">0</div><div class="c"><b>Network calls.</b> The app works the same in airplane mode, because nothing in it ever goes online.</div></div>
+                <div class="cs-fact"><div class="n">1</div><div class="c"><b>Screen to log a day.</b> Flow, symptoms and mood all sit on one screen, opened by one button on Home.</div></div>
+                <div class="cs-fact"><div class="n">AA</div><div class="c"><b>Contrast in both themes.</b> Every text pair is at least 4.5:1, and the ratios were calculated rather than judged by eye.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRINCIPLES ============ -->
+    <section id="principles" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">03 · Principles</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Four rules that settled <em>most arguments early.</em></h2>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Private by construction</h3><p>Privacy isn't a settings page. With no server, there's nothing to configure and nothing to breach. Export makes one JSON file and hands it to the share sheet. The user decides where it goes.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Honest about uncertainty</h3><p>Every prediction is labelled "estimated" and says how many cycles it's based on. Until a cycle is complete, the app says "Keep tracking to improve predictions" instead of showing a textbook number.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Descriptive, never diagnostic</h3><p>The app says "your cycle length has varied between 27 and 29 days", never "irregular". No symptom is ever connected to a condition.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>Warm, not pink</h3><p>The palette is a warm neutral with one muted terracotta accent, plus hand-drawn stickers. It feels personal without the clinical look or the pink stereotype.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DECISIONS ============ -->
+    <section id="decisions" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Key decisions</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Calls that <em>shaped the app.</em></h2>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">01 · Calendar</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">A calendar you can read in greyscale</h3>
+                    <p class="cs-p" style="margin-top:1rem">A period tracker's calendar usually stacks pink on lighter pink on another pink. Here, every state has a different <em>shape</em>. A period day is a filled circle, an estimated day is a dashed outline, the fertile window is a ring with a small flower, and today is a double ring. Notes and symptoms get their own dot shapes.</p>
+                    <p class="cs-p">For screen reader users, each day is read as a full sentence, for example "Friday, October 23, today, fertile window, has a note". A legend sits under the grid, so nobody has to guess.</p>
+                </div>
+                <a href="/assets/images/period-tracker/03-calendar.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution calendar image"><img src="/assets/images/period-tracker/03-calendar.webp" alt="The calendar in light and dark themes, with a key explaining the shape used for each kind of day." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec flip">
+                <div>
+                    <div class="cs-label">02 · Logging</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">One day, one screen</h3>
+                    <p class="cs-p" style="margin-top:1rem">Logging needs to be quick or people stop doing it. Tapping "Log today" opens a single screen for flow, symptoms, mood and notes. Flow shows as a row of one to three dots plus a word, so it never depends on colour alone.</p>
+                    <p class="cs-p">The hard part is invisible. Setting the flow on a day reshapes the period around it. Logging the day after a period extends it, and logging the gap between two periods merges them. Clearing a middle day splits a period in two. All of this goes through one function, so the calendar and History can't disagree.</p>
+                    <p class="cs-trade"><b>Guard rail.</b> One period per calendar month. When this month's period is already logged, the app says so and tells you when the next one can start.</p>
+                </div>
+                <a href="/assets/images/period-tracker/04-logging.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution logging image"><img src="/assets/images/period-tracker/04-logging.webp" alt="The daily entry screen with flow options, symptom chips and hand-drawn mood faces." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">03 · Insights</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Insights that don't pretend to be a doctor</h3>
+                    <p class="cs-p" style="margin-top:1rem">Insights shows the average cycle, average period length, the shortest and longest cycles, a strip chart of recent cycles and the most-logged symptoms. Every number comes from the user's own entries.</p>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>Only the last six cycles feed the average.</li>
+                        <li>Gaps under 15 or over 90 days, usually a missed log, are flagged and left out.</li>
+                        <li>A predicted end date appears only once the average period length is known.</li>
+                        <li>Confidence (low, medium or high) comes from how much history there is.</li>
+                    </ul>
+                    <p class="cs-trade">The charts are plain views with the number printed on each bar, so they need no charting library and work with screen readers.</p>
+                </div>
+                <a href="/assets/images/period-tracker/05-insights.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution insights image"><img src="/assets/images/period-tracker/05-insights.webp" alt="Insights and History screens beside a comparison of diagnostic and descriptive wording." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <h3 class="cs-h3" style="margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(10,10,10,.2)">Smaller calls that mattered</h3>
+            <div class="cs-grid2 even" style="margin-top:1.4rem">
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Permissions only when needed</h3><p>Notification permission is asked for only when someone creates their first reminder, never at launch. If they decline, the reminder is still saved, and a plain sentence explains how to turn notifications on.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Private lock screen</h3><p>Reminder text is hidden on the Android lock screen. A notification contains only the title the user typed and never any cycle data.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>An import that can't surprise you</h3><p>Every row is checked first; bad ones are skipped and counted. Then the user chooses to merge, which never overwrites anything, or replace, which is clearly marked as permanent.</p></div></div>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>A doodle garden</h3><p>A small, optional colouring game with three chapters and calm music. It gives people a reason to open the app on days that aren't period days.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">05</span><div><h3>Uncapped font scaling</h3><p>The whole app follows the system text size. Every touch target is at least 44pt.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">06</span><div><h3>Light by default</h3><p>The app starts in light mode, with Dark and System in Profile. The dark palette was checked separately for contrast, not just inverted.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SYSTEM ============ -->
+    <section id="system" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">05 · System</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">The architecture is <em>part of the privacy story.</em></h2>
+                </div>
+                <div>
+                    <p class="cs-p">The app is built with Expo and React Native, with SQLite as the only source of truth. Dependencies point one way: screens use hooks and services, which call repositories, which write to SQLite. Screens never run SQL, and repositories don't know about React. There's no state library. A roughly 25-line change bus tells each hook when to re-run its query.</p>
+                    <p class="cs-p">Every date is stored as a <code>YYYY-MM-DD</code> string and calculated in UTC. The tests run in Kathmandu (UTC+05:45) and New York, so any off-by-one or daylight-saving bug fails straight away.</p>
+                </div>
+            </div>
+            <figure class="cs-fig">
+                <a href="/assets/images/period-tracker/06-system.png" class="cs-hero-img cs-shot dk" target="_blank" rel="noopener" aria-label="Open the full-resolution architecture image"><img src="/assets/images/period-tracker/06-system.webp" alt="Four architecture layers from screens down to SQLite on the device, key figures, the dark home screen and the doodle garden game." loading="lazy" width="1600" height="1200"></a>
+            </figure>
+            <div class="cs-tbl-wrap" style="margin-top:3rem">
+                <table class="cs-tbl cs-tbl-dk">
+                    <thead><tr><th>Deliberately left out</th><th>Why</th></tr></thead>
+                    <tbody>
+                        <tr><td>Accounts and cloud sync</td><td>Data that never leaves the phone can't leak from a server.</td></tr>
+                        <tr><td>Analytics on health data</td><td>The production logger is a no-op and never receives cycle, symptom or note content.</td></tr>
+                        <tr><td>State management library</td><td>A second copy of the database would just be one more thing that could be wrong.</td></tr>
+                        <tr><td>Charting and native date pickers</td><td>The date picker uses the calendar's own grid logic, so the two can't disagree about which day a date falls on.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ OUTCOME ============ -->
+    <section id="outcome" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">06 · Outcome</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Where it <em>landed.</em></h2>
+            <div class="cs-facts four" style="margin-top:2.4rem">
+                <div class="cs-fact"><div class="n">134</div><div class="c">Automated tests, no device needed</div></div>
+                <div class="cs-fact"><div class="n">6</div><div class="c">Tables, versioned migrations</div></div>
+                <div class="cs-fact"><div class="n">0</div><div class="c">Network requests</div></div>
+                <div class="cs-fact"><div class="n">2</div><div class="c">Time zones in CI to catch date bugs</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============ -->
+    <section id="learnings" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">07 · What I learned</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Removing the backend <em>made it easier to explain.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">"Your data never leaves this device" is a claim users can check for themselves by turning on airplane mode. That's more convincing than any privacy policy. Choosing descriptive wording was a design decision and a safety decision at the same time.</p>
+                    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center">
+                        <a href="/work/Casestudy.html" class="cs-btn">More case studies <span>↗</span></a>
+                    </div>
+                </div>
+                <div>
+                    <div class="cs-label">What's next</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>On-device encryption</h3><p>Optional, with a passcode or biometric unlock.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Encrypted backups</h3><p>To a file the user picks.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>iOS build</h3><p>From the same codebase.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>A diary study</h3><p>With real users across several cycles.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/work/Design.html">Design</a>
+                <a href="/Articles/Article.html">Articles</a>
+                <a href="/work/Casestudy.html">Case Study</a>
+                <a href="/products/Products.html">Products</a>
+                <a href="/about/Photos.html">Photos</a>
+                <a href="/about/Resume.html">Resume</a>
+                <a href="/pages/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/faq.html">FAQ</a>
+                <a href="/pages/sitemap-page.html">Sitemap</a>
+                <a href="/legal/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/legal/privacy.html">Privacy Policy</a>
+                <a href="/legal/terms.html">Terms of Use</a>
+                <a href="/legal/cookie-policy.html">Cookie Policy</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-menu-button");
+    const closeBtn = document.getElementById("close-mobile-menu");
+
+    openBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
+</body>
+</html>

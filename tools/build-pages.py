@@ -621,6 +621,7 @@ PAGES['pages/archive.html'] = page(
                 <div class="doc-rows">
 """ + rows([
         ('Case studies', '/work/Casestudy.html', ''),
+        ('Simple Period Tracker — private cycle tracking', '/work/Casedetailperiodtracker.html', ''),
         ('Field service ops — HVAC platform', '/work/Casedetailhvac.html', ''),
         ('Officiti — healthcare platform', '/work/Casedetailofficiti.html', ''),
         ('Ramo Parts — parts commerce', '/work/Casedetailramroparts.html', ''),
@@ -690,6 +691,7 @@ PAGES['pages/sitemap-page.html'] = page(
         ('Why Artificial Intelligence needs Good User Experience', '/Articles/Why Artificial Intelligence needs Good User Experience.html', 'Article'),
         ('Data-Driven vs. Intuition-Driven', '/Articles/Data-Driven vs. Intuition-Driven.html', 'Article'),
         ('Case Study', '/work/Casestudy.html', 'Selected engagements'),
+        ('Simple Period Tracker', '/work/Casedetailperiodtracker.html', 'Period tracker case study'),
         ('Field Service Ops', '/work/Casedetailhvac.html', 'HVAC field service case study'),
         ('Officiti', '/work/Casedetailofficiti.html', 'Healthcare platform case study'),
         ('Ramo Parts', '/work/Casedetailramroparts.html', 'Parts commerce case study'),
