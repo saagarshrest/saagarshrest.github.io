@@ -621,7 +621,7 @@ PAGES['pages/archive.html'] = page(
                 <div class="doc-rows">
 """ + rows([
         ('Case studies', '/work/Casestudy.html', ''),
-        ('Harmony Wallet — mobile redesign', '/work/Casedetailharmony.html', ''),
+        ('Harmony Wallet — crypto wallet (2020)', '/work/Casedetailharmony.html', ''),
         ('Simple Period Tracker — private cycle tracking', '/work/Casedetailperiodtracker.html', ''),
         ('Field service ops — HVAC platform', '/work/Casedetailhvac.html', ''),
         ('Officiti — healthcare platform', '/work/Casedetailofficiti.html', ''),
@@ -692,7 +692,7 @@ PAGES['pages/sitemap-page.html'] = page(
         ('Why Artificial Intelligence needs Good User Experience', '/Articles/Why Artificial Intelligence needs Good User Experience.html', 'Article'),
         ('Data-Driven vs. Intuition-Driven', '/Articles/Data-Driven vs. Intuition-Driven.html', 'Article'),
         ('Case Study', '/work/Casestudy.html', 'Selected engagements'),
-        ('Harmony Wallet', '/work/Casedetailharmony.html', 'Crypto wallet redesign case study'),
+        ('Harmony Wallet', '/work/Casedetailharmony.html', 'Crypto wallet case study (2020)'),
         ('Simple Period Tracker', '/work/Casedetailperiodtracker.html', 'Period tracker case study'),
         ('Field Service Ops', '/work/Casedetailhvac.html', 'HVAC field service case study'),
         ('Officiti', '/work/Casedetailofficiti.html', 'Healthcare platform case study'),
