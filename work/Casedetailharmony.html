@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FYVQB18KQB');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Wallet Case Study: A Mobile Redesign | Saagar</title>
+    <meta name="description" content="UX case study: redesigning a self-custody Harmony (ONE) crypto wallet for mobile, with clearer balances, honest transaction states and thumb-first bottom sheets, built in React Native.">
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Saagar Shrestha — Articles" href="/feed.xml">
+    <link rel="canonical" href="https://saagarshrest.com.np/work/Casedetailharmony.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Saagar Shrestha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://saagarshrest.com.np/work/Casedetailharmony.html">
+    <meta property="og:title" content="Harmony Wallet Case Study: A Mobile Redesign | Saagar">
+    <meta property="og:description" content="UX case study: redesigning a self-custody Harmony (ONE) crypto wallet for mobile, with clearer balances, honest transaction states and thumb-first bottom sheets, built in React Native.">
+    <meta property="og:image" content="https://saagarshrest.com.np/assets/images/harmony/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harmony Wallet Case Study: A Mobile Redesign | Saagar">
+    <meta name="twitter:description" content="UX case study: redesigning a self-custody Harmony (ONE) crypto wallet for mobile, with clearer balances, honest transaction states and thumb-first bottom sheets, built in React Native.">
+    <meta name="twitter:image" content="https://saagarshrest.com.np/assets/images/harmony/og.jpg">
+    <meta name="author" content="Saagar Shrestha">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "additionalType": "https://schema.org/Article",
+      "headline": "Harmony Wallet Case Study: A Mobile Redesign | Saagar",
+      "name": "Harmony Wallet Case Study: A Mobile Redesign | Saagar",
+      "description": "UX case study: redesigning a self-custody Harmony (ONE) crypto wallet for mobile, with clearer balances, honest transaction states and thumb-first bottom sheets, built in React Native.",
+      "image": "https://saagarshrest.com.np/assets/images/harmony/og.jpg",
+      "url": "https://saagarshrest.com.np/work/Casedetailharmony.html",
+      "datePublished": "2026-10-24",
+      "author": { "@type": "Person", "name": "Saagar Shrestha", "url": "https://saagarshrest.com.np/" },
+      "creator": { "@type": "Person", "name": "Saagar Shrestha" }
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D0D0D',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+
+            <!-- Buy me a coffee -->
+
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="saagarshrest" data-description="Support me on Buy me a coffee!" data-message="" data-color="#808080" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .cs-wrap { max-width: 80rem; margin: 0 auto; }
+        .cs-sec { padding: 5rem 1.5rem; position: relative; }
+        .cs-sec.light { background: #fff; } .cs-sec.soft { background: #F2F2F2; } .cs-sec.dark { background: #0A0A0A; color: #fff; }
+        .cs-hero-title { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .95; letter-spacing: -0.05em; font-weight: 500; }
+        .cs-hero-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 500; }
+        .cs-h2 em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .cs-h3 { font-size: 1.5rem; letter-spacing: -0.035em; font-weight: 500; line-height: 1.15; }
+        .cs-lead { font-size: 1.15rem; line-height: 1.55; color: rgba(10,10,10,.7); max-width: 40rem; }
+        .cs-p { color: rgba(10,10,10,.72); line-height: 1.65; max-width: 44rem; }
+        .cs-p + .cs-p { margin-top: 1rem; }
+        .dark .cs-lead, .dark .cs-p { color: rgba(255,255,255,.7); }
+        .cs-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); }
+        .dark .cs-label { color: rgba(255,255,255,.55); }
+        .cs-btn { display: inline-flex; align-items: center; gap: .7rem; background: #0A0A0A; color: #fff; border: 1.5px solid #0A0A0A; padding: 1rem 1.8rem; border-radius: 9999px; font-weight: 500; transition: background .3s, color .3s, transform .3s; }
+        .cs-btn:hover { background: #fff; color: #0A0A0A; transform: translateY(-2px); }
+        .dark .cs-btn { background: #fff; color: #0A0A0A; border-color: #fff; } .dark .cs-btn:hover { background: transparent; color: #fff; }
+        .cs-link { font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.4); transition: opacity .25s; }
+        .cs-link:hover { opacity: .55; } .dark .cs-link { border-color: rgba(255,255,255,.45); }
+        .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); margin-top: 3rem; }
+        @media (min-width: 900px) { .cs-meta { grid-template-columns: repeat(5, 1fr); } }
+        .cs-meta > div { padding: 1.1rem 1.2rem 1.1rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-meta dt { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(10,10,10,.55); font-weight: 500; }
+        .cs-meta dd { margin-top: .4rem; font-weight: 500; letter-spacing: -0.01em; }
+        .cs-hero-img { border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(10,10,10,.12); }
+        .cs-hero-img img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+        .cs-hero-img:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+        .cs-grid2 { display: grid; gap: 3rem; } .cs-grid2 > * { min-width: 0; } @media (min-width: 900px) { .cs-grid2 { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: start; } .cs-grid2.even { grid-template-columns: 1fr 1fr; } }
+        .cs-list { border-top: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-list { border-top-color: rgba(255,255,255,.2); }
+        .cs-row { display: grid; grid-template-columns: 3rem 1fr; padding: 1.3rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .dark .cs-row { border-bottom-color: rgba(255,255,255,.2); }
+        .cs-row h3 { font-size: 1.25rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-row p { margin-top: .4rem; color: rgba(10,10,10,.66); line-height: 1.5; font-size: .95rem; }
+        .dark .cs-row p { color: rgba(255,255,255,.66); }
+        .cs-row small { display: block; margin-top: .6rem; font-size: .8rem; color: rgba(10,10,10,.55); line-height: 1.4; }
+        .cs-row small b { color: #0A0A0A; font-weight: 600; }
+        .dark .cs-row small { color: rgba(255,255,255,.55); } .dark .cs-row small b { color: #fff; }
+        .cs-tbl-wrap { overflow-x: auto; }
+        .cs-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 640px; }
+        .cs-tbl th { text-align: left; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: rgba(10,10,10,.55); padding: .8rem 1rem .8rem 0; border-bottom: 1px solid rgba(10,10,10,.3); }
+        .cs-tbl td { padding: .95rem 1rem .95rem 0; border-bottom: 1px solid rgba(10,10,10,.14); vertical-align: top; line-height: 1.45; color: rgba(10,10,10,.78); }
+        .cs-tbl td:first-child { font-weight: 500; color: #0A0A0A; }
+        .cs-sev { font-weight: 600; color: #0A0A0A; white-space: nowrap; }
+        .cs-fig { margin-top: 3rem; }
+        .cs-fig figcaption { display: grid; gap: .5rem; margin-top: 1.2rem; }
+        @media (min-width: 900px) { .cs-fig figcaption { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+        .cs-fig figcaption b { font-size: 1.2rem; letter-spacing: -0.03em; font-weight: 500; line-height: 1.15; }
+        .cs-fig figcaption span { color: rgba(10,10,10,.66); line-height: 1.55; font-size: .95rem; }
+        .cs-stage { background: #EDEDED; border-radius: 22px; padding: 2.4rem 1.2rem 2rem; display: grid; place-items: center; }
+        .cs-stage.dk { background: #0A0A0A; }
+        .cs-stage img { width: 100%; max-width: 1000px; height: auto; filter: drop-shadow(0 22px 28px rgba(0,0,0,.14)); }
+        .cs-stage.narrow img { max-width: 720px; }
+        .cs-stage.flow { background: #fff; border: 1px solid rgba(10,10,10,.15); padding: 1.6rem; }
+        .cs-stage.flow img { filter: grayscale(1) contrast(1.1); max-width: 1100px; }
+        .cs-facts { display: grid; gap: 0; border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-facts { grid-template-columns: repeat(3, 1fr); } }
+        .cs-fact { padding: 1.4rem 1.4rem 1.6rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-fact .n { font-size: 3rem; letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+        .cs-fact .c { margin-top: .6rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        .dark .cs-facts, .dark .cs-fact { border-color: rgba(255,255,255,.2); } .dark .cs-fact .c { color: rgba(255,255,255,.62); }
+        .cs-quote { border-left: 2px solid #0A0A0A; padding: .2rem 0 .2rem 1.4rem; }
+        .cs-quote p { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .cs-quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: rgba(10,10,10,.6); }
+        .cs-persona { border: 1px solid rgba(10,10,10,.2); border-radius: 18px; padding: 1.8rem; background: #fff; }
+        .cs-persona h3 { font-size: 2rem; letter-spacing: -0.04em; font-weight: 500; }
+        .cs-two { display: grid; gap: 1.6rem; margin-top: 1.6rem; } @media (min-width: 640px) { .cs-two { grid-template-columns: 1fr 1fr; } }
+        .cs-two h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .6rem; }
+        .cs-two li { padding: .5rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-quad { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(10,10,10,.25); }
+        .cs-quad > div { padding: 1.4rem; border: 1px solid rgba(10,10,10,.14); }
+        .cs-quad h4 { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: .7rem; }
+        .cs-quad li { padding: .35rem 0; font-size: .95rem; line-height: 1.4; }
+        .cs-quad .hot { background: #0A0A0A; color: #fff; }
+        .cs-swatches { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .cs-sw { width: 88px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); font-size: .7rem; line-height: 1.3; }
+        .cs-sw i { display: block; height: 52px; }
+        .cs-sw span { display: block; padding: .5rem .55rem; color: #fff; background: rgba(255,255,255,.08); }
+        .cs-tests { display: grid; gap: 2rem; } @media (min-width: 800px) { .cs-tests { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+        .cs-note { margin-top: 1.6rem; padding: 1rem 1.2rem; border-left: 3px solid #0A0A0A; background: #F2F2F2; font-size: .9rem; line-height: 1.55; color: rgba(10,10,10,.75); max-width: 44rem; }
+        .dark .cs-note { background: rgba(255,255,255,.08); border-left-color: #fff; color: rgba(255,255,255,.75); }
+        .cs-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 2.4rem; font-size: .9rem; font-weight: 500; }
+        .cs-toc a { padding-bottom: 2px; border-bottom: 1px solid rgba(10,10,10,.3); transition: opacity .2s; } .cs-toc a:hover { opacity: .5; }
+        .cs-tbl-dk th { color: rgba(255,255,255,.55); border-bottom-color: rgba(255,255,255,.3); }
+        .cs-tbl-dk td { color: rgba(255,255,255,.72); border-bottom-color: rgba(255,255,255,.14); }
+        .cs-tbl-dk td:first-child { color: #fff; }
+        .cs-p code { font-size: .88em; padding: .05em .35em; border: 1px solid currentColor; border-radius: 6px; }
+        .soft .cs-note { background: #fff; }
+        .cs-shot { display: block; }
+        .cs-shot.dk { border-color: rgba(255,255,255,.18); background: #0A0A0A; }
+        .cs-persona .cs-ticks { margin-top: 1.4rem; }
+        .cs-ticks li { padding: .6rem 0; border-top: 1px solid rgba(10,10,10,.14); font-size: .95rem; line-height: 1.45; color: rgba(10,10,10,.75); }
+        .cs-steps { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(10,10,10,.2); }
+        @media (min-width: 700px) { .cs-steps { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1100px) { .cs-steps { grid-template-columns: repeat(6, 1fr); } }
+        .cs-steps li { padding: 1.2rem 1.2rem 1.4rem 0; border-bottom: 1px solid rgba(10,10,10,.2); }
+        .cs-steps b { display: block; margin-top: .7rem; font-weight: 500; font-size: 1.1rem; letter-spacing: -0.02em; }
+        .cs-steps p { margin-top: .3rem; font-size: .88rem; color: rgba(10,10,10,.62); line-height: 1.4; }
+        @media (min-width: 900px) { .cs-facts.four { grid-template-columns: repeat(4, 1fr); } }
+        .cs-fact .c b { color: #0A0A0A; font-weight: 600; }
+        .cs-dec { display: grid; gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(10,10,10,.2); }
+        .cs-dec > * { min-width: 0; }
+        @media (min-width: 900px) { .cs-dec { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: center; } .cs-dec.flip > :first-child { order: 2; } }
+        .cs-trade { margin-top: 1.2rem; font-size: .9rem; color: rgba(10,10,10,.62); line-height: 1.5; max-width: 44rem; }
+        .cs-trade b { color: #0A0A0A; font-weight: 600; }
+        .cs-states { display: flex; flex-wrap: wrap; margin-top: 1.6rem; border: 1px solid rgba(10,10,10,.25); }
+        .cs-states li { flex: 1 1 auto; padding: .8rem 1rem; font-weight: 500; font-size: .92rem; border-right: 1px solid rgba(10,10,10,.14); }
+        .cs-states li:last-child { border-right: 0; background: #0A0A0A; color: #fff; }
+        .cs-states li::after { content: " →"; color: rgba(10,10,10,.4); }
+        .cs-states li:last-child::after { content: none; }
+        .cs-states span { font-weight: 400; color: rgba(255,255,255,.6); }
+        @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9024176667555201"
+     crossorigin="anonymous"></script>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="site-nav__in">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+
+    <div class="site-links">
+      <a href="/work/Design.html">Design</a>
+      <a href="/Articles/Article.html">Articles</a>
+      <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+      <a href="/products/Products.html">Products</a>
+      <a href="/work/DesignSystem.html">Design System</a>
+      <a href="/about/Photos.html">Photos</a>
+      <a href="/about/Resume.html">Resume</a>
+    </div>
+
+    <a href="mailto:saagarshrest@gmail.com" class="site-cta">Available for work</a>
+
+    <a href="https://wa.me/9779860332656" class="site-wa" target="_blank" rel="noopener noreferrer" aria-label="Message Saagar on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+    </a>
+    <button id="mobile-menu-button" class="site-burger" aria-label="Open menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="site-menu fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <div class="site-menu__bar">
+    <a href="/index.html" class="site-logo" aria-label="Saagar, home">
+      <span class="site-logo__name">Saagar</span>
+    </a>
+    <button id="close-mobile-menu" class="site-burger" style="color:#fff" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="site-menu__links">
+    <a href="/work/Design.html">Design</a>
+    <a href="/Articles/Article.html">Articles</a>
+    <a href="/work/Casestudy.html" aria-current="page">Case Study</a>
+    <a href="/products/Products.html">Products</a>
+    <a href="/work/DesignSystem.html">Design System</a>
+    <a href="/about/Photos.html">Photos</a>
+    <a href="/about/Resume.html">Resume</a>
+    <div class="flex space-x-5 pt-6">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-1a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" /></svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style="font-size:0">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0 0 22 4.3a8.1 8.1 0 0 1-2.4.7 4.1 4.1 0 0 0 1.8-2.3 8.2 8.2 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3 3.9a4.1 4.1 0 0 0 1.3 5.5A4.1 4.1 0 0 1 2.8 9v.1a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.8A8.2 8.2 0 0 1 2 17.5 11.6 11.6 0 0 0 8 19" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+    <!-- ============ HERO ============ -->
+    <section class="cs-sec soft" style="padding-top:4.5rem">
+        <div class="cs-wrap">
+            <div class="cs-label" style="margin-bottom:1.6rem">Case study · Crypto wallet · Mobile redesign · 2026</div>
+            <h1 class="cs-hero-title">Your keys. <em>Your crypto.</em></h1>
+            <p class="cs-lead" style="margin-top:2rem">Harmony Wallet is a self-custody mobile wallet for the Harmony (ONE) blockchain. You can create or recover a wallet, send and receive tokens across shards, scan QR codes and stake ONE with validators. I designed the first version in 2020 and rebuilt all of it in 2026 as a mobile-first, production-ready UI.</p>
+            <dl class="cs-meta">
+                <div><dt>Product</dt><dd>Harmony Wallet, a non-custodial crypto wallet with staking</dd></div>
+                <div><dt>Role</dt><dd>UX/UI designer: audit, information architecture, visual design, React Native build</dd></div>
+                <div><dt>Platform</dt><dd>iOS and Android, designed at 390px wide</dd></div>
+                <div><dt>Scope</dt><dd>36 original screens audited, 38 redesigned across 5 flows</dd></div>
+                <div><dt>Built with</dt><dd>React Native (one codebase), Inter</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+                <a href="#challenge">Challenge</a><a href="#principles">Principles</a><a href="#system">Visual system</a><a href="#flows">Key flows</a><a href="#build">Build</a><a href="#compare">Before and after</a><a href="#outcome">Outcome</a>
+            </nav>
+            <a href="/assets/images/harmony/01-hero.png" class="cs-hero-img cs-shot dk" style="margin-top:3rem" target="_blank" rel="noopener" aria-label="Open the full-resolution hero image"><img src="/assets/images/harmony/01-hero.webp" alt="Harmony Wallet: the dark welcome screen reading 'Your keys. Your crypto.' beside the wallet home with a 49.6546 ONE balance card. 38 screens, 5 flows, 1 design system." width="1600" height="1200"></a>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGE ============ -->
+    <section id="challenge" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">01 · The challenge</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">It worked, but it <em>looked like a prototype.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">I audited all 36 screens of the 2020 version and found six problems that hurt trust, which is the one thing a wallet can't afford to lose.</p>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Weak hierarchy</h3><p>One bright cyan was used for buttons, links, headings, success messages and icons, so no action stood out as the main one.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Low contrast</h3><p>Light grey labels on white and thin type made balances, fees and addresses hard to read.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Desktop-style dialogs</h3><p>Confirmations, fees and rewards appeared as small cards in the middle of a faded page, out of easy reach of the thumb.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>Confusing transaction states</h3><p>The confirmation dialog already said "has been successfully sent" before the user pressed Proceed.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">05</span><div><h3>Inconsistent navigation</h3><p>Back arrows, close icons and the bottom bar changed colour and position from screen to screen.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">06</span><div><h3>Dense data screens</h3><p>The validator profile and portfolio squeezed tables and charts in sideways, and content was cut off on a phone.</p></div></div>
+                </div>
+            </div>
+            <div class="cs-note"><b>The brief.</b> Keep every feature and flow, but make the app feel secure, calm and current, using a green, black and white palette taken from Leapfrog Technology's brand.</div>
+        </div>
+    </section>
+
+    <!-- ============ PRINCIPLES ============ -->
+    <section id="principles" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">02 · Goals and principles</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Four rules behind <em>every screen.</em></h2>
+            <div class="cs-grid2 even" style="margin-top:2.4rem">
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>One clear action</h3><p>Each screen has a single green primary button. Secondary actions are outline, black or grey.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Money is the hero</h3><p>Balances sit on black cards in large, tight type, with the fiat value and daily change directly underneath.</p></div></div>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Thumb-first</h3><p>Confirmations, fees and pickers open as bottom sheets. Key buttons are 56px tall and full width.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>Say what happened</h3><p>Every money movement has its own review, pending and success states, each with its own icon and wording.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ VISUAL SYSTEM ============ -->
+    <section id="system" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">03 · Visual system</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">Green for action. <em>Black for money.</em></h2>
+                </div>
+                <div>
+                    <p class="cs-p">The palette comes straight from the Leapfrog brand guidelines. Green signals action and gain, black holds money and navigation, and white keeps forms calm. The Harmony logo keeps its own blue-to-teal gradient, so the product brand still comes through.</p>
+                    <p class="cs-p"><b>Typography.</b> Inter, Leapfrog's internal typeface, in four weights. Balances are 34–40px bold with tight tracking, body text is 15px, labels are 13px and small-caps labels are 11px with wide tracking.</p>
+                </div>
+            </div>
+            <figure class="cs-fig">
+                <a href="/assets/images/harmony/02-system.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution visual system image"><img src="/assets/images/harmony/02-system.webp" alt="Seven colour swatches from Leapfrog green to white, the Inter type scale, button, input and speed-selector components, and the Send screen." loading="lazy" width="1600" height="1200"></a>
+            </figure>
+            <div class="cs-grid2 even" style="margin-top:3rem">
+                <div class="cs-tbl-wrap">
+                    <table class="cs-tbl" style="min-width:0">
+                        <thead><tr><th>Token</th><th>Hex</th><th>Used for</th></tr></thead>
+                        <tbody>
+                            <tr><td>Leapfrog green</td><td>#038E43</td><td>Primary buttons, active states, links, positive amounts</td></tr>
+                            <tr><td>Emerald</td><td>#00DF66</td><td>Highlights on black: gains, active tab, scan line</td></tr>
+                            <tr><td>Mint</td><td>#B4FFD6</td><td>Tints behind info notes and selected options</td></tr>
+                            <tr><td>Abyss</td><td>#111111</td><td>Balance cards, bottom navigation, scanner, welcome</td></tr>
+                            <tr><td>Obsidian</td><td>#333333</td><td>Labels and secondary text</td></tr>
+                            <tr><td>Ivory</td><td>#D9D9D9</td><td>Input borders and dividers</td></tr>
+                            <tr><td>White</td><td>#FFFFFF</td><td>Page background, sheets, cards</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3 class="cs-h3">One set of components for all 38 screens</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>56px buttons in five styles: primary green, black, outline, soft grey, and red for destructive actions.</li>
+                        <li>52px inputs with a 16px radius, a green focus ring and inline error messages.</li>
+                        <li>Bottom sheets with a grab handle for every confirmation, fee breakdown and picker.</li>
+                        <li>A floating black navigation bar with a raised green Send button in the centre.</li>
+                        <li>A 3-step stepper, a 4-box PIN entry with an on-screen keypad, and a numbered 12-word recovery grid.</li>
+                        <li>Line icons at a 1.8px stroke, so every icon matches.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FLOWS ============ -->
+    <section id="flows" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">04 · Key flows</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Five flows, <em>38 screens.</em></h2>
+            <p class="cs-p" style="margin-top:1.2rem;max-width:44rem">Each flow below lists the decisions that changed the most.</p>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">Flow 01 · Onboarding and access</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Set up in three calm steps</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>The welcome screen moved to black with a soft green glow, the logo in the centre and a clear promise: "Your keys. Your crypto."</li>
+                        <li>Three onboarding slides use product-like illustrations (a price card, a QR transfer, a currency list) instead of generic stock art, with a progress bar and Skip on every slide.</li>
+                        <li>Creating a wallet is a 3-step stepper: Name, Backup, Verify. The recovery phrase is a numbered 3 × 4 grid, so the order is never in doubt.</li>
+                        <li>Recovery is one screen with tabs for recovery phrase and private key, replacing two near-identical pages.</li>
+                        <li>PIN entry gained an on-screen keypad with fingerprint unlock. A mismatch now marks every box red with a plain message.</li>
+                    </ul>
+                </div>
+                <a href="/assets/images/harmony/03-onboarding.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution onboarding image"><img src="/assets/images/harmony/03-onboarding.webp" alt="Four screens: two onboarding slides, the numbered 12-word recovery phrase and the PIN keypad with fingerprint." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">Flow 02 · Wallet home</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">The balance comes first</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>The balance card is black, with the amount at 40px, the fiat value and daily change below it, and a sync status chip.</li>
+                        <li>Four quick actions sit inside the card: Send, Receive, Scan and Stake.</li>
+                        <li>Trending coins became swipeable cards with sparklines. My coins became tappable rows that open each token's history.</li>
+                    </ul>
+                    <p class="cs-trade">The home screen is the right-hand phone in the hero image at the top of the page.</p>
+                </div>
+                <div></div>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">Flow 03 · Send and receive</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Review, confirm, done</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>Send shows the available balance at the top, puts token and shard side by side, and adds a MAX button and an inline balance error.</li>
+                        <li>Network speed is three selectable cards (Slow, Medium, Fast), each showing its fee and time.</li>
+                        <li>The flow now runs Review, then Confirm and send, then Amount sent.</li>
+                    </ul>
+                    <ol class="cs-states">
+                        <li>Review</li><li>Confirm &amp; send</li><li>Amount sent <span>· receipt</span></li>
+                    </ol>
+                    <p class="cs-trade"><b>The fix that mattered most.</b> The old dialog said the money was sent before the user had confirmed it.</p>
+                </div>
+                <a href="/assets/images/harmony/04-send.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution send flow image"><img src="/assets/images/harmony/04-send.webp" alt="Four send screens: entering details, the review bottom sheet, the Amount sent state and the transaction receipt." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec flip">
+                <div>
+                    <div class="cs-label">Flow 03 · Send and receive</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Pay with a scan</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>Receive generates a QR code on a black screen, with the logo in the centre of the code and Copy and Share buttons.</li>
+                        <li>The scanner has green corner brackets, a moving scan line, a torch toggle and an option to scan from photos.</li>
+                        <li>A scanned code opens a confirm sheet, so nothing moves until the user checks it.</li>
+                    </ul>
+                </div>
+                <a href="/assets/images/harmony/05-receive.png" class="cs-hero-img cs-shot dk" target="_blank" rel="noopener" aria-label="Open the full-resolution receive and scan image"><img src="/assets/images/harmony/05-receive.webp" alt="Four screens: the receive request form, a branded QR code, the scanner frame with a scan line, and the confirm sheet." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <div class="cs-dec">
+                <div>
+                    <div class="cs-label">Flow 04 · Staking</div>
+                    <h3 class="cs-h3" style="margin-top:.6rem">Stake ONE with confidence</h3>
+                    <ul class="cs-ticks" style="margin-top:1rem">
+                        <li>Validators opens with three network stats on a black card, then search, Elected and All filters, and a list sorted by expected return.</li>
+                        <li>The validator profile stacks into cards that fit a phone: a summary with Delegate and Undelegate, general info, a stake history chart and a list of delegators.</li>
+                        <li>Portfolio adds a donut chart of delegations and a staked progress bar.</li>
+                        <li>Delegate and Claim rewards are bottom sheets with two tabs (Details, Fees), a slider, and a clear warning when staking the full balance.</li>
+                        <li>Signing in Math Wallet now has separate pending and success states.</li>
+                    </ul>
+                </div>
+                <a href="/assets/images/harmony/06-staking.png" class="cs-hero-img cs-shot" target="_blank" rel="noopener" aria-label="Open the full-resolution staking image"><img src="/assets/images/harmony/06-staking.webp" alt="Four staking screens: the validator list, a validator profile, the portfolio with a donut chart, and the delegate sheet with a full-balance warning." loading="lazy" width="1600" height="1200"></a>
+            </div>
+
+            <h3 class="cs-h3" style="margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(10,10,10,.2)">Flow 05 · Profile and security</h3>
+            <div class="cs-list" style="margin-top:1.4rem">
+                <div class="cs-row"><span class="sx-num">01</span><div><h3>Grouped settings</h3><p>Settings became grouped lists (Wallet, Security) with icon tiles, values and a fingerprint toggle.</p></div></div>
+                <div class="cs-row"><span class="sx-num">02</span><div><h3>Currency picker</h3><p>The currency is chosen from a bottom sheet with radio-style rows.</p></div></div>
+                <div class="cs-row"><span class="sx-num">03</span><div><h3>A safer log out</h3><p>Log out is a red-accented sheet that reminds the user to back up their phrase first.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BUILD ============ -->
+    <section id="build" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2">
+                <div>
+                    <div class="cs-label">05 · Built in React Native</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">A design system that <em>lives in code.</em></h2>
+                    <p class="cs-p" style="margin-top:1.4rem">The app runs on iOS and Android from a single React Native codebase, so the design system was set up in code from day one.</p>
+                </div>
+                <div class="cs-list">
+                    <div class="cs-row"><span class="sx-num">01</span><div><h3>Theme tokens</h3><p>Colours, type sizes, spacing, radii and shadows are all in one theme file. Every screen reads from it, so a palette change happens in one place.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">02</span><div><h3>Component library</h3><p>Button, Input, Select, BottomSheet, PinPad, Stepper, TokenRow, ValidatorRow, StatCard and TabBar are reusable components with variants, used across all 38 screens.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">03</span><div><h3>Navigation</h3><p>A bottom tab navigator holds Wallet, Market, Staking and Profile, with Send as a raised centre action. Each flow is its own stack, and confirmations open as modal bottom sheets.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">04</span><div><h3>Native features</h3><p>Fingerprint and face unlock use the device's biometrics. The QR scanner uses the camera with a torch toggle. Keys and the PIN are kept in the device's secure storage, never on a server.</p></div></div>
+                    <div class="cs-row"><span class="sx-num">05</span><div><h3>Platform details</h3><p>Safe-area handling keeps content clear of notches and the home indicator, forms move up above the keyboard, and the floating tab bar reserves space so lists never hide behind it.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BEFORE / AFTER ============ -->
+    <section id="compare" class="cs-sec light">
+        <div class="cs-wrap">
+            <div class="cs-label">06 · Before and after</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">2020 <em>against 2026.</em></h2>
+            <div class="cs-tbl-wrap" style="margin-top:2.4rem">
+                <table class="cs-tbl">
+                    <thead><tr><th>Area</th><th>2020 design</th><th>2026 redesign</th></tr></thead>
+                    <tbody>
+                        <tr><td>Colour</td><td>One cyan for everything</td><td>Green for action, black for money and navigation, white for forms</td></tr>
+                        <tr><td>Balance</td><td>Black text on white, no context</td><td>40px on a black card with fiat value, daily change and sync status</td></tr>
+                        <tr><td>Dialogs</td><td>Small centred cards</td><td>Bottom sheets with a grab handle, close and back</td></tr>
+                        <tr><td>Send flow</td><td>"Successfully sent" shown before confirming</td><td>Review, confirm, sent, each its own state</td></tr>
+                        <tr><td>Inputs</td><td>Thin grey boxes, tiny placeholder text</td><td>52px fields, labels above, green focus, inline errors</td></tr>
+                        <tr><td>Recovery phrase</td><td>Words in a paragraph</td><td>Numbered 3 × 4 grid with a security warning</td></tr>
+                        <tr><td>PIN</td><td>Four boxes, no keypad</td><td>Boxes, keypad, fingerprint, clear error state</td></tr>
+                        <tr><td>Navigation</td><td>Inconsistent icons and colours</td><td>One floating black bar with a raised green Send button</td></tr>
+                        <tr><td>Validator data</td><td>Tables cut off sideways</td><td>Stacked cards, a chart and a list that fit 390px</td></tr>
+                        <tr><td>Screens</td><td>36</td><td>38, with separate pending and success states added</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ OUTCOME ============ -->
+    <section id="outcome" class="cs-sec soft">
+        <div class="cs-wrap">
+            <div class="cs-label">07 · Outcome</div>
+            <h2 class="cs-h2" style="margin-top:.8rem">Where it <em>landed.</em></h2>
+            <p class="cs-p" style="margin-top:1.2rem;max-width:44rem">The result is a complete React Native app UI running on iOS and Android from one codebase, built on a shared theme and component library.</p>
+            <div class="cs-facts four" style="margin-top:2.4rem">
+                <div class="cs-fact"><div class="n">38</div><div class="c">Screens redesigned, up from 36 audited</div></div>
+                <div class="cs-fact"><div class="n">5</div><div class="c">Flows, from onboarding to staking</div></div>
+                <div class="cs-fact"><div class="n">1</div><div class="c">Codebase for iOS and Android</div></div>
+                <div class="cs-fact"><div class="n">10</div><div class="c">Reusable components with variants</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============ -->
+    <section id="learnings" class="cs-sec dark">
+        <div class="cs-wrap">
+            <div class="cs-grid2 even">
+                <div>
+                    <div class="cs-label">08 · What I learned</div>
+                    <h2 class="cs-h2" style="margin-top:.8rem">In a wallet, <em>colour is a trust signal.</em></h2>
+                    <div class="cs-list" style="margin-top:1.6rem">
+                        <div class="cs-row"><span class="sx-num">01</span><div><h3>Less green, clearer screens</h3><p>Using green only for action and gain made every screen easier to scan.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">02</span><div><h3>Honest states beat polish</h3><p>Splitting review, pending and success removed the most confusing moment in the old app.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">03</span><div><h3>Code shows what mockups hide</h3><p>Building the screens in React Native exposed layout problems a static mockup hides, such as long addresses, tables at 390px and content behind a floating bar.</p></div></div>
+                    </div>
+                    <div style="margin-top:2.4rem">
+                        <a href="/work/Casestudy.html" class="cs-btn">More case studies <span>↗</span></a>
+                    </div>
+                </div>
+                <div>
+                    <div class="cs-label">What's next</div>
+                    <div class="cs-list" style="margin-top:1.2rem">
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Usability testing</h3><p>Test the send and delegate flows with five ONE holders.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Dark mode</h3><p>Built from the same tokens.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Accessibility audit</h3><p>A WCAG 2.2 AA contrast and touch-target check.</p></div></div>
+                        <div class="cs-row"><span class="sx-num">→</span><div><h3>Missing states</h3><p>Design empty, offline and failed-transaction states.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+ <!-- Footer -->
+<footer id="contact" class="contact-bg bg-primary px-6 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto">
+        <!-- Headline + CTA -->
+        <div class="flex items-center justify-between gap-8">
+            <h2 class="ct-title">
+                Have a product<br>
+                <em>worth building?</em>
+            </h2>
+            <a href="mailto:saagarshrest@gmail.com" class="ct-circle hidden md:flex" aria-label="Email Saagar">
+                <span>Say hello</span>
+                <span class="ct-arrow">↗</span>
+            </a>
+        </div>
+
+        <div class="ct-rule mt-10"></div>
+
+        <!-- Intro + details -->
+        <div class="grid gap-10 py-10 md:grid-cols-2">
+            <p class="ct-lead">
+                Whether you're a startup looking to make your mark or an established company ready to <span class="nowrap">innovate, let's talk.</span>
+            </p>
+            <dl class="ct-list">
+                <div class="ct-row">
+                    <dt>Email</dt>
+                    <dd class="flex flex-wrap items-center gap-3">
+                        <a href="mailto:saagarshrest@gmail.com" class="ct-email ct-u">saagarshrest@gmail.com</a>
+                        <button type="button" id="copy-email" class="ct-copy">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                            <span>Copy</span>
+                        </button>
+                    </dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+9779860332656" class="ct-u">+977-9860332656</a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/9779860332656" target="_blank" rel="noopener noreferrer" class="ct-u">Message on WhatsApp <span class="ct-sm">↗</span></a></dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Based in</dt>
+                    <dd>Kathmandu, Nepal <span class="ct-dot-sep">·</span> <span id="npt-time">--:--</span> NPT</dd>
+                </div>
+                <div class="ct-row">
+                    <dt>Status</dt>
+                    <dd class="flex items-center gap-3"><span class="ct-status"></span>Available for new projects</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="ct-elsewhere">
+            <span class="ct-label">Elsewhere</span>
+            <a href="https://dribbble.com/saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Dribbble <span class="ct-sm">↗</span></a>
+            <a href="https://www.figma.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Figma <span class="ct-sm">↗</span></a>
+            <a href="https://www.linkedin.com/in/saagarshrest/" target="_blank" rel="noopener noreferrer" class="ct-u">LinkedIn <span class="ct-sm">↗</span></a>
+            <a href="https://medium.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Medium <span class="ct-sm">↗</span></a>
+            <a href="https://unsplash.com/@saagarshrest" target="_blank" rel="noopener noreferrer" class="ct-u">Unsplash <span class="ct-sm">↗</span></a>
+        </div>
+
+        <!-- Site pages -->
+        <div class="ct-sitemap">
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Explore</span>
+                <a href="/work/Design.html">Design</a>
+                <a href="/Articles/Article.html">Articles</a>
+                <a href="/work/Casestudy.html">Case Study</a>
+                <a href="/products/Products.html">Products</a>
+                <a href="/about/Photos.html">Photos</a>
+                <a href="/about/Resume.html">Resume</a>
+                <a href="/pages/archive.html">Archive</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Site</span>
+                <a href="/pages/contact.html">Contact</a>
+                <a href="/pages/faq.html">FAQ</a>
+                <a href="/pages/sitemap-page.html">Sitemap</a>
+                <a href="/legal/accessibility.html">Accessibility</a>
+            </div>
+            <div class="ct-sitemap__group">
+                <span class="ct-label">Legal</span>
+                <a href="/legal/privacy.html">Privacy Policy</a>
+                <a href="/legal/terms.html">Terms of Use</a>
+                <a href="/legal/cookie-policy.html">Cookie Policy</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="ct-bottom">
+            <p>&copy; <span id="current-year"></span> Saagar. All rights reserved. Crafted with &#9829;&#xFE0E; for amazing clients.</p>
+            <button type="button" id="back-to-top" class="ct-top">Back to top <span>↑</span></button>
+        </div>
+    </div>
+</footer>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-menu-button");
+    const closeBtn = document.getElementById("close-mobile-menu");
+
+    openBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+    });
+
+    // ---- Footer: year, live Kathmandu time, copy email, back to top ----
+    (function () {
+        const y = document.getElementById('current-year');
+        if (y) y.textContent = new Date().getFullYear();
+        const t = document.getElementById('npt-time');
+        if (t) {
+            const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', hour12: false });
+            const tick = () => { t.textContent = fmt.format(new Date()); };
+            tick(); setInterval(tick, 15000);
+        }
+        const btn = document.getElementById('copy-email');
+        if (btn) btn.addEventListener('click', async () => {
+            const label = btn.querySelector('span');
+            try { await navigator.clipboard.writeText('saagarshrest@gmail.com'); label.textContent = 'Copied'; btn.classList.add('done'); }
+            catch (e) { label.textContent = 'Press Ctrl+C'; }
+            setTimeout(() => { label.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        });
+        const top = document.getElementById('back-to-top');
+        if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+<script src="/assets/js/pager.js"></script>
+<script src="/assets/js/nav-hero.js"></script>
+</body>
+</html>
