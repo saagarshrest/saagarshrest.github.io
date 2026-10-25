@@ -1,9 +1,8 @@
 /* Contact form without a backend of our own.
    The site is static, so the message is POSTed in the background to
    FormSubmit's AJAX endpoint, which emails it to me. The visitor stays on the
-   page and sees the result inline. The same message is also sent as a lead to
-   my HVAC management system. If both requests fail, we reveal the text with a
-   copy button and a mailto: link so the message is never lost. */
+   page and sees the result inline. If the request fails, we reveal the same
+   text with a copy button and a mailto: link so the message is never lost. */
 (function () {
     'use strict';
 
@@ -12,7 +11,6 @@
 
     var TO = 'saagarshrest@gmail.com';
     var ENDPOINT = 'https://formsubmit.co/ajax/' + TO;
-    var LEADS = 'https://hvac-management-system-rouge.vercel.app/api/v1/public/leads/bPa2gFptFDN7D9ZnUX9c1-H8l2HSuQ2_';
     var submitBtn = document.getElementById('cf-submit');
     var fallback = document.getElementById('cf-fallback');
     var copyBox = document.getElementById('cf-copy');
@@ -81,7 +79,7 @@
         busy(true);
         say('Sending your message…');
 
-        var mail = fetch(ENDPOINT, {
+        fetch(ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
@@ -101,27 +99,7 @@
                         throw new Error(data.message || 'Request failed');
                     }
                 });
-            });
-
-        var lead = fetch(LEADS, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                description: topic + '\n\n' + message,
-                serviceType: 'OTHER',
-                pageUrl: location.href,
-                website: ''
             })
-        })
-            .then(function (res) {
-                if (!res.ok) throw new Error('Lead request failed');
-            });
-        lead.catch(function () {});
-
-        // Sent if either delivery worked.
-        mail.catch(function () { return lead; })
             .then(function () {
                 form.reset();
                 say('Thanks, ' + name + ' — your message has been sent. I’ll reply to ' + email + ' soon.');
