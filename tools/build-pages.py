@@ -82,6 +82,7 @@ FOOTER_LINKS = """
                 <a href="/Articles/Article.html">Articles</a>
                 <a href="/work/Casestudy.html">Case Study</a>
                 <a href="/products/Products.html">Products</a>
+                <a href="/products/Store.html">Store</a>
                 <a href="/about/Photos.html">Photos</a>
                 <a href="/about/Resume.html">Resume</a>
                 <a href="/pages/archive.html">Archive</a>
@@ -636,6 +637,7 @@ PAGES['pages/archive.html'] = page(
                 <div class="doc-rows">
 """ + rows([
         ('All products', '/products/Products.html', ''),
+        ('Store', '/products/Store.html', ''),
         ('Image Cleaner', '/products/ImageCleaner.html', ''),
         ('Design System Creator', '/products/DesignSystemCreator.html', ''),
         ('Commando', '/products/Commando.html', ''),
@@ -698,6 +700,7 @@ PAGES['pages/sitemap-page.html'] = page(
         ('Officiti', '/work/Casedetailofficiti.html', 'Healthcare platform case study'),
         ('Ramo Parts', '/work/Casedetailramroparts.html', 'Parts commerce case study'),
         ('Products', '/products/Products.html', 'Free tools and products'),
+        ('Store', '/products/Store.html', 'Digital products for sale'),
         ('Design System', '/work/DesignSystem.html', 'Design system work'),
         ('Photos', '/about/Photos.html', 'Photography'),
         ('Resume', '/about/Resume.html', 'Experience and skills'),

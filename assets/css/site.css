@@ -416,3 +416,29 @@ html { scroll-padding-top: calc(var(--nav-h) + 1rem); }
 .pager-on .pg-sec { border-top: var(--nav-h) solid transparent; }
 .pager-on .art-side__in { top: 2rem; }
 @media (min-width: 1024px) { .pager-on .lg\:sticky.lg\:top-8, .pager-on .lg\:sticky.lg\:top-0 { top: 2rem !important; } }
+
+/* Store link: yellow capsule with a colour shopping bag (user-requested exception to the no-pill rule) */
+.site-links a[href="/products/Store.html"],
+.site-menu__links a[href="/products/Store.html"] {
+    display: inline-flex; align-items: center; gap: .4em; padding: .3rem .85rem .3rem .65rem;
+    border-radius: 9999px; background: #FFD43B; color: #0A0A0A !important; transition: background .2s, transform .2s;
+}
+.site-links a[href="/products/Store.html"]:hover,
+.site-menu__links a[href="/products/Store.html"]:hover { background: #FCC419; transform: translateY(-1px); }
+.site-links a[href="/products/Store.html"]::after { display: none; }
+.site-links a[href="/products/Store.html"]::before,
+.site-menu__links a[href="/products/Store.html"]::before {
+    content: ''; width: 1.15em; height: 1.15em; flex: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 10V7a3 3 0 0 1 6 0v3' fill='none' stroke='%237C2D12' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z' fill='%23EC4899'/%3E%3Cpath d='M5.4 12h13.2l-.3 3H5.7z' fill='%23F97316'/%3E%3Ccircle cx='9' cy='10' r='1.1' fill='%237C2D12'/%3E%3Ccircle cx='15' cy='10' r='1.1' fill='%237C2D12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.site-links a[href="/products/Store.html"]::before,
+.site-menu__links a[href="/products/Store.html"]::before { transform-origin: 50% 20%; animation: store-wiggle 4s ease-in-out 1.5s infinite; }
+.site-links a[href="/products/Store.html"]:hover::before,
+.site-menu__links a[href="/products/Store.html"]:hover::before { animation: store-hop .5s cubic-bezier(.16, 1, .3, 1); }
+@keyframes store-wiggle { 0%, 82%, 100% { transform: rotate(0); } 86% { transform: rotate(-12deg); } 90% { transform: rotate(10deg); } 94% { transform: rotate(-6deg); } 97% { transform: rotate(3deg); } }
+@keyframes store-hop { 0% { transform: translateY(0) scale(1); } 40% { transform: translateY(-3px) scale(1.12); } 100% { transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+    .site-links a[href="/products/Store.html"], .site-menu__links a[href="/products/Store.html"] { transition: none; }
+    .site-links a[href="/products/Store.html"]:hover, .site-menu__links a[href="/products/Store.html"]:hover { transform: none; }
+    .site-links a[href="/products/Store.html"]::before, .site-menu__links a[href="/products/Store.html"]::before { animation: none; }
+}
