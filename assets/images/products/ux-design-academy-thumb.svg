@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">FREE UI/UX Design Academy</title>
+  <desc id="desc">A playful purple and pink learning platform thumbnail with the message Learn UI/UX design the fun way.</desc>
+  <rect width="1200" height="900" rx="34" fill="#fff4fb"/>
+  <circle cx="1080" cy="122" r="220" fill="#fbd99d"/>
+  <rect x="0" y="0" width="1200" height="86" fill="#211b4f"/>
+  <rect x="36" y="20" width="180" height="46" rx="23" fill="#7137d4"/>
+  <text x="126" y="50" fill="#fff" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">HOME</text>
+  <rect x="242" y="20" width="180" height="46" rx="23" fill="#fff" stroke="#ded5ee" stroke-width="4"/>
+  <text x="332" y="50" fill="#211b4f" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">ROADMAP</text>
+  <rect x="448" y="20" width="180" height="46" rx="23" fill="#fff" stroke="#ded5ee" stroke-width="4"/>
+  <text x="538" y="50" fill="#211b4f" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">COURSES</text>
+  <rect x="902" y="20" width="250" height="46" rx="23" fill="#fff" stroke="#ded5ee" stroke-width="4"/>
+  <text x="1027" y="50" fill="#766f8d" font-family="Arial, sans-serif" font-size="18" text-anchor="middle">Search the academy</text>
+  <rect x="62" y="150" width="300" height="58" rx="29" fill="#fff" stroke="#211b4f" stroke-width="5"/>
+  <text x="212" y="187" fill="#211b4f" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">FREE AND SELF-GUIDED</text>
+  <text x="62" y="330" fill="#211b4f" font-family="Arial, sans-serif" font-size="78" font-weight="800">Learn UI/UX design</text>
+  <text x="62" y="420" fill="#211b4f" font-family="Arial, sans-serif" font-size="78" font-weight="800">the <tspan fill="#fff" stroke="#c51d6b" stroke-width="18" paint-order="stroke">fun</tspan> way.</text>
+  <text x="64" y="486" fill="#7137d4" font-family="Arial, sans-serif" font-size="29" font-weight="700">Understand it. Practise it. Build it.</text>
+  <text x="64" y="555" fill="#655c78" font-family="Arial, sans-serif" font-size="24">A structured path from complete beginner to</text>
+  <text x="64" y="590" fill="#655c78" font-family="Arial, sans-serif" font-size="24">portfolio-ready junior designer.</text>
+  <rect x="64" y="680" width="270" height="72" rx="36" fill="#c51d6b" stroke="#211b4f" stroke-width="5"/>
+  <text x="199" y="725" fill="#fff" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle">START LEARNING</text>
+  <rect x="365" y="680" width="270" height="72" rx="36" fill="#fff" stroke="#211b4f" stroke-width="5"/>
+  <text x="500" y="725" fill="#211b4f" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle">BROWSE COURSES</text>
+  <rect x="948" y="720" width="190" height="76" rx="38" fill="#ffd12e" stroke="#211b4f" stroke-width="5"/>
+  <text x="1043" y="768" fill="#211b4f" font-family="Arial, sans-serif" font-size="30" font-weight="800" text-anchor="middle">FREE</text>
+</svg>
