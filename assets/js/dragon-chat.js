@@ -208,7 +208,7 @@
                     background: #9ca3af;
                     cursor: not-allowed;
                 }
-                .cta-hero, .cta-roam {
+                html.dragon-hover, html.dragon-hover * {
                     cursor: pointer !important;
                 }
             </style>
@@ -240,22 +240,30 @@
             modal.style.display = 'none';
         }
 
-        // Make dragon clickable - add click handler to canvas
-        function makeCanvasClickable() {
-            const heroCanvas = document.querySelector('.cta-hero');
-            const roamCanvas = document.querySelector('.cta-roam');
-
-            if (heroCanvas) {
-                heroCanvas.addEventListener('click', openChat);
+        // The dragon canvases are pointer-events:none (the nav one overlaps the CTA button),
+        // so hit-test the click against the dragon's painted pixels instead.
+        function onDragon(x, y) {
+            const canvases = document.querySelectorAll('.cta-hero, .cta-roam');
+            for (const c of canvases) {
+                const r = c.getBoundingClientRect();
+                if (!r.width || x < r.left || x > r.right || y < r.top || y > r.bottom) continue;
+                const cx = Math.floor((x - r.left) * c.width / r.width);
+                const cy = Math.floor((y - r.top) * c.height / r.height);
+                const d = c.getContext('2d').getImageData(Math.max(0, cx - 1), Math.max(0, cy - 1), 3, 3).data;
+                for (let i = 3; i < d.length; i += 4) if (d[i] > 0) return true;
             }
-            if (roamCanvas) {
-                roamCanvas.addEventListener('click', openChat);
-            }
+            return false;
         }
-
-        // Try immediately, then again after a delay
-        makeCanvasClickable();
-        setTimeout(makeCanvasClickable, 200);
+        document.addEventListener('click', (e) => {
+            if (modal.style.display === 'flex' || !onDragon(e.clientX, e.clientY)) return;
+            e.preventDefault();
+            e.stopPropagation();
+            openChat();
+        }, true);
+        document.addEventListener('pointermove', (e) => {
+            if (e.pointerType === 'touch') return;
+            document.documentElement.classList.toggle('dragon-hover', onDragon(e.clientX, e.clientY));
+        }, { passive: true });
 
         closeBtn.addEventListener('click', closeChat);
         overlay.addEventListener('click', closeChat);
@@ -276,7 +284,8 @@
                     ? '<div class="dragon-chat-init">🐉 Waking up... (~150MB, first time only)</div>'
                     : '<div class="dragon-chat-init">🐉 Stretching...</div>';
 
-                const { pipeline } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.7');
+                const { pipeline, env } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js');
+                env.allowLocalModels = false;
                 chatPipeline = await pipeline('text2text-generation', 'Xenova/flan-t5-small');
 
                 localStorage.setItem('dragon-ai-loaded', 'true');
