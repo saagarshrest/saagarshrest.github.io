@@ -33,13 +33,12 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: inherit; 
 .site-cta { display: none; align-items: center; gap: .55rem; background: #15803D; color: #fff; border: 1.5px solid #15803D; padding: .6rem 1.4rem; border-radius: 9999px; font-size: .95rem; font-weight: 500; transition: background .25s, border-color .25s; animation: cta-pulse 2.4s ease-in-out infinite; }
 .site-cta:hover { background: #166534; border-color: #166534; }
 @keyframes cta-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, .4); } 50% { box-shadow: 0 0 0 6px rgba(21, 128, 61, 0); } }
-/* nav mascot (js/nav-hero.js): hero left of the button, mini boss hiding behind it */
+/* nav mascot (js/nav-hero.js): dragon left of the button */
 .cta-wrap { display: none; position: relative; align-items: center; isolation: isolate; }
 @media (min-width: 1024px) { .cta-wrap { display: inline-flex; } }
 .cta-wrap .site-cta { position: relative; z-index: 1; }
-.cta-hero, .cta-boss { position: absolute; image-rendering: pixelated; image-rendering: crisp-edges; pointer-events: none; }
+.cta-hero { position: absolute; image-rendering: pixelated; image-rendering: crisp-edges; pointer-events: none; }
 .cta-hero { z-index: 2; }
-.cta-boss { left: 0; top: -18px; z-index: 0; }
 .cta-roam { position: fixed; left: 0; top: 0; z-index: 70; pointer-events: none; image-rendering: pixelated; image-rendering: crisp-edges; will-change: transform; }
 .site-cta.is-hit { animation: cta-hit .45s ease-out; }
 @keyframes cta-hit {

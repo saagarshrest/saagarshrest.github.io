@@ -1,16 +1,13 @@
 /* Nav mascot: a green pixel-art dragon flies beside the "Available for work" button,
-   breathes fire at it and now and then lies down on top of it, while a mini boss
-   hides behind the button. Every so often it leaves the nav to roam the page, perching
-   only on top of components, only where it covers nothing but bare background.
+   breathes fire at it and now and then lies down on top of it. Every so often it leaves
+   the nav to roam the page, perching only on top of components, only where it covers nothing but bare background.
    Rubbing it with the mouse sends it home. Palette echoes Commando.html. */
 (function () {
     var cta = document.querySelector('.site-nav .site-cta');
     if (!cta || cta.closest('.cta-wrap')) return;
 
-    var K = '#1b1028';
     function mk(w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
     function P(g, col, x, y, w, h) { g.fillStyle = col; g.fillRect(x, y, w || 1, h || 1); }
-    function disc(g, cx, cy, r, col) { g.fillStyle = col; for (var y = -r; y <= r; y++) { var w = Math.floor(Math.sqrt(Math.max(0, r * r - y * y + r * 0.6))); g.fillRect(cx - w, cy + y, w * 2 + 1, 1); } }
     function ell(g, cx, cy, rx, ry, col) { g.fillStyle = col; for (var y = -ry; y <= ry; y++) { var w = Math.round(rx * Math.sqrt(Math.max(0, 1 - (y * y) / ((ry + 0.5) * (ry + 0.5))))); g.fillRect(cx - w, cy + y, w * 2 + 1, 1); } }
     function line(g, col, x0, y0, x1, y1, s) {
         s = s || 1; var dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1, e = dx - dy;
@@ -106,18 +103,17 @@
     var RESTV = REST.map(pair);
     var FIRE = ['#ffffff', '#fff4c2', '#fee761', '#feae34', '#f77622', '#e43b44'];
 
-    /* ---------- DOM: dragon canvas spans left of + over the button, boss canvas behind it ---------- */
+    /* ---------- DOM: dragon canvas spans left of + over the button ---------- */
     var wrap = document.createElement('span'); wrap.className = 'cta-wrap';
     cta.parentNode.insertBefore(wrap, cta);
     var heroC = mk(1, 1); heroC.className = 'cta-hero'; heroC.setAttribute('aria-hidden', 'true');
-    var bossC = mk(1, 1); bossC.className = 'cta-boss'; bossC.setAttribute('aria-hidden', 'true');
-    wrap.appendChild(heroC); wrap.appendChild(bossC); wrap.appendChild(cta);
-    var hg = heroC.getContext('2d'), bg = bossC.getContext('2d');
+    wrap.appendChild(heroC); wrap.appendChild(cta);
+    var hg = heroC.getContext('2d');
     cta.addEventListener('animationend', function (e) { if (e.animationName === 'cta-hit') cta.classList.remove('is-hit'); });
 
     var PEEK = 9;              // canvas rows above the button's top edge (each row = 2 css px)
     var heroU = 0, cw = 0, ch = 0, maxX = 0, flyY = 0, canFly = false, perchLo = 0, perchHi = 0;
-    var bw = 0, bh = 0, edge = PEEK;
+    var bw = 0, bh = 0;
     function size() {
         var links = document.querySelectorAll('.site-nav .site-links a');
         var last = links[links.length - 1];
@@ -136,9 +132,6 @@
         if (!canFly && D.st !== 'rest' && D.st !== 'away') rest(1e9);
         if (canFly && /fly|windup|breathe/.test(D.st) && D.x > maxX) D.x = maxX;
         if (D.st === 'rest') D.x = Math.min(Math.max(D.x, perchLo), perchHi);
-        bossC.width = bw; bossC.height = bh; bossC.style.width = bw * 2 + 'px'; bossC.style.height = bh * 2 + 'px';
-        edge = PEEK;
-        if (B.x > bw - 24) B.x = Math.max(0, bw - 24);
     }
 
     /* ---------- dragon: fly / breathe fire / perch on the button ---------- */
@@ -157,7 +150,6 @@
     function hit(y) {
         for (var i = 0; i < 7; i++) sparks.push({ x: heroU - 1, y: y, vx: -0.3 - Math.random() * 0.9, vy: -0.4 - Math.random() * 0.9, life: 12 + (Math.random() * 10 | 0), c: FIRE[2 + (i % 4)] });
         cta.classList.remove('is-hit'); void cta.offsetWidth; cta.classList.add('is-hit');
-        if (B.st === 'peek' || B.st === 'run') B.st = 'duck';
     }
     function approach(v, target, step) { return Math.abs(target - v) <= step ? target : v + step * (target > v ? 1 : -1); }
     function updateHero() {
@@ -209,43 +201,6 @@
         flames.forEach(function (f) { var sz = f.age < 9 ? 2 : 1; P(hg, FIRE[Math.min(FIRE.length - 1, (f.age / 3) | 0)], Math.round(f.x), Math.round(f.y) - (sz >> 1), sz, sz); });
         sparks.forEach(function (s) { P(hg, s.c, Math.round(s.x), Math.round(s.y)); });
         smoke.forEach(function (p) { P(hg, p.life > 18 ? '#c9d0c9' : '#9aa39a', Math.round(p.x), Math.round(p.y)); });
-    }
-
-    /* ---------- mini boss: hides behind the button, peeks, runs ---------- */
-    var B = { x: 20, y: 0, face: -1, st: 'hide', t: 0, dur: 150, ty: 0, tx: 0, looks: 0, step: 0 };
-    function hideY() { return edge + 2; }
-    function nextBoss() {
-        B.t = 0;
-        var lo = 10, hi = Math.max(lo, bw - 34);
-        if (B.st !== 'hide' || onButton()) { B.st = 'hide'; B.dur = 120 + Math.random() * 240; return; }
-        if (Math.random() < 0.55) { B.st = 'peek'; B.x = lo + Math.round(Math.random() * (hi - lo)); B.looks = 2 + (Math.random() * 3 | 0); B.face = Math.random() < 0.5 ? 1 : -1; }
-        else { B.st = 'run'; var fromLeft = Math.random() < 0.5; B.x = fromLeft ? lo : hi; B.tx = fromLeft ? hi : lo; B.face = fromLeft ? 1 : -1; }
-    }
-    function updateBoss() {
-        B.t++;
-        var hy = hideY();
-        if ((B.st === 'peek' || B.st === 'run') && onButton()) B.st = 'duck';
-        if (B.st === 'hide') { B.y = Math.min(hy, B.y + 1); if (B.t >= B.dur) nextBoss(); }
-        else if (B.st === 'duck') { B.y = Math.min(hy, B.y + 2); if (B.y >= hy) { B.st = 'x'; nextBoss(); } }
-        else if (B.st === 'peek') {
-            var top = edge - 6;
-            if (B.y > top) B.y -= 0.5;
-            else if (B.t % 40 === 0) { B.face = -B.face; if (--B.looks <= 0) { B.st = 'x'; nextBoss(); } }
-        } else if (B.st === 'run') {
-            var ry = edge - 5;
-            if (B.y > ry) B.y -= 0.75;
-            else { B.x += 0.9 * B.face; B.step++; if ((B.face > 0 && B.x >= B.tx) || (B.face < 0 && B.x <= B.tx)) { B.st = 'x'; nextBoss(); } }
-        }
-    }
-    function drawBoss() {
-        bg.clearRect(0, 0, bw, bh);
-        var x = Math.round(B.x), y = Math.round(B.y) - (B.st === 'run' && B.y <= edge - 5 && (B.step >> 3) % 2 ? 1 : 0);
-        var f = B.face, eye = (Date.now() >> 9) % 4 ? '#ff6a6a' : '#e43b44';
-        disc(bg, x + 12, y + 5, 5, K); disc(bg, x + 12, y + 5, 4, '#262b44'); disc(bg, x + 12, y + 5, 3, '#3a4466');
-        P(bg, '#9ef3ff', f > 0 ? x + 8 : x + 14, y + 1, 2, 1);
-        P(bg, K, x + 10 + f * 2, y + 2, 4, 3); P(bg, eye, x + 11 + f * 2, y + 3, 2, 1);
-        P(bg, K, x + 1, y + 9, 22, 8); P(bg, '#e43b44', x + 2, y + 10, 20, 6); P(bg, '#ff8a8a', x + 2, y + 10, 20, 1); P(bg, '#9e2835', x + 2, y + 15, 20, 1);
-        P(bg, K, f > 0 ? x + 22 : x - 3, y + 11, 5, 3); P(bg, '#8b9bb4', f > 0 ? x + 23 : x - 2, y + 12, 3, 1);
     }
 
     /* ---------- roaming: perch on page components, fly home when rubbed ---------- */
@@ -300,7 +255,7 @@
         var media = document.querySelectorAll('img,svg,video,canvas,iframe');
         for (i = 0; i < media.length; i++) {
             var m = media[i];
-            if (m === roamC || m === heroC || m === bossC) continue;
+            if (m === roamC || m === heroC) continue;
             var mr = m.getBoundingClientRect();
             if (mr.width && mr.height && overlaps(b, mr, 0) && (!m.checkVisibility || m.checkVisibility({ opacityProperty: true, visibilityProperty: true }))) return false;
         }
@@ -455,7 +410,6 @@
 
     /* ---------- loop ---------- */
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    B.y = hideY();
     size();
     D.y = flyY;
     window.addEventListener('resize', size);
@@ -467,8 +421,8 @@
         var shown = wrap.offsetParent !== null;
         if (shown) {
             var n = 0;
-            while (acc >= STEP && n < 4) { if (!held) updateHero(); updateBoss(); if (R.on) updateRoam(); else if (!held) leaveNav(); acc -= STEP; n++; }
-            drawHero(); drawBoss();
+            while (acc >= STEP && n < 4) { if (!held) updateHero(); if (R.on) updateRoam(); else if (!held) leaveNav(); acc -= STEP; n++; }
+            drawHero();
             if (R.on) drawRoam();
         }
         roamC.style.display = shown && R.on ? '' : 'none';
