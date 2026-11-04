@@ -81,7 +81,7 @@ FOOTER_LINKS = """
                 <a href="/work/Design.html">Design</a>
                 <a href="/Articles/Article.html">Articles</a>
                 <a href="/work/Casestudy.html">Case Study</a>
-                <a href="/products/Products.html">Products</a>
+                <a href="/products/">Products</a>
                 <a href="/products/Store.html">Store</a>
                 <a href="/about/Photos.html">Photos</a>
                 <a href="/about/Resume.html">Resume</a>
@@ -521,7 +521,7 @@ PAGES['pages/thank-you.html'] = page(
                 <p class="sx-lead">While you wait, a few things you might want to look at:</p>
                 <ul class="doc-list list-disc pl-6 space-y-3 mt-6 text-lg">
                     <li><a href="/work/Casestudy.html" class="underline underline-offset-4">Selected case studies</a></li>
-                    <li><a href="/products/Products.html" class="underline underline-offset-4">Free tools and products</a></li>
+                    <li><a href="/products/" class="underline underline-offset-4">Free tools and products</a></li>
                     <li><a href="/Articles/Article.html" class="underline underline-offset-4">Articles on design and UX</a></li>
                     <li><a href="/about/Resume.html" class="underline underline-offset-4">Resume</a></li>
                 </ul>
@@ -569,7 +569,7 @@ PAGES['pages/faq.html'] = page(
         qa('How long does a project take?', 'A focused UX audit or design system sprint is typically two to four weeks. A full product engagement runs longer and is scoped in phases, so you get value early rather than all at the end.'),
         qa('What do you charge?', 'I work mostly on an hourly basis at <strong>$25–35 per hour</strong>, or a <strong>fixed monthly price</strong> for ongoing work. Either way the rate is agreed before we start, so there are no surprises on the invoice. Tell me what you need and I will send a proposal.'),
         qa('Do you work with existing design teams?', 'Often. I slot into internal teams for audits, system definition, or hands-on interface work, and I am comfortable working from your research rather than insisting on my own process.'),
-        qa('Are the tools on this site free?', 'Yes — every tool in <a href="/products/Products.html">Products</a> is free to use, in the browser, with no account and no data sent to a server. They are built with plain HTML, CSS and JavaScript so they keep working offline.'),
+        qa('Are the tools on this site free?', 'Yes — every tool in <a href="/products/">Products</a> is free to use, in the browser, with no account and no data sent to a server. They are built with plain HTML, CSS and JavaScript so they keep working offline.'),
         qa('Can I use the pixel art on this site?', 'The mascot and 404 artwork are original. You are welcome to use them in your own project with a credit line. If you want them without attribution for a commercial product, get in touch and we can sort something out.'),
         qa('Do you write the articles yourself?', 'Yes. Everything in <a href="/Articles/Article.html">Articles</a> is written by me, based on real project experience. Some pieces are also published on Medium.'),
         qa('Can I republish your work?', 'Quote and share with attribution and a link back. Do not republish whole articles or case studies as your own. Full details are in the <a href="/legal/terms.html">Terms of Use</a>.'),
@@ -636,7 +636,7 @@ PAGES['pages/archive.html'] = page(
                 <h2 class="doc-h2">Tools &amp; products</h2>
                 <div class="doc-rows">
 """ + rows([
-        ('All products', '/products/Products.html', ''),
+        ('All products', '/products/', ''),
         ('Store', '/products/Store.html', ''),
         ('Image Cleaner', '/products/ImageCleaner.html', ''),
         ('Design System Creator', '/products/DesignSystemCreator.html', ''),
@@ -699,7 +699,7 @@ PAGES['pages/sitemap-page.html'] = page(
         ('Field Service Ops', '/work/Casedetailhvac.html', 'HVAC field service case study'),
         ('Officiti', '/work/Casedetailofficiti.html', 'Healthcare platform case study'),
         ('Ramo Parts', '/work/Casedetailramroparts.html', 'Parts commerce case study'),
-        ('Products', '/products/Products.html', 'Free tools and products'),
+        ('Products', '/products/', 'Free tools and products'),
         ('Store', '/products/Store.html', 'Digital products for sale'),
         ('Design System', '/work/DesignSystem.html', 'Design system work'),
         ('Photos', '/about/Photos.html', 'Photography'),
