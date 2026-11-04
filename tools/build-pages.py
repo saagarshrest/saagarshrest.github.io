@@ -66,6 +66,7 @@ TAIL = """{footer_block}
 {inline_js}
 <script src="/assets/js/pager.js"></script>
 <script src="/assets/js/nav-hero.js"></script>
+<script src="/assets/js/dragon-chat.js" defer></script>
 <script src="/assets/js/doc-toc.js"></script>
 {extra_tail}
 </body>

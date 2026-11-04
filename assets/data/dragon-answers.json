@@ -1,0 +1,197 @@
+{
+  "_help": "Hand-written answers for the dragon chat. Each intent: q = example questions, k = keywords that strongly signal it, a = the reply, links = buttons (href, or action: copy-email | whatsapp). Edit freely; no rebuild needed.",
+  "greeting": "Rawr, hello! I'm Saagar's dragon. Ask me about his work, services, rates or how to reach him.",
+  "suggestions": ["What does Saagar do?", "Is he available for work?", "What are his rates?", "Show me case studies"],
+  "fallback": "That one's outside my cave. I only know what's on this site: Saagar's work, services, products and how to reach him. Try asking about those, or write to him directly.",
+  "fallbackLinks": [
+    { "label": "Contact page", "href": "/pages/contact.html" },
+    { "label": "Copy email", "action": "copy-email" }
+  ],
+  "intents": [
+    {
+      "id": "hello",
+      "q": ["hi", "hello", "hey", "hey there", "good morning", "namaste", "yo", "sup"],
+      "k": ["hi", "hello", "hey", "namaste", "hola", "yo", "sup", "howdy"],
+      "a": "Hello, traveller! I guard this site and know my way around it. What would you like to know about Saagar?"
+    },
+    {
+      "id": "dragon",
+      "q": ["who are you", "are you a robot", "are you a bot", "are you ai", "are you chatgpt", "what is your name", "who made you"],
+      "k": ["bot", "chatgpt", "robot", "dragon", "mascot", "yourself"],
+      "a": "I'm the pixel dragon who flies around Saagar's nav bar. I'm not a big language model; I answer from this site's own pages, so I won't make things up. The dragon art is original, and you may use it with a credit line.",
+      "links": [{ "label": "FAQ", "href": "/pages/faq.html" }]
+    },
+    {
+      "id": "about",
+      "q": ["who is saagar", "tell me about saagar", "about saagar", "who owns this site", "what does saagar do", "what do you do", "introduce saagar"],
+      "k": ["introduce", "background", "bio", "shrestha"],
+      "a": "Saagar Shrestha is a UX design engineer in Kathmandu. He blends AI, UX design and frontend engineering, and has shipped 100+ projects over 10+ years: end-to-end UX, interface design and design systems for startups and product teams.",
+      "links": [{ "label": "Resume", "href": "/about/Resume.html" }, { "label": "Work", "href": "/work/" }]
+    },
+    {
+      "id": "services",
+      "q": ["what services do you offer", "what can saagar help with", "what can you do for me", "services", "can he build my app", "do you do frontend"],
+      "k": ["service", "services", "offer", "help", "prototyping", "research", "frontend", "animation"],
+      "a": "Saagar offers user research, rapid prototyping, UX audits and strategy, design systems, end-to-end product design, frontend builds and 2D animation. He also slots into existing design teams for audits or hands-on interface work.",
+      "links": [{ "label": "See work", "href": "/work/" }, { "label": "Contact", "href": "/pages/contact.html" }]
+    },
+    {
+      "id": "hire",
+      "q": ["is he available", "are you available for work", "can i hire saagar", "is saagar open to freelance", "looking for a designer", "is he taking new projects", "full time job"],
+      "k": ["available", "availability", "hire", "hiring", "freelance", "job", "work with", "open", "capacity"],
+      "a": "Yes, Saagar is available for work, with limited capacity. He takes on a small number of projects at a time so each one gets proper attention. The contact page is the fastest way to start.",
+      "links": [{ "label": "Contact page", "href": "/pages/contact.html" }, { "label": "Copy email", "action": "copy-email" }]
+    },
+    {
+      "id": "rates",
+      "q": ["what do you charge", "what are his rates", "how much does it cost", "hourly rate", "price for a project", "budget", "pricing"],
+      "k": ["rate", "rates", "charge", "cost", "price", "pricing", "hour", "hourly", "monthly", "budget", "fee", "fees", "quote", "expensive"],
+      "a": "Saagar works mostly by the hour at $25–35/hour, or a fixed monthly price for ongoing work. The rate is agreed before work starts. Tell him what you need and he'll send a proposal.",
+      "links": [{ "label": "Ask for a proposal", "href": "/pages/contact.html" }]
+    },
+    {
+      "id": "contact",
+      "q": ["how do i contact saagar", "email", "what is his email", "phone number", "how can i reach him", "get in touch", "send a message"],
+      "k": ["contact", "email", "mail", "reach", "phone", "call", "message", "touch", "number"],
+      "a": "Email saagarshrest@gmail.com. Saagar reads it himself and replies. For short messages, WhatsApp +977-9860332656 works too.",
+      "links": [{ "label": "Copy email", "action": "copy-email" }, { "label": "WhatsApp", "action": "whatsapp" }, { "label": "Contact page", "href": "/pages/contact.html" }]
+    },
+    {
+      "id": "whatsapp",
+      "q": ["whatsapp", "can i message on whatsapp", "chat on whatsapp"],
+      "k": ["whatsapp", "wa", "viber", "text"],
+      "a": "Sure. Saagar's on WhatsApp at +977-9860332656. Keep it short; email is better for anything detailed.",
+      "links": [{ "label": "Open WhatsApp", "action": "whatsapp" }]
+    },
+    {
+      "id": "location",
+      "q": ["where is he based", "where are you from", "do you work remotely", "time zone", "location", "is he in nepal"],
+      "k": ["where", "based", "location", "remote", "remotely", "timezone", "zone", "nepal", "kathmandu", "country"],
+      "a": "Saagar is based in Kathmandu, Nepal, and works remotely with clients across time zones. Calls, shared design files and short written briefs do most of the work; a weekly overlap for a sync is usually enough."
+    },
+    {
+      "id": "timeline",
+      "q": ["how long does a project take", "timeline", "how fast can you deliver", "turnaround time", "how many weeks"],
+      "k": ["long", "timeline", "weeks", "duration", "deadline", "turnaround", "fast", "quickly"],
+      "a": "A focused UX audit or design system sprint usually takes two to four weeks. Full product engagements run longer and are split into phases, so you see value early.",
+      "links": [{ "label": "Contact", "href": "/pages/contact.html" }]
+    },
+    {
+      "id": "experience",
+      "q": ["work experience", "where has he worked", "previous companies", "how many years of experience", "current job", "career history"],
+      "k": ["experience", "worked", "companies", "company", "career", "years", "employer", "senior", "history", "adleverage"],
+      "a": "Saagar has worked in product design since 2016. Most recently he was Senior Product Designer at Ad Leverage, and before that he worked at Signetic, IDA, Dreamax, Bitsbeat, Healent, Braindigit, Floyd and Blackspring. The resume has the full timeline.",
+      "links": [{ "label": "Resume", "href": "/about/Resume.html" }]
+    },
+    {
+      "id": "skills",
+      "q": ["what tools do you use", "skills", "does he know figma", "tech stack", "can he code", "what software"],
+      "k": ["tools", "tool", "skills", "skill", "figma", "framer", "stack", "code", "coding", "software", "tailwind", "html", "css", "lottie", "adobe"],
+      "a": "His toolkit: Figma, Framer, Adobe, After Effects and Lottie for design and motion; HTML, CSS and Tailwind for building; Jira for delivery; Claude and ChatGPT for AI-assisted work. He designs and codes, so handoff isn't an issue.",
+      "links": [{ "label": "Resume", "href": "/about/Resume.html" }]
+    },
+    {
+      "id": "work",
+      "q": ["show me case studies", "portfolio", "projects", "what has he designed", "previous work", "examples of work"],
+      "k": ["case", "studies", "study", "portfolio", "projects", "project", "examples", "work", "designed"],
+      "a": "Case studies: Harmony Wallet, Field Service Ops (HVAC), Officiti, Simple Period Tracker, ShiftCare and Ramroparts. Each one covers the problem, the process and the outcome.",
+      "links": [{ "label": "All work", "href": "/work/" }, { "label": "Harmony", "href": "/work/Casedetailharmony.html" }, { "label": "HVAC", "href": "/work/Casedetailhvac.html" }]
+    },
+    {
+      "id": "designsystem",
+      "q": ["design systems", "do you build design systems", "component library", "officiti design system"],
+      "k": ["system", "systems", "components", "component", "library", "tokens"],
+      "a": "Design systems are one of Saagar's specialities. The Design System page shows the Officiti system for iOS and Android, and his free DesignSystem Creator generates tokens and checks contrast against WCAG 2.2.",
+      "links": [{ "label": "Design System", "href": "/work/DesignSystem.html" }, { "label": "DesignSystem Creator", "href": "/products/DesignSystemCreator.html" }]
+    },
+    {
+      "id": "audit",
+      "q": ["ux audit", "can you review my app", "heuristic evaluation", "usability review"],
+      "k": ["audit", "review", "heuristic", "usability", "evaluation"],
+      "a": "A UX audit takes two to four weeks. Saagar scores every screen and flow against Nielsen's ten usability heuristics and the Laws of UX, then hands over prioritised fixes. The UX Audit page shows how he runs one.",
+      "links": [{ "label": "UX Audit", "href": "/work/UXAudit.html" }]
+    },
+    {
+      "id": "resume",
+      "q": ["resume", "cv", "download resume", "can i see his cv", "education", "degree"],
+      "k": ["resume", "cv", "education", "degree", "mba", "emba", "qualification"],
+      "a": "His resume covers experience since 2016, an EMBA, certifications and tools. You can download it as a PDF from the resume page.",
+      "links": [{ "label": "Open resume", "href": "/about/Resume.html" }]
+    },
+    {
+      "id": "certs",
+      "q": ["certifications", "is he certified", "google ux certificate", "courses"],
+      "k": ["certification", "certifications", "certified", "certificate", "google", "course", "courses"],
+      "a": "Saagar holds the Google Project Management certificate (2023), the Google UX Design certificate (2022) and a Digital Marketing certification (2018), plus an EMBA.",
+      "links": [{ "label": "Resume", "href": "/about/Resume.html" }]
+    },
+    {
+      "id": "products",
+      "q": ["free tools", "products", "what apps did he make", "are the tools free", "image cleaner", "design academy"],
+      "k": ["products", "product", "tools", "free", "app", "apps", "cleaner", "academy", "tracker"],
+      "a": "All the products are free and run in your browser, with no account and no uploads. They include DesignSystem Creator, Image Cleaner, the Free UI/UX Design Academy, Simple Period Tracker and two games. Saagar built them with AI.",
+      "links": [{ "label": "Products", "href": "/products/" }]
+    },
+    {
+      "id": "games",
+      "q": ["games", "can i play a game", "coin commando", "kathmandu shadows"],
+      "k": ["game", "games", "play", "commando", "shadows", "arcade", "pixel"],
+      "a": "There are two pixel games: Coin Commando and Kathmandu Shadows. Both are free and play in the browser.",
+      "links": [{ "label": "Coin Commando", "href": "/products/Commando.html" }, { "label": "Kathmandu Shadows", "href": "/products/KathmanduShadows.html" }]
+    },
+    {
+      "id": "store",
+      "q": ["store", "shop", "planner", "buy", "pink petal planner", "templates for sale"],
+      "k": ["store", "shop", "buy", "planner", "gumroad", "purchase", "sell", "petal"],
+      "a": "The Store sells the Pink Petal Planner for $1 on Gumroad.",
+      "links": [{ "label": "Store", "href": "/products/Store.html" }]
+    },
+    {
+      "id": "articles",
+      "q": ["articles", "blog", "does he write", "posts", "medium"],
+      "k": ["article", "articles", "blog", "posts", "medium"],
+      "a": "Saagar writes his own articles on accessibility, emotional design, design thinking, data versus intuition, and AI in UX. Some are also published on Medium.",
+      "links": [{ "label": "Articles", "href": "/Articles/" }]
+    },
+    {
+      "id": "clients",
+      "q": ["clients", "who has he worked with", "brands", "client list"],
+      "k": ["clients", "client", "brands", "customers", "worked with"],
+      "a": "Saagar has worked with 42 clients, from startups to established product teams. The Clients page lists them.",
+      "links": [{ "label": "Clients", "href": "/work/Clients.html" }]
+    },
+    {
+      "id": "ai",
+      "q": ["does he use ai", "ai design", "artificial intelligence", "ai ux"],
+      "k": ["ai", "artificial", "intelligence", "claude", "gpt", "llm", "machine"],
+      "a": "Yes. AI is part of how Saagar works: research, prototyping and building with tools like Claude and ChatGPT. All the free products here were built with AI. He's also written about why AI needs good UX.",
+      "links": [{ "label": "AI article", "href": "/Articles/Why Artificial Intelligence needs Good User Experience.html" }]
+    },
+    {
+      "id": "design",
+      "q": ["ui designs", "dribbble shots", "visual design", "show me designs"],
+      "k": ["dribbble", "shots", "visual", "ui", "designs", "mockups"],
+      "a": "The Design page collects Saagar's UI shots, grouped by kind.",
+      "links": [{ "label": "Design", "href": "/work/Design.html" }]
+    },
+    {
+      "id": "photos",
+      "q": ["photos", "photography", "pictures"],
+      "k": ["photo", "photos", "photography", "pictures", "camera"],
+      "a": "Saagar keeps a small photo gallery on the Photos page.",
+      "links": [{ "label": "Photos", "href": "/about/Photos.html" }]
+    },
+    {
+      "id": "languages",
+      "q": ["what languages does he speak", "does he speak english", "hindi"],
+      "k": ["language", "languages", "speak", "english", "nepali", "hindi"],
+      "a": "Saagar speaks English, Nepali and Hindi."
+    },
+    {
+      "id": "thanks",
+      "q": ["thanks", "thank you", "cool", "great", "awesome", "ok bye", "bye", "goodbye"],
+      "k": ["thanks", "thank", "thx", "bye", "goodbye", "cheers", "awesome", "cool", "great"],
+      "a": "Happy to help! I'll be flying around up here if you need me again."
+    }
+  ]
+}
