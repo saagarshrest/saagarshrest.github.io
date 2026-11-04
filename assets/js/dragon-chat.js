@@ -1,6 +1,5 @@
-/* Dragon AI Chat Modal - Attach to the dragon mascot */
+/* Dragon AI Chat Modal - Click dragon to chat */
 (function() {
-    // Wait for nav-hero to be ready
     if (!window.navHero) {
         window.addEventListener('load', function() {
             if (window.navHero) initDragonChat();
@@ -161,27 +160,11 @@
                     font-size: 1.5rem;
                     flex-shrink: 0;
                 }
-                .dragon-chat-loading {
-                    display: flex;
-                    gap: 0.3rem;
-                    align-items: center;
-                }
-                .dragon-chat-spinner {
-                    width: 4px;
-                    height: 4px;
-                    background: #1e8a3c;
-                    border-radius: 50%;
-                    animation: blink 1.4s infinite;
-                }
-                .dragon-chat-spinner:nth-child(2) {
-                    animation-delay: 0.2s;
-                }
-                .dragon-chat-spinner:nth-child(3) {
-                    animation-delay: 0.4s;
-                }
-                @keyframes blink {
-                    0%, 60%, 100% { opacity: 0.3; }
-                    30% { opacity: 1; }
+                .dragon-chat-init {
+                    padding: 2rem;
+                    text-align: center;
+                    color: #6b7280;
+                    font-size: 0.9rem;
                 }
                 .dragon-chat-form {
                     display: flex;
@@ -225,16 +208,12 @@
                     background: #9ca3af;
                     cursor: not-allowed;
                 }
-                .dragon-chat-init {
-                    padding: 2rem;
-                    text-align: center;
-                    color: #6b7280;
-                    font-size: 0.9rem;
+                .cta-hero, .cta-roam {
+                    cursor: pointer !important;
                 }
             </style>
         `;
 
-        // Inject into page
         document.head.insertAdjacentHTML('beforeend', styleHTML);
         document.body.insertAdjacentHTML('beforeend', modalHTML);
 
@@ -251,6 +230,7 @@
 
         function openChat() {
             modal.style.display = 'flex';
+            chatInput.focus();
             if (!chatPipeline && !modelLoading) {
                 initModel();
             }
@@ -260,10 +240,26 @@
             modal.style.display = 'none';
         }
 
+        // Make dragon clickable - add click handler to canvas
+        function makeCanvasClickable() {
+            const heroCanvas = document.querySelector('.cta-hero');
+            const roamCanvas = document.querySelector('.cta-roam');
+
+            if (heroCanvas) {
+                heroCanvas.addEventListener('click', openChat);
+            }
+            if (roamCanvas) {
+                roamCanvas.addEventListener('click', openChat);
+            }
+        }
+
+        // Try immediately, then again after a delay
+        makeCanvasClickable();
+        setTimeout(makeCanvasClickable, 200);
+
         closeBtn.addEventListener('click', closeChat);
         overlay.addEventListener('click', closeChat);
 
-        // Close on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.style.display === 'flex') {
                 closeChat();
@@ -292,6 +288,7 @@
             } catch (error) {
                 console.error('Error loading model:', error);
                 chatMessages.innerHTML = '<div class="dragon-chat-init" style="color: #dc2626;">❌ Dragon couldn\'t wake up. Please refresh.</div>';
+                modelLoading = false;
             }
         }
 
@@ -340,11 +337,11 @@
 
         chatForm.addEventListener('submit', handleSubmit);
 
-        // Make chat openable via the dragon or any element with data-dragon-chat
+        // Expose globally
         window.openDragonChat = openChat;
         window.closeDragonChat = closeChat;
 
-        // Auto-open chat when elements with data-dragon-chat are clicked
+        // Auto-open for data-dragon-chat attribute
         document.addEventListener('click', (e) => {
             if (e.target.closest('[data-dragon-chat]')) {
                 openChat();
