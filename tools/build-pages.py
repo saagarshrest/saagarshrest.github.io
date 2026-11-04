@@ -65,7 +65,6 @@ TAIL = """{footer_block}
 
 {inline_js}
 <script src="/assets/js/pager.js"></script>
-<script src="/assets/js/nav-hero.js"></script>
 <script src="/assets/js/doc-toc.js"></script>
 {extra_tail}
 </body>
@@ -183,8 +182,7 @@ def error_page(code, sub, message, cta_label='Back to home', cta_href='/',
                sr=None, aria=None, links=None):
     """A dead-end page in the same pixel-art style as the 404."""
     sr = sr or f'{code}: {sub.title()}'
-    aria = aria or (f'Pixel-art text reading {code} {sub.title()}. In a loop, the site\'s '
-                    f'dragon mascot burns it to ash and a little builder puts it back together.')
+    aria = aria or f'Pixel-art text reading {code} {sub.title()}.'
     extra = ''.join(f'\n                <a href="{href}" class="hero-link">{label}</a>' for label, href in links or [])
     return f"""
     <section class="px-6 py-16 md:py-24">
@@ -316,7 +314,7 @@ PAGES['legal/terms.html'] = page(
         h2('Limitation of liability') +
         p('To the maximum extent permitted by law, I am not liable for any loss or damage arising from your use of this site or its content.') +
         h2('Intellectual property') +
-        p('The site’s name, logo, and visual identity are my property. The pixel-art dragon mascot is original work and may not be reused without credit.') +
+        p('The site’s name, logo, and visual identity are my property. Original artwork on the site may not be reused without credit.') +
         h2('Governing law') +
         p('These terms are governed by the laws of Nepal.') +
         h2('Changes') +
@@ -570,7 +568,7 @@ PAGES['pages/faq.html'] = page(
         qa('What do you charge?', 'I work mostly on an hourly basis at <strong>$25–35 per hour</strong>, or a <strong>fixed monthly price</strong> for ongoing work. Either way the rate is agreed before we start, so there are no surprises on the invoice. Tell me what you need and I will send a proposal.'),
         qa('Do you work with existing design teams?', 'Often. I slot into internal teams for audits, system definition, or hands-on interface work, and I am comfortable working from your research rather than insisting on my own process.'),
         qa('Are the tools on this site free?', 'Yes — every tool in <a href="/products/">Products</a> is free to use, in the browser, with no account and no data sent to a server. They are built with plain HTML, CSS and JavaScript so they keep working offline.'),
-        qa('Can I use the pixel art on this site?', 'The mascot and 404 artwork are original. You are welcome to use them in your own project with a credit line. If you want them without attribution for a commercial product, get in touch and we can sort something out.'),
+        qa('Can I use the pixel art on this site?', 'The pixel artwork, including the error pages, is original. You are welcome to use it in your own project with a credit line. If you want it without attribution for a commercial product, get in touch and we can sort something out.'),
         qa('Do you write the articles yourself?', 'Yes. Everything in <a href="/Articles/">Articles</a> is written by me, based on real project experience. Some pieces are also published on Medium.'),
         qa('Can I republish your work?', 'Quote and share with attribution and a link back. Do not republish whole articles or case studies as your own. Full details are in the <a href="/legal/terms.html">Terms of Use</a>.'),
         qa('What is the fastest way to reach you?', 'Email <a href="mailto:saagarshrest@gmail.com">saagarshrest@gmail.com</a> — it lands directly in my inbox and I answer it myself. WhatsApp works too if the message is short.'),

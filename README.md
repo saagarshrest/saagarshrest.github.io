@@ -17,10 +17,10 @@ No build step is required to publish — push to the default branch and the site
 ├── PP-period-tracker.html,
 │   TandC-Period-tracker.html  Period-tracker app policies (kept at the root on purpose)
 ├── pages/                  Contact, FAQ, archive, sitemap page, thank-you
-├── errors/                 403 / 500 / 503 / error / offline (pixel-art scene)
+├── errors/                 403 / 500 / 503 / error / offline (pixel-art text)
 ├── assets/
 │   ├── css/site.css        All shared styles
-│   ├── js/                 nav-hero, pager, error-scene, design, photos, image tools
+│   ├── js/                 pager, error-scene, design, photos, image tools
 │   ├── images/             Photography, case-study media, Designportfolio/
 │   ├── icons/              favicon.svg, favicon-192/512, apple-touch-icon
 │   ├── files/              Downloadable resume (PDF + its HTML source)

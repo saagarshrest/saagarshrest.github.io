@@ -80,7 +80,7 @@ No drop shadows. Separation comes from 1px hairlines and background changes.
 
 ## 7. Components
 
-**Navigation.** Sticky `.site-nav`, 76px high; switches to `.on-dark` over dark sections (`assets/js/nav-hero.js`).
+**Navigation.** Sticky `.site-nav`, 76px high; switches to `.on-dark` over dark sections (`assets/js/pager.js`).
 
 **Buttons and links.**
 - `.hero-btn` / `.cs-btn`: black pill, inverts on hover; white pill inside `.dark`.
