@@ -6,7 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://saagarshrest.com.np/work/Casestudy.html</loc>
+    <loc>https://saagarshrest.com.np/work/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -81,7 +81,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://saagarshrest.com.np/Articles/Article.html</loc>
+    <loc>https://saagarshrest.com.np/Articles/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
