@@ -123,6 +123,6 @@ No drop shadows. Separation comes from 1px hairlines and background changes.
 1. Copy the closest template (`work/Casedetailofficiti.html` for case studies) so the head, analytics, nav, footer and scripts match.
 2. Update title, description, canonical, OG image and JSON-LD.
 3. Add images per section 8.
-4. Link it from its listing page (e.g. `work/Casestudy.html`, newest first).
+4. Link it from its listing page (e.g. `work/`, newest first).
 5. Add it to `sitemap.xml` and the archive + sitemap lists in `tools/build-pages.py`, then run `python tools/build-pages.py`.
 6. Check 375px and 1440px: no horizontal scroll, no broken images, nav contrast over dark sections.

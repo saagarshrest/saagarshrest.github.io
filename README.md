@@ -12,7 +12,7 @@ No build step is required to publish — push to the default branch and the site
 ├── work/                   Case studies, Design, Design System, Clients, UX Audit
 ├── products/               Products index and each tool / app page
 ├── about/                  Resume, Photos
-├── Articles/               Article index (Article.html) and article pages
+├── Articles/               Article index (index.html) and article pages
 ├── legal/                  Privacy, terms, cookies, disclaimer, accessibility
 ├── PP-period-tracker.html,
 │   TandC-Period-tracker.html  Period-tracker app policies (kept at the root on purpose)
