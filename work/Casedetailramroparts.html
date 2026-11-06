@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FYVQB18KQB');
-</script>
+<script src="/assets/js/deferred-3p.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +50,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
     <link rel="stylesheet" href="/assets/css/site.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -148,7 +140,7 @@
         @media (max-width: 640px) { .cs-sec { padding: 3.5rem 1.2rem; } .cs-fact .n { font-size: 2.4rem; } }
             .cs-stage.wide img { max-width: none; width: 100%; filter: none; }
 </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"></noscript>
     <style>
         /* Ramroparts design system: tokens + components (scoped to .rp) */
         .rp { --font: 'Poppins', system-ui, sans-serif;
@@ -290,9 +282,6 @@
         .rp-toast-host { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 90; width: min(92vw, 420px); }
         @media (prefers-reduced-motion: reduce) { .rp-skel, .rp-btn[aria-busy="true"]::before { animation: none; } .rp *, .rp-toast-host * { transition: none !important; } }
     </style>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9024176667555201"
-     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/tailwind.css">
 </head>
 <body class="bg-white min-h-screen flex flex-col">
