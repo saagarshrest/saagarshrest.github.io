@@ -31,7 +31,6 @@ No build step is required to publish — push to the default branch and the site
 ├── robots.txt              Crawl rules + sitemap pointer
 ├── sitemap.xml             Search-engine URL index
 ├── feed.xml                RSS feed of the articles
-├── app-ads.txt           Authorized digital sellers (AdMob apps)
 ├── humans.txt              Site credits
 └── site.webmanifest        PWA manifest
 ```
