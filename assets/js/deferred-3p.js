@@ -13,7 +13,8 @@
   }
   function load() {
     if (done) return; done = true;
-    add('https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB');  }
+    add('https://www.googletagmanager.com/gtag/js?id=G-FYVQB18KQB');
+  }
   ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
     addEventListener(e, load, { once: true, passive: true });
   });
