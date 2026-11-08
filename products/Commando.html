@@ -585,7 +585,7 @@ function readInput(){pollPad();for(const k in held){prevHeld[k]=held[k];held[k]=
 /* ---------- STATE ---------- */
 const SAVEKEY='coin-commando.v1';
 // run = the game in progress (stage, last checkpoint, lives, score, coins) so CONTINUE picks up where the player left off
-function cleanRun(r){if(!r||typeof r!=='object')return null;const w=r.world|0,l=r.level|0;if(w<1||w>8||l<1||l>4)return null;
+function cleanRun(r){if(!r||typeof r!=='object')return null;const w=r.world|0,l=r.level|0;if(w<1||w>99999||l<1||l>4)return null;
  return {world:w,level:l,cpIdx:Math.max(-1,r.cpIdx|0),lives:clamp(r.lives|0,0,99),score:Math.max(0,r.score|0),coins:clamp(r.coins|0,0,99)};}
 function loadSave(){try{const s=JSON.parse(localStorage.getItem(SAVEKEY)||'{}');return {unlocked:clamp(s.unlocked|0,1,32),hi:s.hi|0,sound:s.sound!==false,run:cleanRun(s.run)};}catch(e){return {unlocked:1,hi:0,sound:true,run:null};}}
 function save(){try{localStorage.setItem(SAVEKEY,JSON.stringify({unlocked:G.unlocked,hi:G.hi,sound:AU.on,run:G.run}));}catch(e){}}
@@ -596,9 +596,32 @@ const G={state:'title',world:1,level:1,lives:3,score:0,coins:0,time:300,frame:0,
 setSound(sv.sound);
 let LV=null,TL=null,BG=null,cam={x:0},ents=[],shots=[],ebul=[],parts=[],pl=null,boss=null,shake=0,bumps=[],combo=0;
 
+/* ---------- ENDLESS WORLDS (permutations + combinations) ----------
+ Worlds 1-8 are the hand-tuned campaign. From world 9 on, every block of 8 worlds ("cycle")
+ plays the 8 themes in a different order: cycle c uses the c-th permutation of [0..7]
+ (Lehmer code, 8! = 40320 orders). Each world's enemy line-up is a k-combination of the
+ 7 enemy types, chosen by the combinatorial number system; k grows with depth, and
+ difficulty ("power") rises slowly and is capped so levels stay fair. */
+const NTH=8,FOES=['grunt','shellbot','bat','soldier','turret','spiker','hopper'],FOEW={grunt:3,shellbot:2,bat:2,soldier:2,turret:2,spiker:2,hopper:2};
+function fact(n){let r=1;for(let i=2;i<=n;i++)r*=i;return r;}
+function choose(n,k){if(k<0||k>n)return 0;let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r);}
+function nthPerm(n,idx){const pool=[...Array(n).keys()],out=[];idx%=fact(n);for(let i=n;i>0;i--){const f=fact(i-1),q=Math.floor(idx/f);idx%=f;out.push(pool.splice(q,1)[0]);}return out;}
+function nthComb(n,k,idx){const out=[];idx%=choose(n,k);let a=0;for(let i=k;i>0;i--){while(choose(n-a-1,i-1)<=idx){idx-=choose(n-a-1,i-1);a++;}out.push(a);a++;}return out;}
+function mix(a){a=(a^61)^(a>>>16);a=Math.imul(a,0x27d4eb2d);return (a^(a>>>15))>>>0;}
+const VCACHE={};
+function variant(w){if(VCACHE[w])return VCACHE[w];let v;
+ if(w<=NTH)v={ti:w-1,pw:w,pool:null,endless:false,cyc:0};
+ else{const c=Math.floor((w-1)/NTH),pos=(w-1)%NTH;
+  let perm=nthPerm(NTH,mix(c*7+3)),prev=nthPerm(NTH,c>1?mix((c-1)*7+3):0);
+  if(perm[0]===prev[NTH-1])perm.push(perm.shift()); // never repeat a theme across the cycle seam
+  const k=Math.min(FOES.length,3+Math.floor((w-NTH-1)/4)); // 3 foe types at world 9, all 7 by world 25
+  const pick=nthComb(FOES.length,k,mix(w*131+17)).map(i=>FOES[i]);
+  if(!pick.includes('grunt'))pick.push('grunt');
+  v={ti:perm[pos],pw:Math.min(12,NTH+(w-NTH)/6),pool:pick.map(t=>[t,FOEW[t]]),endless:true,cyc:c};}
+ return VCACHE[w]=v;}
 /* ---------- LEVEL GENERATION ---------- */
 const SOLID=new Set([1,2,3,4,5,6,7,8,11,13]);
-function pickEnemy(R,w){const pools=[
+function pickEnemy(R,w){const V=variant(w);const pools=V.pool||[
  [['grunt',6],['shellbot',2],['bat',1]],[['grunt',4],['shellbot',2],['soldier',2],['turret',1],['bat',1]],[['grunt',3],['shellbot',2],['bat',3],['spiker',2],['soldier',1]],
  [['grunt',3],['hopper',2],['soldier',2],['turret',2],['shellbot',2]],[['grunt',2],['hopper',3],['bat',2],['spiker',2],['soldier',2]],[['soldier',3],['turret',2],['spiker',2],['hopper',2],['bat',2]],
  [['bat',3],['hopper',2],['soldier',2],['turret',2],['spiker',1],['grunt',2]],[['soldier',4],['turret',3],['spiker',2],['shellbot',2],['bat',2]]][w-1];
@@ -606,12 +629,12 @@ function pickEnemy(R,w){const pools=[
 function miniFor(w,l){if(l===4)return null;const Rm=rng(w*313+l*71+999);for(let i=0;i<6;i++)Rm();const r1=Rm(),r2=Rm();const has=l===(w%2?3:2)||(w>=5&&r1<0.3);return has?(r2<0.5?'heli':'mech'):null;}
 const MINIS=[];for(let w=1;w<=8;w++)for(let l=1;l<=4;l++)MINIS.push(miniFor(w,l));
 function genLevel(w,l){
- const th=THEMES[w-1],R=rng(w*7919+l*104729+13),isBoss=l===4;for(let i=0;i<4;i++)R();
- const len=isBoss?190+w*10:260+w*16+l*14;
+ const V=variant(w),pw=V.pw,th=THEMES[V.ti],R=rng(w*7919+l*104729+13),isBoss=l===4;for(let i=0;i<4;i++)R();
+ const len=isBoss?190+Math.round(pw*10):260+Math.round(pw*16)+l*14;
  const map=[];for(let i=0;i<len;i++)map.push(new Uint8Array(ROWS));
  const S=(x,y,v)=>{if(x>=0&&x<len&&y>=0&&y<ROWS)map[x][y]=v;};
  const spawns=[],decor=[],lifts=[],pods=[],multi={};
- const diff=(w-1)*4+(l-1),liquid=th.hazard==='lava'||th.hazard==='water',sky=w===7;
+ const diff=Math.min(40,(w-1)*4+(l-1)),liquid=th.hazard==='lava'||th.hazard==='water',sky=V.ti===6;
  let x=0,gh=11,lastW=0,lastPod=10;
  const fill=(a,b,h)=>{for(let i=a;i<b;i++)for(let y=h;y<ROWS;y++)S(i,y,1);};
  const pit=(a,b)=>{if(liquid)for(let i=a;i<b;i++){S(i,12,10);S(i,13,14);}if(th.hazard==='lava'&&b-a>=3&&R()<0.6)spawns.push({x:((a+b)/2|0)*T+4,gy:13*T,type:'ember'});};
@@ -654,7 +677,7 @@ function genLevel(w,l){
    case 'wave':{const n=10+((R()*3)|0);fill(x,x+n,gh);const c=2+Math.min(3,(diff/8)|0);for(let i=0;i<c;i++)foe(x+3+i*2,gh);for(let i=0;i<n;i+=3)deco(x+i,gh);x+=n;break;}
   }
  }
- const L={w,l,ti:w-1,th,len,map,spawns,decor,lifts,pods,multi,isBoss,cps,miniX,miniType,lock:null,miniOn:false,diff,spawnIdx:0,podIdx:0,flagX:0,arenaX:0,start:{x:2*T+3,gh:11}};
+ const L={w:pw,realW:w,endless:V.endless,l,ti:V.ti,th,len,map,spawns,decor,lifts,pods,multi,isBoss,cps,miniX,miniType,lock:null,miniOn:false,diff,spawnIdx:0,podIdx:0,flagX:0,arenaX:0,start:{x:2*T+3,gh:11}};
  gh=11;fill(x,len,gh);
  if(!isBoss){for(let i=0;i<6;i++)for(let j=0;j<=i;j++)S(x+2+i,gh-1-j,6);for(let j=0;j<6;j++)S(x+8,gh-1-j,6);
   L.flagX=x+12;S(L.flagX,gh-1,6);decor.push({x:(x+16)*T,gy:gh*T,k:'outpost'});}
@@ -893,7 +916,7 @@ function updateClear(){const p=pl;G.timer++;
  updateParts();}
 function levelDone(){const idx=(G.world-1)*4+G.level;G.unlocked=Math.max(G.unlocked,Math.min(32,idx+1));save();
  G.level++;if(G.level>4){G.level=1;G.world++;}
- if(G.world>8){dropRun();G.state='ending';G.timer=0;playTune('title');return;}
+ if(G.world===NTH+1&&G.level===1){keepRun();G.state='ending';G.timer=0;playTune('title');return;}
  G.cpIdx=-1;keepRun();toIntro();}
 
 /* ---------- level start ---------- */
@@ -1105,14 +1128,14 @@ function drawSelect(){ctx.drawImage(buildBG(G.cur>>2).sky,0,0);ctx.globalAlpha=0
   P(ctx,K,x,y,38,15);P(ctx,lock?'#3a3446':(l===3?'#9e2835':THEMES[w].grass[1]),x+1,y+1,36,13);if(sel){P(ctx,'#fee761',x-1,y-1,40,1);P(ctx,'#fee761',x-1,y+15,40,1);P(ctx,'#fee761',x-1,y,1,15);P(ctx,'#fee761',x+38,y,1,15);}
   text(ctx,lock?'--':(w+1)+'-'+(l+1),x+(lock?15:13),y+5,lock?'#5a6988':'#ffffff');if(l===3&&!lock)P(ctx,'#fee761',x+31,y+3,3,3);else if(!lock&&MINIS[i])P(ctx,'#ff8a5c',x+32,y+4,2,2);}
  text(ctx,'A PLAY   B BACK',8,H-10,'#c0cbdc');if(G.cur<G.unlocked&&MINIS[G.cur])text(ctx,MINIS[G.cur]==='heli'?'MINI BOSS: GUNSHIP':'MINI BOSS: MECH',W-80,H-10,'#ff8a5c');}
-function drawIntro(){P(ctx,K,0,0,W,H);const th=THEMES[G.world-1];ctext(ctx,'WORLD '+G.world+'-'+G.level,72,'#ffffff',2);ctext(ctx,th.name,92,'#fee761');
- if(G.level===4)ctext(ctx,'BOSS STAGE',104,'#ff6a6a');
+function drawIntro(){P(ctx,K,0,0,W,H);const th=THEMES[variant(G.world).ti];ctext(ctx,'WORLD '+G.world+'-'+G.level,72,'#ffffff',2);ctext(ctx,th.name,92,'#fee761');
+ if(G.level===4)ctext(ctx,'BOSS STAGE',104,'#ff6a6a');if(G.world>NTH)ctext(ctx,'ENDLESS '+(G.world-NTH),116,'#63c74d');
  ctx.drawImage(SPR.hero.idle.r,104,124);text(ctx,'x '+G.lives,126,130,'#ffffff');
  const tip=['STOMP FOES OR SHOOT THEM','HIT ! CRATES FOR WEAPONS','SHOOT FLYING PODS FOR MEDALS','ARMED FOES MAY DROP THEIR GUNS','UP + B AIMS UP, DOWN AIMS LOW IN AIR','AIM UP AND DIAGONAL AT GUNSHIPS','SPIKED FOES CANNOT BE STOMPED','LOSING A HIT DROPS YOUR WEAPON'][(G.world*4+G.level)%8];
  ctext(ctx,tip,170,'#8b9bb4');text(ctx,'SCORE '+pad6(G.score),8,8,'#ffffff');}
 function drawGameOver(){P(ctx,K,0,0,W,H);ctext(ctx,'GAME OVER',80,'#e43b44',3);const items=['CONTINUE','QUIT'];items.forEach((s,i)=>{const y=124+i*14;const x=Math.round((W-tw(s))/2);if(G.menu===i)text(ctx,'>',x-8,y,'#fee761');text(ctx,s,x,y,G.menu===i?'#ffffff':'#5a6988');});ctext(ctx,'SCORE '+pad6(G.score),170,'#8b9bb4');}
 function drawEnding(){drawBG(G.timer*0.5,buildBG(6),THEMES[6]);ctx.globalAlpha=0.6;P(ctx,K,24,40,208,140);ctx.globalAlpha=1;
- ctext(ctx,'MISSION COMPLETE',52,'#fee761',2);const lines=['ALL 8 WORLDS ARE FREE','THE IRON FORTRESS HAS FALLEN','THANK YOU FOR PLAYING','','FINAL SCORE '+pad6(G.score),'COINS BANKED x'+G.coins,'','PRESS START'];
+ ctext(ctx,'MISSION COMPLETE',52,'#fee761',2);const lines=['ALL 8 WORLDS ARE FREE','THE IRON FORTRESS HAS FALLEN','ENDLESS MODE UNLOCKED','','SCORE '+pad6(G.score),'COINS BANKED x'+G.coins,'','PRESS START TO GO ON'];
  lines.forEach((s,i)=>ctext(ctx,s,80+i*11,i===7?((G.frame>>4)%2?'#ffffff':'#e43b44'):'#ffffff'));ctx.drawImage(SPR.hero.run[(G.frame>>3)%4].r,(G.timer*0.8)%(W+32)-16,190);}
 
 /* ---------- state updates ---------- */
@@ -1132,7 +1155,7 @@ function update(){readInput();G.frame++;
      G.run={world:G.world,level:1,cpIdx:-1,lives:3,score:0,coins:0};save();}else{keepRun();toIntro();}}break;}
   case 'clear':updateClear();break;
   case 'gameover':{menuNav(2);if(pressed.A||pressed.START){if(G.menu===0){G.lives=3;G.score=0;G.coins=0;G.level=1;G.cpIdx=-1;pl=null;toIntro();}else{G.run=null;toTitle();}}break;}
-  case 'ending':{G.timer++;if(G.timer>120&&(pressed.START||pressed.A))toTitle();break;}}}
+  case 'ending':{G.timer++;if(G.timer>120&&(pressed.START||pressed.A)){G.cpIdx=-1;keepRun();toIntro();}break;}}}
 function newGame(w,l){G.world=w;G.level=l;G.lives=3;G.score=0;G.coins=0;G.cpIdx=-1;pl=null;toIntro();}
 function continueRun(){const r=G.run;G.world=r.world;G.level=r.level;G.lives=r.lives;G.score=r.score;G.coins=r.coins;G.cpIdx=r.cpIdx;pl=null;toIntro();}
 function titleItems(){const snd='SOUND: '+(AU.on?'ON':'OFF');return G.run?['CONTINUE '+G.run.world+'-'+G.run.level,'NEW GAME','STAGE SELECT',snd]:['START GAME','STAGE SELECT',snd];}

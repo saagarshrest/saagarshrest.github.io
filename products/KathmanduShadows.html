@@ -648,7 +648,7 @@ function readInput(){pollPad();for(const k in held){prevHeld[k]=held[k];held[k]=
 
 /* ---------- SAVE & STATE ---------- */
 const SAVEKEY='kathmandu-shadows.v1';
-function freshSave(){return {unlocked:1,ranks:new Array(28).fill(0),shards:new Array(28).fill(0),seals:new Array(7).fill(0),coins:0,maxhp:3,sound:true,shake:true,started:false,vajra:false};}
+function freshSave(){return {unlocked:1,ranks:new Array(28).fill(0),shards:new Array(28).fill(0),seals:new Array(7).fill(0),endless:0,coins:0,maxhp:3,sound:true,shake:true,started:false,vajra:false};}
 function loadSave(){try{const s=JSON.parse(localStorage.getItem(SAVEKEY)||'null');if(s&&Array.isArray(s.ranks)&&s.ranks.length===28)return Object.assign(freshSave(),s);}catch(e){}return freshSave();}
 let SV=loadSave();
 function save(){try{localStorage.setItem(SAVEKEY,JSON.stringify(SV));}catch(e){}}
@@ -657,24 +657,47 @@ setSound(SV.sound!==false);
 let LV=null,TL=null,BG=null,cam={x:0},ents=[],shots=[],ebul=[],parts=[],pl=null,boss=null,shake=0,bumps=[],hist=[];
 const idxOf=(w,l)=>(w-1)*4+(l-1);
 
+/* ---------- ENDLESS WORLDS (permutations + combinations) ----------
+ Worlds 1-7 are the story campaign. After the ending, worlds 8+ never stop: each block of
+ 7 worlds plays the 7 themes in a new order (the c-th permutation of [0..6] by Lehmer code,
+ 7! = 5040 orders), bringing that theme's guardian, powers and set-pieces. Each world's
+ shadow line-up is a k-combination of the 6 enemy types (combinatorial number system);
+ k grows with depth. Level length and enemy toughness rise slowly and are capped. */
+const NTH=7,FOES=['chhaya','crow','sentinel','imp','wisp','echo'],FOEW={chhaya:4,crow:3,sentinel:2,imp:2,wisp:2,echo:2};
+function fact(n){let r=1;for(let i=2;i<=n;i++)r*=i;return r;}
+function choose(n,k){if(k<0||k>n)return 0;let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r);}
+function nthPerm(n,idx){const pool=[...Array(n).keys()],out=[];idx%=fact(n);for(let i=n;i>0;i--){const f=fact(i-1),q=Math.floor(idx/f);idx%=f;out.push(pool.splice(q,1)[0]);}return out;}
+function nthComb(n,k,idx){const out=[];idx%=choose(n,k);let a=0;for(let i=k;i>0;i--){while(choose(n-a-1,i-1)<=idx){idx-=choose(n-a-1,i-1);a++;}out.push(a);a++;}return out;}
+function mix(a){a=(a^61)^(a>>>16);a=Math.imul(a,0x27d4eb2d);return (a^(a>>>15))>>>0;}
+const VCACHE={};
+function variant(w){if(VCACHE[w])return VCACHE[w];let v;
+ if(w<=NTH)v={ti:w-1,pw:w,pool:null,endless:false,tier:0};
+ else{const c=Math.floor((w-1)/NTH),pos=(w-1)%NTH;
+  let perm=nthPerm(NTH,mix(c*7+5)),prev=nthPerm(NTH,c>1?mix((c-1)*7+5):6);
+  if(perm[0]===prev[NTH-1])perm.push(perm.shift());
+  const k=Math.min(FOES.length,2+Math.floor((w-NTH-1)/4)); // 2 shadow types at world 8, all 6 by world 24
+  const pick=nthComb(FOES.length,k,mix(w*131+29)).map(i=>FOES[i]);
+  if(!pick.includes('chhaya'))pick.push('chhaya');
+  v={ti:perm[pos],pw:Math.min(11,NTH+(w-NTH)/6),pool:pick.map(t=>[t,FOEW[t]]),endless:true,tier:Math.min(2,Math.floor((w-NTH-1)/14)+1)};}
+ return VCACHE[w]=v;}
 /* ---------- LEVEL GENERATION ---------- */
 const SOLID=new Set([1,2,3,4,5,6,7,8,11,13,15]);
 const POOLS=[['ghanta','lotus','agni'],['dash','lotus','agni'],['mask','lotus','agni','dash'],['naga','lotus','agni'],['wind','lotus','agni'],['ghanta','agni','lotus','dash'],['ghanta','dash','lotus','agni','mask','wind']];
 function pickEnemy(R,list){let t=0;for(const e of list)t+=e[1];let r=R()*t;for(const e of list){r-=e[1];if(r<=0)return e[0];}return list[0][0];}
 function genLevel(w,l){
- const ti=w-1,th=THEMES[ti],R=rng(w*7919+l*104729+31);for(let i=0;i<4;i++)R();
- const isBoss=l===4,len=isBoss?120+w*8:220+w*12+l*12;
+ const V=variant(w),ti=V.ti,tw=ti+1,pw=V.pw,th=THEMES[ti],R=rng(w*7919+l*104729+31);for(let i=0;i<4;i++)R();
+ const isBoss=l===4,len=isBoss?120+Math.round(pw*8):220+Math.round(pw*12)+l*12;
  const map=[];for(let i=0;i<len;i++)map.push(new Uint8Array(ROWS));
  const S=(x,y,v)=>{if(x>=0&&x<len&&y>=0&&y<ROWS)map[x][y]=v;};
  const spawns=[],decor=[],lifts=[],shrines={},cps=[],crack={},multi={};
- const diff=(w-1)*4+(l-1),water=th.hazard==='water';
+ const diff=Math.min(36,(w-1)*4+(l-1)),water=th.hazard==='water';
  const lp=th.power==='mix'?['ghanta','dash','wind','mask'][(l+w)%4]:th.power;
  const secret=th.secret==='mix'?{ghanta:'steps',dash:'room',wind:'perch',mask:'room'}[lp]:th.secret;
  const pool=POOLS[ti];
  let x=0,gh=11,lastShrine=0,coinsTotal=0,horseDone=false;
  const fill=(a,b,h)=>{for(let i=a;i<b;i++)for(let y=h;y<ROWS;y++)S(i,y,1);};
  const pit=(a,b)=>{if(water){for(let i=a;i<b;i++){S(i,13,1);S(i,gh,10);for(let y=gh+1;y<13;y++)S(i,y,14);}if(b-a>=4)spawns.push({x:((a+b)/2|0)*T,gy:(gh+3)*T,type:'wisp'});coinRow(a+1,b-a-2,12);}};
- const foe=(tx,h,type)=>spawns.push({x:tx*T+2,gy:h*T,type:type||pickEnemy(R,th.enemies)});
+ const foe=(tx,h,type)=>spawns.push({x:tx*T+2,gy:h*T,type:type||pickEnemy(R,V.pool||th.enemies)});
  const deco=(tx,h)=>{if(R()<0.5){const k=th.decor[(R()*th.decor.length)|0];decor.push({x:tx*T+((R()*8)|0),gy:h*T,k});}};
  const coinRow=(a,n,y)=>{for(let i=0;i<n;i++)if(y>1&&map[a+i]&&!map[a+i][y]){S(a+i,y,20);coinsTotal++;}};
  const shrine=(tx,ty,pw)=>{S(tx,ty,4);shrines[tx+','+ty]=pw;};
@@ -694,8 +717,8 @@ function genLevel(w,l){
    else if(secret==='pool'){const n=12;for(let i=x;i<x+n;i++){S(i,13,1);for(let y=gh;y<13;y++)S(i,y,y===gh?10:14);}S(x+6,12,22);coinRow(x+3,2,12);coinRow(x+8,2,12);spawns.push({x:(x+4)*T,gy:(gh+3)*T,type:'wisp'});spawns.push({x:(x+9)*T,gy:(gh+2)*T,type:'wisp'});x+=n;fill(x,x+3,gh);x+=3;}
    else{fill(x,x+10,gh);for(let i=x+2;i<x+4;i++)for(let y=2;y<gh;y++)S(i,y,23);for(let i=x+4;i<x+8;i++)S(i,gh-8,6);S(x+6,gh-9,22);coinRow(x+4,1,gh-9);coinRow(x+7,1,gh-9);x+=10;}
    continue;}
-  const sp=[['flat',3],['gap',water?2.5:2],['hill',2],['stairs',1],['pillar',1.3],['blocks',2.6],['platforms',w===5?2.5:1.2],['lift',diff>=4?1:0],['spikes',diff>=2?1:0],['wave',diff>=2?1:0],
-   ['crack',w>=2?1.2:0],['drums',w===3?3:w===7?1:0],['updraft',w===5?2.6:w===7?1:0],['crumble',w===6?2.6:w===7?1:0]];
+  const sp=[['flat',3],['gap',water?2.5:2],['hill',2],['stairs',1],['pillar',1.3],['blocks',2.6],['platforms',tw===5?2.5:1.2],['lift',diff>=4?1:0],['spikes',diff>=2?1:0],['wave',diff>=2?1:0],
+   ['crack',tw>=2?1.2:0],['drums',tw===3?3:tw===7?1:0],['updraft',tw===5?2.6:tw===7?1:0],['crumble',tw===6?2.6:tw===7?1:0]];
   if(x-lastShrine>40)sp.forEach(s=>{if(s[0]==='blocks')s[1]+=6;});
   let tot=0;for(const s of sp)tot+=s[1];let r=R()*tot,sg='flat';for(const s of sp){r-=s[1];if(r<=0){sg=s[0];break;}}
   if(x+16>endX)sg='flat';
@@ -728,7 +751,7 @@ function genLevel(w,l){
    case 'crumble':{const n=6+((R()*3)|0);for(let i=0;i<n;i++)S(x+i,gh-1,19);coinRow(x+1,n-2,gh-4);if(R()<0.4)spawns.push({x:(x+n/2|0)*T,gy:(gh-5)*T,type:'crow'});x+=n;fill(x,x+3,gh);x+=3;break;}
   }
  }
- const L={w,l,ti,th,len,map,spawns,decor,lifts,shrines,cps,crack,multi,isBoss,diff,lp,spawnIdx:0,gateX:0,arenaX:0,coinsTotal,crumble:{},cpIdx:-1};
+ const L={w:tw,realW:w,endless:V.endless,tier:V.tier,l,ti,th,len,map,spawns,decor,lifts,shrines,cps,crack,multi,isBoss,diff,lp,spawnIdx:0,gateX:0,arenaX:0,coinsTotal,crumble:{},cpIdx:-1};
  gh=11;fill(x,len,gh);
  if(!isBoss){if(th.landmark)decor.push({x:(x+13)*T,gy:gh*T,k:th.decor[0]==='bigtemple'?'patis':th.landmark});for(let i=0;i<4;i++)for(let j=0;j<=i;j++)S(x+2+i,gh-1-j,6);for(let j=0;j<4;j++)S(x+6,gh-1-j,6);L.gateX=x+12;decor.push({x:(x+9)*T,gy:gh*T,k:'lamp'});}
  else{L.arenaX=len-16;cps.push({x:len-19,gh:11,lit:false});for(let y=0;y<gh;y++)S(len-1,y,6);for(let y=0;y<gh-3;y++)S(len-16,y,0);}
@@ -770,7 +793,7 @@ function addCoin(x,y){SV.coins++;G.lcoins++;SFX.coin();addPart({k:'spark',x:x+8,
 
 /* ---------- ENEMIES ---------- */
 const EDEF={chhaya:{w:12,h:13,hp:1},crow:{w:12,h:9,hp:1},sentinel:{w:18,h:28,hp:3},imp:{w:12,h:13,hp:2},wisp:{w:12,h:11,hp:1},echo:{w:10,h:20,hp:2}};
-function spawnEnemy(s){const d=EDEF[s.type];if(!d)return null;const e={kind:'enemy',type:s.type,x:s.x,y:s.gy-d.h,w:d.w,h:d.h,vx:0,vy:0,hp:d.hp+(LV.w>=6&&s.type!=='wisp'?1:0),face:-1,t:(Math.random()*60)|0,st:'walk',flash:0,onGround:false};
+function spawnEnemy(s){const d=EDEF[s.type];if(!d)return null;const e={kind:'enemy',type:s.type,x:s.x,y:s.gy-d.h,w:d.w,h:d.h,vx:0,vy:0,hp:d.hp+(LV.w>=6&&s.type!=='wisp'?1:0)+(LV.tier||0),face:-1,t:(Math.random()*60)|0,st:'walk',flash:0,onGround:false};
  if(s.type==='chhaya'){e.vx=-0.45;e.hidden=LV.w>=2&&(Math.random()<(LV.w===6?0.8:0.4));e.revealed=0;}
  if(s.type==='crow'){e.st='perch';e.y=s.gy-d.h;}
  if(s.type==='sentinel'){e.x=s.x-4;}
@@ -1087,7 +1110,7 @@ function startLevel(){LV=genLevel(G.world,G.level);TL=buildTiles(LV.ti);BG=build
  if(talk&&!SV[key]){SV[key]=1;save();openDialog(talk,null);}}
 function startExit(){if(G.state!=='play')return;G.state='exit';G.timer=0;stopTune();SFX.checkpoint();}
 function rankFor(){const par=LV.len*0.55,secs=G.ltime/60;let s=0;if(G.deaths===0)s+=2;else if(G.deaths<=2)s+=1;if(G.shard)s+=1;if(LV.coinsTotal&&G.lcoins>=LV.coinsTotal*0.6)s+=1;if(secs<=par)s+=1;return s>=4?3:s>=2?2:1;}
-function finishLevel(){const i=idxOf(G.world,G.level);const rank=rankFor();SV.ranks[i]=Math.max(SV.ranks[i]||0,rank);if(G.shard)SV.shards[i]=1;SV.unlocked=Math.max(SV.unlocked,Math.min(28,i+2));save();
+function finishLevel(){if(G.world>NTH){const nx=G.level===4?(G.world+1)*4+1:G.world*4+G.level+1;SV.endless=Math.max(SV.endless||0,nx);save();G.result={time:G.ltime,coins:G.lcoins,total:LV.coinsTotal,shard:G.shard,deaths:G.deaths,rank:rankFor(),name:LV.th.levels[G.level-1],boss:LV.isBoss};G.state='result';G.menu=0;playTune('clear');return;}const i=idxOf(G.world,G.level);const rank=rankFor();SV.ranks[i]=Math.max(SV.ranks[i]||0,rank);if(G.shard)SV.shards[i]=1;SV.unlocked=Math.max(SV.unlocked,Math.min(28,i+2));save();
  G.result={time:G.ltime,coins:G.lcoins,total:LV.coinsTotal,shard:G.shard,deaths:G.deaths,rank,name:LV.th.levels[G.level-1],boss:LV.isBoss};G.state='result';G.menu=0;playTune('clear');}
 function finishGame(){SV.seals[6]=1;const i=idxOf(7,4);SV.ranks[i]=Math.max(SV.ranks[i]||0,rankFor());if(G.shard)SV.shards[i]=1;save();
  openDialog([['aarya','YOU ONLY TOOK NAMES. THE VALLEY REMEMBERS ITSELF.'],['keeper','ALL SEVEN SEALS SHINE. WELCOME HOME, GUARDIAN.']],()=>{G.state='ending';G.timer=0;playTune('title');});}
@@ -1153,10 +1176,11 @@ function update(){readInput();G.frame++;
  switch(G.state){
   case 'title':{if(!AU.tune&&AU.ctx&&AU.want!=='title')playTune('title');
    if(G.about){if(pressed.A||pressed.B||pressed.START){G.about=false;SFX.sel();}break;}
-   if(G.opt){menuNav(3);if(pressed.B){G.opt=false;SFX.sel();}else if(pressed.A||pressed.START){SFX.ok();if(G.menu===0){setSound(!AU.on);SV.sound=AU.on;save();}else if(G.menu===1){SV.shake=!SV.shake;save();}else{G.opt=false;G.menu=2;}}break;}
-   const items=SV.started?4:3;menuNav(items);
-   if(pressed.START||pressed.A){SFX.ok();const m=SV.started?G.menu:G.menu+1;
-    if(m===0){toMap();}
+   if(G.opt){menuNav(3);if(pressed.B){G.opt=false;SFX.sel();}else if(pressed.A||pressed.START){SFX.ok();if(G.menu===0){setSound(!AU.on);SV.sound=AU.on;save();}else if(G.menu===1){SV.shake=!SV.shake;save();}else{G.opt=false;G.menu=titleIds().indexOf('opt');}}break;}
+   const TL=titleIds();menuNav(TL.length);
+   if(pressed.START||pressed.A){SFX.ok();const id=TL[G.menu];const m={cont:0,newj:1,opt:2,about:3,endless:9}[id];
+    if(m===9){const e=Math.max((NTH+1)*4+1,SV.endless||0);G.world=Math.floor((e-1)/4);G.level=(e-1)%4+1;toIntro();}
+    else if(m===0){toMap();}
     else if(m===1){if(SV.started){const snd=SV.sound,sh=SV.shake;SV=freshSave();SV.sound=snd;SV.shake=sh;}SV.started=true;save();G.world=1;G.level=1;G.cur=0;toIntro();}
     else if(m===2){G.opt=true;G.menu=0;}
     else{G.about=true;}}
@@ -1172,8 +1196,8 @@ function update(){readInput();G.frame++;
   case 'pause':{menuNav(4);if(pressed.START&&G.menu===0){resumeGame();break;}if(pressed.A||pressed.START){if(G.menu===0)resumeGame();else if(G.menu===1){setSound(!AU.on);SV.sound=AU.on;save();}else if(G.menu===2){resumeGame();G.deaths++;respawn();}else{save();toMap();}}break;}
   case 'dying':{const p=pl;G.timer--;if(G.timer<100){p.vy+=0.25;p.y+=p.vy;}updateParts();if(G.timer<=0)respawn();break;}
   case 'exit':{G.timer++;const p=pl;if(p.riding&&G.timer===1)dismount(false);p.vx=1.2;p.vy=Math.min(p.vy+0.48,6);moveBody(p);p.face=1;p.anim+=0.7;if(G.timer===40)p.hidden=true;updateParts();if(G.timer>90)finishLevel();break;}
-  case 'result':{if(G.timer<1e6)G.timer++;if(pressed.A||pressed.START){SFX.ok();if(G.result.boss&&G.world===7){G.state='ending';G.timer=0;}else{G.cur=Math.min(27,idxOf(G.world,G.level)+1);toMap();}}break;}
-  case 'ending':{G.timer++;if(G.timer>150&&(pressed.START||pressed.A))toTitle();break;}}}
+  case 'result':{if(G.timer<1e6)G.timer++;if(pressed.A||pressed.START){SFX.ok();if(G.result.boss&&G.world===NTH){G.state='ending';G.timer=0;}else if(G.world>NTH){G.level++;if(G.level>4){G.level=1;G.world++;}toIntro();}else{G.cur=Math.min(27,idxOf(G.world,G.level)+1);toMap();}}break;}
+  case 'ending':{G.timer++;if(G.timer>150&&(pressed.START||pressed.A)){SV.endless=Math.max(SV.endless||0,(NTH+1)*4+1);save();G.world=NTH+1;G.level=1;toIntro();}break;}}}
 
 /* ---------- DRAW ---------- */
 function draw(){ctx.save();const sx=shake>0&&SV.shake?((Math.random()*4)|0)-2:0,sy=shake>0&&SV.shake?((Math.random()*4)|0)-2:0;ctx.translate(sx,sy);
@@ -1415,9 +1439,11 @@ function drawTitle(){const bg=buildBG(0),TL0=buildTiles(0);titleCam+=0.35;drawBG
  ctx.drawImage(SPR.chhaya.a.l,200,178);
  if(G.about){panel(16,96,W-32,104);const ls=wrap('KATHMANDU SHADOWS IS A FAN-MADE PLATFORMER INSPIRED BY NEWAR ART, CRAFT AND THE ARCHITECTURE OF THE KATHMANDU VALLEY. KAALASUR, RAKTA LAKHE, THE GUARDIANS AND THE SEVEN SEALS ARE FICTIONAL. LAKHE DANCES AND HITI WATER SPOUTS ARE REAL TRADITIONS, SHOWN HERE WITH RESPECT.',52);
   ls.forEach((l,i)=>text(ctx,l,24,106+i*8,IVORY));ctext(ctx,'PRESS A',188,GOLDH);return;}
- const items=G.opt?['SOUND: '+(AU.on?'ON':'OFF'),'SCREEN SHAKE: '+(SV.shake?'ON':'OFF'),'BACK']:(SV.started?['CONTINUE','NEW JOURNEY','OPTIONS','ABOUT']:['NEW JOURNEY','OPTIONS','ABOUT']);
+ const items=G.opt?['SOUND: '+(AU.on?'ON':'OFF'),'SCREEN SHAKE: '+(SV.shake?'ON':'OFF'),'BACK']:titleIds().map(id=>({cont:'CONTINUE',endless:'ENDLESS '+endlessLabel(),newj:'NEW JOURNEY',opt:'OPTIONS',about:'ABOUT'})[id]);
  items.forEach((s,i)=>{const y=104+i*13,x=Math.round((W-tw(s))/2);if(G.menu===i){P(ctx,K,x-12,y-3,tw(s)+24,11);text(ctx,'>',x-8,y,GOLDH,1,null);}text(ctx,s,x,y,G.menu===i?WHITE:'#5a2a24',1,G.menu===i?K:null);});
- if((G.frame>>5)%2)ctext(ctx,'PRESS START',164,CRIM);}
+ if((G.frame>>5)%2)ctext(ctx,'PRESS START',G.opt?164:Math.max(164,104+items.length*13+4),CRIM);}
+function titleIds(){return SV.started?(SV.seals[6]?['cont','endless','newj','opt','about']:['cont','newj','opt','about']):['newj','opt','about'];}
+function endlessLabel(){const e=Math.max((NTH+1)*4+1,SV.endless||0);return Math.floor((e-1)/4)+'-'+((e-1)%4+1);}
 function drawMap(){P(ctx,'#1d1a3c',0,0,W,H);for(let y=0;y<H;y+=8)for(let x=((y/8)&1)*4;x<W;x+=8)P(ctx,'#262250',x,y,1,1);
  ctext(ctx,'WORLD MAP',4,GOLDH,2);
  for(let i=0;i<7;i++){const x=W/2-24+i*8;disc(ctx,x,20,3,K);disc(ctx,x,20,2,SV.seals[i]?GOLDH:'#3a3446');}
@@ -1432,9 +1458,9 @@ function drawMap(){P(ctx,'#1d1a3c',0,0,W,H);for(let y=0;y<H;y+=8)for(let x=((y/8
  ctx.drawImage(SPR.hudCoin,6,H-11);text(ctx,'x'+SV.coins,16,H-10,WHITE);for(let i=0;i<SV.maxhp;i++)ctx.drawImage(SPR.heart,52+i*9,H-12);
  const shop=SV.maxhp<7?'SELECT: +1 HEART (120)':'HEARTS FULL';text(ctx,shop,W-tw(shop)-6,H-10,G.shopT>0?GOLDH:G.shopT<0?CRIM:'#8a7a9a');
  const sh=SV.shards.filter(Boolean).length;text(ctx,'SHARDS '+sh+'/28',W-58,H-20,TEALH);}
-function drawIntro(){P(ctx,'#140f1e',0,0,W,H);const th=THEMES[G.world-1];
+function drawIntro(){P(ctx,'#140f1e',0,0,W,H);const th=THEMES[variant(G.world).ti];
  ctext(ctx,'WORLD '+G.world+'-'+G.level,56,WHITE,2);ctext(ctx,th.levels[G.level-1],76,GOLDH);ctext(ctx,th.name,88,'#8a7a9a');
- if(G.level===4)ctext(ctx,'BOSS: '+BOSSES[G.world-1].name,100,'#ff6a6a');
+ if(G.level===4)ctext(ctx,'BOSS: '+BOSSES[variant(G.world).ti].name,100,'#ff6a6a');if(G.world>NTH)ctext(ctx,'ENDLESS '+(G.world-NTH),112,TEALH);
  ctx.drawImage(SPR.hero.idle.r,W/2-8,112);
  const lp=th.power==='mix'?['ghanta','dash','wind','mask'][(G.level+G.world)%4]:th.power;ctx.drawImage(SPR.icons[lp],W/2-60,146);text(ctx,'THIS LEVEL: '+POWERS[lp].name,W/2-42,150,GOLDH);
  ctext(ctx,POWERS[lp].tip,166,IVORY);
